@@ -13,6 +13,7 @@
 
 import { useState, useEffect } from 'react';
 import logger from '../lib/logger';
+import { useNotification } from './Notification';
 
 export default function CriticInterface({ caseData, onComplete }) {
   // UI State
@@ -22,10 +23,14 @@ export default function CriticInterface({ caseData, onComplete }) {
   const [confidencePost, setConfidencePost] = useState(null);
   const [finalDiagnosis, setFinalDiagnosis] = useState('');
   const [revisedHypothesis, setRevisedHypothesis] = useState(false);
+  const [revisionLogged, setRevisionLogged] = useState(false);
 
   // Progressive Reveal State
   const [revealedPanels, setRevealedPanels] = useState([]);
   const [activePanel, setActivePanel] = useState(null);
+
+  // Notifications
+  const { showNotification, NotificationComponent } = useNotification();
 
   // Evidence panels (partiality stages)
   const availablePanels = [
@@ -38,12 +43,27 @@ export default function CriticInterface({ caseData, onComplete }) {
   // Initialize case
   useEffect(() => {
     logger.startCase(caseData.id, caseData.order);
-  }, [caseData]);
+
+    // Keyboard shortcuts
+    const handleKeyPress = (e) => {
+      // Enter key to submit (if ready)
+      if (e.key === 'Enter' && e.ctrlKey) {
+        if (!hypothesisSubmitted && hypothesis && confidencePre) {
+          handleSubmitHypothesis();
+        } else if (hypothesisSubmitted && confidencePost) {
+          handleSubmitFinal();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [caseData, hypothesisSubmitted, hypothesis, confidencePre, confidencePost]);
 
   // Handle hypothesis submission
   const handleSubmitHypothesis = async () => {
     if (hypothesis.length < 3) {
-      alert('Please enter a diagnosis (at least 3 characters)');
+      showNotification('Please enter a diagnosis (at least 3 characters)', 'warning');
       return;
     }
 
@@ -91,17 +111,19 @@ export default function CriticInterface({ caseData, onComplete }) {
   // Handle final diagnosis submission
   const handleSubmitFinal = async () => {
     if (!confidencePost) {
-      alert('Please rate your final confidence');
+      showNotification('Please rate your final confidence before submitting', 'warning');
       return;
     }
 
     const diagnosisToSubmit = revisedHypothesis ? finalDiagnosis : hypothesis;
 
-    if (revisedHypothesis && finalDiagnosis !== hypothesis) {
+    // Log revision only once
+    if (revisedHypothesis && finalDiagnosis !== hypothesis && !revisionLogged) {
       await logger.reviseHypothesis(
         finalDiagnosis,
         'User revised after seeing contrastive evidence'
       );
+      setRevisionLogged(true);
     }
 
     await logger.submitFinalDiagnosis(diagnosisToSubmit);
@@ -109,7 +131,9 @@ export default function CriticInterface({ caseData, onComplete }) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-6">
+    <>
+      {NotificationComponent}
+      <div className="max-w-5xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
@@ -149,10 +173,17 @@ export default function CriticInterface({ caseData, onComplete }) {
               Enter Your Diagnosis First
             </h3>
           </div>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-700 mb-3">
             Before viewing the AI's analysis, formulate your own hypothesis based on the
             clinical presentation.
           </p>
+          <div className="bg-indigo-100 border-l-4 border-indigo-600 p-3 mb-4">
+            <p className="text-sm text-indigo-900">
+              <strong>🎯 Why?</strong> Research shows that forming your own hypothesis before
+              seeing AI recommendations helps you learn better, think critically, and avoid
+              blindly accepting AI suggestions.
+            </p>
+          </div>
 
           <textarea
             value={hypothesis}
@@ -167,23 +198,27 @@ export default function CriticInterface({ caseData, onComplete }) {
               How confident are you in your diagnosis?
             </p>
             <div className="flex gap-2">
-              {[1, 2, 3, 4, 5].map((rating) => (
+              {[
+                { num: 1, label: 'Very Low' },
+                { num: 2, label: 'Low' },
+                { num: 3, label: 'Moderate' },
+                { num: 4, label: 'High' },
+                { num: 5, label: 'Very High' },
+              ].map((item) => (
                 <button
-                  key={rating}
-                  onClick={() => handleConfidenceRating(rating, 'pre')}
-                  className={`px-4 py-2 rounded-lg font-medium transition ${
-                    confidencePre === rating
+                  key={item.num}
+                  onClick={() => handleConfidenceRating(item.num, 'pre')}
+                  className={`flex-1 px-2 py-2 rounded-lg font-medium transition ${
+                    confidencePre === item.num
                       ? 'bg-purple-600 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                   }`}
                 >
-                  {rating}
+                  <div className="text-lg">{item.num}</div>
+                  <div className="text-xs">{item.label}</div>
                 </button>
               ))}
             </div>
-            <p className="text-xs text-gray-500 mt-1">
-              1 = Not confident • 5 = Very confident
-            </p>
           </div>
 
           <button
@@ -195,7 +230,7 @@ export default function CriticInterface({ caseData, onComplete }) {
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            Submit My Hypothesis →
+            Submit My Hypothesis → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
           </button>
         </div>
       ) : (
@@ -252,22 +287,25 @@ export default function CriticInterface({ caseData, onComplete }) {
                 Click to reveal additional evidence:
               </p>
               <div className="flex flex-wrap gap-3">
-                {availablePanels.map((panel) => (
-                  <button
-                    key={panel.id}
-                    onClick={() => handleRevealPanel(panel.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ${
-                      revealedPanels.includes(panel.id)
-                        ? 'bg-indigo-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    <span>{panel.icon}</span>
-                    <span>
-                      {revealedPanels.includes(panel.id) ? '✓' : ''} {panel.label}
-                    </span>
-                  </button>
-                ))}
+                {availablePanels.map((panel) => {
+                  const isRevealed = revealedPanels.includes(panel.id);
+                  return (
+                    <button
+                      key={panel.id}
+                      onClick={() => handleRevealPanel(panel.id)}
+                      className={`px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ${
+                        isRevealed
+                          ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      <span>{panel.icon}</span>
+                      <span>
+                        {isRevealed ? `✓ ${panel.label.replace('Show ', '')} (Hide)` : panel.label}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -388,17 +426,24 @@ export default function CriticInterface({ caseData, onComplete }) {
                 How confident are you now in your final diagnosis?
               </p>
               <div className="flex gap-2">
-                {[1, 2, 3, 4, 5].map((rating) => (
+                {[
+                  { num: 1, label: 'Very Low' },
+                  { num: 2, label: 'Low' },
+                  { num: 3, label: 'Moderate' },
+                  { num: 4, label: 'High' },
+                  { num: 5, label: 'Very High' },
+                ].map((item) => (
                   <button
-                    key={rating}
-                    onClick={() => handleConfidenceRating(rating, 'post')}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      confidencePost === rating
+                    key={item.num}
+                    onClick={() => handleConfidenceRating(item.num, 'post')}
+                    className={`flex-1 px-2 py-2 rounded-lg font-medium transition ${
+                      confidencePost === item.num
                         ? 'bg-indigo-600 text-white'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                   >
-                    {rating}
+                    <div className="text-lg">{item.num}</div>
+                    <div className="text-xs">{item.label}</div>
                   </button>
                 ))}
               </div>
@@ -413,7 +458,7 @@ export default function CriticInterface({ caseData, onComplete }) {
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
-              Submit Final Diagnosis →
+              Submit Final Diagnosis → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
             </button>
           </div>
         </>
@@ -435,5 +480,6 @@ export default function CriticInterface({ caseData, onComplete }) {
         }
       `}</style>
     </div>
+    </>
   );
 }

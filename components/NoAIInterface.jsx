@@ -8,20 +8,35 @@
 
 import { useState, useEffect } from 'react';
 import logger from '../lib/logger';
+import { useNotification } from './Notification';
 
 export default function NoAIInterface({ caseData, onComplete }) {
   const [diagnosis, setDiagnosis] = useState('');
   const [confidence, setConfidence] = useState(null);
   const [startTime, setStartTime] = useState(null);
 
+  // Notifications
+  const { showNotification, NotificationComponent } = useNotification();
+
   useEffect(() => {
     setStartTime(Date.now());
     logger.startCase(caseData.id, caseData.order);
-  }, [caseData]);
+
+    // Keyboard shortcuts
+    const handleKeyPress = (e) => {
+      // Ctrl+Enter to submit (if ready)
+      if (e.key === 'Enter' && e.ctrlKey && diagnosis && confidence) {
+        handleSubmit();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [caseData, diagnosis, confidence]);
 
   const handleSubmit = async () => {
     if (!diagnosis || !confidence) {
-      alert('Please enter a diagnosis and rate your confidence');
+      showNotification('Please enter a diagnosis and rate your confidence', 'warning');
       return;
     }
 
@@ -34,7 +49,9 @@ export default function NoAIInterface({ caseData, onComplete }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <>
+      {NotificationComponent}
+      <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-gray-500">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
@@ -113,23 +130,27 @@ export default function NoAIInterface({ caseData, onComplete }) {
             How confident are you in your diagnosis?
           </p>
           <div className="flex gap-2">
-            {[1, 2, 3, 4, 5].map((rating) => (
+            {[
+              { num: 1, label: 'Very Low' },
+              { num: 2, label: 'Low' },
+              { num: 3, label: 'Moderate' },
+              { num: 4, label: 'High' },
+              { num: 5, label: 'Very High' },
+            ].map((item) => (
               <button
-                key={rating}
-                onClick={() => setConfidence(rating)}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  confidence === rating
+                key={item.num}
+                onClick={() => setConfidence(item.num)}
+                className={`flex-1 px-2 py-2 rounded-lg font-medium transition ${
+                  confidence === item.num
                     ? 'bg-gray-600 text-white'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
-                {rating}
+                <div className="text-lg">{item.num}</div>
+                <div className="text-xs">{item.label}</div>
               </button>
             ))}
           </div>
-          <p className="text-xs text-gray-500 mt-1">
-            1 = Not confident • 5 = Very confident
-          </p>
         </div>
 
         <button
@@ -153,5 +174,6 @@ export default function NoAIInterface({ caseData, onComplete }) {
         </p>
       </div>
     </div>
+    </>
   );
 }

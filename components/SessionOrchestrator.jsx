@@ -31,6 +31,7 @@ import OracleInterface from './OracleInterface';
 import CriticInterface from './CriticInterface';
 import NFCScale from './NFCScale';
 import NoAIInterface from './NoAIInterface';
+import { useNotification } from './Notification';
 
 // Import cases data
 import casesData from '../src/data/cases.json';
@@ -576,10 +577,12 @@ export default function SessionOrchestrator() {
 // ========================================
 
 function PhaseHeader({ phase, description, caseNumber, totalCases }) {
+  const progress = caseNumber && totalCases ? (caseNumber / totalCases) * 100 : 0;
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
       <div className="flex items-center justify-between">
-        <div>
+        <div className="flex-1">
           <h2 className="text-2xl font-bold text-gray-800">{phase}</h2>
           <p className="text-gray-600 mt-1">{description}</p>
         </div>
@@ -592,6 +595,22 @@ function PhaseHeader({ phase, description, caseNumber, totalCases }) {
           </div>
         )}
       </div>
+
+      {/* Progress Bar */}
+      {caseNumber && totalCases && (
+        <div className="mt-4">
+          <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <span>{Math.round(progress)}% Complete</span>
+            <span>{totalCases - caseNumber} remaining</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -607,35 +626,112 @@ function RegistrationForm({ onSubmit }) {
   });
 
   const [consentGiven, setConsentGiven] = useState(false);
+  const [studentIdStatus, setStudentIdStatus] = useState(null); // 'checking' | 'valid' | 'duplicate' | 'invalid'
+  const [studentIdError, setStudentIdError] = useState('');
+
+  // Notifications
+  const { showNotification, NotificationComponent } = useNotification();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // Reset ID validation when user types
+    if (e.target.name === 'studentId') {
+      setStudentIdStatus(null);
+      setStudentIdError('');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const validateStudentId = async (id) => {
+    if (!id || id.length < 3) {
+      setStudentIdStatus('invalid');
+      setStudentIdError('ID must be at least 3 characters');
+      return false;
+    }
+
+    setStudentIdStatus('checking');
+
+    // Check for duplicate in database
+    const { data } = await supabase
+      .from('users')
+      .select('student_id')
+      .eq('student_id', id)
+      .single();
+
+    if (data) {
+      setStudentIdStatus('duplicate');
+      setStudentIdError('This Student ID is already registered');
+      return false;
+    }
+
+    setStudentIdStatus('valid');
+    setStudentIdError('');
+    return true;
+  };
+
+  const handleStudentIdBlur = () => {
+    if (formData.studentId) {
+      validateStudentId(formData.studentId);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!consentGiven) {
-      alert('Please provide informed consent to participate.');
+      showNotification('Please provide informed consent to participate', 'warning');
       return;
     }
+
+    // Validate student ID before submission
+    const isValid = await validateStudentId(formData.studentId);
+    if (!isValid) {
+      return;
+    }
+
     onSubmit(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <>
+      {NotificationComponent}
+      <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Student ID
         </label>
-        <input
-          type="text"
-          name="studentId"
-          value={formData.studentId}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-          placeholder="e.g., MED2024-001"
-        />
+        <p className="text-xs text-gray-600 mb-2">
+          Enter your university student ID or the research ID provided by your instructor
+        </p>
+        <div className="relative">
+          <input
+            type="text"
+            name="studentId"
+            value={formData.studentId}
+            onChange={handleChange}
+            onBlur={handleStudentIdBlur}
+            required
+            className={`w-full p-3 pr-10 border rounded-lg focus:ring-2 transition ${
+              studentIdStatus === 'valid'
+                ? 'border-green-500 focus:ring-green-500'
+                : studentIdStatus === 'duplicate' || studentIdStatus === 'invalid'
+                ? 'border-red-500 focus:ring-red-500'
+                : 'border-gray-300 focus:ring-blue-500'
+            }`}
+            placeholder="e.g., MED2024-001"
+          />
+          {studentIdStatus === 'checking' && (
+            <span className="absolute right-3 top-3.5 text-gray-400">⌛</span>
+          )}
+          {studentIdStatus === 'valid' && (
+            <span className="absolute right-3 top-3.5 text-green-600">✓</span>
+          )}
+          {(studentIdStatus === 'duplicate' || studentIdStatus === 'invalid') && (
+            <span className="absolute right-3 top-3.5 text-red-600">✗</span>
+          )}
+        </div>
+        {studentIdError && (
+          <p className="text-xs text-red-600 mt-1">{studentIdError}</p>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -666,7 +762,6 @@ function RegistrationForm({ onSubmit }) {
             <option value="">Select...</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Other">Other</option>
           </select>
         </div>
       </div>
@@ -738,6 +833,7 @@ function RegistrationForm({ onSubmit }) {
         Begin Experiment
       </button>
     </form>
+    </>
   );
 }
 

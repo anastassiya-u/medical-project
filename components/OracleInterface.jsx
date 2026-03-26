@@ -13,12 +13,16 @@
 
 import { useState, useEffect } from 'react';
 import logger from '../lib/logger';
+import { useNotification } from './Notification';
 
 export default function OracleInterface({ caseData, onComplete }) {
   // UI State
   const [confidence, setConfidence] = useState(null);
   const [finalDiagnosis, setFinalDiagnosis] = useState('');
   const [userAgreesWithAI, setUserAgreesWithAI] = useState(null);
+
+  // Notifications
+  const { showNotification, NotificationComponent } = useNotification();
 
   // Initialize case
   useEffect(() => {
@@ -30,7 +34,18 @@ export default function OracleInterface({ caseData, onComplete }) {
       caseData.correctDiagnosis,
       caseData.isFoil
     );
-  }, [caseData]);
+
+    // Keyboard shortcuts
+    const handleKeyPress = (e) => {
+      // Ctrl+Enter to submit (if ready)
+      if (e.key === 'Enter' && e.ctrlKey && confidence && finalDiagnosis) {
+        handleSubmitFinal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [caseData, confidence, finalDiagnosis]);
 
   // Handle agreement with AI
   const handleAgreeWithAI = (agrees) => {
@@ -51,12 +66,12 @@ export default function OracleInterface({ caseData, onComplete }) {
   // Handle final diagnosis submission
   const handleSubmitFinal = async () => {
     if (!confidence) {
-      alert('Please rate your confidence');
+      showNotification('Please rate your confidence before submitting', 'warning');
       return;
     }
 
     if (!finalDiagnosis) {
-      alert('Please enter a diagnosis');
+      showNotification('Please enter your diagnosis', 'warning');
       return;
     }
 
@@ -65,7 +80,9 @@ export default function OracleInterface({ caseData, onComplete }) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-6">
+    <>
+      {NotificationComponent}
+      <div className="max-w-5xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
@@ -248,23 +265,27 @@ export default function OracleInterface({ caseData, onComplete }) {
                 How confident are you in your final diagnosis?
               </p>
               <div className="flex gap-2">
-                {[1, 2, 3, 4, 5].map((rating) => (
+                {[
+                  { num: 1, label: 'Very Low' },
+                  { num: 2, label: 'Low' },
+                  { num: 3, label: 'Moderate' },
+                  { num: 4, label: 'High' },
+                  { num: 5, label: 'Very High' },
+                ].map((item) => (
                   <button
-                    key={rating}
-                    onClick={() => handleConfidenceRating(rating)}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      confidence === rating
+                    key={item.num}
+                    onClick={() => handleConfidenceRating(item.num)}
+                    className={`flex-1 px-2 py-2 rounded-lg font-medium transition ${
+                      confidence === item.num
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                   >
-                    {rating}
+                    <div className="text-lg">{item.num}</div>
+                    <div className="text-xs">{item.label}</div>
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-gray-500 mt-1">
-                1 = Not confident • 5 = Very confident
-              </p>
             </div>
 
             <button
@@ -287,5 +308,6 @@ export default function OracleInterface({ caseData, onComplete }) {
         <p>AI-Assisted Clinical Decision Support System</p>
       </div>
     </div>
+    </>
   );
 }
