@@ -132,7 +132,22 @@ export default function SessionOrchestrator() {
         });
 
         // Load cases for current phase
-        await loadCasesForPhase(session.currentPhase, session);
+        const casesLoaded = await loadCasesForPhase(session.currentPhase, session);
+
+        // Validate restored session - if no cases loaded for a phase that requires cases, reset
+        const requiresCases = [PHASES.PRE_TEST, PHASES.INTERVENTION, PHASES.POST_TEST].includes(session.currentPhase);
+        if (requiresCases && casesLoaded === 0) {
+          console.warn('⚠️ Corrupted session detected (0 cases loaded). Resetting to registration...');
+          localStorage.removeItem('experimentSession');
+          setCurrentPhase(PHASES.REGISTRATION);
+          setUserId(null);
+          setParadigm(null);
+          setAccuracyLevel(null);
+          setRandomizationSeed(null);
+          setCases([]);
+          setCurrentCaseIndex(0);
+          setFoilCaseIds([]);
+        }
       } else {
         console.log('✅ No saved session - starting fresh');
       }
@@ -271,7 +286,7 @@ export default function SessionOrchestrator() {
       case PHASES.PRE_TEST:
         // 5 cases, no AI
         phaseCases = casesData.cases
-          .filter((c) => c.phase === 'pre_test')
+          .filter((c) => c.phase === 'pre-test')
           .slice(0, 5);
         break;
 
@@ -308,7 +323,7 @@ export default function SessionOrchestrator() {
       case PHASES.POST_TEST:
         // 5 cases, no AI
         phaseCases = casesData.cases
-          .filter((c) => c.phase === 'post_test')
+          .filter((c) => c.phase === 'post-test')
           .slice(0, 5);
         break;
 
@@ -321,6 +336,9 @@ export default function SessionOrchestrator() {
     if (foilIds.length > 0) {
       console.log(`⚠️  Foil cases: ${foilIds.join(', ')}`);
     }
+
+    // Return the count for validation
+    return phaseCases.length;
   };
 
   /**
