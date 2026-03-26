@@ -49,14 +49,18 @@ export default function OracleInterface({ caseData, onComplete }) {
 
   // Initialize case
   useEffect(() => {
-    logger.startCase(caseData.id, caseData.order);
+    const initCase = async () => {
+      await logger.startCase(caseData.id, caseData.order);
 
-    // In Oracle mode, AI output is shown immediately
-    logger.viewAIOutput(
-      caseData.aiRecommendation,
-      caseData.correctDiagnosis,
-      caseData.isFoil
-    );
+      // In Oracle mode, AI output is shown immediately
+      await logger.viewAIOutput(
+        caseData.aiRecommendation,
+        caseData.correctDiagnosis,
+        caseData.isFoil
+      );
+    };
+
+    initCase();
 
     // Keyboard shortcuts
     const handleKeyPress = (e) => {

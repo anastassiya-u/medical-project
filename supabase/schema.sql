@@ -49,7 +49,7 @@ CREATE TABLE sessions (
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
 
   -- Session Type
-  session_type VARCHAR(20) CHECK (session_type IN ('pre_test', 'intervention', 'post_test')) NOT NULL,
+  session_type VARCHAR(20) CHECK (session_type IN ('pre_test', 'intervention', 'post_test', 'post_test_waiting')) NOT NULL,
 
   -- Timestamps
   started_at TIMESTAMP NOT NULL DEFAULT NOW(),
