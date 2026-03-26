@@ -90,6 +90,12 @@ export default function SessionOrchestrator() {
    */
   const restoreSession = async () => {
     try {
+      // Check if we're in the browser (not SSR)
+      if (typeof window === 'undefined') {
+        setLoading(false);
+        return;
+      }
+
       const savedSession = localStorage.getItem('experimentSession');
 
       if (savedSession) {
