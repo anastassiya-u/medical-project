@@ -15,8 +15,6 @@
  * Persistence: Uses localStorage + Supabase to maintain state across refreshes
  */
 
-'use client';
-
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import logger from '../lib/logger';
