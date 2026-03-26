@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * SessionOrchestrator Component
  * Central state machine for the entire experimental flow
@@ -651,22 +653,34 @@ function RegistrationForm({ onSubmit }) {
 
     setStudentIdStatus('checking');
 
-    // Check for duplicate in database
-    const { data } = await supabase
-      .from('users')
-      .select('student_id')
-      .eq('student_id', id)
-      .single();
+    try {
+      // Check for duplicate in database
+      const { data, error } = await supabase
+        .from('users')
+        .select('student_id')
+        .eq('student_id', id)
+        .single();
 
-    if (data) {
-      setStudentIdStatus('duplicate');
-      setStudentIdError('This Student ID is already registered');
+      // PGRST116 = no rows found (which means ID is available - good!)
+      if (error && error.code !== 'PGRST116') {
+        throw error;
+      }
+
+      if (data) {
+        setStudentIdStatus('duplicate');
+        setStudentIdError('This Student ID is already registered');
+        return false;
+      }
+
+      setStudentIdStatus('valid');
+      setStudentIdError('');
+      return true;
+    } catch (err) {
+      console.error('Error checking student ID:', err);
+      setStudentIdStatus('invalid');
+      setStudentIdError('Unable to verify ID. Please check your connection and try again.');
       return false;
     }
-
-    setStudentIdStatus('valid');
-    setStudentIdError('');
-    return true;
   };
 
   const handleStudentIdBlur = () => {
@@ -677,6 +691,13 @@ function RegistrationForm({ onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if validation is still running
+    if (studentIdStatus === 'checking') {
+      showNotification('Please wait while we verify your Student ID', 'info', 3000);
+      return;
+    }
+
     if (!consentGiven) {
       showNotification('Please provide informed consent to participate', 'warning');
       return;

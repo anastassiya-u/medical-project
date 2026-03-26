@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -58,10 +58,10 @@ export default function CriticInterface({ caseData, onComplete }) {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, hypothesisSubmitted, hypothesis, confidencePre, confidencePost]);
+  }, [caseData, hypothesisSubmitted, hypothesis, confidencePre, confidencePost, handleSubmitHypothesis, handleSubmitFinal]);
 
   // Handle hypothesis submission
-  const handleSubmitHypothesis = async () => {
+  const handleSubmitHypothesis = useCallback(async () => {
     if (hypothesis.length < 3) {
       showNotification('Please enter a diagnosis (at least 3 characters)', 'warning');
       return;
@@ -76,7 +76,7 @@ export default function CriticInterface({ caseData, onComplete }) {
       caseData.correctDiagnosis,
       caseData.isFoil
     );
-  };
+  }, [hypothesis, showNotification, caseData]);
 
   // Handle evidence panel reveal
   const handleRevealPanel = async (panelId) => {
@@ -109,7 +109,7 @@ export default function CriticInterface({ caseData, onComplete }) {
   };
 
   // Handle final diagnosis submission
-  const handleSubmitFinal = async () => {
+  const handleSubmitFinal = useCallback(async () => {
     if (!confidencePost) {
       showNotification('Please rate your final confidence before submitting', 'warning');
       return;
@@ -128,7 +128,7 @@ export default function CriticInterface({ caseData, onComplete }) {
 
     await logger.submitFinalDiagnosis(diagnosisToSubmit);
     onComplete();
-  };
+  }, [confidencePost, revisedHypothesis, finalDiagnosis, hypothesis, revisionLogged, showNotification, onComplete]);
 
   return (
     <>

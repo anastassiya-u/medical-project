@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -45,7 +45,7 @@ export default function OracleInterface({ caseData, onComplete }) {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, confidence, finalDiagnosis]);
+  }, [caseData, confidence, finalDiagnosis, handleSubmitFinal]);
 
   // Handle agreement with AI
   const handleAgreeWithAI = (agrees) => {
@@ -64,7 +64,7 @@ export default function OracleInterface({ caseData, onComplete }) {
   };
 
   // Handle final diagnosis submission
-  const handleSubmitFinal = async () => {
+  const handleSubmitFinal = useCallback(async () => {
     if (!confidence) {
       showNotification('Please rate your confidence before submitting', 'warning');
       return;
@@ -77,7 +77,7 @@ export default function OracleInterface({ caseData, onComplete }) {
 
     await logger.submitFinalDiagnosis(finalDiagnosis);
     onComplete();
-  };
+  }, [confidence, finalDiagnosis, showNotification, onComplete]);
 
   return (
     <>

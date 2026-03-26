@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -32,9 +32,9 @@ export default function NoAIInterface({ caseData, onComplete }) {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, diagnosis, confidence]);
+  }, [caseData, diagnosis, confidence, handleSubmit]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (!diagnosis || !confidence) {
       showNotification('Please enter a diagnosis and rate your confidence', 'warning');
       return;
@@ -46,7 +46,7 @@ export default function NoAIInterface({ caseData, onComplete }) {
     await logger.submitFinalDiagnosis(diagnosis);
 
     onComplete();
-  };
+  }, [diagnosis, confidence, startTime, showNotification, onComplete]);
 
   return (
     <>
