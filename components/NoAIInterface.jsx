@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -18,11 +18,17 @@ export default function NoAIInterface({ caseData, onComplete }) {
   // Notifications
   const { showNotification, NotificationComponent } = useNotification();
 
+  // Track if case has been initialized (prevent duplicate logging)
+  const caseInitialized = useRef(false);
+  const currentCaseId = useRef(null);
+
   // Reset state when case changes (critical for multi-case flow)
   useEffect(() => {
     setDiagnosis('');
     setConfidence(null);
     setStartTime(null);
+    caseInitialized.current = false;
+    currentCaseId.current = null;
   }, [caseData.id]);
 
   // Define handleSubmit BEFORE useEffect that references it
@@ -41,8 +47,13 @@ export default function NoAIInterface({ caseData, onComplete }) {
   }, [diagnosis, confidence, startTime, showNotification, onComplete]);
 
   useEffect(() => {
-    setStartTime(Date.now());
-    logger.startCase(caseData.id, caseData.order);
+    // Prevent duplicate initialization on re-renders
+    if (!caseInitialized.current || currentCaseId.current !== caseData.id) {
+      caseInitialized.current = true;
+      currentCaseId.current = caseData.id;
+      setStartTime(Date.now());
+      logger.startCase(caseData.id, caseData.order);
+    }
 
     // Keyboard shortcuts
     const handleKeyPress = (e) => {

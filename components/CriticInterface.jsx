@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -32,6 +32,10 @@ export default function CriticInterface({ caseData, onComplete }) {
   // Notifications
   const { showNotification, NotificationComponent } = useNotification();
 
+  // Track if case has been initialized (prevent duplicate logging)
+  const caseInitialized = useRef(false);
+  const currentCaseId = useRef(null);
+
   // Reset state when case changes (critical for multi-case flow)
   useEffect(() => {
     setHypothesis('');
@@ -43,6 +47,8 @@ export default function CriticInterface({ caseData, onComplete }) {
     setRevisionLogged(false);
     setRevealedPanels([]);
     setActivePanel(null);
+    caseInitialized.current = false;
+    currentCaseId.current = null;
   }, [caseData.id]);
 
   // Evidence panels (partiality stages)
@@ -95,7 +101,12 @@ export default function CriticInterface({ caseData, onComplete }) {
 
   // Initialize case
   useEffect(() => {
-    logger.startCase(caseData.id, caseData.order);
+    // Prevent duplicate initialization on re-renders
+    if (!caseInitialized.current || currentCaseId.current !== caseData.id) {
+      caseInitialized.current = true;
+      currentCaseId.current = caseData.id;
+      logger.startCase(caseData.id, caseData.order);
+    }
 
     // Keyboard shortcuts
     const handleKeyPress = (e) => {

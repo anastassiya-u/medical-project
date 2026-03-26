@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 
@@ -24,11 +24,17 @@ export default function OracleInterface({ caseData, onComplete }) {
   // Notifications
   const { showNotification, NotificationComponent } = useNotification();
 
+  // Track if case has been initialized (prevent duplicate logging)
+  const caseInitialized = useRef(false);
+  const currentCaseId = useRef(null);
+
   // Reset state when case changes (critical for multi-case flow)
   useEffect(() => {
     setConfidence(null);
     setFinalDiagnosis('');
     setUserAgreesWithAI(null);
+    caseInitialized.current = false;
+    currentCaseId.current = null;
   }, [caseData.id]);
 
   // Handle final diagnosis submission - MUST be defined before useEffect that uses it
@@ -49,7 +55,15 @@ export default function OracleInterface({ caseData, onComplete }) {
 
   // Initialize case
   useEffect(() => {
+    // Prevent duplicate initialization on re-renders
+    if (caseInitialized.current && currentCaseId.current === caseData.id) {
+      return;
+    }
+
     const initCase = async () => {
+      caseInitialized.current = true;
+      currentCaseId.current = caseData.id;
+
       await logger.startCase(caseData.id, caseData.order);
 
       // In Oracle mode, AI output is shown immediately
@@ -132,12 +146,7 @@ export default function OracleInterface({ caseData, onComplete }) {
           </div>
           <div>
             <h3 className="text-3xl font-bold">AI RECOMMENDATION</h3>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-sm font-medium">Confidence:</span>
-              <div className="bg-white/20 px-3 py-1 rounded-full">
-                <span className="font-bold text-lg">{caseData.aiConfidence}%</span>
-              </div>
-            </div>
+            {/* RESEARCH DESIGN: Confidence level hidden to prevent blind trust/authority bias */}
           </div>
         </div>
 
