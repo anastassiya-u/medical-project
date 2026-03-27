@@ -12,92 +12,92 @@ import { useTranslation } from '../lib/translations';
 const NFC_ITEMS = [
   {
     id: 'q1_complex_problems',
-    text: 'I would prefer complex to simple problems.',
+    textKey: 'nfcQ1',
     reverse: false,
   },
   {
     id: 'q2_responsibility_thinking',
-    text: 'I like to have the responsibility of handling situations that require a lot of thinking.',
+    textKey: 'nfcQ2',
     reverse: false,
   },
   {
     id: 'q3_thinking_not_fun',
-    text: 'Thinking is not my idea of fun.',
+    textKey: 'nfcQ3',
     reverse: true,
   },
   {
     id: 'q4_prefer_simple',
-    text: 'I would rather do something that requires little thought than something that is sure to challenge my thinking abilities.',
+    textKey: 'nfcQ4',
     reverse: true,
   },
   {
     id: 'q5_intellectual_challenge',
-    text: 'I really enjoy a task that involves coming up with new solutions to problems.',
+    textKey: 'nfcQ5',
     reverse: false,
   },
   {
     id: 'q6_deep_thinking',
-    text: 'I prefer to think about small, daily projects rather than long-term ones.',
+    textKey: 'nfcQ6',
     reverse: true,
   },
   {
     id: 'q7_prefer_easy',
-    text: 'I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.',
+    textKey: 'nfcQ7',
     reverse: false,
   },
   {
     id: 'q8_abstract_problems',
-    text: 'I find satisfaction in deliberating hard and for long hours.',
+    textKey: 'nfcQ8',
     reverse: false,
   },
   {
     id: 'q9_enjoy_puzzles',
-    text: 'I only think as hard as I have to.',
+    textKey: 'nfcQ9',
     reverse: true,
   },
   {
     id: 'q10_little_thinking',
-    text: 'I prefer to think about small, daily projects to long-term ones.',
+    textKey: 'nfcQ10',
     reverse: true,
   },
   {
     id: 'q11_cognitive_effort',
-    text: 'I like tasks that require little thought once I\'ve learned them.',
+    textKey: 'nfcQ11',
     reverse: true,
   },
   {
     id: 'q12_prefer_straightforward',
-    text: 'The idea of relying on thought to make my way to the top appeals to me.',
+    textKey: 'nfcQ12',
     reverse: false,
   },
   {
     id: 'q13_extensive_thinking',
-    text: 'I really enjoy a task that involves coming up with new solutions to problems.',
+    textKey: 'nfcQ13',
     reverse: false,
   },
   {
     id: 'q14_avoid_situations',
-    text: 'Learning new ways to think doesn\'t excite me very much.',
+    textKey: 'nfcQ14',
     reverse: true,
   },
   {
     id: 'q15_deliberation',
-    text: 'I prefer my life to be filled with puzzles that I must solve.',
+    textKey: 'nfcQ15',
     reverse: false,
   },
   {
     id: 'q16_minimal_effort',
-    text: 'The notion of thinking abstractly is appealing to me.',
+    textKey: 'nfcQ16',
     reverse: false,
   },
   {
     id: 'q17_task_requiring_thought',
-    text: 'I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.',
+    textKey: 'nfcQ17',
     reverse: false,
   },
   {
     id: 'q18_prefer_little_thought',
-    text: 'I feel relief rather than satisfaction after completing a task that required a lot of mental effort.',
+    textKey: 'nfcQ18',
     reverse: true,
   },
 ];
@@ -158,7 +158,7 @@ export default function NFCScale({ onComplete, language = 'ru' }) {
               <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
                 {idx + 1}
               </div>
-              <p className="text-gray-800 text-lg leading-relaxed">{item.text}</p>
+              <p className="text-gray-800 text-lg leading-relaxed">{t[item.textKey]}</p>
             </div>
 
             <div className="ml-12">
