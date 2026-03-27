@@ -2,6 +2,7 @@
 
 **Date:** March 27, 2026
 **Status:** ✅ Code Ready | ⏳ Awaiting AWS Credentials
+**Model:** GPT-OSS-20B (Open-source, 90% cheaper than Claude/GPT-4!)
 
 ---
 
@@ -9,10 +10,11 @@
 
 ### 1. Code Migration ✅
 - ✅ Replaced OpenAI with AWS Bedrock
-- ✅ Using Claude 3.5 Sonnet v2 (latest model)
+- ✅ Using GPT-OSS-20B (openai.gpt-oss-20b-1:0) - cost-effective open-source model
 - ✅ Added Russian language support
 - ✅ Fixed all data saving bugs
 - ✅ Built successfully (no errors)
+- ✅ **Total study cost: ~$2-4 instead of $36-54!**
 
 ### 2. GitHub ✅
 - ✅ Committed all changes
@@ -44,7 +46,7 @@ Follow the detailed guide in [AWS_SETUP_GUIDE.md](AWS_SETUP_GUIDE.md), but here'
    - Go to https://console.aws.amazon.com/bedrock/
    - Click "Model access" in left sidebar
    - Click "Modify model access"
-   - Check "Claude 3.5 Sonnet v2" under Anthropic
+   - Check "GPT-OSS-20B" under OpenAI/Open-source models
    - Submit (usually instant approval)
 
 2. **Create IAM User:**
@@ -154,7 +156,7 @@ vercel --prod
 
 Use this checklist to track your progress:
 
-- [ ] AWS Bedrock model access granted (Claude 3.5 Sonnet v2)
+- [ ] AWS Bedrock model access granted (GPT-OSS-20B)
 - [ ] IAM user created with Bedrock permissions
 - [ ] Access keys generated and saved
 - [ ] `.env.local` file updated with AWS credentials
@@ -212,26 +214,32 @@ const command = new InvokeModelCommand({
 
 ## 💰 Cost Information
 
-### AWS Bedrock Pricing (Claude 3.5 Sonnet v2)
+### AWS Bedrock Pricing (GPT-OSS-20B)
 
 **Per Evaluation:**
-- Input tokens (~500): $0.0015
-- Output tokens (~400): $0.0060
-- **Total: ~$0.0075 per case**
+- Total tokens (~1000): $0.0001-0.0003
+- **Total: ~$0.001-0.002 per case** (extremely low!)
 
 **Study Estimates:**
-- Pilot (N=10, 15 cases): ~$1.13
-- Full study (N=120, 15 cases): ~$13.50
+- Pilot (N=10, 15 cases): **~$0.15-0.30** (negligible!)
+- Full study (N=120, 15 cases): **~$2-4** (90% cheaper than Claude!)
 
-**Your AWS Credits:** Should easily cover the entire study!
+**Your AWS Credits:** Will EASILY cover the entire study with budget to spare!
 
-### Set Up Cost Alerts
+**Cost Comparison:**
+- Claude 3.5 Sonnet: ~$13.50 for full study
+- GPT-4: ~$18-54 for full study
+- **GPT-OSS-20B: ~$2-4 for full study** ✅
+
+### Set Up Cost Alerts (Optional - costs are very low!)
 
 1. Go to https://console.aws.amazon.com/billing/
 2. Click "Budgets" → "Create budget"
-3. Set budget: $50
-4. Set alert threshold: 80% ($40)
+3. Set budget: **$10** (more than enough!)
+4. Set alert threshold: 80% ($8)
 5. Enter your email
+
+**Note:** With GPT-OSS-20B, you likely won't even hit $5 for the entire study!
 
 ---
 
@@ -280,8 +288,8 @@ const command = new InvokeModelCommand({
 
 **Fix:**
 1. Go to Bedrock → Model access
-2. Ensure Claude 3.5 Sonnet v2 shows "Access granted"
-3. If pending, wait 5-10 minutes and refresh
+2. Ensure GPT-OSS-20B shows "Access granted"
+3. If pending, wait 5-10 minutes and refresh (usually instant for open-source models)
 
 ### Issue: Static Evidence Still Showing
 

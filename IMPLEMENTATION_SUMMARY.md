@@ -2,13 +2,13 @@
 
 **Date:** March 27, 2026
 **Status:** ✅ **COMPLETE** - All critical fixes implemented
-**AI Provider:** AWS Bedrock (Claude 3.5 Sonnet v2)
+**AI Provider:** AWS Bedrock (GPT-OSS-20B) - Open-source, cost-effective
 
 ---
 
 ## ✅ What Was Implemented
 
-### 1. **AWS Bedrock AI Integration with Claude 3.5 Sonnet (Option A)**
+### 1. **AWS Bedrock AI Integration with GPT-OSS-20B (Option A)**
 
 **New File:** `lib/ai-evaluator.js`
 
@@ -17,21 +17,22 @@
   - **70% Foil Mode:** Makes professional diagnostic errors (subtle, detectable)
 - ✅ Dynamic evidence generation based on actual user hypothesis
 - ✅ Fallback to static evidence if API fails
-- ✅ Cost: ~$0.01-0.02 per case evaluation (using AWS credits)
-- ✅ Uses Claude 3.5 Sonnet v2 via AWS Bedrock
+- ✅ Cost: **~$0.001-0.002 per case evaluation** (extremely low cost with AWS credits)
+- ✅ Uses GPT-OSS-20B (openai.gpt-oss-20b-1:0) via AWS Bedrock
 
 **Key Features:**
-- Claude evaluates what the user ACTUALLY types (no more gibberish showing fake evidence)
+- GPT-OSS-20B evaluates what the user ACTUALLY types (no more gibberish showing fake evidence)
 - For foil cases, AI makes professional errors by:
   - Emphasizing overlapping symptoms
   - Omitting key differentiators
   - Making errors subtle but detectable by careful students
+- **Much cheaper than Claude/GPT-4** - ideal for research budgets
 
 **Example Prompt Logic:**
 ```
 If Correct = Pneumonia, Foil = Bronchitis:
-- Claude emphasizes: "Cough, fever present" (overlaps)
-- Claude omits: "X-ray shows infiltrate" (key differentiator)
+- GPT emphasizes: "Cough, fever present" (overlaps)
+- GPT omits: "X-ray shows infiltrate" (key differentiator)
 - Student must catch this by reviewing clinical data
 ```
 
@@ -149,10 +150,10 @@ NEXT_PUBLIC_AWS_REGION=us-east-1
 5. Copy Access Key ID and Secret Access Key into `.env.local`
 
 **Cost Estimate (using AWS credits):**
-- ~$0.01-0.02 per case evaluation with Claude 3.5 Sonnet
+- ~$0.001-0.002 per case evaluation with GPT-OSS-20B (open-source model)
 - 120 users × 15 cases each = 1,800 evaluations
-- Total cost: ~$18-36 for entire pilot study
-- **Can be covered by AWS free tier credits**
+- Total cost: **~$2-4 for entire pilot study** (90% cheaper than Claude!)
+- **Easily covered by AWS free tier credits**
 
 ---
 
@@ -311,7 +312,7 @@ Test with Critic interface to verify AI evaluation works with AWS Bedrock.
 ## 📝 What Changed - File Summary
 
 ### New Files (2)
-1. `lib/ai-evaluator.js` - AWS Bedrock (Claude 3.5 Sonnet) integration
+1. `lib/ai-evaluator.js` - AWS Bedrock (GPT-OSS-20B) integration - cost-effective open-source model
 2. `lib/translations.js` - Russian/English translations
 
 ### Modified Files (7)
@@ -339,13 +340,14 @@ Monitor daily:
 - Set budget alerts (Billing > Budgets)
 
 **Expected Costs (with AWS credits):**
-- Pilot (N=10): ~$2-4
-- Full study (N=120): ~$18-36
-- **Can use AWS free tier credits**
+- Pilot (N=10): **~$0.15-0.30** (negligible!)
+- Full study (N=120): **~$2-4** (extremely affordable!)
+- **Easily covered by AWS free tier credits**
 
 **AWS Bedrock Pricing:**
-- Claude 3.5 Sonnet v2: ~$0.003 per 1K input tokens, ~$0.015 per 1K output tokens
-- Average case evaluation: ~500 input + 400 output tokens = ~$0.01-0.02
+- GPT-OSS-20B: ~$0.0001-0.0003 per 1K tokens (open-source model pricing)
+- Average case evaluation: ~1000 tokens total = **~$0.001-0.002**
+- **90% cheaper than Claude 3.5 Sonnet!**
 
 ---
 

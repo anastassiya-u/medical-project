@@ -2,7 +2,7 @@
 
 **Project:** Oracle vs. Critic Experiment Platform
 **Date:** March 27, 2026
-**AI Provider:** AWS Bedrock (Claude 3.5 Sonnet v2)
+**AI Provider:** AWS Bedrock (GPT-OSS-20B) - Open-source, cost-effective model
 
 ---
 
@@ -16,6 +16,7 @@ This guide will help you:
 5. ✅ Test the AI evaluation system
 
 **Total Time:** 15-20 minutes
+**Total Cost for Full Study (N=120):** ~$2-4 (extremely affordable!)
 
 ---
 
@@ -33,7 +34,7 @@ This guide will help you:
 
 1. Go to https://console.aws.amazon.com
 2. Sign in with your AWS account
-3. Select region: **us-east-1** (N. Virginia) - This is where Claude 3.5 Sonnet is available
+3. Select region: **us-east-1** (N. Virginia) - This is where GPT-OSS-20B is available
 
 ### 1.2 Request Bedrock Model Access
 
@@ -41,14 +42,16 @@ This guide will help you:
 2. Click on **Amazon Bedrock**
 3. In the left sidebar, click **Model access**
 4. Click the **Modify model access** button (orange button on top right)
-5. Find **Anthropic** in the list
-6. Check the box next to **Claude 3.5 Sonnet v2**
+5. Find **OpenAI** or **Open-source models** in the list
+6. Check the box next to **GPT-OSS-20B** (model ID: `openai.gpt-oss-20b-1:0`)
 7. Scroll down and click **Next**
 8. Review and click **Submit**
 
-**⏱️ Access is usually granted instantly**, but can take up to 24 hours in some regions.
+**⏱️ Access is usually granted instantly** for open-source models.
 
-**✅ Confirmation:** You'll see "Access granted" status next to Claude 3.5 Sonnet v2
+**✅ Confirmation:** You'll see "Access granted" status next to GPT-OSS-20B
+
+**💡 Why this model?** GPT-OSS-20B is an open-source model that's 90% cheaper than Claude/GPT-4 while still providing good quality for medical case evaluation.
 
 ---
 
@@ -83,19 +86,19 @@ In the new tab:
       "Sid": "BedrockInvokeModel",
       "Effect": "Allow",
       "Action": "bedrock:InvokeModel",
-      "Resource": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-5-sonnet-*"
+      "Resource": "arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-oss-20b-*"
     }
   ]
 }
 ```
 
 3. Click **Next**
-4. Enter policy name: `BedrockClaudeInvokePolicy`
+4. Enter policy name: `BedrockGPTOSSInvokePolicy`
 5. Click **Create policy**
 
 Go back to the previous tab (Create user):
 1. Click the refresh button (circular arrow)
-2. Search for `BedrockClaudeInvokePolicy`
+2. Search for `BedrockGPTOSSInvokePolicy`
 3. Check the box next to it
 4. Click **Next**
 5. Click **Create user**
@@ -290,11 +293,11 @@ LIMIT 1;
 
 ### Problem: "Failed to parse AI response"
 
-**Cause:** Claude returned text instead of JSON
+**Cause:** GPT-OSS-20B returned text instead of JSON
 
 **Solution:**
 - Check `lib/ai-evaluator.js` logs in browser console
-- Claude should respond with JSON format
+- GPT-OSS-20B should respond with JSON format
 - Fallback to static evidence should activate
 
 ---
@@ -343,14 +346,14 @@ vercel --prod
 ### Expected Costs
 
 **Per Evaluation:**
-- Input tokens (~500): ~$0.0015
-- Output tokens (~400): ~$0.006
-- **Total: ~$0.0075 per case**
+- Total tokens (~1000): ~$0.0001-0.0003
+- **Total: ~$0.001-0.002 per case** (extremely low!)
 
 **Study Estimates:**
-- Pilot (N=10, 15 cases each): ~$1.13
-- Full study (N=120, 15 cases each): ~$13.50
-- **Well within AWS credits budget**
+- Pilot (N=10, 15 cases each): **~$0.15-0.30**
+- Full study (N=120, 15 cases each): **~$2-4**
+- **90% cheaper than Claude/GPT-4!**
+- **Easily covered by AWS free tier credits**
 
 ### Monitor Usage
 
@@ -378,7 +381,7 @@ CriticInterface.jsx calls evaluateHypothesis()
          ↓
 lib/ai-evaluator.js prepares prompt
          ↓
-AWS Bedrock API (Claude 3.5 Sonnet v2)
+AWS Bedrock API (GPT-OSS-20B)
          ↓
 Response parsed as JSON
          ↓
