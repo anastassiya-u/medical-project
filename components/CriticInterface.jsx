@@ -14,7 +14,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
-import { evaluateHypothesis } from '../lib/ai-evaluator';
 import { useTranslation } from '../lib/translations';
 
 export default function CriticInterface({ caseData, onComplete, accuracyLevel, language = 'ru' }) {
@@ -79,18 +78,30 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
     setHypothesisSubmitted(true);
     await logger.submitHypothesis(hypothesis);
 
-    // Generate dynamic evidence using GPT-4
+    // Generate dynamic evidence using GPT-4 (via secure API route)
     setLoadingEvidence(true);
     try {
       console.log('🤖 Requesting AI evaluation for hypothesis:', hypothesis);
 
-      const evidence = await evaluateHypothesis({
-        caseData,
-        userHypothesis: hypothesis,
-        accuracyLevel: accuracyLevel || 'high',
-        isFoilCase: caseData.isFoil || false,
+      // Call server-side API route (protects AWS credentials)
+      const response = await fetch('/api/evaluate-hypothesis', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          caseData,
+          userHypothesis: hypothesis,
+          accuracyLevel: accuracyLevel || 'high',
+          isFoilCase: caseData.isFoil || false,
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const evidence = await response.json();
       setDynamicEvidence(evidence);
 
       // Log AI output viewed (for Critic, this happens after hypothesis)
