@@ -86,6 +86,9 @@ export default function SessionOrchestrator() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Translations
+  const t = useTranslation(language);
+
   console.log('🔍 Current state - loading:', loading, 'phase:', currentPhase);
 
   /**
@@ -482,10 +485,11 @@ export default function SessionOrchestrator() {
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-5xl mx-auto">
           <PhaseHeader
-            phase="Pre-Test"
-            description="Baseline assessment (no AI assistance)"
+            phase={t.preTest}
+            description={t.baselineAssessment}
             caseNumber={currentCaseIndex + 1}
             totalCases={cases.length}
+            language={language}
           />
           {currentCase && (
             <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} language={language} />
@@ -503,8 +507,9 @@ export default function SessionOrchestrator() {
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-3xl mx-auto">
           <PhaseHeader
-            phase="Need for Cognition Assessment"
-            description="Quick questionnaire about thinking preferences"
+            phase={t.nfcAssessment}
+            description={t.nfcQuickQuestionnaire}
+            language={language}
           />
           <NFCScale onComplete={handleNFCComplete} language={language} />
         </div>
@@ -524,10 +529,11 @@ export default function SessionOrchestrator() {
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-5xl mx-auto">
           <PhaseHeader
-            phase={paradigm === 'oracle' ? 'Oracle' : 'Critic'}
-            description="AI-assisted diagnosis"
+            phase={paradigm === 'oracle' ? t.oracle : t.critic}
+            description={t.aiAssistedDiagnosis}
             caseNumber={currentCaseIndex + 1}
             totalCases={cases.length}
+            language={language}
           />
           {currentCase && (
             <InterfaceComponent
@@ -584,10 +590,11 @@ export default function SessionOrchestrator() {
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-5xl mx-auto">
           <PhaseHeader
-            phase="Post-Test"
-            description="Learning assessment (no AI assistance)"
+            phase={t.postTest}
+            description={t.baselineAssessment}
             caseNumber={currentCaseIndex + 1}
             totalCases={cases.length}
+            language={language}
           />
           {currentCase && (
             <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} language={language} />
@@ -632,7 +639,8 @@ export default function SessionOrchestrator() {
 // HELPER COMPONENTS
 // ========================================
 
-function PhaseHeader({ phase, description, caseNumber, totalCases }) {
+function PhaseHeader({ phase, description, caseNumber, totalCases, language = 'ru' }) {
+  const t = useTranslation(language);
   const progress = caseNumber && totalCases ? (caseNumber / totalCases) * 100 : 0;
 
   return (
@@ -647,7 +655,7 @@ function PhaseHeader({ phase, description, caseNumber, totalCases }) {
             <div className="text-3xl font-bold text-blue-600">
               {caseNumber} / {totalCases}
             </div>
-            <div className="text-sm text-gray-600">Cases</div>
+            <div className="text-sm text-gray-600">{t.cases}</div>
           </div>
         )}
       </div>
@@ -656,8 +664,8 @@ function PhaseHeader({ phase, description, caseNumber, totalCases }) {
       {caseNumber && totalCases && (
         <div className="mt-4">
           <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>{Math.round(progress)}% Complete</span>
-            <span>{totalCases - caseNumber} remaining</span>
+            <span>{Math.round(progress)}% {t.complete}</span>
+            <span>{totalCases - caseNumber} {t.remaining}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
             <div

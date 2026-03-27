@@ -79,36 +79,36 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
       <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-gray-500">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.clinicalCase}</h2>
         <div className="space-y-3 text-gray-700">
           <p>
-            <strong>Patient:</strong> {caseData.patient.age}yo {caseData.patient.gender},{' '}
+            <strong>{t.patient}:</strong> {caseData.patient.age}yo {caseData.patient.gender},{' '}
             {caseData.patient.ethnicity}
           </p>
           <p>
-            <strong>Chief Complaint:</strong> {caseData.chiefComplaint}
+            <strong>{t.chiefComplaint}:</strong> {caseData.chiefComplaint}
           </p>
           <p>
-            <strong>History:</strong> {caseData.history}
+            <strong>{t.history}:</strong> {caseData.history}
           </p>
           <p>
-            <strong>Physical Exam:</strong> {caseData.physicalExam}
+            <strong>{t.physicalExam}:</strong> {caseData.physicalExam}
           </p>
           <div className="bg-gray-50 p-4 rounded border border-gray-200">
-            <strong className="block mb-2">Vital Signs:</strong>
+            <strong className="block mb-2">{t.vitalSigns}:</strong>
             <div className="grid grid-cols-2 gap-2 text-sm">
-              <span>Temp: {caseData.vitals.temperature}</span>
-              <span>BP: {caseData.vitals.bloodPressure}</span>
-              <span>HR: {caseData.vitals.heartRate}</span>
-              <span>RR: {caseData.vitals.respiratoryRate}</span>
-              <span>O₂ Sat: {caseData.vitals.oxygenSaturation}</span>
+              <span>{t.temp}: {caseData.vitals.temperature}</span>
+              <span>{t.bp}: {caseData.vitals.bloodPressure}</span>
+              <span>{t.hr}: {caseData.vitals.heartRate}</span>
+              <span>{t.rr}: {caseData.vitals.respiratoryRate}</span>
+              <span>{t.o2sat}: {caseData.vitals.oxygenSaturation}</span>
             </div>
           </div>
 
           {/* Show labs and imaging if available */}
           {caseData.labs && (
             <div className="bg-gray-50 p-4 rounded border border-gray-200 mt-3">
-              <strong className="block mb-2">Laboratory Results:</strong>
+              <strong className="block mb-2">{t.laboratoryResults}:</strong>
               <div className="text-sm space-y-1">
                 {Object.entries(caseData.labs).map(([key, value]) => (
                   <p key={key}>
@@ -124,7 +124,7 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
 
           {caseData.imaging && (
             <div className="bg-gray-50 p-4 rounded border border-gray-200 mt-3">
-              <strong className="block mb-2">Imaging:</strong>
+              <strong className="block mb-2">{t.imaging}:</strong>
               <p className="text-sm">{caseData.imaging}</p>
             </div>
           )}
