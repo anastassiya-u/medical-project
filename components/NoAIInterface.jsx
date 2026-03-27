@@ -9,8 +9,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
+import { useTranslation } from '../lib/translations';
 
-export default function NoAIInterface({ caseData, onComplete }) {
+export default function NoAIInterface({ caseData, onComplete, language = 'ru' }) {
+  // Get translations
+  const t = useTranslation(language);
   const [diagnosis, setDiagnosis] = useState('');
   const [confidence, setConfidence] = useState(null);
   const [startTime, setStartTime] = useState(null);
@@ -34,7 +37,7 @@ export default function NoAIInterface({ caseData, onComplete }) {
   // Define handleSubmit BEFORE useEffect that references it
   const handleSubmit = useCallback(async () => {
     if (!diagnosis || !confidence) {
-      showNotification('Please enter a diagnosis and rate your confidence', 'warning');
+      showNotification(t.rateConfidenceWarning, 'warning');
       return;
     }
 
@@ -132,16 +135,16 @@ export default function NoAIInterface({ caseData, onComplete }) {
       <div className="bg-white rounded-lg shadow-md p-6 border border-gray-300">
         <div className="flex items-center gap-3 mb-4">
           <span className="text-3xl">📝</span>
-          <h3 className="text-xl font-bold text-gray-800">Your Diagnosis</h3>
+          <h3 className="text-xl font-bold text-gray-800">{t.yourDiagnosis}</h3>
         </div>
         <p className="text-gray-600 mb-4">
-          Based on the clinical presentation, enter your diagnosis.
+          {t.basedOnPresentation}
         </p>
 
         <textarea
           value={diagnosis}
           onChange={(e) => setDiagnosis(e.target.value)}
-          placeholder="Enter your diagnosis (e.g., Community-Acquired Pneumonia)"
+          placeholder={t.enterYourDiagnosis}
           className="w-full p-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent text-lg mb-4"
           rows={3}
         />
@@ -149,15 +152,15 @@ export default function NoAIInterface({ caseData, onComplete }) {
         {/* Confidence Rating */}
         <div>
           <p className="text-sm text-gray-600 mb-2">
-            How confident are you in your diagnosis?
+            {t.howConfidentPre}
           </p>
           <div className="flex gap-2">
             {[
-              { num: 1, label: 'Very Low' },
-              { num: 2, label: 'Low' },
-              { num: 3, label: 'Moderate' },
-              { num: 4, label: 'High' },
-              { num: 5, label: 'Very High' },
+              { num: 1, label: t.veryLow },
+              { num: 2, label: t.low },
+              { num: 3, label: t.moderate },
+              { num: 4, label: t.high },
+              { num: 5, label: t.veryHigh },
             ].map((item) => (
               <button
                 key={item.num}
@@ -184,15 +187,14 @@ export default function NoAIInterface({ caseData, onComplete }) {
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >
-          Submit Diagnosis →
+          {t.submitDiagnosis} →
         </button>
       </div>
 
       {/* No AI Notice */}
       <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 text-center">
         <p className="text-sm text-blue-800">
-          <strong>Note:</strong> This is an independent assessment. AI assistance is
-          not available for this case.
+          <strong>{t.noAINote}</strong> {t.noAIMessage}
         </p>
       </div>
     </div>

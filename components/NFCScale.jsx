@@ -7,6 +7,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from '../lib/translations';
 
 const NFC_ITEMS = [
   {
@@ -101,7 +102,8 @@ const NFC_ITEMS = [
   },
 ];
 
-export default function NFCScale({ onComplete }) {
+export default function NFCScale({ onComplete, language = 'ru' }) {
+  const t = useTranslation(language);
   const [responses, setResponses] = useState({});
 
   const handleResponse = (itemId, rating) => {
@@ -111,7 +113,7 @@ export default function NFCScale({ onComplete }) {
   const handleSubmit = () => {
     // Check if all items answered
     if (Object.keys(responses).length < NFC_ITEMS.length) {
-      alert('Please answer all questions');
+      alert(t.answerAllQuestions);
       return;
     }
 
@@ -124,10 +126,10 @@ export default function NFCScale({ onComplete }) {
     <div className="bg-white rounded-lg shadow-md p-8">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Thinking Preferences Questionnaire
+          {t.nfcTitle}
         </h2>
         <p className="text-gray-600 mb-4">
-          Please indicate how much you agree or disagree with each statement.
+          {t.nfcDescription}
         </p>
 
         {/* Progress Bar */}
@@ -138,7 +140,7 @@ export default function NFCScale({ onComplete }) {
           ></div>
         </div>
         <p className="text-sm text-gray-600">
-          {Object.keys(responses).length} / {NFC_ITEMS.length} completed
+          {Object.keys(responses).length} / {NFC_ITEMS.length} {t.nfcProgress}
         </p>
       </div>
 
@@ -162,11 +164,11 @@ export default function NFCScale({ onComplete }) {
             <div className="ml-12">
               <div className="grid grid-cols-5 gap-3">
                 {[
-                  { value: 1, label: 'Strongly Disagree' },
-                  { value: 2, label: 'Disagree' },
-                  { value: 3, label: 'Neutral' },
-                  { value: 4, label: 'Agree' },
-                  { value: 5, label: 'Strongly Agree' },
+                  { value: 1, label: t.stronglyDisagree },
+                  { value: 2, label: t.disagreeLabel },
+                  { value: 3, label: t.neutral },
+                  { value: 4, label: t.agreeLabel },
+                  { value: 5, label: t.stronglyAgree },
                 ].map((option) => (
                   <button
                     key={option.value}
@@ -196,13 +198,12 @@ export default function NFCScale({ onComplete }) {
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
       >
-        Continue to AI-Assisted Cases →
+        {t.nfcContinue} →
       </button>
 
       <div className="mt-6 bg-gray-50 p-4 rounded-lg text-center">
         <p className="text-sm text-gray-600">
-          This scale helps us understand how different thinking styles interact with AI
-          explanations.
+          {t.nfcExplanation}
         </p>
       </div>
     </div>

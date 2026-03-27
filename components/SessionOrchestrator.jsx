@@ -222,6 +222,7 @@ export default function SessionOrchestrator() {
       setParadigm(group.paradigm);
       setAccuracyLevel(group.accuracy_level);
       setRandomizationSeed(seed);
+      setLanguage(formData.language || 'ru'); // Save user's language choice
 
       // Initialize logger
       logger.init({
@@ -486,7 +487,7 @@ export default function SessionOrchestrator() {
             totalCases={cases.length}
           />
           {currentCase && (
-            <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} />
+            <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} language={language} />
           )}
         </div>
       </div>
@@ -504,7 +505,7 @@ export default function SessionOrchestrator() {
             phase="Need for Cognition Assessment"
             description="Quick questionnaire about thinking preferences"
           />
-          <NFCScale onComplete={handleNFCComplete} />
+          <NFCScale onComplete={handleNFCComplete} language={language} />
         </div>
       </div>
     );
@@ -522,8 +523,8 @@ export default function SessionOrchestrator() {
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-5xl mx-auto">
           <PhaseHeader
-            phase={`Intervention: ${paradigm === 'oracle' ? 'Oracle AI' : 'Critic AI'}`}
-            description={`AI-assisted diagnosis (${accuracyLevel === 'high' ? '100%' : '70%'} accuracy)`}
+            phase={paradigm === 'oracle' ? 'Oracle' : 'Critic'}
+            description="AI-assisted diagnosis"
             caseNumber={currentCaseIndex + 1}
             totalCases={cases.length}
           />
@@ -588,7 +589,7 @@ export default function SessionOrchestrator() {
             totalCases={cases.length}
           />
           {currentCase && (
-            <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} />
+            <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} language={language} />
           )}
         </div>
       </div>
@@ -768,6 +769,37 @@ function RegistrationForm({ onSubmit }) {
     <>
       {NotificationComponent}
       <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Language Selector - PROMINENT PLACEMENT */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-2 border-blue-200">
+        <label className="block text-lg font-bold text-gray-800 mb-3">
+          🌐 Interface Language / Язык интерфейса
+        </label>
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            type="button"
+            onClick={() => setFormData({ ...formData, language: 'en' })}
+            className={`p-4 rounded-lg font-semibold text-lg transition ${
+              formData.language === 'en'
+                ? 'bg-blue-600 text-white shadow-lg scale-105'
+                : 'bg-white text-gray-700 hover:bg-blue-100 border-2 border-gray-300'
+            }`}
+          >
+            🇬🇧 English
+          </button>
+          <button
+            type="button"
+            onClick={() => setFormData({ ...formData, language: 'ru' })}
+            className={`p-4 rounded-lg font-semibold text-lg transition ${
+              formData.language === 'ru'
+                ? 'bg-blue-600 text-white shadow-lg scale-105'
+                : 'bg-white text-gray-700 hover:bg-blue-100 border-2 border-gray-300'
+            }`}
+          >
+            🇷🇺 Русский
+          </button>
+        </div>
+      </div>
+
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Student ID

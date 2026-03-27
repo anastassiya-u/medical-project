@@ -15,8 +15,11 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 import { evaluateHypothesis } from '../lib/ai-evaluator';
+import { useTranslation } from '../lib/translations';
 
 export default function CriticInterface({ caseData, onComplete, accuracyLevel, language = 'ru' }) {
+  // Get translations
+  const t = useTranslation(language);
   // UI State
   const [hypothesis, setHypothesis] = useState('');
   const [hypothesisSubmitted, setHypothesisSubmitted] = useState(false);
@@ -69,7 +72,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
   // Handle hypothesis submission - MUST be defined before useEffect that uses it
   const handleSubmitHypothesis = useCallback(async () => {
     if (hypothesis.length < 3) {
-      showNotification('Please enter a diagnosis (at least 3 characters)', 'warning');
+      showNotification(t.enterDiagnosisWarning, 'warning');
       return;
     }
 
@@ -132,7 +135,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
   // Handle final diagnosis submission - MUST be defined before useEffect that uses it
   const handleSubmitFinal = useCallback(async () => {
     if (!confidencePost) {
-      showNotification('Please rate your final confidence before submitting', 'warning');
+      showNotification(t.rateConfidenceWarningFinal, 'warning');
       return;
     }
 
@@ -246,40 +249,37 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
           <div className="flex items-center gap-3 mb-4">
             <span className="text-4xl">💭</span>
             <h3 className="text-xl font-bold text-purple-800">
-              Enter Your Diagnosis First
+              {t.enterDiagnosis}
             </h3>
           </div>
           <p className="text-gray-700 mb-3">
-            Before viewing the AI's analysis, formulate your own hypothesis based on the
-            clinical presentation.
+            {t.beforeViewing}
           </p>
           <div className="bg-indigo-100 border-l-4 border-indigo-600 p-3 mb-4">
             <p className="text-sm text-indigo-900">
-              <strong>🎯 Why?</strong> Research shows that forming your own hypothesis before
-              seeing AI recommendations helps you learn better, think critically, and avoid
-              blindly accepting AI suggestions.
+              <strong>{t.whyEnter}</strong> {t.whyExplanation}
             </p>
           </div>
 
           <textarea
             value={hypothesis}
             onChange={(e) => setHypothesis(e.target.value)}
-            placeholder="Enter your diagnosis here (e.g., Community-Acquired Pneumonia)"
+            placeholder={t.enterDiagnosisPlaceholder}
             className="w-full p-4 border-2 border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg"
             rows={3}
           />
 
           <div className="mt-4">
             <p className="text-sm text-gray-600 mb-2">
-              How confident are you in your diagnosis?
+              {t.howConfidentPre}
             </p>
             <div className="flex gap-2">
               {[
-                { num: 1, label: 'Very Low' },
-                { num: 2, label: 'Low' },
-                { num: 3, label: 'Moderate' },
-                { num: 4, label: 'High' },
-                { num: 5, label: 'Very High' },
+                { num: 1, label: t.veryLow },
+                { num: 2, label: t.low },
+                { num: 3, label: t.moderate },
+                { num: 4, label: t.high },
+                { num: 5, label: t.veryHigh },
               ].map((item) => (
                 <button
                   key={item.num}
@@ -306,7 +306,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            Submit My Hypothesis → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
+            {t.submitHypothesis} → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
           </button>
         </div>
       ) : (
@@ -315,10 +315,10 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
           <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg shadow-md p-6 border border-purple-200">
             <div className="mb-4">
               <h3 className="text-2xl font-bold text-gray-800">
-                You diagnosed: <span className="text-purple-700">{hypothesis}</span>
+                {t.youDiagnosed} <span className="text-purple-700">{hypothesis}</span>
               </h3>
               <p className="text-gray-600 mt-2">
-                Let's evaluate the evidence for and against your hypothesis...
+                {t.evaluateEvidence}
               </p>
             </div>
 
@@ -327,10 +327,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
               <div className="bg-white rounded-lg p-8 text-center border-2 border-indigo-300">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
                 <p className="text-gray-600 font-medium">
-                  {language === 'ru' ? 'ИИ оценивает вашу гипотезу...' : 'AI is evaluating your hypothesis...'}
-                </p>
-                <p className="text-gray-500 text-sm mt-2">
-                  {language === 'ru' ? 'Это займет 2-3 секунды' : 'This will take 2-3 seconds'}
+                  {t.evaluating}
                 </p>
               </div>
             ) : dynamicEvidence ? (
@@ -339,7 +336,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                 <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
                   <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
                     <span className="text-2xl">✓</span>
-                    {language === 'ru' ? 'ПОДДЕРЖИВАЕТ вашу гипотезу' : 'SUPPORTS Your Hypothesis'}
+                    {t.supports}
                   </h4>
                   <ul className="space-y-2 text-sm text-gray-700">
                     {dynamicEvidence.supporting.map((item, idx) => (
@@ -355,7 +352,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                 <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
                   <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
                     <span className="text-2xl">✗</span>
-                    {language === 'ru' ? 'ОСПАРИВАЕТ вашу гипотезу' : 'CHALLENGES Your Hypothesis'}
+                    {t.challenges}
                   </h4>
                   <ul className="space-y-2 text-sm text-gray-700">
                     {dynamicEvidence.challenging.map((item, idx) => (
@@ -470,38 +467,38 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
           {/* FINAL DECISION */}
           <div className="bg-white rounded-lg shadow-md p-6 border border-gray-300">
             <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Final Decision
+              {t.finalDecision}
             </h3>
 
             {!revisedHypothesis ? (
               <div className="space-y-4">
                 <p className="text-gray-700">
-                  Would you like to revise your diagnosis after reviewing the evidence?
+                  {t.wouldYouLikeToRevise}
                 </p>
                 <div className="flex gap-4">
                   <button
                     onClick={() => setRevisedHypothesis(false)}
                     className="flex-1 py-3 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition"
                   >
-                    Keep My Diagnosis: {hypothesis}
+                    {t.keepDiagnosis} {hypothesis}
                   </button>
                   <button
                     onClick={handleReviseHypothesis}
                     className="flex-1 py-3 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition"
                   >
-                    Revise Diagnosis
+                    {t.reviseDiagnosis}
                   </button>
                 </div>
               </div>
             ) : (
               <div className="space-y-4">
                 <p className="text-sm text-gray-600">
-                  Original diagnosis: <span className="font-medium">{hypothesis}</span>
+                  {t.originalDiagnosis} <span className="font-medium">{hypothesis}</span>
                 </p>
                 <textarea
                   value={finalDiagnosis}
                   onChange={(e) => setFinalDiagnosis(e.target.value)}
-                  placeholder="Enter your revised diagnosis"
+                  placeholder={t.enterRevised}
                   className="w-full p-4 border-2 border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 text-lg"
                   rows={2}
                 />
@@ -511,15 +508,15 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
             {/* Post-Confidence Rating */}
             <div className="mt-6">
               <p className="text-sm text-gray-600 mb-2">
-                How confident are you now in your final diagnosis?
+                {t.howConfident}
               </p>
               <div className="flex gap-2">
                 {[
-                  { num: 1, label: 'Very Low' },
-                  { num: 2, label: 'Low' },
-                  { num: 3, label: 'Moderate' },
-                  { num: 4, label: 'High' },
-                  { num: 5, label: 'Very High' },
+                  { num: 1, label: t.veryLow },
+                  { num: 2, label: t.low },
+                  { num: 3, label: t.moderate },
+                  { num: 4, label: t.high },
+                  { num: 5, label: t.veryHigh },
                 ].map((item) => (
                   <button
                     key={item.num}
@@ -546,7 +543,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
-              Submit Final Diagnosis → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
+              {t.submitFinal} → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
             </button>
           </div>
         </>

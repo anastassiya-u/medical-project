@@ -14,8 +14,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
+import { useTranslation } from '../lib/translations';
 
-export default function OracleInterface({ caseData, onComplete }) {
+export default function OracleInterface({ caseData, onComplete, language = 'ru' }) {
+  // Get translations
+  const t = useTranslation(language);
   // UI State
   const [confidence, setConfidence] = useState(null);
   const [finalDiagnosis, setFinalDiagnosis] = useState('');
@@ -40,12 +43,12 @@ export default function OracleInterface({ caseData, onComplete }) {
   // Handle final diagnosis submission - MUST be defined before useEffect that uses it
   const handleSubmitFinal = useCallback(async () => {
     if (!confidence) {
-      showNotification('Please rate your confidence before submitting', 'warning');
+      showNotification(t.rateConfidenceWarning, 'warning');
       return;
     }
 
     if (!finalDiagnosis) {
-      showNotification('Please enter your diagnosis', 'warning');
+      showNotification(t.enterDiagnosisWarning, 'warning');
       return;
     }
 
@@ -145,7 +148,7 @@ export default function OracleInterface({ caseData, onComplete }) {
             <span className="text-5xl">🤖</span>
           </div>
           <div>
-            <h3 className="text-3xl font-bold">AI RECOMMENDATION</h3>
+            <h3 className="text-3xl font-bold">{t.aiRecommendation}</h3>
             {/* RESEARCH DESIGN: Confidence level hidden to prevent blind trust/authority bias */}
           </div>
         </div>
@@ -153,7 +156,7 @@ export default function OracleInterface({ caseData, onComplete }) {
         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border-2 border-white/30">
           <p className="text-4xl font-bold mb-2">{caseData.aiRecommendation}</p>
           <p className="text-blue-100 text-sm">
-            Based on clinical presentation and diagnostic criteria
+            {t.basedOnClinical}
           </p>
         </div>
       </div>
@@ -162,14 +165,14 @@ export default function OracleInterface({ caseData, onComplete }) {
       <div className="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
         <h3 className="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-3">
           <span className="text-3xl">✓</span>
-          Why This Diagnosis?
+          {t.whyThisDiagnosis}
         </h3>
 
         <div className="space-y-4">
           {/* Supporting Evidence (All visible at once - no partiality) */}
           <div className="bg-blue-50 rounded-lg p-5 border border-blue-200">
             <h4 className="font-bold text-blue-900 mb-3 text-lg">
-              Clinical Evidence Supporting This Diagnosis:
+              {t.clinicalEvidence}
             </h4>
             <ul className="space-y-3">
               {caseData.supportingEvidence.map((item, idx) => (
@@ -186,7 +189,7 @@ export default function OracleInterface({ caseData, onComplete }) {
             <div className="bg-gray-50 rounded-lg p-5 border border-gray-300">
               <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <span className="text-2xl">🧪</span>
-                Laboratory Findings
+                {t.laboratoryFindings}
               </h4>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
@@ -214,7 +217,7 @@ export default function OracleInterface({ caseData, onComplete }) {
             <div className="bg-gray-50 rounded-lg p-5 border border-gray-300">
               <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <span className="text-2xl">🔬</span>
-                Imaging Studies
+                {t.imagingStudies}
               </h4>
               <p className="text-gray-800">{caseData.imaging}</p>
             </div>
@@ -223,7 +226,7 @@ export default function OracleInterface({ caseData, onComplete }) {
           {/* Clinical Reasoning (Process Explanation) */}
           <div className="bg-blue-50 rounded-lg p-5 border border-blue-200">
             <h4 className="font-bold text-blue-900 mb-3 text-lg">
-              Clinical Reasoning:
+              {t.clinicalReasoning}
             </h4>
             <p className="text-gray-800 leading-relaxed">
               {caseData.clinicalReasoning}
@@ -234,13 +237,13 @@ export default function OracleInterface({ caseData, onComplete }) {
 
       {/* USER DECISION */}
       <div className="bg-white rounded-lg shadow-md p-6 border border-gray-300">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">Your Decision</h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-4">{t.yourDecision}</h3>
 
         {/* Agreement Options */}
         {userAgreesWithAI === null && (
           <div className="space-y-4">
             <p className="text-gray-700">
-              Do you agree with the AI's recommendation?
+              {t.doYouAgree}
             </p>
             <div className="flex gap-4">
               <button
@@ -248,14 +251,14 @@ export default function OracleInterface({ caseData, onComplete }) {
                 className="flex-1 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
               >
                 <span>✓</span>
-                <span>Agree: {caseData.aiRecommendation}</span>
+                <span>{t.agree} {caseData.aiRecommendation}</span>
               </button>
               <button
                 onClick={() => handleAgreeWithAI(false)}
                 className="flex-1 py-4 bg-gray-600 text-white rounded-lg font-bold text-lg hover:bg-gray-700 transition flex items-center justify-center gap-2"
               >
                 <span>✗</span>
-                <span>Disagree (Enter Alternative)</span>
+                <span>{t.disagree}</span>
               </button>
             </div>
           </div>
@@ -265,12 +268,12 @@ export default function OracleInterface({ caseData, onComplete }) {
         {userAgreesWithAI === false && (
           <div className="space-y-4">
             <p className="text-sm text-gray-600">
-              AI recommended: <span className="font-medium">{caseData.aiRecommendation}</span>
+              {t.aiRecommended} <span className="font-medium">{caseData.aiRecommendation}</span>
             </p>
             <textarea
               value={finalDiagnosis}
               onChange={(e) => setFinalDiagnosis(e.target.value)}
-              placeholder="Enter your alternative diagnosis"
+              placeholder={t.enterAlternative}
               className="w-full p-4 border-2 border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 text-lg"
               rows={2}
             />
@@ -282,15 +285,15 @@ export default function OracleInterface({ caseData, onComplete }) {
           <>
             <div className="mt-6">
               <p className="text-sm text-gray-600 mb-2">
-                How confident are you in your final diagnosis?
+                {t.howConfident}
               </p>
               <div className="flex gap-2">
                 {[
-                  { num: 1, label: 'Very Low' },
-                  { num: 2, label: 'Low' },
-                  { num: 3, label: 'Moderate' },
-                  { num: 4, label: 'High' },
-                  { num: 5, label: 'Very High' },
+                  { num: 1, label: t.veryLow },
+                  { num: 2, label: t.low },
+                  { num: 3, label: t.moderate },
+                  { num: 4, label: t.high },
+                  { num: 5, label: t.veryHigh },
                 ].map((item) => (
                   <button
                     key={item.num}
