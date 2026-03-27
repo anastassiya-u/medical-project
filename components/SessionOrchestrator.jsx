@@ -70,6 +70,7 @@ export default function SessionOrchestrator() {
   const [paradigm, setParadigm] = useState(null);
   const [accuracyLevel, setAccuracyLevel] = useState(null);
   const [randomizationSeed, setRandomizationSeed] = useState(null);
+  const [language, setLanguage] = useState('ru'); // Default to Russian
 
   // Phase Management
   const [currentPhase, setCurrentPhase] = useState(PHASES.REGISTRATION);
@@ -393,8 +394,14 @@ export default function SessionOrchestrator() {
    * Handle NFC completion
    */
   const handleNFCComplete = async (responses) => {
-    await logger.submitNFC(responses);
-    handlePhaseComplete();
+    try {
+      await logger.submitNFC(responses);
+      handlePhaseComplete();
+    } catch (error) {
+      console.error('NFC submission failed:', error);
+      setError('Failed to save your responses. Please try again or contact support.');
+      // Don't proceed to next phase if submission failed
+    }
   };
 
   /**
@@ -524,6 +531,8 @@ export default function SessionOrchestrator() {
             <InterfaceComponent
               caseData={currentCase}
               onComplete={handleCaseComplete}
+              accuracyLevel={accuracyLevel}
+              language={language}
             />
           )}
         </div>

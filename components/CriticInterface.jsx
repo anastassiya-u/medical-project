@@ -14,8 +14,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
+import { evaluateHypothesis } from '../lib/ai-evaluator';
 
-export default function CriticInterface({ caseData, onComplete }) {
+export default function CriticInterface({ caseData, onComplete, accuracyLevel, language = 'ru' }) {
   // UI State
   const [hypothesis, setHypothesis] = useState('');
   const [hypothesisSubmitted, setHypothesisSubmitted] = useState(false);
@@ -24,6 +25,10 @@ export default function CriticInterface({ caseData, onComplete }) {
   const [finalDiagnosis, setFinalDiagnosis] = useState('');
   const [revisedHypothesis, setRevisedHypothesis] = useState(false);
   const [revisionLogged, setRevisionLogged] = useState(false);
+
+  // AI Evaluation State (NEW - for dynamic evidence)
+  const [dynamicEvidence, setDynamicEvidence] = useState(null);
+  const [loadingEvidence, setLoadingEvidence] = useState(false);
 
   // Progressive Reveal State
   const [revealedPanels, setRevealedPanels] = useState([]);
@@ -45,6 +50,8 @@ export default function CriticInterface({ caseData, onComplete }) {
     setFinalDiagnosis('');
     setRevisedHypothesis(false);
     setRevisionLogged(false);
+    setDynamicEvidence(null);
+    setLoadingEvidence(false);
     setRevealedPanels([]);
     setActivePanel(null);
     caseInitialized.current = false;
@@ -69,13 +76,58 @@ export default function CriticInterface({ caseData, onComplete }) {
     setHypothesisSubmitted(true);
     await logger.submitHypothesis(hypothesis);
 
-    // Log AI output viewed (for Critic, this happens after hypothesis)
-    await logger.viewAIOutput(
-      caseData.aiRecommendation,
-      caseData.correctDiagnosis,
-      caseData.isFoil
-    );
-  }, [hypothesis, showNotification, caseData]);
+    // Generate dynamic evidence using GPT-4
+    setLoadingEvidence(true);
+    try {
+      console.log('🤖 Requesting AI evaluation for hypothesis:', hypothesis);
+
+      const evidence = await evaluateHypothesis({
+        caseData,
+        userHypothesis: hypothesis,
+        accuracyLevel: accuracyLevel || 'high',
+        isFoilCase: caseData.isFoil || false,
+      });
+
+      setDynamicEvidence(evidence);
+
+      // Log AI output viewed (for Critic, this happens after hypothesis)
+      await logger.viewAIOutput(
+        evidence.aiRecommendation || caseData.aiRecommendation,
+        caseData.correctDiagnosis,
+        evidence.isFoil || caseData.isFoil
+      );
+
+      console.log('✅ Dynamic evidence generated:', {
+        supporting: evidence.supporting.length,
+        challenging: evidence.challenging.length,
+      });
+    } catch (error) {
+      console.error('Failed to generate dynamic evidence:', error);
+      showNotification('AI evaluation in progress... Using fallback evidence.', 'info', 3000);
+
+      // Fallback to static evidence if API fails
+      setDynamicEvidence({
+        supporting: caseData.contrastiveEvidence?.supporting || [
+          'Dynamic evidence generation is temporarily unavailable.',
+          'Please review the case data carefully.',
+        ],
+        challenging: caseData.contrastiveEvidence?.challenging || [
+          'Consider alternative diagnoses based on clinical presentation.',
+        ],
+        aiRecommendation: caseData.aiRecommendation,
+        fallback: true,
+      });
+
+      // Still log AI output even with fallback
+      await logger.viewAIOutput(
+        caseData.aiRecommendation,
+        caseData.correctDiagnosis,
+        caseData.isFoil
+      );
+    } finally {
+      setLoadingEvidence(false);
+    }
+  }, [hypothesis, showNotification, caseData, accuracyLevel]);
 
   // Handle final diagnosis submission - MUST be defined before useEffect that uses it
   const handleSubmitFinal = useCallback(async () => {
@@ -270,40 +322,52 @@ export default function CriticInterface({ caseData, onComplete }) {
               </p>
             </div>
 
-            {/* Initial Contrastive Evidence (Always Visible) */}
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              {/* SUPPORTS Column */}
-              <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
-                <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
-                  <span className="text-2xl">✓</span>
-                  SUPPORTS Your Hypothesis
-                </h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  {caseData.contrastiveEvidence.supporting.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-green-600 mt-0.5">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* Dynamic Contrastive Evidence (NEW - GPT-4 Generated) */}
+            {loadingEvidence ? (
+              <div className="bg-white rounded-lg p-8 text-center border-2 border-indigo-300">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                <p className="text-gray-600 font-medium">
+                  {language === 'ru' ? 'ИИ оценивает вашу гипотезу...' : 'AI is evaluating your hypothesis...'}
+                </p>
+                <p className="text-gray-500 text-sm mt-2">
+                  {language === 'ru' ? 'Это займет 2-3 секунды' : 'This will take 2-3 seconds'}
+                </p>
               </div>
+            ) : dynamicEvidence ? (
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                {/* SUPPORTS Column - NOW DYNAMIC */}
+                <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
+                  <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                    <span className="text-2xl">✓</span>
+                    {language === 'ru' ? 'ПОДДЕРЖИВАЕТ вашу гипотезу' : 'SUPPORTS Your Hypothesis'}
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    {dynamicEvidence.supporting.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* CHALLENGES Column */}
-              <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
-                <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
-                  <span className="text-2xl">✗</span>
-                  CHALLENGES Your Hypothesis
-                </h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  {caseData.contrastiveEvidence.challenging.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-red-600 mt-0.5">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* CHALLENGES Column - NOW DYNAMIC */}
+                <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
+                  <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                    <span className="text-2xl">✗</span>
+                    {language === 'ru' ? 'ОСПАРИВАЕТ вашу гипотезу' : 'CHALLENGES Your Hypothesis'}
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    {dynamicEvidence.challenging.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-red-600 mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            ) : null}
 
             {/* PROGRESSIVE REVEAL BUTTONS (Partiality Mechanism) */}
             <div className="bg-white rounded-lg p-4 border border-gray-300">

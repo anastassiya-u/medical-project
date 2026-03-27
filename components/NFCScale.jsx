@@ -1,6 +1,6 @@
 /**
  * NFCScale Component
- * 6-item short Need for Cognition scale (Cacioppo et al., 1984)
+ * 18-item Need for Cognition scale (Cacioppo et al., 1984)
  * Measures tendency to engage in analytical thinking
  */
 
@@ -37,6 +37,66 @@ const NFC_ITEMS = [
   {
     id: 'q6_deep_thinking',
     text: 'I prefer to think about small, daily projects rather than long-term ones.',
+    reverse: true,
+  },
+  {
+    id: 'q7_prefer_easy',
+    text: 'I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.',
+    reverse: false,
+  },
+  {
+    id: 'q8_abstract_problems',
+    text: 'I find satisfaction in deliberating hard and for long hours.',
+    reverse: false,
+  },
+  {
+    id: 'q9_enjoy_puzzles',
+    text: 'I only think as hard as I have to.',
+    reverse: true,
+  },
+  {
+    id: 'q10_little_thinking',
+    text: 'I prefer to think about small, daily projects to long-term ones.',
+    reverse: true,
+  },
+  {
+    id: 'q11_cognitive_effort',
+    text: 'I like tasks that require little thought once I\'ve learned them.',
+    reverse: true,
+  },
+  {
+    id: 'q12_prefer_straightforward',
+    text: 'The idea of relying on thought to make my way to the top appeals to me.',
+    reverse: false,
+  },
+  {
+    id: 'q13_extensive_thinking',
+    text: 'I really enjoy a task that involves coming up with new solutions to problems.',
+    reverse: false,
+  },
+  {
+    id: 'q14_avoid_situations',
+    text: 'Learning new ways to think doesn\'t excite me very much.',
+    reverse: true,
+  },
+  {
+    id: 'q15_deliberation',
+    text: 'I prefer my life to be filled with puzzles that I must solve.',
+    reverse: false,
+  },
+  {
+    id: 'q16_minimal_effort',
+    text: 'The notion of thinking abstractly is appealing to me.',
+    reverse: false,
+  },
+  {
+    id: 'q17_task_requiring_thought',
+    text: 'I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.',
+    reverse: false,
+  },
+  {
+    id: 'q18_prefer_little_thought',
+    text: 'I feel relief rather than satisfaction after completing a task that required a lot of mental effort.',
     reverse: true,
   },
 ];

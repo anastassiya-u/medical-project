@@ -40,6 +40,9 @@ export default function NoAIInterface({ caseData, onComplete }) {
 
     const taskTime = Math.round((Date.now() - startTime) / 1000);
 
+    // FIX: Log confidence rating before submitting diagnosis
+    await logger.rateConfidence(confidence, 'pre');
+
     // Log as a no-AI case
     await logger.submitFinalDiagnosis(diagnosis);
 
