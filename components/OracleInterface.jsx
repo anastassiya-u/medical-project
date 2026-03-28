@@ -15,6 +15,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 import { useTranslation } from '../lib/translations';
+import { getCaseField, getPatientGender, getPatientEthnicity } from '../lib/case-field-helper';
 
 export default function OracleInterface({ caseData, onComplete, language = 'ru' }) {
   // Get translations
@@ -113,20 +114,20 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
       <div className="max-w-5xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.clinicalCase}</h2>
         <div className="space-y-3 text-gray-700">
           <p>
-            <strong>Patient:</strong> {caseData.patient.age}yo {caseData.patient.gender},{' '}
-            {caseData.patient.ethnicity}
+            <strong>{t.patient}:</strong> {caseData.patient.age}{language === 'ru' ? ' лет' : 'yo'} {getPatientGender(caseData.patient, language)},{' '}
+            {getPatientEthnicity(caseData.patient, language)}
           </p>
           <p>
-            <strong>Chief Complaint:</strong> {caseData.chiefComplaint}
+            <strong>{t.chiefComplaint}:</strong> {getCaseField(caseData, 'chiefComplaint', language)}
           </p>
           <p>
-            <strong>History:</strong> {caseData.history}
+            <strong>{t.history}:</strong> {getCaseField(caseData, 'history', language)}
           </p>
           <p>
-            <strong>Physical Exam:</strong> {caseData.physicalExam}
+            <strong>{t.physicalExam}:</strong> {getCaseField(caseData, 'physicalExam', language)}
           </p>
           <div className="bg-gray-50 p-4 rounded border border-gray-200">
             <strong className="block mb-2">Vital Signs:</strong>
@@ -213,13 +214,13 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
           )}
 
           {/* Imaging Results (All visible immediately) */}
-          {caseData.imaging && (
+          {(caseData.imaging || caseData.imaging_ru) && (
             <div className="bg-gray-50 rounded-lg p-5 border border-gray-300">
               <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <span className="text-2xl">🔬</span>
                 {t.imagingStudies}
               </h4>
-              <p className="text-gray-800">{caseData.imaging}</p>
+              <p className="text-gray-800">{getCaseField(caseData, 'imaging', language)}</p>
             </div>
           )}
 

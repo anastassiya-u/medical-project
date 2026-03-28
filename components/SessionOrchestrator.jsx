@@ -33,9 +33,7 @@ import NFCScale from './NFCScale';
 import NoAIInterface from './NoAIInterface';
 import { useNotification } from './Notification';
 import { useTranslation } from '../lib/translations';
-
-// Import cases data
-import casesData from '../src/data/cases.json';
+import { getCasesData } from '../lib/case-loader';
 
 console.log('🔧 Creating Supabase client...');
 console.log('SUPABASE_URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'defined' : 'UNDEFINED');
@@ -287,6 +285,9 @@ export default function SessionOrchestrator() {
   const loadCasesForPhase = async (phase, sessionData) => {
     let phaseCases = [];
     let foilIds = [];
+
+    // Get cases data in the appropriate language
+    const casesData = getCasesData(language);
 
     switch (phase) {
       case PHASES.PRE_TEST:

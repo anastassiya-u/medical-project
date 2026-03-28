@@ -10,6 +10,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 import { useTranslation } from '../lib/translations';
+import { getCaseField, getPatientGender, getPatientEthnicity } from '../lib/case-field-helper';
 
 export default function NoAIInterface({ caseData, onComplete, language = 'ru' }) {
   // Get translations
@@ -82,17 +83,17 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
         <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.clinicalCase}</h2>
         <div className="space-y-3 text-gray-700">
           <p>
-            <strong>{t.patient}:</strong> {caseData.patient.age}yo {caseData.patient.gender},{' '}
-            {caseData.patient.ethnicity}
+            <strong>{t.patient}:</strong> {caseData.patient.age}{language === 'ru' ? ' лет' : 'yo'} {getPatientGender(caseData.patient, language)},{' '}
+            {getPatientEthnicity(caseData.patient, language)}
           </p>
           <p>
-            <strong>{t.chiefComplaint}:</strong> {caseData.chiefComplaint}
+            <strong>{t.chiefComplaint}:</strong> {getCaseField(caseData, 'chiefComplaint', language)}
           </p>
           <p>
-            <strong>{t.history}:</strong> {caseData.history}
+            <strong>{t.history}:</strong> {getCaseField(caseData, 'history', language)}
           </p>
           <p>
-            <strong>{t.physicalExam}:</strong> {caseData.physicalExam}
+            <strong>{t.physicalExam}:</strong> {getCaseField(caseData, 'physicalExam', language)}
           </p>
           <div className="bg-gray-50 p-4 rounded border border-gray-200">
             <strong className="block mb-2">{t.vitalSigns}:</strong>
@@ -122,10 +123,10 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
             </div>
           )}
 
-          {caseData.imaging && (
+          {(caseData.imaging || caseData.imaging_ru) && (
             <div className="bg-gray-50 p-4 rounded border border-gray-200 mt-3">
               <strong className="block mb-2">{t.imaging}:</strong>
-              <p className="text-sm">{caseData.imaging}</p>
+              <p className="text-sm">{getCaseField(caseData, 'imaging', language)}</p>
             </div>
           )}
         </div>

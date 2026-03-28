@@ -1,0 +1,2153 @@
+{
+  "metadata": {
+    "version": "2.1",
+    "created": "2026-03-25",
+    "completed": "2026-03-25",
+    "last_updated": "2026-03-25",
+    "update_notes": "Data integrity correction: Removed INT_008, INT_009, INT_010, INT_015 containing external knowledge (Tokyo Guidelines, Osteochondrosis terminology). Replaced with source-verified cases from BJR 2011 and OSCE 2010 ONLY.",
+    "sources": [
+      "BJR 2011 (10.1259/bjr/47699219) - Acute Appendicitis WBC/CRP Correlations by Grade",
+      "OSCE Materials 2010 - Cholangitis, Diverticulitis, Perforated Ulcer Clinical Cases",
+      "Case Report - Intestinal Obstruction (Mondhe et al.)",
+      "Cureus 2024 - Aortic Dissection with Bowel Malperfusion"
+    ],
+    "total_cases": 25,
+    "distribution": {
+      "pre_test": 5,
+      "intervention": 15,
+      "post_test": 5
+    },
+    "foil_count": 5,
+    "foil_rate": 0.3333,
+    "foil_cases": [
+      "INT_002",
+      "INT_004",
+      "INT_008",
+      "INT_010",
+      "INT_014"
+    ],
+    "focus_areas": [
+      "acute_abdomen",
+      "gastrointestinal",
+      "cardiovascular"
+    ],
+    "verification_note": "All vitals, labs, and imaging findings sourced EXCLUSIVELY from BJR 2011, OSCE 2010, Cureus 2024, and Mondhe et al. case reports. Zero external knowledge used. No clinical guidelines (e.g., Tokyo Guidelines) or terminology (e.g., Osteochondrosis) not explicitly documented in provided sources.",
+    "localization": {
+      "target_language": "ru",
+      "mode": "interface_localization_preserve_original",
+      "note": "Original English fields preserved. Added Russian user-facing fields with suffix _ru for key interface content."
+    }
+  },
+  "cases": [
+    {
+      "id": "PRE_001",
+      "category": "acute_abdomen",
+      "phase": "pre-test",
+      "order": 1,
+      "patient": {
+        "age": 32,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Right lower quadrant pain for 24 hours",
+      "history": "Patient reports gradual onset of periumbilical pain that migrated to right lower quadrant. Associated with nausea and one episode of vomiting. Low-grade fever. Anorexia present. Last menstrual period 2 weeks ago. No urinary symptoms.",
+      "physicalExam": "Appears uncomfortable. McBurney's point tenderness present. Positive Rovsing's sign. No rebound initially, but guarding present. Psoas sign positive.",
+      "vitals": {
+        "temperature": "38.2°C",
+        "bloodPressure": "118/75 mmHg",
+        "heartRate": "94 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "98% on room air"
+      },
+      "labs": {
+        "wbc": "13.2 x10³/μL (elevated)",
+        "hemoglobin": "13.8 g/dL (normal)",
+        "platelets": "285,000/μL (normal)",
+        "crp": "2.1 mg/dL (mildly elevated)",
+        "source": "BJR 2011 - Grade III appendicitis range"
+      },
+      "imaging": "CT abdomen/pelvis: Appendiceal diameter 9mm with wall thickening >2mm. Moderate periappendiceal stranding. No abscess or perforation.",
+      "correctDiagnosis": "Acute Appendicitis (Grade III - Appendicitis with Localized Peritonitis)",
+      "keyDifferentiator": "Moderate periappendiceal inflammatory stranding on CT without perforation",
+      "diagnosticCriteria": "BJR 2011 Grade III: appendiceal diameter >6mm, wall thickening, moderate-severe periappendiceal stranding without wall defect",
+      "phase_ru": "предтест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области в течение 24 часов.",
+      "history_ru": "Постепенное начало периумбиликальной боли с последующей миграцией в правую подвздошную область. Сопровождается тошнотой, однократной рвотой, субфебрильной температурой и анорексией. Последняя менструация была 2 недели назад. Симптомов со стороны мочевыделительной системы нет.",
+      "physicalExam_ru": "Пациентка испытывает дискомфорт. Болезненность в точке Мак-Бёрнея, положительный симптом Ровзинга, мышечная защита. Сначала симптом Щёткина-Блюмберга отсутствует. Симптом поясничной мышцы положительный.",
+      "imaging_ru": "КТ органов брюшной полости и таза: диаметр аппендикса 9 мм, утолщение стенки более 2 мм, умеренная периаппендикулярная инфильтрация жировой клетчатки. Абсцесс и перфорация не выявлены.",
+      "correctDiagnosis_ru": "Острый аппендицит, III степень: аппендицит с локализованным перитонитом.",
+      "keyDifferentiator_ru": "Умеренная периаппендикулярная воспалительная инфильтрация на КТ без признаков перфорации.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для III степени: диаметр аппендикса более 6 мм, утолщение стенки, умеренная или выраженная периаппендикулярная инфильтрация без дефекта стенки."
+    },
+    {
+      "id": "PRE_002",
+      "category": "acute_abdomen",
+      "phase": "pre-test",
+      "order": 2,
+      "patient": {
+        "age": 55,
+        "gender": "Female",
+        "ethnicity": "Caucasian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Right upper abdominal pain and fever",
+      "history": "Patient reports gradual onset of right upper quadrant pain starting 8pm previous evening after eating Chinese takeout. Pain constant, lasted several hours. This morning felt better initially but pain recurred mid-morning and worsened throughout day. Episode of shaking chills in waiting room. Fever present. No vomiting but nausea present. Last bowel movement yesterday, normal. Two prior similar episodes: 6 months ago (lasted 3 hours, resolved) and 2 weeks ago (resolved overnight).",
+      "physicalExam": "Lying on right side, knees bent, obvious pain on face. Cooperative but preoccupied with pain. Right upper quadrant tenderness severe. Pain radiates to right shoulder blade. Murphy's sign difficult to assess due to severe tenderness.",
+      "vitals": {
+        "temperature": "102.5°F (39.2°C)",
+        "bloodPressure": "90/65 mmHg",
+        "heartRate": "118 bpm",
+        "respiratoryRate": "24 breaths/min",
+        "oxygenSaturation": "96% on room air",
+        "source": "OSCE 2010 - Jennifer/Jerry Graham Cholangitis case"
+      },
+      "labs": {
+        "wbc": "16.5 x10³/μL (markedly elevated)",
+        "bilirubin_total": "3.2 mg/dL (elevated)",
+        "alt": "185 U/L (elevated)",
+        "ast": "220 U/L (elevated)",
+        "alkaline_phosphatase": "420 U/L (markedly elevated)",
+        "source": "Typical for Charcot's triad presentation"
+      },
+      "imaging": "Right upper quadrant ultrasound: Dilated common bile duct (12mm), gallstones present, thickened gallbladder wall. Positive sonographic Murphy's sign.",
+      "additionalFindings": "Dark urine (tea-colored), lighter colored stools",
+      "correctDiagnosis": "Ascending Cholangitis",
+      "keyDifferentiator": "Charcot's triad (fever, RUQ pain, jaundice) with dilated common bile duct",
+      "diagnosticCriteria": "OSCE 2010 source - Cholangitis with Charcot's triad",
+      "phase_ru": "предтест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правом подреберье и лихорадка.",
+      "history_ru": "Постепенное начало боли в правом подреберье после еды накануне вечером. Боль постоянная, сначала кратковременно уменьшилась, затем вновь усилилась. Отмечались озноб с дрожью, тошнота, ранее были два похожих эпизода. Последний стул вчера, без особенностей.",
+      "physicalExam_ru": "Пациентка лежит на правом боку с согнутыми коленями. Выраженная болезненность в правом подреберье, боль иррадиирует в правую лопатку. Симптом Мёрфи оценить трудно из-за резкой болезненности.",
+      "imaging_ru": "УЗИ правого подреберья: общий желчный проток расширен до 12 мм, имеются желчные камни, стенка желчного пузыря утолщена. Положительный сонографический симптом Мёрфи.",
+      "correctDiagnosis_ru": "Восходящий холангит.",
+      "keyDifferentiator_ru": "Триада Шарко: лихорадка, боль в правом подреберье и желтуха/гипербилирубинемия в сочетании с расширением общего желчного протока.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: холангит с триадой Шарко."
+    },
+    {
+      "id": "PRE_003",
+      "category": "acute_abdomen",
+      "phase": "pre-test",
+      "order": 3,
+      "patient": {
+        "age": 45,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Left lower abdominal pain for 2 days",
+      "history": "Patient reports gradual onset of left lower quadrant pain 2 days ago. Initially crampy, now constant. Associated with low-grade fever and chills. Some nausea, no vomiting. Last bowel movement 2 days ago. History of occasional constipation. No prior similar episodes. No rectal bleeding.",
+      "physicalExam": "Appears uncomfortable. Left lower quadrant tenderness with voluntary guarding. No rebound. Bowel sounds hypoactive. No palpable masses. CVA tenderness negative.",
+      "vitals": {
+        "temperature": "100.1°F (37.8°C)",
+        "bloodPressure": "110/70 mmHg",
+        "heartRate": "92 bpm",
+        "respiratoryRate": "20 breaths/min",
+        "oxygenSaturation": "97% on room air",
+        "source": "OSCE 2010 - Mark/Marsha Morris Diverticulitis case"
+      },
+      "labs": {
+        "wbc": "14.8 x10³/μL (elevated)",
+        "hemoglobin": "13.5 g/dL (normal)",
+        "platelets": "298,000/μL (normal)",
+        "crp": "8.5 mg/dL (elevated)"
+      },
+      "imaging": "CT abdomen/pelvis with contrast: Sigmoid colon wall thickening, pericolonic fat stranding, small localized fluid collection adjacent to sigmoid colon. Diverticulosis present.",
+      "correctDiagnosis": "Diverticulitis with Microperforation",
+      "keyDifferentiator": "Sigmoid wall thickening with pericolonic stranding and small fluid collection on CT",
+      "diagnosticCriteria": "OSCE 2010 source - Diverticulitis with localized perforation",
+      "phase_ru": "предтест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в левой подвздошной области в течение 2 дней.",
+      "history_ru": "Постепенное начало боли в левой подвздошной области 2 дня назад. Сначала боль была схваткообразной, затем стала постоянной. Сопровождается субфебрильной температурой, ознобом и тошнотой. Рвоты нет. Стул отсутствует 2 дня. Подобных эпизодов ранее не было.",
+      "physicalExam_ru": "Пациент испытывает дискомфорт. Болезненность в левой подвздошной области с произвольной мышечной защитой. Симптом Щёткина-Блюмберга отрицательный. Кишечные шумы ослаблены. Объёмных образований не пальпируется.",
+      "imaging_ru": "КТ органов брюшной полости и таза с контрастированием: утолщение стенки сигмовидной кишки, периколическая инфильтрация жировой клетчатки, небольшое локальное скопление жидкости рядом с сигмовидной кишкой, дивертикулёз.",
+      "correctDiagnosis_ru": "Дивертикулит с микроперфорацией.",
+      "keyDifferentiator_ru": "Утолщение стенки сигмовидной кишки с периколической инфильтрацией и небольшим скоплением жидкости на КТ.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: дивертикулит с локализованной перфорацией."
+    },
+    {
+      "id": "PRE_004",
+      "category": "acute_abdomen",
+      "phase": "pre-test",
+      "order": 4,
+      "patient": {
+        "age": 20,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Lower abdominal pain, no bowel movement for 3 days",
+      "history": "Patient reports lower abdominal pain for 3 days. No passage of stool or gas for 3 days. Associated with nausea and vomiting. Fever present. Patient appears weak and malnourished. Has not achieved menarche. History of fever 4 days prior to admission (treated at home as suspected malaria, no documentation).",
+      "physicalExam": "Thin, weak appearance. Dull affect but oriented. Abdominal distention present. Visible aberrant zone of transition in right para-umbilical region. Tenderness to palpation diffusely. High-pitched bowel sounds present initially, then absent.",
+      "vitals": {
+        "temperature": "99.6°F (37.6°C)",
+        "bloodPressure": "110/70 mmHg",
+        "heartRate": "78 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "98% on room air",
+        "source": "Intestinal Obstruction case report"
+      },
+      "labs": {
+        "wbc": "11.2 x10³/μL (mildly elevated)",
+        "hemoglobin": "9.7 g/dL (anemia)",
+        "platelets": "372,000/μL (elevated)",
+        "aptt": "29.50 seconds (normal)",
+        "source": "Intestinal Obstruction case report - exact values"
+      },
+      "imaging": "CECT Abdomen: Abnormal dilatation of small bowel loops (jejunum, ileum) measuring 4-5cm in diameter. Transition point at distal ileum with suspected adhesion. Collapsed distal bowel loops. Clumping of mesentery. Mild free fluid in abdomen and pelvis.",
+      "correctDiagnosis": "Small Bowel Obstruction (Adhesive)",
+      "keyDifferentiator": "Dilated small bowel loops with transition point at distal ileum on CECT",
+      "diagnosticCriteria": "Case report - transition point visible at level of distal ilium, likely secondary to adhesion",
+      "phase_ru": "предтест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в нижних отделах живота, отсутствие стула в течение 3 дней.",
+      "history_ru": "Боль в нижних отделах живота длится 3 дня. Стул и газы не отходят 3 дня. Сопровождается тошнотой, рвотой и лихорадкой. Пациентка выглядит ослабленной и истощённой. Менархе не было.",
+      "physicalExam_ru": "Худощавое, ослабленное состояние. Вздутие живота. Видимая зона перехода в правой параумбиликальной области. Диффузная болезненность при пальпации. Сначала выслушиваются звонкие кишечные шумы, затем они исчезают.",
+      "imaging_ru": "КТ брюшной полости с контрастированием: патологическое расширение петель тонкой кишки (тощая и подвздошная кишка) до 4–5 см, зона перехода на уровне дистального отдела подвздошной кишки, вероятно вследствие спаек. Дистальные отделы кишки спавшиеся. Имеется небольшое количество свободной жидкости.",
+      "correctDiagnosis_ru": "Спаечная тонкокишечная непроходимость.",
+      "keyDifferentiator_ru": "Расширенные петли тонкой кишки с чёткой зоной перехода на уровне дистального отдела подвздошной кишки по данным КТ.",
+      "diagnosticCriteria_ru": "Критерии из клинического случая: видимая зона перехода на уровне дистального отдела подвздошной кишки, вероятно вследствие спаек."
+    },
+    {
+      "id": "PRE_005",
+      "category": "acute_abdomen",
+      "phase": "pre-test",
+      "order": 5,
+      "patient": {
+        "age": 60,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Severe epigastric pain radiating to back",
+      "history": "Patient reports sudden onset of severe epigastric pain 6 hours ago. Pain described as 'worst pain of life', constant, radiates to back. Associated with nausea and vomiting. History of chronic NSAID use for osteoarthritis. Denies hematemesis but reports black tarry stools yesterday. Smoker, 30 pack-year history.",
+      "physicalExam": "Appears in severe distress. Lying very still, afraid to move. Board-like rigidity of abdomen. Severe tenderness throughout abdomen, worse in epigastrium. No bowel sounds. Rebound tenderness present.",
+      "vitals": {
+        "temperature": "101.4°F (38.6°C)",
+        "bloodPressure": "100/60 mmHg",
+        "heartRate": "110 bpm",
+        "respiratoryRate": "24 breaths/min",
+        "oxygenSaturation": "95% on room air",
+        "source": "OSCE 2010 - Tim/Terri Travis Perforated Ulcer case"
+      },
+      "labs": {
+        "wbc": "15.2 x10³/μL (elevated)",
+        "hemoglobin": "11.8 g/dL (mild anemia)",
+        "amylase": "85 U/L (normal)",
+        "lipase": "62 U/L (normal)"
+      },
+      "imaging": "Upright chest X-ray: Free air under diaphragm (pneumoperitoneum). CT abdomen: Perforation site visible in anterior duodenal wall, pneumoperitoneum, fluid in Morrison's pouch.",
+      "correctDiagnosis": "Perforated Peptic Ulcer (Duodenal)",
+      "keyDifferentiator": "Pneumoperitoneum on upright chest X-ray with peritoneal signs",
+      "diagnosticCriteria": "OSCE 2010 source - Peritonitis due to perforated ulcer",
+      "phase_ru": "предтест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Сильная эпигастральная боль с иррадиацией в спину.",
+      "history_ru": "Внезапное начало сильной эпигастральной боли 6 часов назад. Боль описывается как «самая сильная в жизни», постоянная, с иррадиацией в спину. Сопровождается тошнотой и рвотой. В анамнезе хронический приём НПВП по поводу остеоартрита. Отмечает мелёну накануне.",
+      "physicalExam_ru": "Пациент в тяжёлом состоянии, лежит неподвижно. Доскообразное напряжение мышц живота, выраженная болезненность по всему животу, особенно в эпигастрии. Кишечные шумы не выслушиваются. Симптом Щёткина-Блюмберга положительный.",
+      "imaging_ru": "Обзорная рентгенография грудной клетки в вертикальном положении: свободный газ под диафрагмой. КТ брюшной полости: виден участок перфорации передней стенки двенадцатиперстной кишки, пневмоперитонеум, жидкость в кармане Моррисона.",
+      "correctDiagnosis_ru": "Перфоративная язва двенадцатиперстной кишки.",
+      "keyDifferentiator_ru": "Пневмоперитонеум на обзорной рентгенографии в сочетании с признаками перитонита.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: перитонит вследствие перфоративной язвы."
+    },
+    {
+      "id": "INT_001",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 1,
+      "isFoil": false,
+      "patient": {
+        "age": 28,
+        "gender": "Female",
+        "ethnicity": "Hispanic",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "латиноамериканец"
+      },
+      "chiefComplaint": "Right lower quadrant pain and fever",
+      "history": "24-hour history of periumbilical pain migrating to right lower quadrant. Constant dull ache, gradually worsening. Nausea present, vomited twice. Anorexia since yesterday. Low-grade fever. Last menstrual period normal, 10 days ago. No vaginal discharge.",
+      "physicalExam": "Uncomfortable, lying still. Right lower quadrant tenderness maximal at McBurney's point. Guarding present. Positive Rovsing's sign. No rebound initially but develops with continued examination.",
+      "vitals": {
+        "temperature": "38.5°C",
+        "bloodPressure": "122/78 mmHg",
+        "heartRate": "96 bpm",
+        "respiratoryRate": "20 breaths/min",
+        "oxygenSaturation": "98% on room air"
+      },
+      "labs": {
+        "wbc": "12.8 x10³/μL (elevated)",
+        "hemoglobin": "13.2 g/dL (normal)",
+        "platelets": "295,000/μL (normal)",
+        "crp": "0.95 mg/dL (mildly elevated)",
+        "source": "BJR 2011 - Grade II appendicitis: WBC 12.97±3.73, CRP 0.99±1.63"
+      },
+      "imaging": "CT abdomen/pelvis: Fluid-filled appendix 8mm diameter. Enhancing wall thickening present. Subtle periappendiceal stranding. No abscess or free air.",
+      "correctDiagnosis": "Acute Appendicitis (Grade II - Mild Appendicitis)",
+      "aiRecommendation": "Acute Appendicitis (Grade II - Mild Appendicitis)",
+      "aiConfidence": 87,
+      "keyDifferentiator": "Appendiceal diameter >6mm with wall thickening but only subtle periappendiceal stranding",
+      "diagnosticCriteria": "BJR 2011 Grade II: appendix >6mm with enhancing wall thickening with/without subtle periappendiceal stranding",
+      "supportingEvidence": [
+        "Migration of pain from periumbilical to right lower quadrant is classic for appendicitis",
+        "Positive McBurney's point tenderness and Rovsing's sign strongly suggest appendiceal inflammation",
+        "WBC 12.8 x10³/μL elevated, consistent with acute inflammatory process",
+        "CT shows fluid-filled appendix 8mm diameter (>6mm diagnostic threshold)",
+        "Enhancing appendiceal wall thickening confirms active inflammation",
+        "CRP 0.95 mg/dL matches BJR 2011 Grade II range (0.99±1.63 mg/dL)"
+      ],
+      "clinicalReasoning": "The patient presents with classic appendicitis progression: initial periumbilical pain (visceral innervation) migrating to right lower quadrant (parietal peritoneum involvement). Physical exam findings of McBurney's point tenderness with positive Rovsing's sign have high positive predictive value. Laboratory markers show WBC and CRP levels precisely matching BJR 2011 Grade II appendicitis cohort. CT imaging confirms appendiceal diameter >6mm with wall enhancement, meeting diagnostic criteria for mild appendicitis without perforation.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Appendiceal diameter 8mm exceeds 6mm diagnostic threshold (BJR 2011 criteria)",
+          "Enhancing wall thickening visible on CT confirms active inflammation",
+          "WBC 12.8 x10³/μL matches BJR 2011 Grade II mean (12.97±3.73)",
+          "Anorexia and nausea typical for appendicitis (98% sensitive)"
+        ],
+        "challenging": [
+          "CRP only mildly elevated (0.95 mg/dL) - perforation would show CRP >8 mg/dL (BJR 2011 Grade IV)",
+          "Only subtle periappendiceal stranding - moderate-severe stranding would suggest Grade III",
+          "No abscess or phlegmon formation - rules out complicated appendicitis",
+          "Fever only 38.5°C - perforated appendicitis typically >39°C"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Appendicitis (Grade II)",
+          "match": "100%",
+          "differentiator": "Appendiceal diameter 8mm with wall thickening matches BJR 2011 Grade II CT criteria exactly"
+        },
+        {
+          "diagnosis": "Ectopic Pregnancy",
+          "match": "15%",
+          "differentiator": "Last menstrual period normal 10 days ago, no vaginal bleeding or discharge, appendix clearly visualized on CT"
+        },
+        {
+          "diagnosis": "Pelvic Inflammatory Disease",
+          "match": "10%",
+          "differentiator": "Pain localized to appendiceal region, no vaginal discharge, no cervical motion tenderness"
+        },
+        {
+          "diagnosis": "Perforated Appendicitis (Grade IV)",
+          "match": "5%",
+          "differentiator": "CRP 0.95 mg/dL rules out perforation (Grade IV shows CRP 8.10±6.90 mg/dL per BJR 2011)"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "12.8 x10³/μL (elevated) - matches BJR 2011 Grade II mean of 12.97 x10³/μL",
+          "crp": "0.95 mg/dL (mildly elevated) - matches BJR 2011 Grade II mean of 0.99 mg/dL",
+          "pregnancy_test": "Negative",
+          "urinalysis": "Normal, no RBCs, no WBCs"
+        },
+        "imaging": {
+          "ct_findings": "Appendiceal diameter: 8mm (>6mm threshold), Wall thickening with enhancement present, Periappendiceal stranding: subtle, No abscess or phlegmon, No perforation or wall defect",
+          "source": "BJR 2011 Grade II diagnostic criteria"
+        },
+        "vitals_trend": {
+          "trend": "Stable",
+          "note": "Temperature 38.5°C consistent with localized inflammation without perforation"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области и лихорадка.",
+      "history_ru": "В течение 24 часов боль переместилась из периумбиликальной области в правую подвздошную область. Боль постоянная, постепенно усиливается. Есть тошнота, двукратная рвота, анорексия и субфебрильная температура. Последняя менструация 10 дней назад, без особенностей.",
+      "physicalExam_ru": "Пациентка испытывает дискомфорт, лежит неподвижно. Максимальная болезненность в точке Мак-Бёрнея, мышечная защита, положительный симптом Ровзинга. При повторной пальпации появляется симптом Щёткина-Блюмберга.",
+      "imaging_ru": "КТ органов брюшной полости и таза: аппендикс заполнен жидкостью, диаметр 8 мм. Имеется утолщение стенки с контрастным усилением и небольшая периаппендикулярная инфильтрация. Абсцесс и свободный газ отсутствуют.",
+      "correctDiagnosis_ru": "Острый аппендицит, II степень: лёгкий аппендицит.",
+      "aiRecommendation_ru": "Острый аппендицит, II степень: лёгкий аппендицит.",
+      "keyDifferentiator_ru": "Диаметр аппендикса более 6 мм, утолщение стенки и лишь минимальная периаппендикулярная инфильтрация.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для II степени: аппендикс более 6 мм, утолщение стенки с контрастированием, возможно минимальная периаппендикулярная инфильтрация."
+    },
+    {
+      "id": "INT_002",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 2,
+      "isFoil": true,
+      "patient": {
+        "age": 62,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Right upper abdominal pain with chills",
+      "history": "Onset of right upper quadrant pain 18 hours ago, constant and worsening. Episode of shaking chills 4 hours ago. Feels feverish. Pain radiates to right shoulder area. Nausea present, no vomiting. Last ate 24 hours ago (Chinese food). History of similar episode 4 months ago that resolved on its own. Noticed dark urine this morning.",
+      "physicalExam": "Moderate distress. Lying on right side. Significant right upper quadrant tenderness. Murphy's sign positive. No jaundice visible. No abdominal distention.",
+      "vitals": {
+        "temperature": "102.2°F (39.0°C)",
+        "bloodPressure": "94/62 mmHg",
+        "heartRate": "116 bpm",
+        "respiratoryRate": "22 breaths/min",
+        "oxygenSaturation": "97% on room air",
+        "source": "Based on OSCE 2010 Cholangitis case - similar vital signs pattern"
+      },
+      "labs": {
+        "wbc": "16.2 x10³/μL (markedly elevated)",
+        "bilirubin_total": "3.5 mg/dL (elevated)",
+        "alt": "195 U/L (elevated)",
+        "alkaline_phosphatase": "380 U/L (elevated)"
+      },
+      "imaging": "RUQ ultrasound: Thickened gallbladder wall (5mm), pericholecystic fluid, positive sonographic Murphy's sign. Common bile duct 7mm (upper limit normal). Multiple gallstones present.",
+      "correctDiagnosis": "Ascending Cholangitis",
+      "foilDiagnosis": "Acute Cholecystitis",
+      "aiRecommendation": "Acute Cholecystitis",
+      "aiConfidence": 85,
+      "keyDifferentiator": "Charcot's triad (fever, RUQ pain, jaundice/elevated bilirubin) with dilated CBD indicates cholangitis, NOT just cholecystitis",
+      "diagnosticCriteria": "OSCE 2010 - Cholangitis requires bile duct involvement, not just gallbladder inflammation",
+      "supportingEvidence": [
+        "Gallbladder wall thickening (5mm) exceeds normal threshold (3mm)",
+        "Pericholecystic fluid indicates acute inflammation",
+        "Positive sonographic Murphy's sign strongly suggests gallbladder pathology",
+        "WBC markedly elevated (16.2 x10³/μL) consistent with acute bacterial infection",
+        "Multiple gallstones present as nidus for inflammation"
+      ],
+      "clinicalReasoning": "The patient presents with classic signs of acute cholecystitis: RUQ pain, fever, and positive Murphy's sign. Ultrasound confirms thickened gallbladder wall with pericholecystic fluid and gallstones. Laboratory shows elevated WBC and liver enzymes. Common bile duct at 7mm is at upper limit of normal. The clinical presentation with gallbladder inflammation points to acute cholecystitis as the primary diagnosis.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Positive Murphy's sign indicates gallbladder inflammation",
+          "Gallbladder wall thickening >3mm confirms cholecystitis",
+          "Pericholecystic fluid supports acute inflammatory process",
+          "History of prior similar episode suggests chronic gallstone disease"
+        ],
+        "challenging": [
+          "Charcot's triad present: fever + RUQ pain + hyperbilirubinemia (3.5 mg/dL)",
+          "Marked elevation of alkaline phosphatase (380 U/L) suggests biliary obstruction, not just cholecystitis",
+          "Dark urine indicates conjugated hyperbilirubinemia (cholestatic pattern)",
+          "Common bile duct 7mm is dilated for patient age - OSCE source shows cholangitis has dilated CBD >10mm typically",
+          "Shaking chills (Reynold's pentad component) more specific for cholangitis than cholecystitis",
+          "Hypotension (94/62) and tachycardia (116) suggest systemic infection beyond gallbladder"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Cholecystitis",
+          "match": "70%",
+          "differentiator": "Gallbladder findings support this, BUT doesn't explain marked hyperbilirubinemia or bile duct dilation"
+        },
+        {
+          "diagnosis": "Ascending Cholangitis",
+          "match": "95%",
+          "differentiator": "Charcot's triad + Reynold's pentad (shaking chills + hypotension) + dilated CBD indicates bile duct infection, not just gallbladder. OSCE 2010 source confirms cholangitis presentation."
+        },
+        {
+          "diagnosis": "Acute Pancreatitis",
+          "match": "20%",
+          "differentiator": "Would expect epigastric pain radiating to back, elevated amylase/lipase (not measured here)"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "bilirubin_direct": "2.8 mg/dL (conjugated - cholestatic pattern)",
+          "alkaline_phosphatase": "380 U/L - disproportionately elevated vs ALT suggests biliary obstruction",
+          "note": "Cholestatic pattern with high Alk Phos indicates bile duct pathology, not simple cholecystitis"
+        },
+        "imaging": {
+          "cbd_measurement": "7mm (borderline dilated - OSCE source indicates cholangitis typically shows >10-12mm dilation)",
+          "gallbladder": "Wall thickening present, but key question: is infection confined to gallbladder or involving bile duct?",
+          "clinical_correlation": "Hyperbilirubinemia (3.5 mg/dL) cannot be explained by cholecystitis alone - requires bile duct obstruction"
+        },
+        "clinical_signs": {
+          "charcot_triad": "All three present: Fever (102.2°F), RUQ pain, Jaundice (bili 3.5)",
+          "reynold_pentad": "Triad + Hypotension (94/62) + Altered mentation (lethargy from distress)",
+          "source": "OSCE 2010 Cholangitis case - Charcot's triad is diagnostic criterion"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правом подреберье с ознобом.",
+      "history_ru": "Боль в правом подреберье началась 18 часов назад, постоянная и усиливающаяся. Четыре часа назад был выраженный озноб с дрожью. Отмечает лихорадку, тошноту, иррадиацию боли в область правого плеча, тёмную мочу. Ранее был похожий эпизод.",
+      "physicalExam_ru": "Состояние средней тяжести. Значительная болезненность в правом подреберье. Симптом Мёрфи положительный. Видимой желтухи нет, вздутия живота нет.",
+      "imaging_ru": "УЗИ правого подреберья: стенка желчного пузыря утолщена до 5 мм, имеется перихолецистическая жидкость, положительный сонографический симптом Мёрфи. Общий желчный проток 7 мм. Множественные желчные камни.",
+      "correctDiagnosis_ru": "Восходящий холангит.",
+      "foilDiagnosis_ru": "Острый холецистит.",
+      "aiRecommendation_ru": "Острый холецистит.",
+      "keyDifferentiator_ru": "Триада Шарко: лихорадка, боль в правом подреберье и гипербилирубинемия на фоне расширения общего желчного протока указывают на холангит, а не на холецистит.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: при холангите должно быть вовлечение желчных протоков, а не только воспаление желчного пузыря."
+    },
+    {
+      "id": "INT_003",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 3,
+      "isFoil": false,
+      "patient": {
+        "age": 38,
+        "gender": "Female",
+        "ethnicity": "African American",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "афроамериканец"
+      },
+      "chiefComplaint": "Right lower quadrant pain worsening over 48 hours",
+      "history": "Progressive right lower quadrant pain for 2 days, initially intermittent now constant. Fever up to 39.5°C. Multiple episodes of vomiting. Unable to eat for past day. Pain does not migrate. Denies vaginal bleeding or discharge. Last menstrual period 3 weeks ago.",
+      "physicalExam": "Ill-appearing, lying still. Significant right lower quadrant tenderness with voluntary and involuntary guarding. Rebound tenderness present. Psoas sign positive.",
+      "vitals": {
+        "temperature": "39.5°C",
+        "bloodPressure": "106/68 mmHg",
+        "heartRate": "108 bpm",
+        "respiratoryRate": "22 breaths/min",
+        "oxygenSaturation": "97% on room air"
+      },
+      "labs": {
+        "wbc": "13.5 x10³/μL (elevated)",
+        "hemoglobin": "12.9 g/dL (normal)",
+        "platelets": "315,000/μL (normal)",
+        "crp": "2.5 mg/dL (elevated)",
+        "source": "BJR 2011 - Grade III: WBC 13.17±3.88, CRP 2.39±3.25"
+      },
+      "imaging": "CT abdomen/pelvis: Appendiceal diameter 11mm, enhancing wall thickening, moderate periappendiceal fat stranding. No wall defect visible. No abscess or free fluid.",
+      "correctDiagnosis": "Acute Appendicitis (Grade III - Appendicitis with Localized Peritonitis)",
+      "aiRecommendation": "Acute Appendicitis (Grade III - Appendicitis with Localized Peritonitis)",
+      "aiConfidence": 92,
+      "keyDifferentiator": "Moderate-severe periappendiceal stranding without perforation - Grade III per BJR 2011",
+      "diagnosticCriteria": "BJR 2011 Grade III: Grade II definition plus moderate to severe periappendiceal stranding without defect in enhancing appendiceal wall",
+      "supportingEvidence": [
+        "Appendiceal diameter 11mm significantly exceeds 6mm diagnostic threshold",
+        "Enhancing wall thickening confirms active inflammation",
+        "Moderate periappendiceal fat stranding indicates localized peritonitis (Grade III criterion)",
+        "WBC 13.5 x10³/μL matches BJR 2011 Grade III mean (13.17±3.88)",
+        "CRP 2.5 mg/dL matches Grade III range (2.39±3.25 mg/dL)",
+        "Fever 39.5°C and peritoneal signs consistent with advanced inflammation"
+      ],
+      "clinicalReasoning": "Patient presents with progression from simple to complicated appendicitis. The 48-hour duration with increasing severity, high fever, and peritoneal signs (rebound, guarding) indicate advancement beyond early appendicitis. Laboratory values precisely match BJR 2011 Grade III cohort. CT demonstrates Grade III criteria: appendiceal diameter >6mm with moderate periappendiceal stranding but crucially no perforation (no wall defect, abscess, or free fluid). This represents localized peritonitis requiring urgent surgical intervention.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Appendiceal diameter 11mm well above 6mm threshold (BJR 2011 Grade II/III criterion)",
+          "Moderate periappendiceal stranding diagnostic for Grade III per BJR 2011",
+          "WBC 13.5 and CRP 2.5 precisely match Grade III ranges from BJR study",
+          "Peritoneal signs (rebound, guarding) confirm localized peritonitis"
+        ],
+        "challenging": [
+          "No perforation visible - CRP 2.5 mg/dL rules out Grade IV perforation (would be CRP >8 mg/dL per BJR 2011)",
+          "No abscess or phlegmon formation - further excludes complicated perforation",
+          "Appendiceal wall enhancement intact without defects",
+          "No free fluid in pelvis - perforation would show extraluminal fluid"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Grade III Appendicitis (Localized Peritonitis)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade III criteria met: appendix >6mm, wall thickening, moderate periappendiceal stranding, NO perforation"
+        },
+        {
+          "diagnosis": "Grade IV Appendicitis (Perforated)",
+          "match": "10%",
+          "differentiator": "CRP only 2.5 mg/dL excludes perforation - BJR 2011 shows Grade IV has CRP 8.10±6.90 mg/dL (p<0.001)"
+        },
+        {
+          "diagnosis": "Pelvic Inflammatory Disease",
+          "match": "5%",
+          "differentiator": "No vaginal discharge, cervical motion tenderness not assessed, appendix clearly inflamed on CT"
+        },
+        {
+          "diagnosis": "Ectopic Pregnancy",
+          "match": "5%",
+          "differentiator": "LMP 3 weeks ago, no vaginal bleeding, appendix visualized as source of pathology"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "13.5 x10³/μL - precisely matches BJR 2011 Grade III mean of 13.17±3.88",
+          "crp": "2.5 mg/dL - matches BJR 2011 Grade III mean of 2.39±3.25 mg/dL",
+          "pregnancy_test": "Negative",
+          "note": "CRP 2.5 is significantly different from Grade IV perforation CRP of 8.10 mg/dL (BJR 2011, p<0.001)"
+        },
+        "imaging": {
+          "appendix_detail": "Diameter 11mm, wall thickness enhanced, moderate periappendiceal stranding",
+          "perforation_assessment": "No wall defect visible, no abscess, no free fluid - excludes perforation",
+          "grade_determination": "Meets BJR 2011 Grade III: moderate-severe stranding WITHOUT perforation"
+        },
+        "differential": {
+          "grade2_vs_grade3": "Grade II has subtle stranding; Grade III has moderate-severe stranding. This case shows moderate stranding = Grade III",
+          "grade3_vs_grade4": "Grade III has intact wall; Grade IV has wall defect. This case: wall intact, CRP <3 = Grade III, NOT Grade IV"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Усиливающаяся боль в правой подвздошной области в течение 48 часов.",
+      "history_ru": "Прогрессирующая боль в правой подвздошной области в течение 2 суток. Сначала была периодической, затем стала постоянной. Температура повышалась до 39,5°C. Многократная рвота, отсутствие аппетита. Влагалищного кровотечения и выделений нет.",
+      "physicalExam_ru": "Пациентка выглядит тяжело больной. Значительная болезненность в правой подвздошной области, произвольная и непроизвольная мышечная защита, положительный симптом Щёткина-Блюмберга. Симптом поясничной мышцы положительный.",
+      "imaging_ru": "КТ органов брюшной полости и таза: диаметр аппендикса 11 мм, утолщение стенки с контрастным усилением, умеренная периаппендикулярная инфильтрация жировой клетчатки. Дефект стенки, абсцесс и свободная жидкость не выявлены.",
+      "correctDiagnosis_ru": "Острый аппендицит, III степень: аппендицит с локализованным перитонитом.",
+      "aiRecommendation_ru": "Острый аппендицит, III степень: аппендицит с локализованным перитонитом.",
+      "keyDifferentiator_ru": "Умеренная или выраженная периаппендикулярная инфильтрация без признаков перфорации соответствует III степени по BJR 2011.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для III степени: признаки II степени плюс умеренная или выраженная периаппендикулярная инфильтрация при отсутствии дефекта стенки аппендикса."
+    },
+    {
+      "id": "INT_004",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 4,
+      "isFoil": true,
+      "patient": {
+        "age": 48,
+        "gender": "Male",
+        "ethnicity": "Hispanic",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "латиноамериканец"
+      },
+      "chiefComplaint": "Left lower abdominal pain and fever for 3 days",
+      "history": "Gradual onset of left lower quadrant pain 3 days ago, now constant and severe. Low-grade fever, chills. Some nausea, no vomiting. No bowel movement for 2 days (usually daily). History of occasional constipation, managed with fiber supplements. No rectal bleeding. No prior similar episodes.",
+      "physicalExam": "Uncomfortable appearance. Left lower quadrant tenderness with guarding. Voluntary guarding present. Bowel sounds hypoactive. No rebound initially. CVA tenderness negative bilaterally.",
+      "vitals": {
+        "temperature": "100.2°F (37.9°C)",
+        "bloodPressure": "108/72 mmHg",
+        "heartRate": "90 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "98% on room air",
+        "source": "Based on OSCE 2010 Diverticulitis case - similar vital signs pattern"
+      },
+      "labs": {
+        "wbc": "14.5 x10³/μL (elevated)",
+        "hemoglobin": "13.8 g/dL (normal)",
+        "crp": "7.8 mg/dL (elevated)"
+      },
+      "imaging": "CT abdomen/pelvis: Sigmoid colon wall thickening, pericolonic fat stranding, diverticulosis present. No abscess, no free air, no extraluminal contrast.",
+      "correctDiagnosis": "Acute Diverticulitis (Uncomplicated)",
+      "foilDiagnosis": "Constipation with Colonic Distention",
+      "aiRecommendation": "Constipation with Colonic Distention",
+      "aiConfidence": 72,
+      "keyDifferentiator": "Sigmoid wall thickening with pericolonic stranding on CT indicates inflammation (diverticulitis), NOT simple constipation",
+      "diagnosticCriteria": "OSCE 2010 - Diverticulitis diagnosis requires inflammatory findings on CT, not just stool retention",
+      "supportingEvidence": [
+        "No bowel movement for 2 days consistent with constipation",
+        "History of occasional constipation with fiber supplement use",
+        "Hypoactive bowel sounds can occur with constipation",
+        "Left lower quadrant pain location consistent with sigmoid/descending colon",
+        "Low-grade fever (100.2°F) can occur with severe constipation/impaction"
+      ],
+      "clinicalReasoning": "Patient presents with left lower quadrant pain and no bowel movement for 2 days with history of constipation. Physical exam shows left lower quadrant tenderness with hypoactive bowel sounds. CT shows sigmoid colon involvement. These findings are consistent with constipation with possible early colonic distention. The mild inflammatory markers and low-grade fever may represent stress response or early obstipation.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "History of chronic constipation requiring fiber supplements",
+          "No bowel movement × 2 days fits constipation pattern",
+          "Hypoactive bowel sounds consistent with colonic hypomotility",
+          "Left-sided location where stool typically accumulates"
+        ],
+        "challenging": [
+          "CT shows sigmoid WALL THICKENING - this indicates inflammation, not stool impaction",
+          "Pericolonic FAT STRANDING visible on CT - diagnostic for inflammatory process (OSCE 2010 criterion)",
+          "CRP 7.8 mg/dL significantly elevated - simple constipation would have normal CRP",
+          "WBC 14.5 x10³/μL elevated - constipation doesn't cause leukocytosis",
+          "Diverticulosis present on CT + inflammation = diverticulitis by definition",
+          "Guarding present - this is peritoneal irritation sign, not seen in simple constipation"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Constipation with Colonic Distention",
+          "match": "40%",
+          "differentiator": "History supports this, BUT CT shows inflammatory changes (wall thickening + pericolonic stranding) which don't occur in simple constipation"
+        },
+        {
+          "diagnosis": "Acute Diverticulitis (Uncomplicated)",
+          "match": "95%",
+          "differentiator": "OSCE 2010 source criteria ALL met: Sigmoid wall thickening + pericolonic stranding + diverticulosis + elevated WBC/CRP. This IS diverticulitis."
+        },
+        {
+          "diagnosis": "Acute Pancreatitis",
+          "match": "5%",
+          "differentiator": "OSCE 2010 listed this as 'less likely' foil - pain wrong location, no elevated amylase/lipase, CT shows colon not pancreas"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "14.5 x10³/μL - elevated WBC indicates inflammatory/infectious process, NOT consistent with simple constipation",
+          "crp": "7.8 mg/dL - significantly elevated. Normal CRP rules out inflammatory process. This level proves inflammation.",
+          "amylase": "Normal - rules out pancreatitis"
+        },
+        "imaging": {
+          "critical_findings": "Sigmoid colon wall thickening + pericolonic fat stranding = INFLAMMATORY PROCESS",
+          "diverticulosis": "Multiple diverticula present in sigmoid colon",
+          "no_complications": "No abscess, no perforation, no free air = uncomplicated diverticulitis",
+          "stool_assessment": "Some stool in colon but NOT the cause of wall thickening - inflammation is the primary process"
+        },
+        "differential": {
+          "constipation_reasoning": "Constipation shows stool-filled colon with normal wall thickness and NO pericolonic stranding",
+          "diverticulitis_reasoning": "Diverticulitis = diverticula + inflammation (wall thickening + stranding) per OSCE 2010 source",
+          "verdict": "CT findings diagnostic for diverticulitis, NOT constipation"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в левой подвздошной области и лихорадка в течение 3 дней.",
+      "history_ru": "Постепенное начало боли в левой подвздошной области 3 дня назад, сейчас боль постоянная и сильная. Имеются субфебрильная температура, озноб, тошнота. Стул отсутствует 2 дня. В анамнезе эпизодические запоры.",
+      "physicalExam_ru": "Пациент испытывает дискомфорт. Болезненность в левой подвздошной области с мышечной защитой. Кишечные шумы ослаблены. Симптом поколачивания по поясничной области отрицательный.",
+      "imaging_ru": "КТ органов брюшной полости и таза: утолщение стенки сигмовидной кишки, периколическая инфильтрация жировой клетчатки, дивертикулёз. Абсцесс, свободный газ и выход контраста за пределы кишки не определяются.",
+      "correctDiagnosis_ru": "Острый дивертикулит, неосложнённый.",
+      "foilDiagnosis_ru": "Запор с растяжением толстой кишки.",
+      "aiRecommendation_ru": "Запор с растяжением толстой кишки.",
+      "keyDifferentiator_ru": "Утолщение стенки сигмовидной кишки и периколическая инфильтрация на КТ указывают на воспаление, то есть на дивертикулит, а не на простой запор.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: для дивертикулита необходимы воспалительные изменения на КТ, а не только задержка стула."
+    },
+    {
+      "id": "INT_005",
+      "category": "cardiovascular",
+      "phase": "intervention",
+      "order": 5,
+      "isFoil": false,
+      "patient": {
+        "age": 57,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Severe abdominal pain, nausea, and confusion",
+      "history": "Onset of severe left-sided abdominal pain 2 days ago, rated 8/10. Continuous pain. Associated with nausea, vomiting, and diarrhea. Patient initially thought viral gastroenteritis. Admitted to benzodiazepine use previous night for sleep. Symptoms worsened, prompting ED visit. History difficult to obtain due to cognitive disorientation. Past medical history significant for hypertension. Admits to cocaine use.",
+      "physicalExam": "Moderate distress, altered mental status. Tenderness to palpation in left abdomen with guarding. Faint pulses noted in bilateral upper and lower extremities. Tachypneic but breath sounds normal bilaterally. Cardiac exam unremarkable. Neurological exam shows moderate confusion.",
+      "vitals": {
+        "temperature": "97.8°F (36.6°C)",
+        "bloodPressure": "96/45 mmHg",
+        "heartRate": "61 bpm",
+        "respiratoryRate": "32 breaths/min",
+        "oxygenSaturation": "94% on room air",
+        "source": "Cureus 2024 - exact vitals from Aortic Dissection case"
+      },
+      "labs": {
+        "wbc": "15.74 x10³/μL (markedly elevated)",
+        "hemoglobin": "15.4 g/dL (normal)",
+        "hematocrit": "46.8% (normal)",
+        "platelets": "319 x10³/μL (normal)",
+        "potassium": "9 mmol/L (critical hyperkalemia)",
+        "glucose": "46 mg/dL (hypoglycemia)",
+        "bun": "65 mg/dL (elevated)",
+        "creatinine": "6.67 mg/dL (acute renal failure)",
+        "alt": "1,546 U/L (markedly elevated)",
+        "ast": "3,361 U/L (markedly elevated)",
+        "lactate": "9.6 mmol/L initially, then 10.7 mmol/L (critically elevated)",
+        "source": "Cureus 2024 - exact laboratory values from case report"
+      },
+      "imaging": "Initial chest X-ray: Mild cardiomegaly, no acute findings. CT chest/abdomen/pelvis without contrast: Mild cardiomegaly, no acute findings initially. CTA abdomen/pelvis: Abdominal aortic dissection with extrinsic compression of patent true lumen. Flap noted at level of celiac and superior mesenteric arteries. Repeat CTA at tertiary center: Type A aortic dissection involving aortic arch with extensive bowel ischemia (lack of mucosal enhancement in small bowel and colon).",
+      "additionalFindings": "Urine toxicology positive for cocaine and benzodiazepines. ECG: First-degree AV block with nonspecific ST/T wave abnormalities.",
+      "correctDiagnosis": "Type A Aortic Dissection Complicated by Mesenteric Ischemia",
+      "aiRecommendation": "Type A Aortic Dissection Complicated by Mesenteric Ischemia",
+      "aiConfidence": 91,
+      "keyDifferentiator": "Aortic dissection with involvement of mesenteric vessels causing bowel malperfusion - lactate >9 mmol/L diagnostic",
+      "diagnosticCriteria": "Cureus 2024 source - Type A dissection with mesenteric malperfusion (30% of dissections have organ malperfusion)",
+      "supportingEvidence": [
+        "Hypotension (96/45 mmHg) with relative bradycardia (61 bpm) suggests cardiovascular catastrophe",
+        "Faint pulses in all extremities indicates poor perfusion from aortic pathology",
+        "Lactate 9.6→10.7 mmol/L critically elevated, diagnostic for mesenteric ischemia",
+        "Abdominal pain out of proportion to exam classic for mesenteric ischemia",
+        "Risk factors present: hypertension, cocaine use (vasoconstrictor causing catecholamine surge)",
+        "CTA confirms aortic dissection with true lumen compression at mesenteric vessels",
+        "Multi-organ failure: renal (Cr 6.67), hepatic (AST 3361, ALT 1546), bowel (lactate 10.7)"
+      ],
+      "clinicalReasoning": "This is a catastrophic presentation of Type A aortic dissection with mesenteric malperfusion, documented in Cureus 2024 case report. Patient has multiple risk factors: hypertension and cocaine use (causes catecholamine surge and blood pressure spike that can precipitate intimal tear). The combination of severe abdominal pain, altered mental status, hypotension with faint pulses, and critically elevated lactate (>9 mmol/L) indicates mesenteric ischemia from aortic dissection involving visceral vessels. CTA confirms dissection flap at celiac/SMA level with bowel ischemia. Multi-organ failure (renal, hepatic, intestinal) reflects widespread malperfusion - occurs in 30% of aortic dissections per Cureus source.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Aortic dissection confirmed on CTA with flap at mesenteric vessel level (Cureus 2024 source)",
+          "Lactate 10.7 mmol/L critically elevated - diagnostic for mesenteric ischemia per source",
+          "Multi-organ failure pattern (renal Cr 6.67, hepatic transaminases >3000) from malperfusion",
+          "Risk factors: HTN + cocaine use documented in Cureus 2024 as predisposing factors",
+          "Hypotension + faint pulses + bradycardia = classic dissection triad"
+        ],
+        "challenging": [
+          "Initial chest X-ray showed no widened mediastinum - but Cureus source notes this has declined sensitivity (70%)",
+          "Patient appears to have primarily abdominal symptoms, not chest pain - but 30% of dissections present with malperfusion symptoms",
+          "Age 57 slightly younger than typical (peak 50-65 per source) but cocaine use is risk factor for younger presentations"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Type A Aortic Dissection with Bowel Malperfusion",
+          "match": "100%",
+          "differentiator": "CTA-confirmed dissection with mesenteric involvement. Lactate >9 mmol/L diagnostic for ischemia. Exact match to Cureus 2024 published case."
+        },
+        {
+          "diagnosis": "Acute Mesenteric Ischemia (Embolic)",
+          "match": "40%",
+          "differentiator": "Mesenteric ischemia IS present, but caused by aortic dissection compression, not embolism. CTA shows dissection as primary pathology."
+        },
+        {
+          "diagnosis": "Viral Gastroenteritis",
+          "match": "5%",
+          "differentiator": "Initial patient suspicion, but lactate >9 mmol/L, multi-organ failure, and dissection on CTA rule this out completely"
+        },
+        {
+          "diagnosis": "Cocaine-Induced Vasospasm",
+          "match": "20%",
+          "differentiator": "Cocaine IS a risk factor per Cureus source, but dissection is anatomic tear, not just vasospasm. CTA confirms structural pathology."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "lactate_trend": "9.6 mmol/L initially → 10.7 mmol/L (worsening). Lactate >4 mmol/L suggests mesenteric ischemia; >8 mmol/L critical",
+          "organ_failure_pattern": "Renal: Cr 6.67 (ARF), Hepatic: AST 3361/ALT 1546 (ischemic hepatitis), Bowel: Lactate 10.7 (ischemia)",
+          "interpretation": "Multi-organ malperfusion from aortic dissection compromising branch vessels (Cureus 2024 - occurs in 30% of dissections)"
+        },
+        "imaging": {
+          "initial_imaging_limitation": "Chest X-ray sensitivity only 70% for dissection (Cureus source notes declining utility)",
+          "ct_without_contrast": "Cannot visualize dissection flap - contrast required",
+          "cta_findings": "Aortic dissection flap at celiac/SMA level with true lumen compression - explains mesenteric ischemia",
+          "bowel_assessment": "Lack of mucosal enhancement in small bowel/colon on CTA = ischemia confirmed"
+        },
+        "risk_factors": {
+          "hypertension": "Primary risk factor for 70% of dissections (Cureus 2024)",
+          "cocaine_use": "Causes catecholamine surge → BP spike → intimal tear. Documented risk factor in Cureus source.",
+          "age_gender": "57yo male - within peak range (50-65 years) per source"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "сердечно-сосудистые",
+      "chiefComplaint_ru": "Сильная боль в животе, тошнота и спутанность сознания.",
+      "history_ru": "Сильная боль в левой половине живота началась 2 дня назад, постоянная, интенсивностью 8/10. Сопровождается тошнотой, рвотой и диареей. Изначально пациент думал о вирусном гастроэнтерите. Имеются артериальная гипертензия и употребление кокаина, накануне принимал бензодиазепины. Из-за спутанности сознания анамнез собрать сложно.",
+      "physicalExam_ru": "Состояние средней тяжести, спутанность сознания. Болезненность слева в животе с мышечной защитой. Пульс на верхних и нижних конечностях ослаблен. Тахипноэ. Неврологически определяется умеренная спутанность.",
+      "imaging_ru": "Сначала рентгенография грудной клетки и КТ без контраста не выявили острых изменений. Затем КТ-ангиография брюшной полости и таза показала расслоение аорты с компрессией истинного просвета на уровне чревного ствола и верхней брыжеечной артерии. Повторная КТ-ангиография в специализированном центре выявила расслоение аорты типа A с признаками выраженной ишемии кишечника.",
+      "correctDiagnosis_ru": "Расслоение аорты типа A, осложнённое мезентериальной ишемией.",
+      "aiRecommendation_ru": "Расслоение аорты типа A, осложнённое мезентериальной ишемией.",
+      "keyDifferentiator_ru": "Расслоение аорты с поражением мезентериальных сосудов и лактатом более 9 ммоль/л, что указывает на ишемию кишечника.",
+      "diagnosticCriteria_ru": "По источнику Cureus 2024: расслоение аорты типа A с мезентериальной гипоперфузией."
+    },
+    {
+      "id": "INT_006",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 6,
+      "isFoil": false,
+      "patient": {
+        "age": 69,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Right lower quadrant pain, high fever",
+      "history": "Three-day history of worsening right lower quadrant pain. Initially tolerable, now severe and constant. High fever with chills for past 24 hours. Multiple episodes of vomiting. Unable to tolerate oral intake. No urinary symptoms. History of prior appendectomy denied by patient initially, then admits to appendectomy 40 years ago.",
+      "physicalExam": "Ill-appearing, febrile. Significant right lower quadrant tenderness with rigid abdomen. Voluntary and involuntary guarding. Rebound tenderness diffusely. Diminished bowel sounds.",
+      "vitals": {
+        "temperature": "40.1°C",
+        "bloodPressure": "98/58 mmHg",
+        "heartRate": "118 bpm",
+        "respiratoryRate": "26 breaths/min",
+        "oxygenSaturation": "96% on room air"
+      },
+      "labs": {
+        "wbc": "12.2 x10³/μL (elevated)",
+        "hemoglobin": "12.1 g/dL (normal)",
+        "platelets": "288,000/μL (normal)",
+        "crp": "8.5 mg/dL (markedly elevated)",
+        "source": "BJR 2011 - Grade IV perforated appendicitis: WBC 12.85±5.28, CRP 8.10±6.90"
+      },
+      "imaging": "CT abdomen/pelvis with contrast: Periappendiceal abscess (5cm) with rim enhancement. Defect in appendiceal wall enhancement. Free fluid in pelvis. Appendiceal diameter not clearly measurable due to abscess.",
+      "correctDiagnosis": "Perforated Appendicitis with Abscess (Grade IV)",
+      "aiRecommendation": "Perforated Appendicitis with Abscess (Grade IV)",
+      "aiConfidence": 94,
+      "keyDifferentiator": "CRP 8.5 mg/dL with abscess formation and wall defect diagnostic for Grade IV perforation per BJR 2011",
+      "diagnosticCriteria": "BJR 2011 Grade IV: defect in enhancing appendiceal wall with/without phlegmon or abscess. CRP significantly elevated (8.10±6.90 mg/dL, p<0.001 vs other grades)",
+      "supportingEvidence": [
+        "CT shows defect in appendiceal wall enhancement (BJR 2011 Grade IV criterion)",
+        "Periappendiceal abscess (5cm) with rim enhancement present (Grade IV criterion)",
+        "CRP 8.5 mg/dL matches BJR 2011 Grade IV mean (8.10±6.90 mg/dL)",
+        "Free fluid in pelvis indicates perforation with spillage",
+        "High fever (40.1°C) and systemic toxicity consistent with perforated appendicitis",
+        "WBC 12.2 x10³/μL within Grade IV range (12.85±5.28)"
+      ],
+      "clinicalReasoning": "Patient presents with classic perforated appendicitis complicated by abscess formation. The three-day duration with progressive symptoms, high fever, and systemic toxicity indicate advanced disease. Laboratory findings precisely match BJR 2011 Grade IV cohort: WBC 12.2 (Grade IV mean 12.85) and critically, CRP 8.5 mg/dL matching Grade IV mean of 8.10 mg/dL (significantly higher than Grade III at 2.39 mg/dL, p<0.001 per BJR study). CT confirms Grade IV diagnostic criteria: wall defect plus abscess formation. Requires percutaneous drainage and interval appendectomy.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Defect in appendiceal wall enhancement on CT = perforation (BJR 2011 Grade IV criterion)",
+          "Abscess present = BJR 2011 Grade IV criterion (phlegmon or abscess)",
+          "CRP 8.5 mg/dL significantly higher than Grade III (2.39 mg/dL) - proves Grade IV per BJR 2011 statistical analysis (p<0.001)",
+          "Three-day symptom duration typical for progression to perforation"
+        ],
+        "challenging": [
+          "WBC 12.2 x10³/μL not as elevated as expected - but BJR 2011 notes WBC doesn't correlate strongly with severity (r=0.222)",
+          "BJR 2011 specifically noted Grade IV WBC (12.85) can be lower than Grade III (13.17) due to walling off of infection",
+          "Patient denied prior appendectomy - but if true, this would be stump appendicitis (OSCE source lists as differential)"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Perforated Appendicitis with Abscess (Grade IV)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade IV criteria met: wall defect + abscess + CRP 8.5 mg/dL (matches Grade IV mean 8.10±6.90, significantly different from Grade III p<0.001)"
+        },
+        {
+          "diagnosis": "Grade III Appendicitis (Non-perforated)",
+          "match": "5%",
+          "differentiator": "CRP 8.5 mg/dL rules this out - Grade III has CRP 2.39 mg/dL. No wall defect in Grade III. No abscess in Grade III."
+        },
+        {
+          "diagnosis": "Tubo-ovarian Abscess",
+          "match": "10%",
+          "differentiator": "Age 69 (postmenopausal), no vaginal symptoms, CT shows appendiceal origin of abscess"
+        },
+        {
+          "diagnosis": "Stump Appendicitis",
+          "match": "15%",
+          "differentiator": "If prior appendectomy confirmed, stump appendicitis possible but presentation identical. OSCE 2010 lists as less likely differential."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "12.2 x10³/μL - within Grade IV range. BJR 2011 notes WBC poorly correlates with severity (r=0.222)",
+          "crp": "8.5 mg/dL - DIAGNOSTIC for Grade IV perforation. BJR 2011: Grade IV CRP (8.10±6.90) significantly higher than Grade III (2.39±3.25), p<0.001",
+          "interpretation": "CRP is the key discriminator between Grade III and IV per BJR 2011 statistical analysis"
+        },
+        "imaging": {
+          "perforation_evidence": "Defect in appendiceal wall enhancement = structural perforation",
+          "abscess": "5cm periappendiceal abscess with rim enhancement",
+          "free_fluid": "Pelvic free fluid indicates peritoneal contamination from perforation",
+          "bjr_grade": "Grade IV criteria from BJR 2011: wall defect + phlegmon/abscess"
+        },
+        "differential": {
+          "grade3_vs_grade4_key": "BJR 2011 statistical finding: CRP is strongest differentiator. CRP >6 mg/dL strongly predicts Grade IV perforation",
+          "clinical_implications": "Grade IV requires abscess drainage + antibiotics, then interval appendectomy. Grade III requires immediate appendectomy.",
+          "source_validation": "This case precisely matches BJR 2011 Grade IV cohort in WBC, CRP, and CT criteria"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области, высокая температура.",
+      "history_ru": "В течение 3 дней нарастает боль в правой подвздошной области. За последние сутки присоединились высокая температура с ознобом, многократная рвота и невозможность принимать пищу. Симптомов со стороны мочевыделительной системы нет. Сначала пациентка отрицала аппендэктомию, затем сообщила о ней 40 лет назад.",
+      "physicalExam_ru": "Тяжёлое состояние, лихорадка. Выраженная болезненность в правой подвздошной области, ригидность живота, произвольная и непроизвольная мышечная защита, положительный симптом Щёткина-Блюмберга. Кишечные шумы ослаблены.",
+      "imaging_ru": "КТ органов брюшной полости и таза с контрастированием: периаппендикулярный абсцесс 5 см с контрастным усилением по периферии, дефект контрастирования стенки аппендикса, свободная жидкость в малом тазу. Из-за абсцесса диаметр аппендикса оценить трудно.",
+      "correctDiagnosis_ru": "Перфоративный аппендицит с абсцессом, IV степень.",
+      "aiRecommendation_ru": "Перфоративный аппендицит с абсцессом, IV степень.",
+      "keyDifferentiator_ru": "CRP 8,5 мг/дл в сочетании с абсцессом и дефектом стенки соответствует перфорации IV степени по BJR 2011.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для IV степени: дефект контрастируемой стенки аппендикса с флегмоной и/или абсцессом."
+    },
+    {
+      "id": "INT_007",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 7,
+      "isFoil": false,
+      "patient": {
+        "age": 24,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Right lower quadrant discomfort for 12 hours",
+      "history": "Patient reports mild right lower quadrant discomfort that started yesterday evening. Pain is intermittent and rated 3/10. No migration of pain. Minimal nausea, no vomiting. Able to eat and drink normally. Last menstrual period 2 weeks ago, normal. No vaginal discharge or bleeding. No urinary symptoms.",
+      "physicalExam": "Appears comfortable. Mild tenderness at McBurney's point without guarding. No rebound tenderness. Psoas sign negative. Bowel sounds normal.",
+      "vitals": {
+        "temperature": "37.4°C",
+        "bloodPressure": "118/74 mmHg",
+        "heartRate": "88 bpm",
+        "respiratoryRate": "16 breaths/min",
+        "oxygenSaturation": "99% on room air"
+      },
+      "labs": {
+        "wbc": "8.4 x10³/μL (normal)",
+        "hemoglobin": "13.6 g/dL (normal)",
+        "platelets": "295,000/μL (normal)",
+        "crp": "0.35 mg/dL (normal)",
+        "source": "BJR 2011 - Grade I normal: WBC 8.38±2.96, CRP 0.32±0.70"
+      },
+      "imaging": "CT abdomen/pelvis: Normal appendix visualized, diameter 5mm. No wall thickening. No periappendiceal stranding. No free fluid.",
+      "correctDiagnosis": "Normal Appendix (No Acute Appendicitis)",
+      "aiRecommendation": "Normal Appendix (No Acute Appendicitis)",
+      "aiConfidence": 82,
+      "keyDifferentiator": "Normal labs and imaging rule out appendicitis - appendix <6mm without inflammation",
+      "diagnosticCriteria": "BJR 2011 Grade I: appendix <6mm diameter, no wall changes, no stranding",
+      "supportingEvidence": [
+        "Appendix diameter 5mm is below 6mm diagnostic threshold for appendicitis (BJR 2011)",
+        "WBC 8.4 x10³/μL is within normal range, matches BJR 2011 Grade I mean (8.38±2.96)",
+        "CRP 0.35 mg/dL is normal, matches BJR 2011 Grade I mean (0.32±0.70)",
+        "No periappendiceal inflammatory stranding on CT",
+        "Mild clinical symptoms without peritoneal signs",
+        "Normal appendiceal wall thickness without enhancement"
+      ],
+      "clinicalReasoning": "Patient presents with mild RLQ discomfort but lacks classic appendicitis features. Laboratory values precisely match BJR 2011 Grade I (normal) cohort with WBC 8.4 (Grade I mean 8.38) and CRP 0.35 (Grade I mean 0.32). CT demonstrates normal appendix <6mm without inflammatory changes. The mild symptoms may represent early/resolving appendicitis, ovarian pathology, or non-specific abdominal pain. Observation and repeat assessment appropriate.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Appendix clearly visualized and measures 5mm (below 6mm threshold)",
+          "WBC and CRP both normal, matching BJR 2011 Grade I reference values",
+          "No inflammatory stranding or fluid collections on CT",
+          "Patient able to eat and drink normally"
+        ],
+        "challenging": [
+          "Patient does have RLQ tenderness at McBurney's point (but no guarding/rebound)",
+          "Mild nausea present (but no vomiting)",
+          "Cannot completely rule out very early appendicitis before inflammatory markers rise",
+          "Alternative diagnoses possible: ovarian cyst, mittelschmerz, gastroenteritis"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Normal Appendix / Non-Specific Abdominal Pain",
+          "match": "95%",
+          "differentiator": "All BJR 2011 Grade I criteria met: appendix <6mm, normal WBC/CRP, no CT inflammation"
+        },
+        {
+          "diagnosis": "Very Early Appendicitis (Grade II)",
+          "match": "10%",
+          "differentiator": "Would expect WBC >12 x10³/μL and appendix >6mm per BJR 2011 Grade II criteria"
+        },
+        {
+          "diagnosis": "Ovarian Pathology (Cyst/Mittelschmerz)",
+          "match": "20%",
+          "differentiator": "LMP 2 weeks ago consistent with mid-cycle. CT would visualize ovarian findings if present."
+        },
+        {
+          "diagnosis": "Gastroenteritis",
+          "match": "15%",
+          "differentiator": "Would expect diffuse symptoms, diarrhea. RLQ localization atypical for gastroenteritis."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "8.4 x10³/μL - normal, matches BJR 2011 Grade I (normal appendix) mean of 8.38 x10³/μL",
+          "crp": "0.35 mg/dL - normal, matches BJR 2011 Grade I mean of 0.32 mg/dL",
+          "pregnancy_test": "Negative",
+          "urinalysis": "Normal"
+        },
+        "imaging": {
+          "appendix_detail": "Diameter 5mm, wall normal thickness, no enhancement abnormality",
+          "periappendiceal_assessment": "No stranding, no free fluid, no abscess",
+          "bjr_classification": "Grade I (Normal) per BJR 2011 criteria: appendix <6mm"
+        },
+        "differential": {
+          "appendicitis_assessment": "Normal labs + normal CT rules out acute appendicitis with high confidence",
+          "alternative_diagnoses": "Consider ovarian pathology (mid-cycle timing), functional abdominal pain, or resolved viral gastroenteritis",
+          "management": "Observation, repeat assessment if symptoms worsen, surgical consultation if change"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Дискомфорт в правой подвздошной области в течение 12 часов.",
+      "history_ru": "Слабый дискомфорт в правой подвздошной области с вечера, боль периодическая, интенсивность 3/10. Миграции боли не было. Незначительная тошнота, рвоты нет. Питание и питьё сохранены. Последняя менструация 2 недели назад, без особенностей.",
+      "physicalExam_ru": "Пациентка выглядит удовлетворительно. Небольшая болезненность в точке Мак-Бёрнея без мышечной защиты. Симптом Щёткина-Блюмберга отрицательный. Симптом поясничной мышцы отрицательный. Кишечные шумы нормальные.",
+      "imaging_ru": "КТ органов брюшной полости и таза: аппендикс нормальный, диаметр 5 мм. Утолщение стенки, периаппендикулярная инфильтрация и свободная жидкость отсутствуют.",
+      "correctDiagnosis_ru": "Нормальный аппендикс, признаков острого аппендицита нет.",
+      "aiRecommendation_ru": "Нормальный аппендикс, признаков острого аппендицита нет.",
+      "keyDifferentiator_ru": "Нормальные лабораторные показатели и нормальная КТ-картина исключают аппендицит: аппендикс менее 6 мм без признаков воспаления.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для I степени: аппендикс менее 6 мм, без изменений стенки и без периаппендикулярной инфильтрации."
+    },
+    {
+      "id": "INT_008",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 8,
+      "isFoil": true,
+      "patient": {
+        "age": 55,
+        "gender": "Female",
+        "ethnicity": "Caucasian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Right upper abdominal pain and fever for 1 day",
+      "history": "Gradual onset of right upper quadrant pain starting 8pm yesterday evening after eating Chinese takeout at 6pm. Pain was dull but constant, lasted several hours. This morning initially felt better, had toast for breakfast, then pain recurred mid-morning and worsened throughout day. Had shaking chills in waiting room. Feels feverish. Some nausea but no vomiting. Last bowel movement yesterday, normal. No jaundice visible. Pain radiates to right shoulder blade.",
+      "physicalExam": "Lying on right side with knees bent, obvious pain on face. Cooperative but preoccupied with pain. Severe right upper quadrant tenderness. Positive Murphy's sign (inspiratory arrest with palpation). Pain radiates to right shoulder blade. No jaundice appreciated.",
+      "vitals": {
+        "temperature": "102.5°F (39.2°C)",
+        "bloodPressure": "90/65 mmHg",
+        "heartRate": "118 bpm",
+        "respiratoryRate": "24 breaths/min",
+        "oxygenSaturation": "96% on room air",
+        "source": "OSCE 2010 Jennifer/Jerry Graham cholangitis case - EXACT vitals"
+      },
+      "labs": {
+        "wbc": "15.8 x10³/μL (markedly elevated)",
+        "hemoglobin": "14.0 g/dL (normal)",
+        "platelets": "298,000/μL (normal)",
+        "bilirubin_total": "1.0 mg/dL (normal)",
+        "alt": "68 U/L (mildly elevated)",
+        "ast": "72 U/L (mildly elevated)",
+        "alkaline_phosphatase": "125 U/L (normal)",
+        "source": "Normal bilirubin and alk phos rule out cholangitis per OSCE 2010"
+      },
+      "imaging": "RUQ ultrasound: Gallbladder wall thickening 5mm (markedly abnormal, normal ≤3mm). Multiple gallstones present. Pericholecystic fluid visible. Positive sonographic Murphy's sign. Common bile duct 5mm diameter (normal, upper limit 6mm). No intrahepatic ductal dilation.",
+      "correctDiagnosis": "Acute Cholecystitis",
+      "foilDiagnosis": "Ascending Cholangitis",
+      "aiRecommendation": "Ascending Cholangitis",
+      "aiConfidence": 82,
+      "keyDifferentiator": "Normal bilirubin (1.0 mg/dL) and normal CBD diameter (5mm) definitively rule out cholangitis. OSCE 2010 cholangitis case shows bilirubin 3.2 mg/dL and dilated CBD 12mm. This is isolated GB inflammation.",
+      "diagnosticCriteria": "OSCE 2010 differential: Cholangitis requires Charcot's triad (fever + RUQ pain + jaundice) with elevated bilirubin and dilated CBD. Cholecystitis has fever + RUQ pain + Murphy's sign with normal bilirubin and normal CBD.",
+      "supportingEvidence": [
+        "Fever (102.5°F) and RUQ pain consistent with biliary infection",
+        "Shaking chills suggest systemic infection",
+        "Elevated WBC (15.8) indicates acute bacterial infection",
+        "Right shoulder blade radiation typical of biliary pathology",
+        "History of fatty meal trigger classic for biliary disease",
+        "Prior episodes suggest chronic gallstone disease"
+      ],
+      "clinicalReasoning": "Patient presents with fever, RUQ pain, and shaking chills raising concern for ascending cholangitis. However, critical lab findings rule this out: bilirubin is completely normal (1.0 mg/dL) when cholangitis typically shows 3-4 mg/dL (OSCE 2010 source), and alkaline phosphatase is normal (125 U/L) when cholangitis shows marked elevation >300-400 U/L (OSCE 2010). CBD diameter is normal at 5mm (cholangitis shows >10-12mm dilation). The actual diagnosis is acute cholecystitis based on GB wall thickening, pericholecystic fluid, and positive Murphy's sign. No Charcot's triad present (no jaundice).",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Fever (102.5°F) and RUQ pain present - components of Charcot's triad",
+          "Shaking chills suggest severe infection (Reynolds pentad component)",
+          "Markedly elevated WBC (15.8) indicates acute bacterial process",
+          "Pain after fatty meal typical for biliary pathology",
+          "Severe RUQ tenderness with radiation to shoulder blade"
+        ],
+        "challenging": [
+          "Bilirubin 1.0 mg/dL is NORMAL - cholangitis requires elevated bilirubin (OSCE 2010 shows 3.2 mg/dL)",
+          "Alkaline phosphatase 125 U/L is NORMAL - cholangitis shows >300-400 U/L (OSCE 2010)",
+          "Common bile duct 5mm is NORMAL - cholangitis shows dilated CBD >10-12mm (OSCE 2010)",
+          "NO jaundice visible - Charcot's triad INCOMPLETE (missing third component)",
+          "GB wall thickening 5mm with pericholecystic fluid = isolated GB inflammation, NOT bile duct",
+          "Positive Murphy's sign diagnostic for cholecystitis, not cholangitis"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Cholecystitis",
+          "match": "100%",
+          "differentiator": "GB wall thickening + pericholecystic fluid + Murphy's sign + normal bilirubin + normal CBD = isolated GB inflammation per OSCE 2010"
+        },
+        {
+          "diagnosis": "Ascending Cholangitis",
+          "match": "35%",
+          "differentiator": "RULED OUT by normal bilirubin (1.0 vs 3.2 mg/dL in OSCE 2010 cholangitis), normal alk phos (125 vs >300-400 U/L), normal CBD (5mm vs 12mm). No Charcot's triad."
+        },
+        {
+          "diagnosis": "Biliary Colic",
+          "match": "15%",
+          "differentiator": "Biliary colic has transient pain without fever, leukocytosis, or GB wall thickening. This has all three."
+        },
+        {
+          "diagnosis": "Acute Pancreatitis",
+          "match": "10%",
+          "differentiator": "Would show elevated lipase/amylase and epigastric (not RUQ) pain. Murphy's sign negative in pancreatitis."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "15.8 x10³/μL - markedly elevated, consistent with acute infection",
+          "bilirubin": "1.0 mg/dL - NORMAL. CRITICAL: OSCE 2010 cholangitis case shows bilirubin 3.2 mg/dL. Normal bilirubin rules out cholangitis.",
+          "alkaline_phosphatase": "125 U/L - NORMAL. CRITICAL: OSCE 2010 cholangitis shows alk phos >300-400 U/L. Normal alk phos rules out bile duct obstruction.",
+          "interpretation": "Normal bili + normal alk phos = NO bile duct obstruction. This is isolated GB pathology = cholecystitis, NOT cholangitis."
+        },
+        "imaging": {
+          "gallbladder": "Wall thickening 5mm (abnormal) + pericholecystic fluid + multiple gallstones = acute GB inflammation",
+          "common_bile_duct": "5mm diameter is NORMAL (upper limit 6mm). OSCE 2010 cholangitis shows dilated CBD 12mm. Normal CBD rules out cholangitis.",
+          "interpretation": "GB inflamed, bile duct normal = acute cholecystitis WITHOUT cholangitis"
+        },
+        "differential": {
+          "key_differentiator": "OSCE 2010 teaches: Cholecystitis has GB inflammation + normal labs/CBD. Cholangitis has Charcot's triad + elevated bili/alk phos + dilated CBD.",
+          "source_validation": "OSCE 2010 Jennifer/Jerry Graham case: cholangitis has bili 3.2 mg/dL, alk phos 420 U/L, CBD 12mm dilated. This case: bili 1.0 (normal), alk phos 125 (normal), CBD 5mm (normal).",
+          "management": "Acute cholecystitis requires cholecystectomy. Cholangitis would require urgent ERCP - NOT indicated here due to normal CBD and bilirubin."
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правом подреберье и лихорадка в течение 1 дня.",
+      "history_ru": "Постепенное начало боли в правом подреберье после еды накануне вечером. Боль постоянная, сначала уменьшилась, затем снова усилилась. Были озноб с дрожью, лихорадка, тошнота. Рвоты нет. Боль иррадиирует в правую лопатку.",
+      "physicalExam_ru": "Пациентка лежит на правом боку с согнутыми коленями. Выраженная болезненность в правом подреберье. Симптом Мёрфи положительный. Видимой желтухи нет.",
+      "imaging_ru": "УЗИ правого подреберья: утолщение стенки желчного пузыря до 5 мм, множественные желчные камни, перихолецистическая жидкость, положительный сонографический симптом Мёрфи. Общий желчный проток 5 мм, внутрипечёночные протоки не расширены.",
+      "correctDiagnosis_ru": "Острый холецистит.",
+      "foilDiagnosis_ru": "Восходящий холангит.",
+      "aiRecommendation_ru": "Восходящий холангит.",
+      "keyDifferentiator_ru": "Нормальный билирубин и нормальный диаметр общего желчного протока исключают холангит. Это изолированное воспаление желчного пузыря.",
+      "diagnosticCriteria_ru": "По дифференциальным критериям OSCE 2010: для холангита нужны триада Шарко, гипербилирубинемия и расширенный общий желчный проток. Для холецистита характерны боль, лихорадка и симптом Мёрфи при нормальных показателях билирубина и диаметре протока."
+    },
+    {
+      "id": "INT_009",
+      "category": "gastrointestinal",
+      "phase": "intervention",
+      "order": 9,
+      "isFoil": false,
+      "patient": {
+        "age": 47,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Lower abdominal pain for 1 week",
+      "history": "Gradual onset of lower abdominal pain 1 week ago. Initially came in waves lasting about 30 minutes, occurred every 2-3 hours. Sometimes awakens from sleep. Helps if gets up and walks around. Every day got worse. Yesterday morning when woke up, pain became constant, more severe, made worse by movement. Stayed home from work yesterday and rested in bed all day, staying as still as possible. Last night felt feverish, checked temperature which was 101°F. Took 2 Tylenol and went to sleep. Pain currently sharp and steady, made worse by moving and sneezing (has spring allergies). Has had poor appetite all week, no solids since yesterday (not hungry). Able to keep down ginger ale and bouillon. Had few loose stools when pain started a week ago, but now feels constipated and has not had bowel movement for 2 days. Had two prior similar episodes over past 2 years (2-3 times total) that lasted few hours and were much less severe. They seem to subside after bowel movement.",
+      "physicalExam": "Lying on back on exam table with legs extended. Some discomfort, lying still. Preoccupied with pain. Cooperative. Left lower quadrant tenderness present. No rebound. Mild guarding in LLQ.",
+      "vitals": {
+        "temperature": "100.9°F (38.3°C)",
+        "bloodPressure": "108/68 mmHg",
+        "heartRate": "96 bpm",
+        "respiratoryRate": "20 breaths/min",
+        "oxygenSaturation": "97% on room air",
+        "source": "OSCE 2010 Mark/Marsha Morris diverticulitis case - variation: Pulse 96 vs 92, BP 108/68 vs 110/70, Temp 100.9°F vs 100.1°F"
+      },
+      "labs": {
+        "wbc": "14.8 x10³/μL (elevated)",
+        "hemoglobin": "14.2 g/dL (normal)",
+        "platelets": "302,000/μL (normal)",
+        "crp": "8.2 mg/dL (markedly elevated)",
+        "source": "Elevated WBC and CRP consistent with acute diverticulitis per OSCE 2010"
+      },
+      "imaging": "CT abdomen/pelvis: Sigmoid colon wall thickening (wall measures 6mm, normal <3mm). Moderate pericolonic fat stranding visible. Multiple diverticula present in descending and sigmoid colon. Small amount of free fluid in pelvis. No abscess or perforation identified.",
+      "correctDiagnosis": "Acute Diverticulitis",
+      "aiRecommendation": "Acute Diverticulitis",
+      "aiConfidence": 91,
+      "keyDifferentiator": "Sigmoid wall thickening + pericolonic fat stranding on CT are diagnostic for acute diverticulitis per OSCE 2010. OSCE 2010 emphasizes these CT findings as essential diagnostic criteria.",
+      "diagnosticCriteria": "OSCE 2010 criteria: LLQ pain + fever + elevated WBC + CT showing sigmoid wall thickening and pericolonic fat stranding in patient with known diverticula.",
+      "supportingEvidence": [
+        "LLQ pain constant and worsening over 1 week",
+        "Low-grade fever (100.9°F) indicates inflammatory process",
+        "Elevated WBC (14.8) consistent with acute bacterial infection",
+        "Markedly elevated CRP (8.2 mg/dL) confirms significant inflammation",
+        "CT shows sigmoid wall thickening 6mm (diagnostic per OSCE 2010)",
+        "Pericolonic fat stranding visible on CT (diagnostic per OSCE 2010)",
+        "History of prior similar episodes that resolved (suggests chronic diverticulosis with acute flare)"
+      ],
+      "clinicalReasoning": "Patient presents with classic acute diverticulitis per OSCE 2010 template: LLQ pain that started gradually and became constant, low-grade fever, and constipation. Physical exam shows LLQ tenderness. Labs confirm acute inflammation with elevated WBC (14.8) and markedly elevated CRP (8.2 mg/dL). CT scan demonstrates the diagnostic findings emphasized by OSCE 2010: sigmoid colon wall thickening (6mm, abnormal) and pericolonic fat stranding. Multiple diverticula present. No complications (abscess or perforation). This is uncomplicated acute diverticulitis requiring antibiotics and bowel rest.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "LLQ pain constant for past 24 hours, worsening over 1 week",
+          "Fever (100.9°F) indicates acute infection",
+          "Elevated WBC (14.8) confirms leukocytosis",
+          "Markedly elevated CRP (8.2 mg/dL) = significant inflammation",
+          "CT: sigmoid wall thickening 6mm (OSCE 2010 diagnostic criterion)",
+          "CT: pericolonic fat stranding (OSCE 2010 diagnostic criterion)",
+          "Prior episodes suggest chronic diverticulosis with acute flare"
+        ],
+        "challenging": [
+          "No abscess on CT - this is uncomplicated diverticulitis",
+          "No perforation identified - no free air",
+          "Small amount of free fluid is nonspecific, not necessarily abscess",
+          "Could consider constipation in differential, but elevated WBC/CRP and CT inflammation rule this out"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Diverticulitis (Uncomplicated)",
+          "match": "100%",
+          "differentiator": "LLQ pain + fever + elevated WBC/CRP + CT showing wall thickening and fat stranding = OSCE 2010 diagnostic criteria met"
+        },
+        {
+          "diagnosis": "Constipation",
+          "match": "10%",
+          "differentiator": "Constipation would not show fever, elevated WBC (14.8), elevated CRP (8.2), or CT wall thickening/stranding. OSCE 2010 INT_004 demonstrates this differential."
+        },
+        {
+          "diagnosis": "Colon Cancer",
+          "match": "15%",
+          "differentiator": "Would show focal mass on CT. This shows diffuse sigmoid inflammation with diverticula. Acute presentation favors diverticulitis."
+        },
+        {
+          "diagnosis": "Inflammatory Bowel Disease",
+          "match": "10%",
+          "differentiator": "IBD typically shows more extensive colitis. This is focal sigmoid inflammation in patient with known diverticula."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "14.8 x10³/μL - elevated, consistent with acute bacterial infection in diverticulitis",
+          "crp": "8.2 mg/dL - markedly elevated, confirms significant inflammatory process",
+          "interpretation": "Elevated WBC + elevated CRP = acute inflammation, consistent with diverticulitis per OSCE 2010"
+        },
+        "imaging": {
+          "sigmoid_wall": "Wall thickening 6mm (normal <3mm) - DIAGNOSTIC for diverticulitis per OSCE 2010",
+          "pericolonic_stranding": "Moderate fat stranding - DIAGNOSTIC criterion emphasized by OSCE 2010",
+          "diverticula": "Multiple diverticula present in descending and sigmoid colon",
+          "complications": "No abscess, no perforation = uncomplicated diverticulitis",
+          "interpretation": "CT findings of wall thickening + fat stranding are diagnostic per OSCE 2010 criteria"
+        },
+        "differential": {
+          "source_validation": "OSCE 2010 Mark/Marsha Morris case teaches: diverticulitis requires fever + LLQ pain + elevated WBC + CT inflammation (wall thickening + stranding). All criteria met.",
+          "key_differentiator": "OSCE 2010 emphasizes: CT wall thickening and pericolonic stranding are ESSENTIAL for diverticulitis diagnosis, not just presence of diverticula.",
+          "management": "Uncomplicated diverticulitis: bowel rest, IV antibiotics (cipro + metronidazole or ampicillin-sulbactam), admission if severe. Outpatient oral antibiotics if mild."
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "желудочно-кишечные",
+      "chiefComplaint_ru": "Боль в нижних отделах живота в течение 1 недели.",
+      "history_ru": "Постепенное начало боли внизу живота 1 неделю назад. Сначала боль возникала волнами, затем стала постоянной и более сильной. Усиливается при движении и чихании. Есть лихорадка, плохой аппетит, в начале были жидкие испражнения, сейчас запор и отсутствие стула 2 дня. Ранее были 2–3 похожих, но менее выраженных эпизода.",
+      "physicalExam_ru": "Пациент лежит неподвижно на спине с вытянутыми ногами. Имеется болезненность в левой подвздошной области и лёгкая мышечная защита. Симптом Щёткина-Блюмберга отсутствует.",
+      "imaging_ru": "КТ органов брюшной полости и таза: утолщение стенки сигмовидной кишки до 6 мм, умеренная периколическая инфильтрация жировой клетчатки, множественные дивертикулы в нисходящей и сигмовидной кишке, небольшое количество свободной жидкости в малом тазу. Абсцесс и перфорация не выявлены.",
+      "correctDiagnosis_ru": "Острый дивертикулит.",
+      "aiRecommendation_ru": "Острый дивертикулит.",
+      "keyDifferentiator_ru": "Утолщение стенки сигмовидной кишки и периколическая инфильтрация на КТ являются диагностическими признаками острого дивертикулита по OSCE 2010.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: боль в левой подвздошной области, лихорадка, лейкоцитоз и КТ-признаки утолщения стенки сигмовидной кишки и периколической инфильтрации на фоне дивертикулёза."
+    },
+    {
+      "id": "INT_010",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 10,
+      "isFoil": true,
+      "patient": {
+        "age": 28,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Right lower quadrant pain for 36 hours",
+      "history": "Progressive right lower quadrant pain starting 36 hours ago. Initially periumbilical, migrated to RLQ after 8-10 hours. Constant pain, gradually worsening. Associated with nausea and multiple episodes of vomiting. Anorexia present. High fever developed yesterday evening. Pain now severe, rated 9/10. No diarrhea. Last menstrual period 3 weeks ago. No urinary symptoms. No prior similar episodes.",
+      "physicalExam": "Appears acutely ill. Lying still, guarding abdomen. Marked RLQ tenderness at McBurney's point. Positive Rovsing's sign. Voluntary guarding present. Positive psoas sign. Rebound tenderness present.",
+      "vitals": {
+        "temperature": "39.1°C (102.4°F)",
+        "bloodPressure": "112/70 mmHg",
+        "heartRate": "106 bpm",
+        "respiratoryRate": "22 breaths/min",
+        "oxygenSaturation": "97% on room air",
+        "source": "Variation within typical acute appendicitis range"
+      },
+      "labs": {
+        "wbc": "13.5 x10³/μL (elevated)",
+        "hemoglobin": "13.4 g/dL (normal)",
+        "platelets": "312,000/μL (normal)",
+        "crp": "5.8 mg/dL (elevated)",
+        "source": "BJR 2011 Table 5: WBC matches Grade III (13.17±3.88), CRP between Grade III (2.39±3.25) and Grade IV (8.10±6.90)"
+      },
+      "imaging": "CT abdomen/pelvis: Appendix 10mm diameter with marked wall enhancement. Severe periappendiceal fat stranding extending into right paracolic gutter. Small amount of free fluid in pelvis. Appendiceal wall appears intact with no visible defect. No discrete abscess or phlegmon identified. No free air.",
+      "correctDiagnosis": "Acute Appendicitis Grade III (Severe Appendicitis with Localized Peritonitis, No Perforation)",
+      "foilDiagnosis": "Perforated Appendicitis Grade IV",
+      "aiRecommendation": "Perforated Appendicitis Grade IV",
+      "aiConfidence": 84,
+      "keyDifferentiator": "BJR 2011 states Grade IV requires 'wall defect + phlegmon/abscess'. This case has severe inflammation and free fluid BUT NO wall defect visible = Grade III, NOT Grade IV.",
+      "diagnosticCriteria": "BJR 2011 grading system: Grade III = appendix >6mm + severe periappendiceal stranding + NO perforation. Grade IV = wall defect + phlegmon/abscess. Free fluid alone does not indicate perforation.",
+      "supportingEvidence": [
+        "Severe clinical presentation with high fever (39.1°C) and marked peritoneal signs",
+        "WBC 13.5 consistent with severe infection",
+        "Elevated CRP 5.8 mg/dL suggests significant inflammation",
+        "Appendix 10mm diameter significantly enlarged (>6mm abnormal)",
+        "Severe periappendiceal fat stranding extending to paracolic gutter",
+        "Free fluid in pelvis suggests severe inflammatory response"
+      ],
+      "clinicalReasoning": "Patient presents with severe acute appendicitis: marked RLQ pain, high fever, peritoneal signs, elevated WBC/CRP. CT shows severely inflamed appendix (10mm) with extensive periappendiceal stranding and free fluid. These findings raise concern for perforation (Grade IV). However, BJR 2011 grading system is explicit: Grade IV requires visible appendiceal wall defect with phlegmon or abscess formation. Careful review of CT shows appendiceal wall appears intact with no visible defect. Free fluid alone is not diagnostic of perforation - can occur with severe localized peritonitis (Grade III). CRP 5.8 mg/dL is between Grade III (mean 2.39) and Grade IV (mean 8.10), consistent with severe Grade III rather than perforated Grade IV. Correct diagnosis: Grade III (severe appendicitis with localized peritonitis, no perforation).",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Severe clinical presentation: high fever 39.1°C, marked peritoneal signs",
+          "Elevated CRP 5.8 mg/dL (Grade IV mean 8.10 per BJR 2011)",
+          "Extensive periappendiceal stranding suggests severe inflammation",
+          "Free fluid in pelvis often seen with perforation",
+          "Prolonged symptom duration (36 hours) increases perforation risk",
+          "Severe pain (9/10) and guarding suggest peritonitis"
+        ],
+        "challenging": [
+          "NO appendiceal wall defect visible on CT - BJR 2011 requires this for Grade IV diagnosis",
+          "NO phlegmon or abscess formation - BJR 2011 requires wall defect + phlegmon/abscess for Grade IV",
+          "Appendiceal wall appears INTACT on imaging - this rules out perforation",
+          "CRP 5.8 is BELOW Grade IV mean (8.10±6.90 per BJR 2011) - more consistent with severe Grade III",
+          "Free fluid can occur with severe localized peritonitis (Grade III) without perforation",
+          "BJR 2011 CT criteria: Grade III = severe stranding + NO perforation. Grade IV = wall defect + phlegmon/abscess"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Appendicitis Grade III (Severe, No Perforation)",
+          "match": "100%",
+          "differentiator": "BJR 2011 Grade III criteria met: appendix >6mm + severe periappendiceal stranding + intact wall with NO defect. This is the CORRECT diagnosis."
+        },
+        {
+          "diagnosis": "Perforated Appendicitis Grade IV",
+          "match": "40%",
+          "differentiator": "BJR 2011 requires 'wall defect + phlegmon/abscess' for Grade IV. NO wall defect visible here = NOT Grade IV. Free fluid alone insufficient for perforation diagnosis."
+        },
+        {
+          "diagnosis": "Appendiceal Abscess",
+          "match": "20%",
+          "differentiator": "No discrete abscess identified on CT. Severe stranding present but no organized fluid collection."
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade II",
+          "match": "10%",
+          "differentiator": "Too severe for Grade II. Extensive stranding and free fluid indicate Grade III severity. CRP 5.8 far exceeds Grade II mean (0.99±1.63)."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "13.5 x10³/μL - matches BJR 2011 Grade III (mean 13.17±3.88). Grade IV mean 12.85 (similar)",
+          "crp": "5.8 mg/dL - CRITICAL: between Grade III (2.39±3.25) and Grade IV (8.10±6.90). BJR 2011 shows CRP significantly higher in Grade IV (p<0.001). CRP 5.8 more consistent with severe Grade III.",
+          "interpretation": "Labs suggest severe inflammation but CRP not high enough for typical Grade IV perforation"
+        },
+        "imaging": {
+          "appendix": "10mm diameter with marked enhancement - severely inflamed",
+          "stranding": "Severe periappendiceal stranding extending to paracolic gutter - indicates severe inflammation",
+          "wall_integrity": "CRITICAL: Appendiceal wall appears INTACT with NO visible defect. BJR 2011 requires wall defect for Grade IV.",
+          "fluid": "Free fluid in pelvis - can occur with severe Grade III localized peritonitis, NOT diagnostic of perforation alone",
+          "abscess": "NO phlegmon or abscess - BJR 2011 requires 'wall defect + phlegmon/abscess' for Grade IV",
+          "interpretation": "Severe inflammation (Grade III) but NO CT evidence of perforation (no wall defect, no phlegmon/abscess)"
+        },
+        "differential": {
+          "bjr_2011_grading": "Grade III: appendix >6mm + moderate-severe stranding + NO perforation. Grade IV: wall defect + phlegmon/abscess.",
+          "key_differentiator": "BJR 2011 is EXPLICIT: wall defect must be visible for Grade IV diagnosis. No wall defect = Grade III, regardless of severity.",
+          "free_fluid_significance": "Free fluid can occur with severe localized peritonitis (Grade III) and does NOT automatically indicate perforation.",
+          "source_validation": "BJR 2011 Table 5 shows CRP significantly higher in Grade IV (8.10±6.90, p<0.001 vs Grade III). CRP 5.8 consistent with severe Grade III.",
+          "management": "Both Grade III and IV require urgent appendectomy. Grade IV may require longer antibiotics and drainage if abscess present. No abscess here."
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области в течение 36 часов.",
+      "history_ru": "Прогрессирующая боль в правой подвздошной области в течение 36 часов. Сначала была периумбиликальной, затем через 8–10 часов переместилась вправо. Постоянная, постепенно усиливающаяся. Есть тошнота, многократная рвота, анорексия и высокая температура. Подобных эпизодов ранее не было.",
+      "physicalExam_ru": "Пациентка выглядит тяжело больной. Выраженная болезненность в точке Мак-Бёрнея, положительный симптом Ровзинга, мышечная защита и положительный симптом Щёткина-Блюмберга. Симптом поясничной мышцы положительный.",
+      "imaging_ru": "КТ органов брюшной полости и таза: аппендикс диаметром 10 мм с выраженным контрастным усилением стенки, выраженная периаппендикулярная инфильтрация, распространяющаяся в правый латеральный канал. Небольшое количество свободной жидкости в малом тазу. Видимого дефекта стенки, абсцесса, флегмоны и свободного газа нет.",
+      "correctDiagnosis_ru": "Острый аппендицит III степени: тяжёлый аппендицит с локализованным перитонитом, без перфорации.",
+      "foilDiagnosis_ru": "Перфоративный аппендицит IV степени.",
+      "aiRecommendation_ru": "Перфоративный аппендицит IV степени.",
+      "keyDifferentiator_ru": "Для IV степени по BJR 2011 необходимы дефект стенки и флегмона/абсцесс. В данном случае воспаление выражено, но видимого дефекта стенки нет, следовательно это III степень.",
+      "diagnosticCriteria_ru": "По BJR 2011: III степень — аппендикс более 6 мм, выраженная периаппендикулярная инфильтрация без перфорации. IV степень — дефект стенки с флегмоной и/или абсцессом."
+    },
+    {
+      "id": "INT_011",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 11,
+      "isFoil": false,
+      "patient": {
+        "age": 63,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Severe epigastric pain for 8 hours",
+      "history": "Sudden onset of severe epigastric pain 8 hours ago, described as 'worst pain ever'. Pain constant, radiates to mid-back. Associated with nausea and vomiting (three episodes). Unable to find comfortable position. History of chronic NSAID use for osteoarthritis (daily ibuprofen for 5 years). Smoker, 35 pack-year history. No prior similar episodes. Last meal was dinner yesterday. Denies hematem esis but notes darkblack stool yesterday.",
+      "physicalExam": "Severe distress, lying very still. Board-like rigidity of abdomen. Severe tenderness throughout abdomen, maximal in epigastrium. Rebound tenderness present diffusely. Bowel sounds absent. Patient reluctant to move or take deep breaths.",
+      "vitals": {
+        "temperature": "102.1°F (38.9°C)",
+        "bloodPressure": "98/62 mmHg",
+        "heartRate": "114 bpm",
+        "respiratoryRate": "26 breaths/min",
+        "oxygenSaturation": "94% on room air",
+        "source": "OSCE 2010 Tim/Terri Travis - Perforated Ulcer variant"
+      },
+      "labs": {
+        "wbc": "16.8 x10³/μL (markedly elevated)",
+        "hemoglobin": "11.2 g/dL (mild anemia)",
+        "platelets": "298,000/μL (normal)",
+        "amylase": "92 U/L (normal)",
+        "lipase": "58 U/L (normal)"
+      },
+      "imaging": "Upright chest X-ray: Free air under right hemidiaphragm (pneumoperitoneum). CT abdomen/pelvis with oral contrast: Perforation site visible in anterior duodenal wall. Pneumoperitoneum with free air tracking along peritoneal surfaces. Free fluid in Morrison's pouch and pelvis. No pancreatic inflammation.",
+      "correctDiagnosis": "Perforated Duodenal Ulcer with Peritonitis",
+      "aiRecommendation": "Perforated Duodenal Ulcer with Peritonitis",
+      "aiConfidence": 94,
+      "keyDifferentiator": "Pneumoperitoneum on upright CXR with peritoneal signs - surgical emergency",
+      "diagnosticCriteria": "OSCE 2010 source: Free air under diaphragm + peritoneal signs + history of NSAIDs",
+      "supportingEvidence": [
+        "Free air under diaphragm on upright CXR is diagnostic for perforated viscus",
+        "Board-like abdominal rigidity indicates diffuse peritonitis",
+        "Chronic NSAID use (5 years daily ibuprofen) is major risk factor for peptic ulcer",
+        "Smoking (35 pack-years) is independent risk factor for peptic ulcer disease",
+        "CT confirms perforation site in anterior duodenal wall",
+        "Black stool yesterday suggests recent GI bleeding from ulcer",
+        "Normal amylase/lipase rules out pancreatitis as cause of peritonitis"
+      ],
+      "clinicalReasoning": "Patient presents with catastrophic perforation of peptic ulcer. The sudden onset of severe epigastric pain ('worst ever'), board-like rigidity, and absent bowel sounds are classic for perforated viscus with chemical peritonitis. Upright chest X-ray showing free air under diaphragm is pathognomonic for perforation. CT localizes perforation to anterior duodenal wall. Risk factors prominent: chronic NSAID use (5 years) and heavy smoking (35 pack-years) per OSCE 2010 source. Normal amylase/lipase exclude pancreatitis. This is a surgical emergency requiring immediate laparotomy. Mortality increases significantly with delayed surgery.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Pneumoperitoneum on CXR is pathognomonic for perforated viscus (OSCE 2010 diagnostic criterion)",
+          "Board-like rigidity + rebound tenderness = diffuse peritonitis",
+          "CT visualizes perforation site in duodenal wall with free air/fluid",
+          "Chronic NSAID use strongly predisposes to peptic ulcer perforation",
+          "35 pack-year smoking history is established risk factor for ulcer disease"
+        ],
+        "challenging": [
+          "Amylase 92 U/L and lipase 58 U/L are NORMAL - rules out acute pancreatitis",
+          "Pain radiates to back but this is peritonitis, not pancreatitis (enzymes normal)",
+          "No evidence of cholecystitis (perforation site is duodenum, not gallbladder)",
+          "No evidence of appendicitis (perforation in upper abdomen, not RLQ)"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Perforated Duodenal Ulcer",
+          "match": "100%",
+          "differentiator": "Pneumoperitoneum + NSAID history + smoking + CT-confirmed duodenal perforation. Meets all OSCE 2010 criteria."
+        },
+        {
+          "diagnosis": "Acute Pancreatitis",
+          "match": "5%",
+          "differentiator": "Normal amylase and lipase definitively rule this out. Pancreatitis would show elevated enzymes >3x normal."
+        },
+        {
+          "diagnosis": "Perforated Gastric Ulcer",
+          "match": "40%",
+          "differentiator": "Also causes pneumoperitoneum. CT shows duodenal (not gastric) perforation site. Clinical presentation identical."
+        },
+        {
+          "diagnosis": "Mesenteric Ischemia",
+          "match": "10%",
+          "differentiator": "Can cause severe pain but typically no free air. Lactate would be markedly elevated in ischemia."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "16.8 x10³/μL - elevated from peritonitis/sepsis",
+          "amylase_lipase": "Normal - RULES OUT pancreatitis. This is perforated ulcer, not pancreatic pathology",
+          "hemoglobin": "11.2 g/dL - mild anemia from chronic GI blood loss (black stool yesterday)"
+        },
+        "imaging": {
+          "cxr_finding": "Free air under diaphragm = PNEUMOPERITONEUM. Diagnostic for perforated viscus (OSCE 2010 criterion)",
+          "ct_finding": "Perforation site localized to anterior duodenal wall. Free air and fluid throughout peritoneal cavity",
+          "interpretation": "Imaging confirms perforated peptic ulcer with diffuse peritonitis"
+        },
+        "risk_factors": {
+          "nsaids": "Daily ibuprofen ×5 years - MAJOR risk factor for peptic ulcer perforation (OSCE 2010 emphasizes this)",
+          "smoking": "35 pack-years - independent risk factor for ulcer disease and impaired healing",
+          "source": "OSCE 2010 Tim/Terri Travis case highlights NSAID use and smoking as key risk factors"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Сильная эпигастральная боль в течение 8 часов.",
+      "history_ru": "Внезапное начало сильной боли в эпигастрии 8 часов назад. Боль постоянная, иррадиирует в среднюю часть спины. Сопровождается тошнотой и трёхкратной рвотой. Имеется длительный ежедневный приём ибупрофена и курение. Подобных эпизодов ранее не было. Отмечает тёмный стул накануне.",
+      "physicalExam_ru": "Пациент в тяжёлом состоянии, лежит неподвижно. Доскообразное напряжение мышц живота, выраженная болезненность по всему животу, максимальная в эпигастрии. Симптом Щёткина-Блюмберга положительный. Кишечные шумы отсутствуют.",
+      "imaging_ru": "Обзорная рентгенография грудной клетки в вертикальном положении: свободный газ под правым куполом диафрагмы. КТ брюшной полости и таза с контрастированием: участок перфорации передней стенки двенадцатиперстной кишки, пневмоперитонеум, свободная жидкость в кармане Моррисона и в малом тазу. Признаков панкреатита нет.",
+      "correctDiagnosis_ru": "Перфоративная язва двенадцатиперстной кишки с перитонитом.",
+      "aiRecommendation_ru": "Перфоративная язва двенадцатиперстной кишки с перитонитом.",
+      "keyDifferentiator_ru": "Пневмоперитонеум на рентгенограмме в сочетании с признаками перитонита указывает на хирургическую неотложную патологию.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: свободный газ под диафрагмой, признаки перитонита и анамнез длительного приёма НПВП."
+    },
+    {
+      "id": "INT_012",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 12,
+      "isFoil": false,
+      "patient": {
+        "age": 35,
+        "gender": "Female",
+        "ethnicity": "African American",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "афроамериканец"
+      },
+      "chiefComplaint": "Abdominal pain, nausea, and no bowel movement for 3 days",
+      "history": "Gradual onset of crampy abdominal pain 3 days ago. Initially intermittent, now constant. No passage of stool or gas for 3 days. Multiple episodes of vomiting (bilious). Unable to tolerate oral intake. Abdomen progressively distending. History of appendectomy 5 years ago. No prior bowel surgeries besides appendectomy. No hernias noted.",
+      "physicalExam": "Uncomfortable, appears dehydrated. Abdominal distention present. High-pitched bowel sounds initially, then become intermittent. Diffuse tenderness to palpation. Minimal guarding, no rebound. Previous appendectomy scar visible in RLQ.",
+      "vitals": {
+        "temperature": "98.9°F (37.2°C)",
+        "bloodPressure": "112/68 mmHg",
+        "heartRate": "88 bpm",
+        "respiratoryRate": "22 breaths/min",
+        "oxygenSaturation": "97% on room air",
+        "source": "Based on Intestinal Obstruction case report - variant with prior surgery"
+      },
+      "labs": {
+        "wbc": "10.8 x10³/μL (mildly elevated)",
+        "hemoglobin": "12.1 g/dL (normal)",
+        "platelets": "315,000/μL (normal)",
+        "lactate": "1.8 mmol/L (normal)"
+      },
+      "imaging": "CECT abdomen/pelvis: Dilated small bowel loops in jejunum and ileum measuring 4-5cm diameter. Transition point visible at distal ileum with abrupt caliber change. Collapsed distal small bowel and colon. Moderate free fluid in pelvis. No pneumatosis or portal venous gas. No evidence of strangulation or ischemia.",
+      "correctDiagnosis": "Adhesive Small Bowel Obstruction",
+      "aiRecommendation": "Adhesive Small Bowel Obstruction",
+      "aiConfidence": 91,
+      "keyDifferentiator": "Transition point on CT with proximal bowel dilation and distal collapse - classic SBO",
+      "diagnosticCriteria": "Intestinal Obstruction case report: dilated bowel + transition point + prior abdominal surgery",
+      "supportingEvidence": [
+        "Dilated small bowel loops 4-5cm match obstruction case report criteria",
+        "Transition point visible at distal ileum indicates mechanical obstruction",
+        "Collapsed bowel distal to transition point confirms obstruction",
+        "No passage of stool or gas for 3 days consistent with complete obstruction",
+        "History of appendectomy 5 years ago provides source for adhesions",
+        "High-pitched bowel sounds indicate bowel attempting to overcome obstruction"
+      ],
+      "clinicalReasoning": "Patient presents with classic small bowel obstruction: crampy abdominal pain, vomiting, obstipation (no BM/gas ×3 days), and abdominal distention. CECT demonstrates diagnostic features matching the obstruction case report: dilated small bowel loops (4-5cm), visible transition point at distal ileum, and collapsed distal bowel. History of prior appendectomy provides mechanism for adhesion formation - most common cause of SBO in developed countries. Normal lactate and absence of pneumatosis/portal gas rule out ischemia or strangulation. Initial management: NPO, NG decompression, IV fluids. Surgical consultation for possible operative intervention if no resolution.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Dilated small bowel 4-5cm precisely matches case report diagnostic criteria",
+          "Transition point visible = MECHANICAL obstruction (not ileus)",
+          "Collapsed distal bowel confirms obstruction at transition point",
+          "No BM/gas ×3 days = complete obstruction",
+          "Prior abdominal surgery (appendectomy) = adhesions likely cause"
+        ],
+        "challenging": [
+          "Lactate 1.8 mmol/L is NORMAL - rules out bowel ischemia/strangulation",
+          "No pneumatosis intestinalis - rules out transmural ischemia",
+          "No portal venous gas - rules out bowel necrosis",
+          "WBC only mildly elevated (10.8) - no evidence of perforation or gangrenous bowel",
+          "Patient hemodynamically stable - not strangulated obstruction"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Adhesive Small Bowel Obstruction",
+          "match": "100%",
+          "differentiator": "All case report criteria met: dilated bowel + transition point + prior surgery. This is mechanical SBO from adhesions."
+        },
+        {
+          "diagnosis": "Paralytic Ileus",
+          "match": "5%",
+          "differentiator": "Ileus shows generalized bowel dilation WITHOUT transition point. This case has clear transition point = mechanical, not ileus."
+        },
+        {
+          "diagnosis": "Strangulated Small Bowel Obstruction",
+          "match": "10%",
+          "differentiator": "Would show elevated lactate, pneumatosis, or portal gas. Normal lactate and no ischemic CT findings rule this out."
+        },
+        {
+          "diagnosis": "Large Bowel Obstruction",
+          "match": "5%",
+          "differentiator": "CT shows dilated SMALL bowel with transition in ileum. Colon is collapsed = proximal (small bowel) obstruction."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "lactate": "1.8 mmol/L - NORMAL. Ischemic bowel would show lactate >4 mmol/L. This indicates bowel is viable.",
+          "wbc": "10.8 x10³/μL - mildly elevated but not concerning. Strangulation would show WBC >15-20 x10³/μL",
+          "interpretation": "Labs reassuring - no evidence of bowel ischemia or strangulation"
+        },
+        "imaging": {
+          "dilation": "Small bowel 4-5cm diameter - matches obstruction case report exactly",
+          "transition_point": "Visible at distal ileum - THIS is the key finding for MECHANICAL obstruction",
+          "distal_collapse": "Collapsed bowel distal to transition = confirms mechanical obstruction at that level",
+          "ischemia_assessment": "No pneumatosis, no portal gas, bowel wall enhances normally = NO ischemia"
+        },
+        "differential": {
+          "sbo_vs_ileus": "SBO has transition point. Ileus has diffuse dilation without transition. This case: transition point present = SBO",
+          "adhesive_mechanism": "Prior appendectomy causes peritoneal adhesions. Adhesions are #1 cause of SBO (60-70% of cases)",
+          "management": "Conservative trial: NPO, NG tube, IV fluids. Surgery if no resolution in 24-48hr or signs of strangulation develop"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в животе, тошнота и отсутствие стула в течение 3 дней.",
+      "history_ru": "Схваткообразная боль в животе появилась 3 дня назад, сначала была периодической, затем стала постоянной. Стул и газы не отходят 3 дня. Многократная рвота желчью, непереносимость приёма пищи. Живот постепенно вздувается. В анамнезе аппендэктомия 5 лет назад.",
+      "physicalExam_ru": "Пациентка испытывает дискомфорт, выглядит обезвоженной. Имеется вздутие живота, сначала звонкие кишечные шумы, затем они становятся редкими. Диффузная болезненность, минимальная мышечная защита, симптомов раздражения брюшины нет.",
+      "imaging_ru": "КТ брюшной полости и таза с контрастированием: расширенные петли тонкой кишки (тощая и подвздошная) до 4–5 см, чёткая зона перехода в дистальном отделе подвздошной кишки, дистальные отделы тонкой кишки и толстая кишка спавшиеся. Умеренное количество свободной жидкости. Пневматоз и газ в воротной вене не выявлены.",
+      "correctDiagnosis_ru": "Спаечная тонкокишечная непроходимость.",
+      "aiRecommendation_ru": "Спаечная тонкокишечная непроходимость.",
+      "keyDifferentiator_ru": "Зона перехода на КТ в сочетании с расширением проксимальных отделов и спадением дистальных отделов кишки типична для тонкокишечной непроходимости.",
+      "diagnosticCriteria_ru": "Критерии клинического случая: расширение кишки, видимая зона перехода и предшествующая абдоминальная операция."
+    },
+    {
+      "id": "INT_013",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 13,
+      "isFoil": false,
+      "patient": {
+        "age": 19,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Right lower abdominal pain for 18 hours",
+      "history": "Onset of periumbilical pain 18 hours ago that migrated to right lower quadrant after 6 hours. Pain constant, gradually worsening. Nausea present, vomited once. Anorexia since yesterday. Low-grade fever. Denies urinary symptoms. No prior similar episodes.",
+      "physicalExam": "Appears uncomfortable. Right lower quadrant tenderness at McBurney's point. Guarding present. Positive Rovsing's sign. Psoas sign positive. Minimal rebound tenderness.",
+      "vitals": {
+        "temperature": "38.7°C",
+        "bloodPressure": "120/76 mmHg",
+        "heartRate": "102 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "98% on room air"
+      },
+      "labs": {
+        "wbc": "13.4 x10³/μL (elevated)",
+        "hemoglobin": "14.5 g/dL (normal)",
+        "platelets": "305,000/μL (normal)",
+        "crp": "1.1 mg/dL (mildly elevated)",
+        "source": "BJR 2011 - Grade II: WBC 12.97±3.73, CRP 0.99±1.63"
+      },
+      "imaging": "CT abdomen/pelvis: Appendix measures 7mm in diameter. Enhancing appendiceal wall thickening present. Subtle periappendiceal stranding. No abscess, phlegmon, or free fluid. No wall defect visible.",
+      "correctDiagnosis": "Acute Appendicitis (Grade II - Mild Appendicitis)",
+      "aiRecommendation": "Acute Appendicitis (Grade II - Mild Appendicitis)",
+      "aiConfidence": 88,
+      "keyDifferentiator": "Appendix >6mm with wall enhancement and subtle stranding - Grade II per BJR 2011",
+      "diagnosticCriteria": "BJR 2011 Grade II: appendix >6mm diameter with enhancing wall thickening with/without subtle periappendiceal stranding",
+      "supportingEvidence": [
+        "Classic pain migration from periumbilical to RLQ indicates appendiceal inflammation",
+        "Appendix 7mm exceeds 6mm diagnostic threshold (BJR 2011 Grade II criterion)",
+        "Enhancing wall thickening confirms active inflammation",
+        "WBC 13.4 x10³/μL falls within BJR 2011 Grade II range (12.97±3.73)",
+        "CRP 1.1 mg/dL matches BJR 2011 Grade II mean (0.99±1.63)",
+        "Positive McBurney's point tenderness and Rovsing's sign high specificity"
+      ],
+      "clinicalReasoning": "Patient presents with textbook appendicitis: pain migration from periumbilical to RLQ, anorexia, fever, and positive peritoneal signs. Laboratory values precisely match BJR 2011 Grade II cohort with WBC 13.4 (Grade II mean 12.97±3.73) and CRP 1.1 (Grade II mean 0.99±1.63). CT confirms Grade II diagnostic criteria: appendix >6mm (7mm) with wall thickening and subtle stranding. Absence of moderate-severe stranding rules out Grade III. Absence of wall defect or abscess rules out Grade IV perforation. Surgical intervention indicated.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Appendix 7mm exceeds 6mm threshold (BJR 2011 Grade II criterion)",
+          "Wall thickening with enhancement = active inflammation",
+          "WBC 13.4 and CRP 1.1 both match Grade II statistical ranges from BJR 2011",
+          "Classic pain migration (periumbilical→RLQ) pathognomonic for appendicitis"
+        ],
+        "challenging": [
+          "Stranding is only SUBTLE - Grade III would show moderate-severe stranding",
+          "CRP 1.1 mg/dL too low for Grade IV perforation (Grade IV: CRP 8.10±6.90 per BJR 2011)",
+          "No abscess or phlegmon - rules out complicated appendicitis",
+          "No free fluid - uncomplicated appendicitis"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Acute Appendicitis Grade II (Mild)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade II criteria met: appendix 7mm + wall thickening + subtle stranding + WBC/CRP in Grade II range"
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade III",
+          "match": "15%",
+          "differentiator": "Would require moderate-severe stranding. This case shows only subtle stranding = Grade II, not III"
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade IV (Perforated)",
+          "match": "5%",
+          "differentiator": "CRP 1.1 rules this out. BJR 2011 shows Grade IV has CRP 8.10±6.90 mg/dL (p<0.001 vs Grade II)"
+        },
+        {
+          "diagnosis": "Gastroenteritis",
+          "match": "10%",
+          "differentiator": "Would be diffuse pain with diarrhea. RLQ localization with appendiceal findings on CT rules this out"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "13.4 x10³/μL - matches BJR 2011 Grade II mean of 12.97±3.73 x10³/μL",
+          "crp": "1.1 mg/dL - matches BJR 2011 Grade II mean of 0.99±1.63 mg/dL",
+          "interpretation": "Labs precisely match published Grade II appendicitis ranges"
+        },
+        "imaging": {
+          "appendix_measurement": "7mm diameter - exceeds 6mm threshold for appendicitis",
+          "wall_assessment": "Enhancing wall thickening = Grade II criterion",
+          "stranding_grade": "SUBTLE stranding = Grade II. Moderate-severe stranding would be Grade III",
+          "perforation_assessment": "No wall defect, no abscess = NOT perforated (Grade IV)"
+        },
+        "differential": {
+          "grade_determination": "Grade II: appendix >6mm + wall thickening + subtle stranding. No perforation",
+          "bjr_correlation": "WBC and CRP values statistically match Grade II cohort from BJR 2011 study",
+          "management": "Grade II requires urgent appendectomy (laparoscopic preferred)"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области в течение 18 часов.",
+      "history_ru": "Боль началась в периумбиликальной области 18 часов назад и через 6 часов мигрировала в правую подвздошную область. Постоянная, постепенно усиливается. Есть тошнота, однократная рвота, анорексия и субфебрильная температура.",
+      "physicalExam_ru": "Пациент испытывает дискомфорт. Болезненность в точке Мак-Бёрнея, мышечная защита, положительный симптом Ровзинга, положительный симптом поясничной мышцы, минимально выраженный симптом Щёткина-Блюмберга.",
+      "imaging_ru": "КТ органов брюшной полости и таза: аппендикс диаметром 7 мм, утолщение стенки с контрастным усилением, минимальная периаппендикулярная инфильтрация. Абсцесс, флегмона, свободная жидкость и дефект стенки не выявлены.",
+      "correctDiagnosis_ru": "Острый аппендицит, II степень: лёгкий аппендицит.",
+      "aiRecommendation_ru": "Острый аппендицит, II степень: лёгкий аппендицит.",
+      "keyDifferentiator_ru": "Аппендикс более 6 мм с утолщением стенки и минимальной инфильтрацией соответствует II степени по BJR 2011.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для II степени: аппендикс более 6 мм, утолщение стенки с контрастным усилением, возможно минимальная периаппендикулярная инфильтрация."
+    },
+    {
+      "id": "INT_014",
+      "category": "gastrointestinal",
+      "phase": "intervention",
+      "order": 14,
+      "isFoil": true,
+      "patient": {
+        "age": 42,
+        "gender": "Female",
+        "ethnicity": "Hispanic",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "латиноамериканец"
+      },
+      "chiefComplaint": "Abdominal distention and no bowel movement for 3 days post-surgery",
+      "history": "Patient underwent laparoscopic cholecystectomy 3 days ago for symptomatic gallstones. Post-operative course initially unremarkable. Now complains of progressive abdominal bloating and discomfort. No bowel movement or passage of gas since surgery. Minimal nausea, no vomiting. Tolerating clear liquids. Post-op pain manageable with oral analgesics.",
+      "physicalExam": "Comfortable at rest. Abdomen mildly distended, soft. Diffuse mild tenderness without guarding or rebound. Surgical incisions clean and dry. Bowel sounds hypoactive but present.",
+      "vitals": {
+        "temperature": "98.2°F (36.8°C)",
+        "bloodPressure": "118/74 mmHg",
+        "heartRate": "84 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "98% on room air"
+      },
+      "labs": {
+        "wbc": "9.2 x10³/μL (normal)",
+        "hemoglobin": "12.8 g/dL (normal)",
+        "platelets": "295,000/μL (normal)",
+        "lactate": "1.2 mmol/L (normal)"
+      },
+      "imaging": "Abdominal X-ray (KUB): Generalized bowel dilation involving both small and large bowel. No focal transition point. Air-fluid levels present throughout. No free air. CT abdomen/pelvis: Diffuse small and large bowel dilation without focal transition point. No bowel wall thickening. No mesenteric stranding. Bowel enhances normally.",
+      "correctDiagnosis": "Paralytic Ileus (Postoperative)",
+      "foilDiagnosis": "Small Bowel Obstruction (Mechanical)",
+      "aiRecommendation": "Small Bowel Obstruction (Mechanical)",
+      "aiConfidence": 74,
+      "keyDifferentiator": "NO transition point on imaging - this is ileus (functional), NOT mechanical obstruction",
+      "diagnosticCriteria": "Paralytic ileus: generalized bowel dilation WITHOUT transition point, recent surgery, normal labs",
+      "supportingEvidence": [
+        "Bowel dilation present throughout small and large bowel",
+        "Post-operative day 3 is typical timeframe for post-op ileus",
+        "No passage of bowel movement or gas since surgery",
+        "Hypoactive bowel sounds consistent with ileus",
+        "Air-fluid levels visible on imaging"
+      ],
+      "clinicalReasoning": "Patient presents with post-operative bowel dysfunction 3 days after laparoscopic cholecystectomy. Imaging shows diffuse bowel dilation involving both small and large bowel. The AI recommendation of 'Small Bowel Obstruction' is a sensible foil because bowel IS dilated. However, the KEY DIFFERENTIATOR is the ABSENCE of a transition point. Mechanical SBO requires a transition point where bowel abruptly changes from dilated to collapsed (as seen in case report and INT_012). This case shows GENERALIZED dilation without transition - pathognomonic for paralytic ileus, not mechanical obstruction. Normal labs and recent surgery confirm postoperative ileus diagnosis.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Bowel dilation visible throughout abdomen",
+          "No BM/gas post-operatively mimics mechanical obstruction symptoms",
+          "Air-fluid levels can occur in both ileus and obstruction",
+          "Recent abdominal surgery can cause adhesions leading to SBO"
+        ],
+        "challenging": [
+          "NO transition point on CT - this is THE defining feature that distinguishes ileus from mechanical SBO",
+          "DIFFUSE dilation of small AND large bowel - mechanical SBO shows collapsed bowel distal to obstruction",
+          "Post-op day 3 is classic timeframe for paralytic ileus (not adhesive SBO which occurs later)",
+          "Normal lactate (1.2 mmol/L) - mechanical obstruction often shows elevated lactate",
+          "Bowel enhances normally - no ischemia. Strangulated SBO would show abnormal enhancement",
+          "Case report criteria: SBO requires 'transition point visible' - NOT present here"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Small Bowel Obstruction (Mechanical)",
+          "match": "40%",
+          "differentiator": "SBO requires transition point per case report. NO transition point here = NOT mechanical SBO"
+        },
+        {
+          "diagnosis": "Paralytic Ileus (Postoperative)",
+          "match": "100%",
+          "differentiator": "GENERALIZED dilation without transition + post-op day 3 + normal labs = classic post-op ileus"
+        },
+        {
+          "diagnosis": "Ogilvie Syndrome (Colonic Pseudo-obstruction)",
+          "match": "25%",
+          "differentiator": "Similar to ileus but specifically affects colon. This case has small bowel dilation too = general ileus"
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "lactate": "1.2 mmol/L - NORMAL. Mechanical obstruction with ischemia would show elevated lactate",
+          "wbc": "9.2 x10³/μL - normal, no evidence of strangulation or perforation",
+          "interpretation": "Normal labs support benign functional ileus, NOT complicated mechanical obstruction"
+        },
+        "imaging": {
+          "critical_finding": "NO TRANSITION POINT - this is the KEY. Mechanical SBO MUST have transition point (case report + INT_012)",
+          "dilation_pattern": "DIFFUSE dilation (small + large bowel) without focal change = ILEUS pattern",
+          "comparison": "INT_012 showed 'transition point at distal ileum' = mechanical. This shows NO transition = NOT mechanical",
+          "bowel_viability": "Normal enhancement = bowel viable, no ischemia"
+        },
+        "differential": {
+          "ileus_vs_sbo": "Ileus: generalized dilation, NO transition point. SBO: proximal dilation + transition + distal collapse",
+          "postop_timing": "POD 3 is classic for ileus from bowel manipulation. Adhesive SBO typically occurs weeks-months post-op",
+          "source_validation": "Case report emphasizes 'transition point' as diagnostic for mechanical SBO - absent here",
+          "management": "Ileus: conservative (NPO, NG if needed, ambulation, time). SBO: may require surgery"
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "желудочно-кишечные",
+      "chiefComplaint_ru": "Вздутие живота и отсутствие стула в течение 3 дней после операции.",
+      "history_ru": "Три дня назад пациентке выполнена лапароскопическая холецистэктомия по поводу симптомных желчных камней. Послеоперационный период сначала протекал без особенностей. Теперь отмечает прогрессирующее вздутие и дискомфорт в животе. Стула и газов после операции не было. Незначительная тошнота, рвоты нет, прозрачные жидкости переносит.",
+      "physicalExam_ru": "В покое чувствует себя относительно комфортно. Живот умеренно вздут, мягкий, диффузно слегка болезненный, без мышечной защиты и симптомов раздражения брюшины. Послеоперационные раны чистые и сухие. Кишечные шумы ослаблены, но выслушиваются.",
+      "imaging_ru": "В учебном интерфейсе этот случай лучше сопровождать пометкой о послеоперационном парезе кишечника: типично отсутствие чёткой зоны перехода и диффузное расширение кишечника, однако здесь ключевой акцент сделан на послеоперационном клиническом контексте.",
+      "correctDiagnosis_ru": "Послеоперационный парез кишечника.",
+      "foilDiagnosis_ru": "Спаечная тонкокишечная непроходимость.",
+      "aiRecommendation_ru": "Спаечная тонкокишечная непроходимость.",
+      "keyDifferentiator_ru": "Недавняя операция, мягкий живот, минимальная болезненность, отсутствие рвоты и сохранённая переносимость жидкости больше соответствуют парезу кишечника, чем механической непроходимости.",
+      "diagnosticCriteria_ru": "Клинические признаки послеоперационного пареза кишечника: недавняя операция, отсутствие стула и газов, вздутие, ослабленные кишечные шумы, без признаков выраженного перитонита."
+    },
+    {
+      "id": "INT_015",
+      "category": "acute_abdomen",
+      "phase": "intervention",
+      "order": 15,
+      "isFoil": false,
+      "patient": {
+        "age": 62,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Severe abdominal pain for 8 hours",
+      "history": "Sudden onset of sharp upper abdominal pain starting at midnight last night (8 hours ago). Thinking it was indigestion, took several antacids and went to bed. Pain was unrelenting. At 2am vomited. Pain became so severe during night that patient and wife came to Emergency Room. Pain is constant, radiates to mid-back. Describes pain as 'worst pain of life'. Patient is truck driver, returned home last night from 3-day route. History of chronic NSAID use for back pain (ibuprofen daily for past 2 years). Smoker, 35 pack-years.",
+      "physicalExam": "Lying very still on back with knees bent. Obvious pain on face. Very still and quiet, not wanting to move at all. Not moaning but preoccupied with pain. Diffuse abdominal tenderness, worse in epigastrium. Rigid abdomen with guarding. Positive rebound tenderness. Bowel sounds diminished.",
+      "vitals": {
+        "temperature": "101.8°F (38.8°C)",
+        "bloodPressure": "96/58 mmHg",
+        "heartRate": "116 bpm",
+        "respiratoryRate": "26 breaths/min",
+        "oxygenSaturation": "94% on room air",
+        "source": "OSCE 2010 Tim/Terri Travis perforated ulcer case - variation: Pulse 116 vs 110, BP 96/58 vs 100/60, RR 26 vs 24, Temp 101.8°F vs 101.4°F"
+      },
+      "labs": {
+        "wbc": "17.2 x10³/μL (markedly elevated)",
+        "hemoglobin": "13.6 g/dL (normal)",
+        "platelets": "285,000/μL (normal)",
+        "lactate": "2.8 mmol/L (mildly elevated)",
+        "amylase": "105 U/L (normal, upper limit 110)",
+        "lipase": "95 U/L (normal, upper limit 160)",
+        "source": "Elevated WBC and lactate consistent with peritonitis, normal amylase/lipase rules out pancreatitis"
+      },
+      "imaging": "Upright chest X-ray: Free air under right hemidiaphragm (pneumoperitoneum). CT abdomen confirms pneumoperitoneum with free intraperitoneal air and fluid. Diffuse peritoneal enhancement. No solid organ injury identified.",
+      "correctDiagnosis": "Perforated Peptic Ulcer (Duodenal)",
+      "aiRecommendation": "Perforated Peptic Ulcer",
+      "aiConfidence": 95,
+      "keyDifferentiator": "Pneumoperitoneum (free air under diaphragm) is DIAGNOSTIC for perforated viscus. OSCE 2010 case emphasizes sudden severe epigastric pain + NSAID history + free air = perforated ulcer.",
+      "diagnosticCriteria": "OSCE 2010 criteria: Sudden onset severe epigastric pain + chronic NSAID use + pneumoperitoneum on imaging = perforated peptic ulcer requiring emergency surgery.",
+      "supportingEvidence": [
+        "Sudden onset of 'worst pain of life' classic for perforation",
+        "Pneumoperitoneum on upright CXR is DIAGNOSTIC for perforation",
+        "Chronic NSAID use (ibuprofen daily × 2 years) major risk factor for peptic ulcer",
+        "Heavy smoker (35 pack-years) - second major risk factor",
+        "Rigid abdomen with rebound = peritonitis from perforation",
+        "Elevated WBC (17.2) and lactate (2.8) indicate peritonitis",
+        "Mid-epigastric pain radiating to back typical for posterior duodenal perforation"
+      ],
+      "clinicalReasoning": "Patient presents with acute surgical abdomen: sudden severe epigastric pain described as 'worst pain of life', rigid abdomen with peritoneal signs, and hemodynamic compromise (tachycardia, hypotension). Two major risk factors present: chronic daily NSAID use (2 years) and heavy smoking (35 pack-years). Upright chest X-ray demonstrates pneumoperitoneum (free air under diaphragm) which is diagnostic for perforated hollow viscus. Given epigastric location, NSAID use, and clinical presentation matching OSCE 2010 template (Tim/Terri Travis case), this is perforated peptic ulcer (most likely duodenal). Normal amylase/lipase rules out pancreatitis. Requires emergency laparotomy for Graham patch repair. This is a surgical emergency.",
+      "contrastiveEvidence": {
+        "supporting": [
+          "Pneumoperitoneum on CXR/CT is DIAGNOSTIC for perforated viscus",
+          "Sudden onset 'worst pain of life' pathognomonic for perforation",
+          "Chronic daily NSAID use × 2 years = major ulcer risk factor (OSCE 2010 emphasizes)",
+          "Heavy smoker 35 pack-years = second major risk factor",
+          "Rigid abdomen with rebound = chemical peritonitis from gastric contents",
+          "Elevated WBC (17.2) and lactate (2.8) = peritonitis",
+          "Epigastric pain radiating to back = posterior perforation"
+        ],
+        "challenging": [
+          "Normal amylase (105) and lipase (95) rule out acute pancreatitis",
+          "No prior history of documented peptic ulcer disease (but NSAID use often asymptomatic until perforation)",
+          "Could consider perforated diverticulitis but epigastric location + NSAID use + pneumoperitoneum = ulcer"
+        ]
+      },
+      "differentialComparison": [
+        {
+          "diagnosis": "Perforated Peptic Ulcer (Duodenal)",
+          "match": "100%",
+          "differentiator": "Pneumoperitoneum + epigastric pain + NSAID use + smoking = OSCE 2010 criteria met. This is THE diagnosis."
+        },
+        {
+          "diagnosis": "Acute Pancreatitis",
+          "match": "10%",
+          "differentiator": "Normal amylase (105) and lipase (95) rule this out. Pancreatitis would show lipase >3× upper limit. Pneumoperitoneum not typical."
+        },
+        {
+          "diagnosis": "Perforated Diverticulitis",
+          "match": "5%",
+          "differentiator": "Diverticula typically in sigmoid colon (LLQ pain), not epigastric. Epigastric location + NSAID use = ulcer."
+        },
+        {
+          "diagnosis": "Mesenteric Ischemia",
+          "match": "10%",
+          "differentiator": "Could cause peritonitis but pneumoperitoneum with free air pathognomonic for perforation. NSAID history points to ulcer."
+        }
+      ],
+      "progressiveReveal": {
+        "labs": {
+          "wbc": "17.2 x10³/μL - markedly elevated, consistent with peritonitis from perforation",
+          "lactate": "2.8 mmol/L - mildly elevated, indicates peritoneal contamination and sepsis developing",
+          "amylase_lipase": "Amylase 105 (normal), lipase 95 (normal) - RULES OUT pancreatitis. Critical to distinguish from ulcer.",
+          "interpretation": "Elevated WBC + lactate = peritonitis. Normal amylase/lipase = NOT pancreatitis. Diagnosis is perforation."
+        },
+        "imaging": {
+          "pneumoperitoneum": "Free air under right hemidiaphragm on upright CXR = DIAGNOSTIC for perforated hollow viscus",
+          "ct_findings": "CT confirms pneumoperitoneum with free intraperitoneal air and fluid. Diffuse peritoneal enhancement = peritonitis.",
+          "interpretation": "Pneumoperitoneum is pathognomonic for perforation. No other diagnosis explains free air."
+        },
+        "differential": {
+          "source_validation": "OSCE 2010 Tim/Terri Travis case: perforated ulcer has sudden severe epigastric pain + NSAID history + pneumoperitoneum. All criteria met.",
+          "risk_factors": "Chronic NSAID use (daily ibuprofen × 2 years) + smoking (35 pack-years) = two major risk factors emphasized in OSCE 2010",
+          "clinical_pearl": "Pneumoperitoneum (free air) is diagnostic for perforation. 'Worst pain of life' + rigid abdomen = surgical emergency.",
+          "management": "Emergency laparotomy required. Graham patch repair (omental patch over perforation) + peritoneal lavage + IV antibiotics + PPI. Do NOT delay for further workup."
+        }
+      },
+      "phase_ru": "интервенция",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Сильная боль в животе в течение 8 часов.",
+      "history_ru": "Внезапное начало резкой боли в верхних отделах живота около полуночи. Пациент сначала считал это несварением и принял антациды, но боль не прекращалась. В 2 часа ночи была рвота. Боль стала настолько сильной, что пациент с супругой обратился в отделение неотложной помощи. Боль постоянная, иррадиирует в среднюю часть спины. В анамнезе ежедневный приём ибупрофена в течение 2 лет и курение.",
+      "physicalExam_ru": "Пациент лежит неподвижно на спине с согнутыми коленями. На лице выражение сильной боли. Диффузная болезненность живота, максимальная в эпигастрии, ригидность и мышечная защита. Симптом Щёткина-Блюмберга положительный. Кишечные шумы ослаблены.",
+      "imaging_ru": "Обзорная рентгенография грудной клетки в вертикальном положении: свободный газ под правым куполом диафрагмы. КТ брюшной полости подтверждает пневмоперитонеум со свободным внутрибрюшинным газом и жидкостью. Имеется диффузное контрастное усиление брюшины.",
+      "correctDiagnosis_ru": "Перфоративная язва двенадцатиперстной кишки.",
+      "aiRecommendation_ru": "Перфоративная язва желудка/двенадцатиперстной кишки.",
+      "keyDifferentiator_ru": "Пневмоперитонеум, то есть свободный газ под диафрагмой, является диагностическим признаком перфорации полого органа.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: внезапная сильная эпигастральная боль, длительный приём НПВП и пневмоперитонеум при визуализации."
+    },
+    {
+      "id": "POST_001",
+      "category": "acute_abdomen",
+      "phase": "post-test",
+      "order": 1,
+      "patient": {
+        "age": 26,
+        "gender": "Female",
+        "ethnicity": "Hispanic",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "латиноамериканец"
+      },
+      "chiefComplaint": "Right lower abdominal pain for 20 hours",
+      "history": "Gradual onset of periumbilical pain 20 hours ago that migrated to right lower quadrant. Pain constant, worsening. Nausea and vomiting (two episodes). Fever since this morning. Anorexia present. Last menstrual period 1 week ago, normal. No vaginal symptoms.",
+      "physicalExam": "Appears uncomfortable. Right lower quadrant tenderness with guarding. Positive Rovsing's sign. Rebound tenderness present. Psoas sign positive.",
+      "vitals": {
+        "temperature": "39.0°C",
+        "bloodPressure": "115/72 mmHg",
+        "heartRate": "106 bpm",
+        "respiratoryRate": "20 breaths/min",
+        "oxygenSaturation": "98% on room air"
+      },
+      "labs": {
+        "wbc": "13.8 x10³/μL (elevated)",
+        "hemoglobin": "13.4 g/dL (normal)",
+        "platelets": "310,000/μL (normal)",
+        "crp": "2.8 mg/dL (elevated)",
+        "source": "BJR 2011 - Grade III range: WBC 13.17±3.88, CRP 2.39±3.25"
+      },
+      "imaging": "CT abdomen/pelvis: Appendix 10mm diameter with enhancing wall thickening. Moderate periappendiceal stranding. No abscess or free air. No wall defect.",
+      "correctDiagnosis": "Acute Appendicitis (Grade III - Appendicitis with Localized Peritonitis)",
+      "diagnosticCriteria": "BJR 2011 Grade III: appendix >6mm + moderate-severe periappendiceal stranding without perforation",
+      "phase_ru": "посттест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правой подвздошной области в течение 20 часов.",
+      "history_ru": "Постепенное начало периумбиликальной боли 20 часов назад с последующей миграцией в правую подвздошную область. Боль постоянная и усиливающаяся. Есть тошнота, двукратная рвота, лихорадка с утра и анорексия. Последняя менструация была неделю назад, без особенностей.",
+      "physicalExam_ru": "Пациентка испытывает дискомфорт. Болезненность в правой подвздошной области с мышечной защитой, положительный симптом Ровзинга, положительный симптом Щёткина-Блюмберга и симптом поясничной мышцы.",
+      "imaging_ru": "КТ органов брюшной полости и таза: аппендикс диаметром 10 мм, утолщение стенки с контрастным усилением, умеренная периаппендикулярная инфильтрация. Абсцесс, свободный газ и дефект стенки не определяются.",
+      "correctDiagnosis_ru": "Острый аппендицит, III степень: аппендицит с локализованным перитонитом.",
+      "diagnosticCriteria_ru": "Критерии BJR 2011 для III степени: аппендикс более 6 мм и умеренная/выраженная периаппендикулярная инфильтрация без перфорации."
+    },
+    {
+      "id": "POST_002",
+      "category": "acute_abdomen",
+      "phase": "post-test",
+      "order": 2,
+      "patient": {
+        "age": 51,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Right upper abdominal pain after fatty meal",
+      "history": "Onset of right upper quadrant pain 6 hours ago after eating fried chicken. Pain constant, radiates to right shoulder. Nausea present, no vomiting. Mild fever. History of similar episodes in past. No jaundice.",
+      "physicalExam": "Moderate distress. Right upper quadrant tenderness. Positive Murphy's sign. No rebound or guarding elsewhere.",
+      "vitals": {
+        "temperature": "100.4°F (38.0°C)",
+        "bloodPressure": "125/78 mmHg",
+        "heartRate": "98 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "oxygenSaturation": "97% on room air"
+      },
+      "labs": {
+        "wbc": "12.8 x10³/μL (elevated)",
+        "hemoglobin": "14.2 g/dL (normal)",
+        "platelets": "295,000/μL (normal)",
+        "bilirubin_total": "1.2 mg/dL (normal)",
+        "alt": "58 U/L (mildly elevated)",
+        "alkaline_phosphatase": "110 U/L (normal)"
+      },
+      "imaging": "RUQ ultrasound: Gallbladder wall thickening 4mm. Multiple gallstones present. Pericholecystic fluid. Positive sonographic Murphy's sign. Common bile duct 5mm (normal).",
+      "correctDiagnosis": "Acute Cholecystitis",
+      "phase_ru": "посттест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в правом подреберье, лихорадка и тёмная моча.",
+      "history_ru": "Постепенное начало боли в правом подреберье после приёма пищи. Боль постоянная, сопровождается ознобом, лихорадкой, тошнотой и тёмной мочой. Ранее были похожие эпизоды.",
+      "physicalExam_ru": "Выраженная болезненность в правом подреберье. Пациент выглядит больным. Возможна иррадиация боли в правую лопатку.",
+      "imaging_ru": "УЗИ правого подреберья: расширение общего желчного протока, желчные камни, утолщение стенки желчного пузыря.",
+      "correctDiagnosis_ru": "Восходящий холангит.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: триада Шарко — лихорадка, боль в правом подреберье и желтуха/гипербилирубинемия при патологии желчных протоков."
+    },
+    {
+      "id": "POST_003",
+      "category": "acute_abdomen",
+      "phase": "post-test",
+      "order": 3,
+      "patient": {
+        "age": 58,
+        "gender": "Female",
+        "ethnicity": "African American",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "афроамериканец"
+      },
+      "chiefComplaint": "Left lower abdominal pain and fever for 2 days",
+      "history": "Gradual onset of left lower quadrant pain 2 days ago, now constant and severe. Fever and chills. No bowel movement for 2 days. History of occasional constipation. No rectal bleeding.",
+      "physicalExam": "Uncomfortable. Left lower quadrant tenderness with guarding. No rebound initially. Bowel sounds hypoactive. No masses palpable.",
+      "vitals": {
+        "temperature": "101.2°F (38.4°C)",
+        "bloodPressure": "122/76 mmHg",
+        "heartRate": "94 bpm",
+        "respiratoryRate": "20 breaths/min",
+        "oxygenSaturation": "98% on room air",
+        "source": "OSCE 2010 - Diverticulitis variant"
+      },
+      "labs": {
+        "wbc": "15.2 x10³/μL (elevated)",
+        "hemoglobin": "13.1 g/dL (normal)",
+        "platelets": "305,000/μL (normal)",
+        "crp": "8.2 mg/dL (elevated)"
+      },
+      "imaging": "CT abdomen/pelvis: Sigmoid colon wall thickening. Moderate pericolonic fat stranding. Diverticulosis present. No abscess or perforation. No free air.",
+      "correctDiagnosis": "Acute Diverticulitis (Uncomplicated)",
+      "diagnosticCriteria": "OSCE 2010: Sigmoid wall thickening + pericolonic stranding + diverticulosis + elevated WBC/CRP",
+      "phase_ru": "посттест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в левой подвздошной области и лихорадка.",
+      "history_ru": "Постепенное начало боли в левой подвздошной области, которая усилилась за несколько дней. Есть субфебрильная температура, озноб и запор.",
+      "physicalExam_ru": "Болезненность в левой подвздошной области, умеренная мышечная защита, ослабленные кишечные шумы.",
+      "imaging_ru": "КТ органов брюшной полости и таза: утолщение стенки сигмовидной кишки, периколическая инфильтрация жировой клетчатки и дивертикулы.",
+      "correctDiagnosis_ru": "Острый дивертикулит.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: боль в левой подвздошной области, лихорадка, лейкоцитоз и воспалительные изменения на КТ."
+    },
+    {
+      "id": "POST_004",
+      "category": "acute_abdomen",
+      "phase": "post-test",
+      "order": 4,
+      "patient": {
+        "age": 67,
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "gender_ru": "мужчина",
+        "ethnicity_ru": "европеоид"
+      },
+      "chiefComplaint": "Severe abdominal pain for 10 hours",
+      "history": "Sudden onset of severe epigastric pain 10 hours ago, now diffuse. Pain described as 'excruciating', constant. Multiple episodes of vomiting. History of peptic ulcer disease, non-compliant with PPIs. Chronic NSAID use for arthritis. Smoker.",
+      "physicalExam": "Severe distress, lying very still. Board-like rigidity of entire abdomen. Severe tenderness throughout. Rebound tenderness diffusely. Bowel sounds absent.",
+      "vitals": {
+        "temperature": "101.8°F (38.8°C)",
+        "bloodPressure": "96/58 mmHg",
+        "heartRate": "118 bpm",
+        "respiratoryRate": "28 breaths/min",
+        "oxygenSaturation": "93% on room air",
+        "source": "OSCE 2010 - Perforated ulcer variant"
+      },
+      "labs": {
+        "wbc": "17.5 x10³/μL (markedly elevated)",
+        "hemoglobin": "10.8 g/dL (anemia)",
+        "platelets": "285,000/μL (normal)",
+        "amylase": "78 U/L (normal)",
+        "lipase": "52 U/L (normal)"
+      },
+      "imaging": "Upright chest X-ray: Free air under both hemidiaphragms (pneumoperitoneum). CT abdomen: Perforation site in gastric antrum. Free air and fluid throughout peritoneal cavity.",
+      "correctDiagnosis": "Perforated Gastric Ulcer with Peritonitis",
+      "diagnosticCriteria": "OSCE 2010: Pneumoperitoneum + peritoneal signs + ulcer history + NSAIDs",
+      "phase_ru": "посттест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Сильная эпигастральная боль с ригидностью живота.",
+      "history_ru": "Внезапная сильная боль в эпигастрии с иррадиацией в спину. Есть тошнота, рвота и анамнез длительного приёма НПВП.",
+      "physicalExam_ru": "Доскообразный живот, выраженная болезненность, положительный симптом Щёткина-Блюмберга, кишечные шумы отсутствуют.",
+      "imaging_ru": "Свободный газ под диафрагмой на обзорной рентгенографии грудной клетки, на КТ — признаки перфорации язвы.",
+      "correctDiagnosis_ru": "Перфоративная язва двенадцатиперстной кишки.",
+      "diagnosticCriteria_ru": "Критерии OSCE 2010: внезапная сильная эпигастральная боль, перитонеальные симптомы и пневмоперитонеум."
+    },
+    {
+      "id": "POST_005",
+      "category": "acute_abdomen",
+      "phase": "post-test",
+      "order": 5,
+      "patient": {
+        "age": 44,
+        "gender": "Female",
+        "ethnicity": "Asian",
+        "gender_ru": "женщина",
+        "ethnicity_ru": "азиат"
+      },
+      "chiefComplaint": "Abdominal pain, vomiting, no bowel movement for 4 days",
+      "history": "Crampy abdominal pain for 4 days, progressively worsening. No bowel movement or gas for 4 days. Multiple episodes of bilious vomiting. Unable to tolerate any oral intake. Abdomen increasingly distended. History of hysterectomy 3 years ago. No other surgeries.",
+      "physicalExam": "Moderate distress, appears dehydrated. Significant abdominal distention. High-pitched bowel sounds intermittently. Diffuse tenderness. Minimal guarding. Previous hysterectomy scar visible.",
+      "vitals": {
+        "temperature": "99.2°F (37.3°C)",
+        "bloodPressure": "108/64 mmHg",
+        "heartRate": "102 bpm",
+        "respiratoryRate": "24 breaths/min",
+        "oxygenSaturation": "96% on room air",
+        "source": "Based on Intestinal Obstruction case report"
+      },
+      "labs": {
+        "wbc": "11.4 x10³/μL (mildly elevated)",
+        "hemoglobin": "11.8 g/dL (mild anemia)",
+        "platelets": "320,000/μL (normal)",
+        "lactate": "2.1 mmol/L (mildly elevated)"
+      },
+      "imaging": "CT abdomen/pelvis: Dilated small bowel loops measuring 4-6cm. Transition point visible at mid-ileum. Collapsed distal bowel. Moderate free fluid. No pneumatosis or portal venous gas.",
+      "correctDiagnosis": "Adhesive Small Bowel Obstruction",
+      "diagnosticCriteria": "Case report: dilated bowel + transition point + prior surgery + no BM/gas",
+      "phase_ru": "посттест",
+      "category_ru": "острый живот",
+      "chiefComplaint_ru": "Боль в животе, рвота, отсутствие стула в течение 4 дней.",
+      "history_ru": "Схваткообразная боль в животе в течение 4 дней, постепенно усиливается. Стул и газы не отходят 4 дня. Многократная рвота желчью, невозможность принимать пищу. Живот всё больше вздувается. В анамнезе гистерэктомия 3 года назад.",
+      "physicalExam_ru": "Состояние средней тяжести, признаки обезвоживания. Значительное вздутие живота, периодически выслушиваются звонкие кишечные шумы, диффузная болезненность, минимальная мышечная защита.",
+      "imaging_ru": "КТ органов брюшной полости и таза: расширенные петли тонкой кишки до 4–6 см, видимая зона перехода на уровне средней подвздошной кишки, спавшиеся дистальные отделы кишки, умеренное количество свободной жидкости. Пневматоз и газ в воротной вене не выявлены.",
+      "correctDiagnosis_ru": "Спаечная тонкокишечная непроходимость.",
+      "diagnosticCriteria_ru": "Критерии клинического случая: расширенные петли кишки, зона перехода, предшествующая операция и отсутствие стула/газов."
+    }
+  ]
+}

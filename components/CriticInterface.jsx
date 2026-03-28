@@ -15,6 +15,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 import { useTranslation } from '../lib/translations';
+import { getCaseField, getPatientGender, getPatientEthnicity } from '../lib/case-field-helper';
 
 export default function CriticInterface({ caseData, onComplete, accuracyLevel, language = 'ru' }) {
   // Get translations
@@ -226,20 +227,20 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
       <div className="max-w-5xl mx-auto p-6 space-y-6">
       {/* Case Presentation */}
       <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Clinical Case</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.clinicalCase}</h2>
         <div className="space-y-3 text-gray-700">
           <p>
-            <strong>Patient:</strong> {caseData.patient.age}yo {caseData.patient.gender},{' '}
-            {caseData.patient.ethnicity}
+            <strong>{t.patient}:</strong> {caseData.patient.age}{language === 'ru' ? ' лет' : 'yo'} {getPatientGender(caseData.patient, language)},{' '}
+            {getPatientEthnicity(caseData.patient, language)}
           </p>
           <p>
-            <strong>Chief Complaint:</strong> {caseData.chiefComplaint}
+            <strong>{t.chiefComplaint}:</strong> {getCaseField(caseData, 'chiefComplaint', language)}
           </p>
           <p>
-            <strong>History:</strong> {caseData.history}
+            <strong>{t.history}:</strong> {getCaseField(caseData, 'history', language)}
           </p>
           <p>
-            <strong>Physical Exam:</strong> {caseData.physicalExam}
+            <strong>{t.physicalExam}:</strong> {getCaseField(caseData, 'physicalExam', language)}
           </p>
           <div className="bg-gray-50 p-4 rounded border border-gray-200">
             <strong className="block mb-2">Vital Signs:</strong>
