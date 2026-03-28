@@ -39,7 +39,7 @@
     },
     "language": "ru",
     "translation_version": "2.0",
-    "translation_notes": "Professional medical translation including units (mmHg → мм рт. ст., bpm → уд/мин, etc.)"
+    "translation_notes": "Professional medical translation including units (mmHg → мм рт. ст., bpm → уд/мин, etc.) + differential diagnosis names"
   },
   "cases": [
     {
@@ -390,7 +390,29 @@
           "Нет абсцесса или флегмоны - это исключает осложнённый аппендицит",
           "Температура всего 38.5°C - при перфоративном аппендиците обычно >39°C"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Острый аппендицит (II степень)",
+          "match": "100%",
+          "differentiator": "Appendiceal diameter 8mm with wall thickening matches BJR 2011 Grade II CT criteria exactly"
+        },
+        {
+          "diagnosis": "Внематочная беременность",
+          "match": "15%",
+          "differentiator": "Last menstrual period normal 10 days ago, no vaginal bleeding or discharge, appendix clearly visualized on CT"
+        },
+        {
+          "diagnosis": "Воспалительное заболевание органов малого таза",
+          "match": "10%",
+          "differentiator": "Pain localized to appendiceal region, no vaginal discharge, no cervical motion tenderness"
+        },
+        {
+          "diagnosis": "Перфоративный аппендицит (IV степень)",
+          "match": "5%",
+          "differentiator": "CRP 0.95 mg/dL rules out perforation (Grade IV shows CRP 8.10±6.90 mg/dL per BJR 2011)"
+        }
+      ]
     },
     {
       "id": "INT_002",
@@ -521,7 +543,24 @@
           "Потрясающий озноб (компонент пентады Рейнольдса) более характерен для холангита, чем для холецистита",
           "Гипотензия (94/62) и тахикардия (116) указывают на системную инфекцию, выходящую за пределы желчного пузыря"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Острый холецистит",
+          "match": "70%",
+          "differentiator": "Gallbladder findings support this, BUT doesn't explain marked hyperbilirubinemia or bile duct dilation"
+        },
+        {
+          "diagnosis": "Восходящий холангит",
+          "match": "95%",
+          "differentiator": "Charcot's triad + Reynold's pentad (shaking chills + hypotension) + dilated CBD indicates bile duct infection, not just gallbladder. OSCE 2010 source confirms cholangitis presentation."
+        },
+        {
+          "diagnosis": "Острый панкреатит",
+          "match": "20%",
+          "differentiator": "Would expect epigastric pain radiating to back, elevated amylase/lipase (not measured here)"
+        }
+      ]
     },
     {
       "id": "INT_003",
@@ -653,7 +692,29 @@
           "Контрастное усиление стенки аппендикса сохранено, дефектов нет",
           "Нет свободной жидкости в малом тазу - при перфорации ожидалась бы внепросветная жидкость"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Grade III Appendicitis (Localized Peritonitis)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade III criteria met: appendix >6mm, wall thickening, moderate periappendiceal stranding, NO perforation"
+        },
+        {
+          "diagnosis": "Grade IV Appendicitis (Perforated)",
+          "match": "10%",
+          "differentiator": "CRP only 2.5 mg/dL excludes perforation - BJR 2011 shows Grade IV has CRP 8.10±6.90 mg/dL (p<0.001)"
+        },
+        {
+          "diagnosis": "Воспалительное заболевание органов малого таза",
+          "match": "5%",
+          "differentiator": "No vaginal discharge, cervical motion tenderness not assessed, appendix clearly inflamed on CT"
+        },
+        {
+          "diagnosis": "Внематочная беременность",
+          "match": "5%",
+          "differentiator": "LMP 3 weeks ago, no vaginal bleeding, appendix visualized as source of pathology"
+        }
+      ]
     },
     {
       "id": "INT_004",
@@ -784,7 +845,24 @@
           "Наличие дивертикулёза на КТ + воспаление = по определению дивертикулит",
           "Есть защитное напряжение мышц - это признак раздражения брюшины, нехарактерный для простого запора"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Constipation with Colonic Distention",
+          "match": "40%",
+          "differentiator": "History supports this, BUT CT shows inflammatory changes (wall thickening + pericolonic stranding) which don't occur in simple constipation"
+        },
+        {
+          "diagnosis": "Acute Diverticulitis (Uncomplicated)",
+          "match": "95%",
+          "differentiator": "OSCE 2010 source criteria ALL met: Sigmoid wall thickening + pericolonic stranding + diverticulosis + elevated WBC/CRP. This IS diverticulitis."
+        },
+        {
+          "diagnosis": "Острый панкреатит",
+          "match": "5%",
+          "differentiator": "OSCE 2010 listed this as 'less likely' foil - pain wrong location, no elevated amylase/lipase, CT shows colon not pancreas"
+        }
+      ]
     },
     {
       "id": "INT_005",
@@ -928,7 +1006,29 @@
           "У пациента преобладают абдоминальные симптомы, а не боль в груди - однако 30% расслоений проявляются симптомами гипоперфузии органов",
           "Возраст 57 лет несколько моложе типичного (пик 50-65 лет по источнику), но употребление кокаина является фактором риска более ранних проявлений"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Type A Aortic Dissection with Bowel Malperfusion",
+          "match": "100%",
+          "differentiator": "CTA-confirmed dissection with mesenteric involvement. Lactate >9 mmol/L diagnostic for ischemia. Exact match to Cureus 2024 published case."
+        },
+        {
+          "diagnosis": "Acute Mesenteric Ischemia (Embolic)",
+          "match": "40%",
+          "differentiator": "Mesenteric ischemia IS present, but caused by aortic dissection compression, not embolism. CTA shows dissection as primary pathology."
+        },
+        {
+          "diagnosis": "Вирусный гастроэнтерит",
+          "match": "5%",
+          "differentiator": "Initial patient suspicion, but lactate >9 mmol/L, multi-organ failure, and dissection on CTA rule this out completely"
+        },
+        {
+          "diagnosis": "Cocaine-Induced Vasospasm",
+          "match": "20%",
+          "differentiator": "Cocaine IS a risk factor per Cureus source, but dissection is anatomic tear, not just vasospasm. CTA confirms structural pathology."
+        }
+      ]
     },
     {
       "id": "INT_006",
@@ -1059,7 +1159,29 @@
           "В BJR 2011 отдельно указано, что при IV степени WBC (12.85) может быть ниже, чем при III степени (13.17), из-за отграничения инфекции",
           "Пациент отрицал аппендэктомию в анамнезе, но если она действительно была, это мог бы быть аппендицит культи (в OSCE указан как дифференциальный вариант)"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Perforated Appendicitis with Abscess (Grade IV)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade IV criteria met: wall defect + abscess + CRP 8.5 mg/dL (matches Grade IV mean 8.10±6.90, significantly different from Grade III p<0.001)"
+        },
+        {
+          "diagnosis": "Grade III Appendicitis (Non-perforated)",
+          "match": "5%",
+          "differentiator": "CRP 8.5 mg/dL rules this out - Grade III has CRP 2.39 mg/dL. No wall defect in Grade III. No abscess in Grade III."
+        },
+        {
+          "diagnosis": "Tubo-ovarian Abscess",
+          "match": "10%",
+          "differentiator": "Age 69 (postmenopausal), no vaginal symptoms, CT shows appendiceal origin of abscess"
+        },
+        {
+          "diagnosis": "Stump Appendicitis",
+          "match": "15%",
+          "differentiator": "If prior appendectomy confirmed, stump appendicitis possible but presentation identical. OSCE 2010 lists as less likely differential."
+        }
+      ]
     },
     {
       "id": "INT_007",
@@ -1192,7 +1314,29 @@
           "Нельзя полностью исключить самый ранний аппендицит до повышения воспалительных маркеров",
           "Возможны альтернативные диагнозы: киста яичника, mittelschmerz (овуляторная боль), гастроэнтерит"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Normal Appendix / Non-Specific Abdominal Pain",
+          "match": "95%",
+          "differentiator": "All BJR 2011 Grade I criteria met: appendix <6mm, normal WBC/CRP, no CT inflammation"
+        },
+        {
+          "diagnosis": "Very Early Appendicitis (Grade II)",
+          "match": "10%",
+          "differentiator": "Would expect WBC >12 x10³/μL and appendix >6mm per BJR 2011 Grade II criteria"
+        },
+        {
+          "diagnosis": "Ovarian Pathology (Cyst/Mittelschmerz)",
+          "match": "20%",
+          "differentiator": "LMP 2 weeks ago consistent with mid-cycle. CT would visualize ovarian findings if present."
+        },
+        {
+          "diagnosis": "Гастроэнтерит",
+          "match": "15%",
+          "differentiator": "Would expect diffuse symptoms, diarrhea. RLQ localization atypical for gastroenteritis."
+        }
+      ]
     },
     {
       "id": "INT_008",
@@ -1337,7 +1481,29 @@
           "Утолщение стенки желчного пузыря 5 мм + перихолецистическая жидкость = изолированное воспаление желчного пузыря, а НЕ желчных протоков",
           "Положительный симптом Мёрфи диагностически характерен для холецистита, а не для холангита"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Острый холецистит",
+          "match": "100%",
+          "differentiator": "GB wall thickening + pericholecystic fluid + Murphy's sign + normal bilirubin + normal CBD = isolated GB inflammation per OSCE 2010"
+        },
+        {
+          "diagnosis": "Восходящий холангит",
+          "match": "35%",
+          "differentiator": "RULED OUT by normal bilirubin (1.0 vs 3.2 mg/dL in OSCE 2010 cholangitis), normal alk phos (125 vs >300-400 U/L), normal CBD (5mm vs 12mm). No Charcot's triad."
+        },
+        {
+          "diagnosis": "Желчная колика",
+          "match": "15%",
+          "differentiator": "Biliary colic has transient pain without fever, leukocytosis, or GB wall thickening. This has all three."
+        },
+        {
+          "diagnosis": "Острый панкреатит",
+          "match": "10%",
+          "differentiator": "Would show elevated lipase/amylase and epigastric (not RUQ) pain. Murphy's sign negative in pancreatitis."
+        }
+      ]
     },
     {
       "id": "INT_009",
@@ -1480,7 +1646,29 @@
           "Небольшое количество свободной жидкости неспецифично и не обязательно указывает на абсцесс",
           "В дифференциальном ряду можно рассматривать запор, но повышение WBC/CRP и воспалительные изменения на КТ его исключают"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Acute Diverticulitis (Uncomplicated)",
+          "match": "100%",
+          "differentiator": "LLQ pain + fever + elevated WBC/CRP + CT showing wall thickening and fat stranding = OSCE 2010 diagnostic criteria met"
+        },
+        {
+          "diagnosis": "Запор",
+          "match": "10%",
+          "differentiator": "Constipation would not show fever, elevated WBC (14.8), elevated CRP (8.2), or CT wall thickening/stranding. OSCE 2010 INT_004 demonstrates this differential."
+        },
+        {
+          "diagnosis": "Colon Cancer",
+          "match": "15%",
+          "differentiator": "Would show focal mass on CT. This shows diffuse sigmoid inflammation with diverticula. Acute presentation favors diverticulitis."
+        },
+        {
+          "diagnosis": "Inflammatory Bowel Disease",
+          "match": "10%",
+          "differentiator": "IBD typically shows more extensive colitis. This is focal sigmoid inflammation in patient with known diverticula."
+        }
+      ]
     },
     {
       "id": "INT_010",
@@ -1628,7 +1816,29 @@
           "Свободная жидкость может встречаться при тяжёлом локализованном перитоните (III степень) и без перфорации",
           "Критерии КТ по BJR 2011: III степень = выраженная инфильтрация + БЕЗ перфорации; IV степень = дефект стенки + флегмона/абсцесс"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Acute Appendicitis Grade III (Severe, No Perforation)",
+          "match": "100%",
+          "differentiator": "BJR 2011 Grade III criteria met: appendix >6mm + severe periappendiceal stranding + intact wall with NO defect. This is the CORRECT diagnosis."
+        },
+        {
+          "diagnosis": "Perforated Appendicitis Grade IV",
+          "match": "40%",
+          "differentiator": "BJR 2011 requires 'wall defect + phlegmon/abscess' for Grade IV. NO wall defect visible here = NOT Grade IV. Free fluid alone insufficient for perforation diagnosis."
+        },
+        {
+          "diagnosis": "Appendiceal Abscess",
+          "match": "20%",
+          "differentiator": "No discrete abscess identified on CT. Severe stranding present but no organized fluid collection."
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade II",
+          "match": "10%",
+          "differentiator": "Too severe for Grade II. Extensive stranding and free fluid indicate Grade III severity. CRP 5.8 far exceeds Grade II mean (0.99±1.63)."
+        }
+      ]
     },
     {
       "id": "INT_011",
@@ -1765,7 +1975,29 @@
           "Нет признаков холецистита (место перфорации - двенадцатиперстная кишка, а не желчный пузырь)",
           "Нет признаков аппендицита (перфорация локализована в верхних отделах живота, а не в правом нижнем квадранте)"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Перфоративная язва двенадцатиперстной кишки",
+          "match": "100%",
+          "differentiator": "Pneumoperitoneum + NSAID history + smoking + CT-confirmed duodenal perforation. Meets all OSCE 2010 criteria."
+        },
+        {
+          "diagnosis": "Острый панкреатит",
+          "match": "5%",
+          "differentiator": "Normal amylase and lipase definitively rule this out. Pancreatitis would show elevated enzymes >3x normal."
+        },
+        {
+          "diagnosis": "Перфоративная язва желудка",
+          "match": "40%",
+          "differentiator": "Also causes pneumoperitoneum. CT shows duodenal (not gastric) perforation site. Clinical presentation identical."
+        },
+        {
+          "diagnosis": "Мезентериальная ишемия",
+          "match": "10%",
+          "differentiator": "Can cause severe pain but typically no free air. Lactate would be markedly elevated in ischemia."
+        }
+      ]
     },
     {
       "id": "INT_012",
@@ -1902,7 +2134,29 @@
           "WBC повышен лишь незначительно (10.8) - нет признаков перфорации или гангрены кишечника",
           "Гемодинамика стабильна - это не странгуляционная непроходимость"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Спаечная тонкокишечная непроходимость",
+          "match": "100%",
+          "differentiator": "All case report criteria met: dilated bowel + transition point + prior surgery. This is mechanical SBO from adhesions."
+        },
+        {
+          "diagnosis": "Паралитическая непроходимость",
+          "match": "5%",
+          "differentiator": "Ileus shows generalized bowel dilation WITHOUT transition point. This case has clear transition point = mechanical, not ileus."
+        },
+        {
+          "diagnosis": "Strangulated Small Bowel Obstruction",
+          "match": "10%",
+          "differentiator": "Would show elevated lactate, pneumatosis, or portal gas. Normal lactate and no ischemic CT findings rule this out."
+        },
+        {
+          "diagnosis": "Толстокишечная непроходимость",
+          "match": "5%",
+          "differentiator": "CT shows dilated SMALL bowel with transition in ileum. Colon is collapsed = proximal (small bowel) obstruction."
+        }
+      ]
     },
     {
       "id": "INT_013",
@@ -2035,7 +2289,29 @@
           "Нет абсцесса или флегмоны - это исключает осложнённый аппендицит",
           "Нет свободной жидкости - аппендицит неосложнённый"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Acute Appendicitis Grade II (Mild)",
+          "match": "100%",
+          "differentiator": "All BJR 2011 Grade II criteria met: appendix 7mm + wall thickening + subtle stranding + WBC/CRP in Grade II range"
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade III",
+          "match": "15%",
+          "differentiator": "Would require moderate-severe stranding. This case shows only subtle stranding = Grade II, not III"
+        },
+        {
+          "diagnosis": "Acute Appendicitis Grade IV (Perforated)",
+          "match": "5%",
+          "differentiator": "CRP 1.1 rules this out. BJR 2011 shows Grade IV has CRP 8.10±6.90 mg/dL (p<0.001 vs Grade II)"
+        },
+        {
+          "diagnosis": "Гастроэнтерит",
+          "match": "10%",
+          "differentiator": "Would be diffuse pain with diarrhea. RLQ localization with appendiceal findings on CT rules this out"
+        }
+      ]
     },
     {
       "id": "INT_014",
@@ -2167,7 +2443,24 @@
           "Кишечная стенка контрастируется нормально - признаков ишемии нет. При странгуляционной ТКН контрастирование было бы нарушено",
           "Критерии из клинического случая: для ТКН необходима \"видимая точка перехода\" - здесь она ОТСУТСТВУЕТ"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Small Bowel Obstruction (Mechanical)",
+          "match": "40%",
+          "differentiator": "SBO requires transition point per case report. NO transition point here = NOT mechanical SBO"
+        },
+        {
+          "diagnosis": "Paralytic Ileus (Postoperative)",
+          "match": "100%",
+          "differentiator": "GENERALIZED dilation without transition + post-op day 3 + normal labs = classic post-op ileus"
+        },
+        {
+          "diagnosis": "Ogilvie Syndrome (Colonic Pseudo-obstruction)",
+          "match": "25%",
+          "differentiator": "Similar to ileus but specifically affects colon. This case has small bowel dilation too = general ileus"
+        }
+      ]
     },
     {
       "id": "INT_015",
@@ -2310,7 +2603,29 @@
           "В анамнезе нет документированной язвенной болезни (однако приём НПВП часто протекает бессимптомно до момента перфорации)",
           "В дифференциальном ряду можно рассматривать перфоративный дивертикулит, но эпигастральная локализация + НПВП + пневмоперитонеум = в пользу язвы"
         ]
-      }
+      },
+      "differentialComparison_ru": [
+        {
+          "diagnosis": "Perforated Peptic Ulcer (Duodenal)",
+          "match": "100%",
+          "differentiator": "Pneumoperitoneum + epigastric pain + NSAID use + smoking = OSCE 2010 criteria met. This is THE diagnosis."
+        },
+        {
+          "diagnosis": "Острый панкреатит",
+          "match": "10%",
+          "differentiator": "Normal amylase (105) and lipase (95) rule this out. Pancreatitis would show lipase >3× upper limit. Pneumoperitoneum not typical."
+        },
+        {
+          "diagnosis": "Перфоративный дивертикулит",
+          "match": "5%",
+          "differentiator": "Diverticula typically in sigmoid colon (LLQ pain), not epigastric. Epigastric location + NSAID use = ulcer."
+        },
+        {
+          "diagnosis": "Мезентериальная ишемия",
+          "match": "10%",
+          "differentiator": "Could cause peritonitis but pneumoperitoneum with free air pathognomonic for perforation. NSAID history points to ulcer."
+        }
+      ]
     },
     {
       "id": "POST_001",

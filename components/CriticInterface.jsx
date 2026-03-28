@@ -389,7 +389,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
             {/* PROGRESSIVE REVEAL BUTTONS (Partiality Mechanism) */}
             <div className="bg-white rounded-lg p-4 border border-gray-300">
               <p className="text-sm font-semibold text-gray-700 mb-3">
-                Click to reveal additional evidence:
+                {t.revealEvidence}
               </p>
               <div className="flex flex-wrap gap-3">
                 {availablePanels.map((panel) => {
@@ -406,7 +406,9 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                     >
                       <span>{panel.icon}</span>
                       <span>
-                        {isRevealed ? `✓ ${panel.label.replace('Show ', '')} (Hide)` : panel.label}
+                        {isRevealed
+                          ? `✓ ${panel.label.replace(/^(Show|Показать)\s+/i, '')} ${t.hideLabel}`
+                          : panel.label}
                       </span>
                     </button>
                   );
@@ -430,54 +432,138 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                   {/* Render panel-specific content */}
                   {panelId === 'labs' && (
                     <div className="space-y-2">
-                      <p>
-                        <strong>{t.wbc}:</strong> {caseData.labs?.wbc || 'Pending'}
-                      </p>
-                      <p>
-                        <strong>{t.hemoglobin}:</strong> {caseData.labs?.hemoglobin || 'Pending'}
-                      </p>
-                      <p>
-                        <strong>{t.platelets}:</strong> {caseData.labs?.platelets || 'Pending'}
-                      </p>
-                      <p>
-                        <strong>{t.crp}:</strong> {caseData.labs?.crp || 'Pending'}
-                      </p>
+                      {caseData.labs ? (
+                        Object.entries(caseData.labs)
+                          .filter(([key]) => key !== 'source') // Exclude metadata
+                          .map(([key, value]) => {
+                            const labName = t[key] || key.replace(/([A-Z_])/g, ' $1').trim();
+                            return (
+                              <p key={key}>
+                                <strong>{labName}:</strong> {value}
+                              </p>
+                            );
+                          })
+                      ) : (
+                        <p className="text-gray-500 italic">
+                          {language === 'ru' ? 'Лабораторные данные недоступны' : 'Lab data unavailable'}
+                        </p>
+                      )}
                     </div>
                   )}
                   {panelId === 'vitals' && (
                     <div>
-                      <p className="mb-2">
-                        <strong>{t.trendOver24h}</strong>
+                      <p className="mb-3 text-gray-700">
+                        <strong>{language === 'ru' ? 'Текущие показатели:' : 'Current vitals:'}</strong>
                       </p>
-                      <p className="text-xs text-gray-600">
-                        {t.chartPlaceholder}
+                      {caseData.vitals ? (
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="bg-gray-50 p-2 rounded">
+                            <span className="text-gray-600">{t.temp}:</span>
+                            <span className="ml-2 font-medium">{caseData.vitals.temperature}</span>
+                          </div>
+                          <div className="bg-gray-50 p-2 rounded">
+                            <span className="text-gray-600">{t.bp}:</span>
+                            <span className="ml-2 font-medium">{caseData.vitals.bloodPressure}</span>
+                          </div>
+                          <div className="bg-gray-50 p-2 rounded">
+                            <span className="text-gray-600">{t.hr}:</span>
+                            <span className="ml-2 font-medium">{caseData.vitals.heartRate}</span>
+                          </div>
+                          <div className="bg-gray-50 p-2 rounded">
+                            <span className="text-gray-600">{t.rr}:</span>
+                            <span className="ml-2 font-medium">{caseData.vitals.respiratoryRate}</span>
+                          </div>
+                          <div className="bg-gray-50 p-2 rounded col-span-2">
+                            <span className="text-gray-600">{t.o2sat}:</span>
+                            <span className="ml-2 font-medium">{caseData.vitals.oxygenSaturation}</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="text-gray-500 italic text-sm">
+                          {language === 'ru' ? 'Жизненные показатели недоступны' : 'Vital signs unavailable'}
+                        </p>
+                      )}
+                      <p className="mt-3 text-xs text-gray-500">
+                        {language === 'ru'
+                          ? '* Динамические данные за 24 часа не зафиксированы в данном клиническом случае'
+                          : '* 24-hour trend data not recorded for this case'}
                       </p>
                     </div>
                   )}
                   {panelId === 'differential' && (
-                    <table className="w-full text-xs">
-                      <thead>
-                        <tr className="bg-gray-100">
-                          <th className="p-2 text-left">{t.diagnosisColumn}</th>
-                          <th className="p-2 text-left">{t.matchColumn}</th>
-                          <th className="p-2 text-left">{t.keyDifferentiatorColumn}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {caseData.differentialComparison?.map((item, idx) => (
-                          <tr key={idx} className="border-t">
-                            <td className="p-2">{item.diagnosis}</td>
-                            <td className="p-2">{item.match}</td>
-                            <td className="p-2">{item.differentiator}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    <div>
+                      {(language === 'ru' && caseData.differentialComparison_ru) || caseData.differentialComparison ? (
+                        <table className="w-full text-xs">
+                          <thead>
+                            <tr className="bg-gray-100">
+                              <th className="p-2 text-left">{t.diagnosisColumn}</th>
+                              <th className="p-2 text-left">{t.matchColumn}</th>
+                              <th className="p-2 text-left">{t.keyDifferentiatorColumn}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {((language === 'ru' && caseData.differentialComparison_ru)
+                              ? caseData.differentialComparison_ru
+                              : caseData.differentialComparison
+                            )?.map((item, idx) => (
+                              <tr key={idx} className="border-t">
+                                <td className="p-2 font-medium">{item.diagnosis}</td>
+                                <td className="p-2">
+                                  <span className={`px-2 py-1 rounded ${
+                                    parseInt(item.match) >= 80 ? 'bg-green-100 text-green-800' :
+                                    parseInt(item.match) >= 50 ? 'bg-yellow-100 text-yellow-800' :
+                                    'bg-red-100 text-red-800'
+                                  }`}>
+                                    {item.match}
+                                  </span>
+                                </td>
+                                <td className="p-2 text-gray-700">{item.differentiator}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <p className="text-gray-500 italic text-sm">
+                          {language === 'ru'
+                            ? 'Дифференциальный диагноз недоступен для данного случая'
+                            : 'Differential diagnosis unavailable for this case'}
+                        </p>
+                      )}
+                    </div>
                   )}
                   {panelId === 'symptoms' && (
-                    <p className="text-gray-700">
-                      {caseData.symptomAnalysis || 'Detailed symptom analysis...'}
-                    </p>
+                    <div className="space-y-3">
+                      <div>
+                        <p className="font-semibold text-gray-800 mb-1">
+                          {language === 'ru' ? 'Основная жалоба:' : 'Chief Complaint:'}
+                        </p>
+                        <p className="text-gray-700 text-sm">
+                          {getCaseField(caseData, 'chiefComplaint', language)}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-800 mb-1">
+                          {language === 'ru' ? 'Ключевые симптомы:' : 'Key Symptoms:'}
+                        </p>
+                        <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                          {getCaseField(caseData, 'history', language)
+                            .split('.')
+                            .filter(s => s.trim().length > 10)
+                            .slice(0, 4)
+                            .map((symptom, idx) => (
+                              <li key={idx}>{symptom.trim()}</li>
+                            ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-800 mb-1">
+                          {language === 'ru' ? 'Физикальное обследование:' : 'Physical Examination:'}
+                        </p>
+                        <p className="text-gray-700 text-sm">
+                          {getCaseField(caseData, 'physicalExam', language)}
+                        </p>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
