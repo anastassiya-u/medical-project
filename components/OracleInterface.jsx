@@ -55,19 +55,15 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
     onComplete();
   }, [confidence, finalDiagnosis, showNotification, onComplete]);
 
-  // Initialize case
+  // Initialize case (runs only when case changes)
   useEffect(() => {
-    // Prevent duplicate initialization on re-renders
-    if (caseInitialized.current && currentCaseId.current === caseData.id) {
-      return;
-    }
+    if (caseInitialized.current && currentCaseId.current === caseData.id) return;
+
+    caseInitialized.current = true;
+    currentCaseId.current = caseData.id;
 
     const initCase = async () => {
-      caseInitialized.current = true;
-      currentCaseId.current = caseData.id;
-
       await logger.startCase(caseData.id, caseData.order);
-
       // In Oracle mode, AI output is shown immediately
       await logger.viewAIOutput(
         caseData.aiRecommendation,
@@ -77,18 +73,18 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
     };
 
     initCase();
+  }, [caseData]);
 
-    // Keyboard shortcuts
+  // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)
+  useEffect(() => {
     const handleKeyPress = (e) => {
-      // Ctrl+Enter to submit (if ready)
       if (e.key === 'Enter' && e.ctrlKey && confidence && finalDiagnosis) {
         handleSubmitFinal();
       }
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, confidence, finalDiagnosis, handleSubmitFinal]);
+  }, [confidence, finalDiagnosis, handleSubmitFinal]);
 
   // Handle confidence rating
   const handleConfidenceRating = async (rating) => {

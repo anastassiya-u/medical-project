@@ -124,7 +124,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
     onComplete();
   }, [confidence, finalDiagnosis, showNotification, onComplete, t]);
 
-  // Initialize case
+  // Initialize case (runs only when case changes)
   useEffect(() => {
     if (caseInitialized.current && currentCaseId.current === caseData.id) return;
     caseInitialized.current = true;
@@ -137,7 +137,10 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
       caseData.correctDiagnosis,
       caseData.isFoil || false
     );
+  }, [caseData]);
 
+  // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)
+  useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'Enter' && e.ctrlKey && confidence && finalDiagnosis.trim().length >= 3) {
         handleSubmitFinal();
@@ -145,7 +148,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
     };
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, confidence, finalDiagnosis, handleSubmitFinal]);
+  }, [confidence, finalDiagnosis, handleSubmitFinal]);
 
   // Helper: get localized field from hypothesis object
   const getHypothesisField = (h, field) => {

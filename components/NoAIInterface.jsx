@@ -53,26 +53,25 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
     onComplete();
   }, [diagnosis, confidence, startTime, showNotification, onComplete]);
 
+  // Initialize case (runs only when case changes)
   useEffect(() => {
-    // Prevent duplicate initialization on re-renders
-    if (!caseInitialized.current || currentCaseId.current !== caseData.id) {
-      caseInitialized.current = true;
-      currentCaseId.current = caseData.id;
-      setStartTime(Date.now());
-      logger.startCase(caseData.id, caseData.order);
-    }
+    if (caseInitialized.current && currentCaseId.current === caseData.id) return;
+    caseInitialized.current = true;
+    currentCaseId.current = caseData.id;
+    setStartTime(Date.now());
+    logger.startCase(caseData.id, caseData.order);
+  }, [caseData]);
 
-    // Keyboard shortcuts
+  // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)
+  useEffect(() => {
     const handleKeyPress = (e) => {
-      // Ctrl+Enter to submit (if ready)
       if (e.key === 'Enter' && e.ctrlKey && diagnosis && confidence) {
         handleSubmit();
       }
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [caseData, diagnosis, confidence, handleSubmit]);
+  }, [diagnosis, confidence, handleSubmit]);
 
   return (
     <>

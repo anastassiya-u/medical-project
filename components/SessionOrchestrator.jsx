@@ -804,7 +804,7 @@ function RegistrationForm({ onSubmit }) {
           required
           className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">{t.genderSelect}</option>
+          <option value="">{t.yearSelect || (formData.language === 'ru' ? 'Выберите курс...' : 'Select year...')}</option>
           <option value="1">{t.year1}</option>
           <option value="2">{t.year2}</option>
           <option value="3">{t.year3}</option>
