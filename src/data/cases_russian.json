@@ -412,6 +412,81 @@
           "match": "5%",
           "differentiator": "CRP 0.95 mg/dL rules out perforation (Grade IV shows CRP 8.10±6.90 mg/dL per BJR 2011)"
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Appendicitis (Grade II - Mild)",
+          "diagnosis_ru": "Острый аппендицит (II степень - лёгкий)",
+          "argsFor": [
+            "Pain migrated from periumbilical area to RLQ.",
+            "McBurney tenderness, guarding, and positive Rovsing sign present.",
+            "CT shows 8mm inflamed appendix with periappendiceal stranding."
+          ],
+          "argsFor_ru": [
+            "Боль сместилась из околопупочной области в правую подвздошную.",
+            "Есть болезненность в точке Мак-Бурнея, защита и симптом Ровзинга.",
+            "КТ показывает аппендикс 8 мм с воспалением и периаппендикулярным инфильтратом."
+          ],
+          "argsAgainst": [
+            "No abscess or free air on CT.",
+            "CRP only moderately elevated."
+          ],
+          "argsAgainst_ru": [
+            "На КТ нет абсцесса или свободного газа.",
+            "CRP повышен только умеренно."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Mesenteric Lymphadenitis",
+          "diagnosis_ru": "Мезентериальный лимфаденит",
+          "argsFor": [
+            "RLQ pain and fever are present.",
+            "WBC 12.8 and CRP 0.95 are elevated.",
+            "Nausea and vomiting are present."
+          ],
+          "argsFor_ru": [
+            "Есть боль в правой подвздошной области и лихорадка.",
+            "WBC 12.8 и CRP 0.95 повышены.",
+            "Есть тошнота и рвота."
+          ],
+          "argsAgainst": [
+            "CT identifies an abnormal fluid-filled appendix.",
+            "Positive Rovsing sign favors appendiceal irritation.",
+            "McBurney tenderness localizes to the appendix."
+          ],
+          "argsAgainst_ru": [
+            "КТ выявляет изменённый жидкостный аппендикс.",
+            "Положительный симптом Ровзинга говорит за аппендикулярное раздражение.",
+            "Болезненность в точке Мак-Бурнея локализует процесс в аппендиксе."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Right Ureterolithiasis",
+          "diagnosis_ru": "Правосторонний уретеролитиаз",
+          "argsFor": [
+            "RLQ pain with nausea and vomiting is present.",
+            "Guarding and developing rebound indicate significant pain.",
+            "Symptoms began within 24 hours."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота с тошнотой и рвотой.",
+            "Защита и нарастающий симптом раздражения брюшины отражают сильную боль.",
+            "Симптомы начались в течение 24 часов."
+          ],
+          "argsAgainst": [
+            "CT shows appendiceal wall thickening, not ureteral stone.",
+            "Fever 38.5°C and elevated CRP favor inflammation.",
+            "McBurney tenderness and Rovsing sign are atypical for ureterolithiasis."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает утолщение стенки аппендикса, а не камень мочеточника.",
+            "Температура 38.5°C и повышенный CRP говорят за воспаление.",
+            "Точка Мак-Бурнея и симптом Ровзинга нетипичны для уретеролитиаза."
+          ]
+        }
       ]
     },
     {
@@ -559,6 +634,81 @@
           "diagnosis": "Острый панкреатит",
           "match": "20%",
           "differentiator": "Would expect epigastric pain radiating to back, elevated amylase/lipase (not measured here)"
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Ascending Cholangitis",
+          "diagnosis_ru": "Восходящий холангит",
+          "argsFor": [
+            "Fever 39.0°C, hypotension, and tachycardia suggest systemic infection.",
+            "Bilirubin 3.5 and alkaline phosphatase 380 are elevated.",
+            "RUQ pain with chills and nausea is present."
+          ],
+          "argsFor_ru": [
+            "Температура 39.0°C, гипотензия и тахикардия указывают на системную инфекцию.",
+            "Билирубин 3.5 и щелочная фосфатаза 380 повышены.",
+            "Есть боль в правом подреберье с ознобом и тошнотой."
+          ],
+          "argsAgainst": [
+            "No jaundice on physical examination.",
+            "CBD is only 7mm, upper normal."
+          ],
+          "argsAgainst_ru": [
+            "При осмотре нет желтухи.",
+            "Общий желчный проток 7 мм, это верхняя граница нормы."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Acute Cholecystitis",
+          "diagnosis_ru": "Острый холецистит",
+          "argsFor": [
+            "Ultrasound shows thickened gallbladder wall and pericholecystic fluid.",
+            "Murphy's sign is positive on exam.",
+            "Multiple gallstones are present."
+          ],
+          "argsFor_ru": [
+            "УЗИ показывает утолщённую стенку желчного пузыря и перихолецистическую жидкость.",
+            "Симптом Мёрфи положительный при осмотре.",
+            "Есть множественные камни желчного пузыря."
+          ],
+          "argsAgainst": [
+            "Bilirubin 3.5 is higher than expected for isolated cholecystitis.",
+            "Alkaline phosphatase 380 suggests biliary obstruction.",
+            "Shaking chills and hypotension suggest more than localized gallbladder inflammation."
+          ],
+          "argsAgainst_ru": [
+            "Билирубин 3.5 выше ожидаемого для изолированного холецистита.",
+            "Щелочная фосфатаза 380 указывает на билиарную обструкцию.",
+            "Озноб с потрясением и гипотензия указывают на процесс шире пузыря."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Choledocholithiasis",
+          "diagnosis_ru": "Холедохолитиаз",
+          "argsFor": [
+            "Bilirubin and alkaline phosphatase are elevated.",
+            "RUQ pain and nausea are present.",
+            "Gallstones are seen on ultrasound."
+          ],
+          "argsFor_ru": [
+            "Билирубин и щелочная фосфатаза повышены.",
+            "Есть боль в правом подреберье и тошнота.",
+            "На УЗИ видны камни желчного пузыря."
+          ],
+          "argsAgainst": [
+            "Fever 39.0°C and chills suggest infection, not only obstruction.",
+            "Hypotension 94/62 suggests sepsis physiology.",
+            "Ultrasound does not show clear CBD dilation."
+          ],
+          "argsAgainst_ru": [
+            "Температура 39.0°C и озноб говорят об инфекции, а не только обструкции.",
+            "Гипотензия 94/62 указывает на септическую физиологию.",
+            "УЗИ не показывает явного расширения общего желчного протока."
+          ]
         }
       ]
     },
@@ -714,6 +864,81 @@
           "match": "5%",
           "differentiator": "LMP 3 weeks ago, no vaginal bleeding, appendix visualized as source of pathology"
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Appendicitis (Grade III - with Localized Peritonitis)",
+          "diagnosis_ru": "Острый аппендицит (III степень - с локализованным перитонитом)",
+          "argsFor": [
+            "Significant RLQ tenderness with guarding and rebound is present.",
+            "Psoas sign is positive.",
+            "CT shows 11mm appendix with wall thickening and stranding."
+          ],
+          "argsFor_ru": [
+            "Есть выраженная болезненность справа внизу живота с защитой и симптомом раздражения брюшины.",
+            "Симптом поясничной мышцы положительный.",
+            "КТ показывает аппендикс 11 мм с утолщением стенки и инфильтрацией."
+          ],
+          "argsAgainst": [
+            "No abscess on CT.",
+            "Pain did not migrate."
+          ],
+          "argsAgainst_ru": [
+            "На КТ нет абсцесса.",
+            "Боль не мигрировала."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Cecal Diverticulitis",
+          "diagnosis_ru": "Дивертикулит слепой кишки",
+          "argsFor": [
+            "Constant RLQ pain with fever is present.",
+            "WBC 13.5 and CRP 2.5 are elevated.",
+            "Guarding and rebound suggest localized inflammatory peritonitis."
+          ],
+          "argsFor_ru": [
+            "Есть постоянная боль справа внизу живота с лихорадкой.",
+            "WBC 13.5 и CRP 2.5 повышены.",
+            "Защита и симптом раздражения брюшины говорят о локальном воспалении."
+          ],
+          "argsAgainst": [
+            "CT specifically shows enlarged inflamed appendix.",
+            "Positive psoas sign supports appendiceal process.",
+            "No cecal wall abnormality is described."
+          ],
+          "argsAgainst_ru": [
+            "КТ конкретно показывает увеличенный воспалённый аппендикс.",
+            "Положительный симптом поясничной мышцы поддерживает аппендикулярный процесс.",
+            "Изменения стенки слепой кишки не описаны."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Terminal Ileitis",
+          "diagnosis_ru": "Терминальный илеит",
+          "argsFor": [
+            "RLQ pain, fever, and vomiting are present.",
+            "Inflammatory markers are elevated.",
+            "Guarding and rebound indicate severe local inflammation."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота, лихорадка и рвота.",
+            "Воспалительные маркёры повышены.",
+            "Защита и симптом раздражения брюшины указывают на выраженное местное воспаление."
+          ],
+          "argsAgainst": [
+            "CT identifies inflamed appendix, not terminal ileum.",
+            "Psoas sign is more compatible with appendiceal irritation.",
+            "No ileal wall thickening is reported."
+          ],
+          "argsAgainst_ru": [
+            "КТ выявляет воспалённый аппендикс, а не терминальный отдел подвздошной кишки.",
+            "Симптом поясничной мышцы больше соответствует аппендикулярному раздражению.",
+            "Утолщение стенки подвздошной кишки не описано."
+          ]
+        }
       ]
     },
     {
@@ -861,6 +1086,81 @@
           "diagnosis": "Острый панкреатит",
           "match": "5%",
           "differentiator": "OSCE 2010 listed this as 'less likely' foil - pain wrong location, no elevated amylase/lipase, CT shows colon not pancreas"
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Diverticulitis (Uncomplicated)",
+          "diagnosis_ru": "Острый дивертикулит (неосложнённый)",
+          "argsFor": [
+            "CT shows sigmoid wall thickening with pericolonic fat stranding.",
+            "Diverticulosis is present on CT.",
+            "LLQ pain with fever, WBC 14.5, and CRP 7.8."
+          ],
+          "argsFor_ru": [
+            "КТ показывает утолщение стенки сигмы и периоколическую инфильтрацию.",
+            "На КТ имеется дивертикулёз.",
+            "Есть боль слева внизу живота, температура, WBC 14.5 и CRP 7.8."
+          ],
+          "argsAgainst": [
+            "No abscess on CT.",
+            "No rebound initially."
+          ],
+          "argsAgainst_ru": [
+            "На КТ нет абсцесса.",
+            "Изначально нет симптома раздражения брюшины."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Constipation with Colonic Distention",
+          "diagnosis_ru": "Запор с расширением толстой кишки",
+          "argsFor": [
+            "No bowel movement for 2 days.",
+            "History of occasional constipation is present.",
+            "Hypoactive bowel sounds are noted."
+          ],
+          "argsFor_ru": [
+            "Нет стула 2 дня.",
+            "Есть анамнез периодических запоров.",
+            "Отмечены ослабленные кишечные шумы."
+          ],
+          "argsAgainst": [
+            "WBC 14.5 and CRP 7.8 indicate inflammation.",
+            "CT shows sigmoid wall thickening and fat stranding.",
+            "Low-grade fever and chills are present."
+          ],
+          "argsAgainst_ru": [
+            "WBC 14.5 и CRP 7.8 указывают на воспаление.",
+            "КТ показывает утолщение стенки сигмы и жировую инфильтрацию.",
+            "Есть субфебрилитет и озноб."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Colitis",
+          "diagnosis_ru": "Колит",
+          "argsFor": [
+            "LLQ pain with fever is present.",
+            "WBC and CRP are elevated.",
+            "Sigmoid wall thickening is present on CT."
+          ],
+          "argsFor_ru": [
+            "Есть боль слева внизу живота с температурой.",
+            "WBC и CRP повышены.",
+            "На КТ есть утолщение стенки сигмовидной кишки."
+          ],
+          "argsAgainst": [
+            "Diverticulosis and pericolonic fat stranding favor diverticulitis.",
+            "Pain is localized rather than diffuse.",
+            "No diffuse colonic involvement is described."
+          ],
+          "argsAgainst_ru": [
+            "Дивертикулёз и периоколическая инфильтрация больше говорят за дивертикулит.",
+            "Боль локальная, а не диффузная.",
+            "Диффузное поражение толстой кишки не описано."
+          ]
         }
       ]
     },
@@ -1028,6 +1328,81 @@
           "match": "20%",
           "differentiator": "Cocaine IS a risk factor per Cureus source, but dissection is anatomic tear, not just vasospasm. CTA confirms structural pathology."
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Type A Aortic Dissection with Mesenteric Ischemia",
+          "diagnosis_ru": "Расслоение аорты типа A с мезентериальной ишемией",
+          "argsFor": [
+            "CTA shows Type A dissection extending to celiac and SMA.",
+            "No mucosal enhancement in bowel indicates extensive ischemia.",
+            "Lactate 9.6 to 10.7 and multiorgan failure are present."
+          ],
+          "argsFor_ru": [
+            "КТА показывает расслоение типа A с распространением к чревному стволу и ВБА.",
+            "Отсутствие контрастирования слизистой кишечника указывает на обширную ишемию.",
+            "Есть лактат 9.6 до 10.7 и полиорганная недостаточность."
+          ],
+          "argsAgainst": [
+            "Heart rate is only 61 despite shock.",
+            "Abdominal tenderness is left-sided rather than diffuse."
+          ],
+          "argsAgainst_ru": [
+            "ЧСС только 61 несмотря на шок.",
+            "Болезненность живота больше слева, а не диффузная."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Acute Mesenteric Ischemia without Dissection",
+          "diagnosis_ru": "Острая мезентериальная ишемия без расслоения",
+          "argsFor": [
+            "Bowel shows no mucosal enhancement on CTA.",
+            "Lactate is critically elevated.",
+            "Severe abdominal pain with guarding is present."
+          ],
+          "argsFor_ru": [
+            "На КТА кишечник не контрастируется по слизистой.",
+            "Лактат критически повышен.",
+            "Есть сильная боль в животе с защитой."
+          ],
+          "argsAgainst": [
+            "CTA directly demonstrates aortic dissection flap.",
+            "Type A dissection explains pulse abnormalities.",
+            "Celiac and SMA involvement is explicitly described."
+          ],
+          "argsAgainst_ru": [
+            "КТА напрямую показывает лоскут расслоения аорты.",
+            "Расслоение типа A объясняет изменения пульса.",
+            "Поражение чревного ствола и ВБА описано прямо."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Severe Sepsis with Multi-organ Failure",
+          "diagnosis_ru": "Тяжёлый сепсис с полиорганной недостаточностью",
+          "argsFor": [
+            "Hypotension, altered mental status, and tachypnea are present.",
+            "WBC 15.74 is elevated.",
+            "Creatinine, AST, and ALT are critically elevated."
+          ],
+          "argsFor_ru": [
+            "Есть гипотензия, нарушение сознания и тахипноэ.",
+            "WBC 15.74 повышен.",
+            "Креатинин, AST и ALT критически повышены."
+          ],
+          "argsAgainst": [
+            "Temp 36.6°C does not support fever.",
+            "CTA shows a structural vascular catastrophe.",
+            "Extensive bowel ischemia is directly visualized."
+          ],
+          "argsAgainst_ru": [
+            "Температура 36.6°C не поддерживает лихорадку.",
+            "КТА показывает структурную сосудистую катастрофу.",
+            "Обширная ишемия кишечника визуализирована напрямую."
+          ]
+        }
       ]
     },
     {
@@ -1180,6 +1555,81 @@
           "diagnosis": "Stump Appendicitis",
           "match": "15%",
           "differentiator": "If prior appendectomy confirmed, stump appendicitis possible but presentation identical. OSCE 2010 lists as less likely differential."
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Perforated Appendicitis with Abscess (Grade IV)",
+          "diagnosis_ru": "Перфоративный аппендицит с абсцессом (IV степень)",
+          "argsFor": [
+            "CT shows 5cm periappendiceal abscess with rim enhancement.",
+            "Appendiceal wall defect is visible on CT.",
+            "Rigid abdomen, diffuse rebound, and fever 40.1°C are present."
+          ],
+          "argsFor_ru": [
+            "КТ показывает периаппендикулярный абсцесс 5 см с контрастным ободком.",
+            "На КТ виден дефект стенки аппендикса.",
+            "Есть ригидный живот, разлитой симптом раздражения брюшины и температура 40.1°C."
+          ],
+          "argsAgainst": [
+            "No free air is described.",
+            "WBC elevation is only moderate."
+          ],
+          "argsAgainst_ru": [
+            "Свободный газ не описан.",
+            "Повышение WBC только умеренное."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Perforated Cecal Diverticulitis with Abscess",
+          "diagnosis_ru": "Перфоративный дивертикулит слепой кишки с абсцессом",
+          "argsFor": [
+            "RLQ pain, fever, guarding, and rebound are present.",
+            "CT shows localized abscess and pelvic free fluid.",
+            "Inflammatory markers are elevated."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота, температура, защита и симптом раздражения брюшины.",
+            "КТ показывает локальный абсцесс и свободную жидкость в тазу.",
+            "Воспалительные маркёры повышены."
+          ],
+          "argsAgainst": [
+            "CT shows appendiceal wall defect, not cecal wall defect.",
+            "Periappendiceal abscess localizes to the appendix.",
+            "No cecal diverticula are described."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает дефект стенки аппендикса, а не слепой кишки.",
+            "Периаппендикулярный абсцесс локализует процесс к аппендиксу.",
+            "Дивертикулы слепой кишки не описаны."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Perforated Meckel's Diverticulitis",
+          "diagnosis_ru": "Перфоративный дивертикулит Меккеля",
+          "argsFor": [
+            "RLQ pain with fever and peritoneal signs is present.",
+            "CT shows abscess and free pelvic fluid.",
+            "Multiple vomiting and intolerance of oral intake are present."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота с температурой и перитонеальными симптомами.",
+            "КТ показывает абсцесс и свободную жидкость в тазу.",
+            "Есть многократная рвота и непереносимость приёма пищи."
+          ],
+          "argsAgainst": [
+            "CT specifically shows appendiceal wall defect.",
+            "Abscess is periappendiceal, not ileal.",
+            "No Meckel diverticulum is described."
+          ],
+          "argsAgainst_ru": [
+            "КТ прямо показывает дефект стенки аппендикса.",
+            "Абсцесс периаппендикулярный, а не илеальный.",
+            "Дивертикул Меккеля не описан."
+          ]
         }
       ]
     },
@@ -1335,6 +1785,83 @@
           "diagnosis": "Гастроэнтерит",
           "match": "15%",
           "differentiator": "Would expect diffuse symptoms, diarrhea. RLQ localization atypical for gastroenteritis."
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Normal Appendix / Non-specific Abdominal Pain",
+          "diagnosis_ru": "Нормальный аппендикс / Неспецифическая абдоминальная боль",
+          "argsFor": [
+            "CT shows normal 5mm appendix without wall thickening.",
+            "WBC 8.4 and CRP 0.35 are normal.",
+            "No guarding, no rebound, and patient appears comfortable."
+          ],
+          "argsFor_ru": [
+            "КТ показывает нормальный аппендикс 5 мм без утолщения стенки.",
+            "WBC 8.4 и CRP 0.35 нормальные.",
+            "Нет защиты, нет симптома раздражения брюшины, пациент выглядит спокойно."
+          ],
+          "argsAgainst": [
+            "Mild McBurney tenderness is present.",
+            "There is minimal nausea.",
+            "Pain is localized to RLQ."
+          ],
+          "argsAgainst_ru": [
+            "Есть лёгкая болезненность в точке Мак-Бурнея.",
+            "Есть минимальная тошнота.",
+            "Боль локализована в правой подвздошной области."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Early Acute Appendicitis",
+          "diagnosis_ru": "Ранний острый аппендицит",
+          "argsFor": [
+            "RLQ discomfort and McBurney tenderness are present.",
+            "Mild nausea is present.",
+            "Symptoms started only 12 hours ago."
+          ],
+          "argsFor_ru": [
+            "Есть дискомфорт справа внизу живота и болезненность в точке Мак-Бурнея.",
+            "Есть лёгкая тошнота.",
+            "Симптомы начались только 12 часов назад."
+          ],
+          "argsAgainst": [
+            "CT shows normal appendix without stranding.",
+            "WBC and CRP are normal.",
+            "No guarding or rebound is present."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает нормальный аппендикс без инфильтрации.",
+            "WBC и CRP нормальные.",
+            "Нет защиты или симптома раздражения брюшины."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Mesenteric Lymphadenitis",
+          "diagnosis_ru": "Мезентериальный лимфаденит",
+          "argsFor": [
+            "Mild RLQ pain and low-grade temperature are present.",
+            "Minimal nausea is present.",
+            "Patient remains clinically comfortable."
+          ],
+          "argsFor_ru": [
+            "Есть лёгкая боль справа внизу живота и субфебрильная температура.",
+            "Есть минимальная тошнота.",
+            "Клинически пациент чувствует себя комфортно."
+          ],
+          "argsAgainst": [
+            "CT does not describe enlarged mesenteric nodes.",
+            "Inflammatory markers are normal.",
+            "No imaging inflammatory focus is identified."
+          ],
+          "argsAgainst_ru": [
+            "КТ не описывает увеличенные мезентериальные лимфоузлы.",
+            "Воспалительные маркёры нормальные.",
+            "На визуализации нет воспалительного очага."
+          ]
         }
       ]
     },
@@ -1503,6 +2030,81 @@
           "match": "10%",
           "differentiator": "Would show elevated lipase/amylase and epigastric (not RUQ) pain. Murphy's sign negative in pancreatitis."
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Cholecystitis",
+          "diagnosis_ru": "Острый холецистит",
+          "argsFor": [
+            "Ultrasound shows gallbladder wall 5mm and pericholecystic fluid.",
+            "Murphy's sign and sonographic Murphy's sign are positive.",
+            "Multiple gallstones are present after fatty meal pain onset."
+          ],
+          "argsFor_ru": [
+            "УЗИ показывает стенку желчного пузыря 5 мм и перихолецистическую жидкость.",
+            "Симптом Мёрфи и сонографический симптом Мёрфи положительные.",
+            "Есть множественные камни после начала боли после жирной пищи."
+          ],
+          "argsAgainst": [
+            "Hypotension 90/65 suggests severe systemic illness.",
+            "ALT and AST are mildly elevated."
+          ],
+          "argsAgainst_ru": [
+            "Гипотензия 90/65 указывает на выраженное системное состояние.",
+            "ALT и AST умеренно повышены."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Ascending Cholangitis",
+          "diagnosis_ru": "Восходящий холангит",
+          "argsFor": [
+            "RUQ pain, fever 39.2°C, and tachycardia are present.",
+            "Gallstones can coexist with biliary infection.",
+            "Patient is hypotensive."
+          ],
+          "argsFor_ru": [
+            "Есть боль в правом подреберье, температура 39.2°C и тахикардия.",
+            "Камни желчного пузыря могут сочетаться с билиарной инфекцией.",
+            "У пациента гипотензия."
+          ],
+          "argsAgainst": [
+            "Bilirubin 1.0 is normal.",
+            "Alkaline phosphatase 125 is normal.",
+            "CBD 5mm is normal without ductal dilation."
+          ],
+          "argsAgainst_ru": [
+            "Билирубин 1.0 нормальный.",
+            "Щелочная фосфатаза 125 нормальная.",
+            "Общий желчный проток 5 мм нормальный, без дилатации."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Biliary Colic",
+          "diagnosis_ru": "Желчная колика",
+          "argsFor": [
+            "Pain started after a fatty meal.",
+            "Multiple gallstones are present.",
+            "RUQ pain is severe and constant."
+          ],
+          "argsFor_ru": [
+            "Боль началась после жирной пищи.",
+            "Есть множественные камни желчного пузыря.",
+            "Боль в правом подреберье сильная и постоянная."
+          ],
+          "argsAgainst": [
+            "Fever 39.2°C argues against simple biliary colic.",
+            "WBC 15.8 indicates inflammation.",
+            "Gallbladder wall thickening and pericholecystic fluid indicate cholecystitis."
+          ],
+          "argsAgainst_ru": [
+            "Температура 39.2°C против простой желчной колики.",
+            "WBC 15.8 указывает на воспаление.",
+            "Утолщение стенки пузыря и перихолецистическая жидкость указывают на холецистит."
+          ]
+        }
       ]
     },
     {
@@ -1667,6 +2269,81 @@
           "diagnosis": "Inflammatory Bowel Disease",
           "match": "10%",
           "differentiator": "IBD typically shows more extensive colitis. This is focal sigmoid inflammation in patient with known diverticula."
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Diverticulitis",
+          "diagnosis_ru": "Острый дивертикулит",
+          "argsFor": [
+            "CT shows sigmoid wall thickening with pericolonic stranding.",
+            "Multiple diverticula are present on CT.",
+            "LLQ tenderness with fever, WBC 14.8, and CRP 8.2."
+          ],
+          "argsFor_ru": [
+            "КТ показывает утолщение стенки сигмы с периоколической инфильтрацией.",
+            "На КТ есть множественные дивертикулы.",
+            "Есть болезненность слева внизу живота, температура, WBC 14.8 и CRP 8.2."
+          ],
+          "argsAgainst": [
+            "No abscess is present.",
+            "No perforation is present."
+          ],
+          "argsAgainst_ru": [
+            "Абсцесс отсутствует.",
+            "Перфорации нет."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Colitis",
+          "diagnosis_ru": "Колит",
+          "argsFor": [
+            "Lower abdominal pain with fever is present.",
+            "Inflammatory markers are elevated.",
+            "Sigmoid wall thickening is present."
+          ],
+          "argsFor_ru": [
+            "Есть боль внизу живота с температурой.",
+            "Воспалительные маркёры повышены.",
+            "Есть утолщение стенки сигмовидной кишки."
+          ],
+          "argsAgainst": [
+            "CT shows diverticula and pericolonic stranding.",
+            "Pain is localized to LLQ.",
+            "No diffuse colitis pattern is described."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает дивертикулы и периоколическую инфильтрацию.",
+            "Боль локализована слева внизу живота.",
+            "Диффузная картина колита не описана."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Constipation with Colonic Distention",
+          "diagnosis_ru": "Запор с расширением толстой кишки",
+          "argsFor": [
+            "Wave-like episodes initially suggest intermittent colonic pain.",
+            "Lower abdominal pain is present.",
+            "Pain became constant over one week."
+          ],
+          "argsFor_ru": [
+            "Сначала волнообразные эпизоды могут напоминать периодическую боль толстой кишки.",
+            "Есть боль внизу живота.",
+            "Боль стала постоянной за неделю."
+          ],
+          "argsAgainst": [
+            "CT shows inflammatory sigmoid wall thickening.",
+            "WBC 14.8 and CRP 8.2 are elevated.",
+            "Fever 38.3°C argues against simple constipation."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает воспалительное утолщение стенки сигмы.",
+            "WBC 14.8 и CRP 8.2 повышены.",
+            "Температура 38.3°C против простого запора."
+          ]
         }
       ]
     },
@@ -1838,6 +2515,81 @@
           "match": "10%",
           "differentiator": "Too severe for Grade II. Extensive stranding and free fluid indicate Grade III severity. CRP 5.8 far exceeds Grade II mean (0.99±1.63)."
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Appendicitis Grade III (Localized Peritonitis, No Perforation)",
+          "diagnosis_ru": "Острый аппендицит III степени (локализованный перитонит, без перфорации)",
+          "argsFor": [
+            "Migratory pain to RLQ with nausea and vomiting is present.",
+            "Marked RLQ tenderness, rebound, Rovsing, and psoas signs are present.",
+            "CT shows 10mm inflamed appendix with severe periappendiceal stranding."
+          ],
+          "argsFor_ru": [
+            "Есть миграция боли в правую подвздошную область с тошнотой и рвотой.",
+            "Есть выраженная болезненность, симптом раздражения брюшины, Ровзинга и поясничной мышцы.",
+            "КТ показывает воспалённый аппендикс 10 мм с выраженной периаппендикулярной инфильтрацией."
+          ],
+          "argsAgainst": [
+            "Small pelvic free fluid is present.",
+            "High fever 39.1°C suggests severe inflammation."
+          ],
+          "argsAgainst_ru": [
+            "Есть небольшое количество свободной жидкости в тазу.",
+            "Высокая температура 39.1°C указывает на тяжёлое воспаление."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Perforated Appendicitis Grade IV",
+          "diagnosis_ru": "Перфоративный аппендицит IV степени",
+          "argsFor": [
+            "Severe RLQ pain with rebound suggests advanced appendiceal disease.",
+            "Fever 39.1°C and elevated CRP 5.8 are present.",
+            "Severe stranding extends to right paracolic gutter."
+          ],
+          "argsFor_ru": [
+            "Сильная боль справа внизу живота с симптомом раздражения брюшины говорит о тяжёлом процессе.",
+            "Есть температура 39.1°C и повышенный CRP 5.8.",
+            "Выраженная инфильтрация распространяется в правый латеральный канал."
+          ],
+          "argsAgainst": [
+            "Appendiceal wall is intact on CT.",
+            "No abscess is seen.",
+            "No free air is present."
+          ],
+          "argsAgainst_ru": [
+            "Стенка аппендикса на КТ интактна.",
+            "Абсцесс не выявлен.",
+            "Свободного газа нет."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Cecal Diverticulitis",
+          "diagnosis_ru": "Дивертикулит слепой кишки",
+          "argsFor": [
+            "RLQ pain with fever and guarding is present.",
+            "WBC 13.5 and CRP 5.8 are elevated.",
+            "Localized peritoneal signs are present."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота с температурой и защитой.",
+            "WBC 13.5 и CRP 5.8 повышены.",
+            "Есть локальные перитонеальные симптомы."
+          ],
+          "argsAgainst": [
+            "CT specifically shows abnormal appendix.",
+            "Pain migrated from periumbilical area.",
+            "Rovsing and psoas signs support appendicitis."
+          ],
+          "argsAgainst_ru": [
+            "КТ конкретно показывает изменённый аппендикс.",
+            "Боль мигрировала из околопупочной области.",
+            "Симптомы Ровзинга и поясничной мышцы поддерживают аппендицит."
+          ]
+        }
       ]
     },
     {
@@ -1996,6 +2748,81 @@
           "diagnosis": "Мезентериальная ишемия",
           "match": "10%",
           "differentiator": "Can cause severe pain but typically no free air. Lactate would be markedly elevated in ischemia."
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Perforated Duodenal Ulcer with Peritonitis",
+          "diagnosis_ru": "Перфоративная язва двенадцатиперстной кишки с перитонитом",
+          "argsFor": [
+            "CXR shows free air under right hemidiaphragm.",
+            "CT shows anterior duodenal wall perforation with pneumoperitoneum.",
+            "Board-like rigidity, diffuse rebound, and absent bowel sounds are present."
+          ],
+          "argsFor_ru": [
+            "Рентген показывает свободный газ под правым куполом диафрагмы.",
+            "КТ показывает перфорацию передней стенки двенадцатиперстной кишки с пневмоперитонеумом.",
+            "Есть доскообразный живот, разлитой симптом раздражения брюшины и отсутствие кишечных шумов."
+          ],
+          "argsAgainst": [
+            "Pain radiates to mid-back.",
+            "Mild anemia is present."
+          ],
+          "argsAgainst_ru": [
+            "Боль иррадиирует в середину спины.",
+            "Есть лёгкая анемия."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Acute Pancreatitis",
+          "diagnosis_ru": "Острый панкреатит",
+          "argsFor": [
+            "Severe epigastric pain radiates to mid-back.",
+            "Vomiting is present.",
+            "Patient is in severe distress."
+          ],
+          "argsFor_ru": [
+            "Сильная эпигастральная боль иррадиирует в спину.",
+            "Есть рвота.",
+            "Пациент в тяжёлом состоянии."
+          ],
+          "argsAgainst": [
+            "Amylase 92 and lipase 58 are normal.",
+            "CT shows no pancreatic inflammation.",
+            "Free air under diaphragm indicates perforation."
+          ],
+          "argsAgainst_ru": [
+            "Амилаза 92 и липаза 58 нормальные.",
+            "КТ не показывает воспаление поджелудочной железы.",
+            "Свободный газ под диафрагмой указывает на перфорацию."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Perforated Gastric Ulcer",
+          "diagnosis_ru": "Перфоративная язва желудка",
+          "argsFor": [
+            "Sudden severe upper abdominal pain is present.",
+            "Pneumoperitoneum and free fluid are present.",
+            "Diffuse peritonitis signs are present."
+          ],
+          "argsFor_ru": [
+            "Есть внезапная сильная боль в верхней части живота.",
+            "Есть пневмоперитонеум и свободная жидкость.",
+            "Есть признаки разлитого перитонита."
+          ],
+          "argsAgainst": [
+            "CT localizes perforation to anterior duodenal wall.",
+            "Pain is maximal in epigastrium but source is identified.",
+            "No gastric wall perforation is described."
+          ],
+          "argsAgainst_ru": [
+            "КТ локализует перфорацию в передней стенке двенадцатиперстной кишки.",
+            "Боль максимальна в эпигастрии, но источник уже определён.",
+            "Перфорация стенки желудка не описана."
+          ]
         }
       ]
     },
@@ -2156,6 +2983,81 @@
           "match": "5%",
           "differentiator": "CT shows dilated SMALL bowel with transition in ileum. Colon is collapsed = proximal (small bowel) obstruction."
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Adhesive Small Bowel Obstruction",
+          "diagnosis_ru": "Спаечная тонкокишечная непроходимость",
+          "argsFor": [
+            "CT shows dilated small bowel loops with distal ileal transition point.",
+            "Distal bowel and colon are collapsed.",
+            "Bilious vomiting, no stool, and no gas are present."
+          ],
+          "argsFor_ru": [
+            "КТ показывает расширенные петли тонкой кишки с переходной точкой в дистальном илеуме.",
+            "Дистальные отделы кишечника и толстая кишка спавшиеся.",
+            "Есть желчная рвота, нет стула и газов."
+          ],
+          "argsAgainst": [
+            "Lactate is normal.",
+            "No strangulation or ischemia signs are present."
+          ],
+          "argsAgainst_ru": [
+            "Лактат нормальный.",
+            "Признаков странгуляции или ишемии нет."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Paralytic Ileus",
+          "diagnosis_ru": "Паралитическая кишечная непроходимость",
+          "argsFor": [
+            "Abdominal distention and diffuse tenderness are present.",
+            "Bowel sounds became intermittent.",
+            "No stool or gas for 3 days."
+          ],
+          "argsFor_ru": [
+            "Есть вздутие живота и диффузная болезненность.",
+            "Кишечные шумы стали непостоянными.",
+            "Нет стула и газов 3 дня."
+          ],
+          "argsAgainst": [
+            "CT shows focal transition point at distal ileum.",
+            "Collapsed distal bowel and colon favor mechanical obstruction.",
+            "High-pitched bowel sounds initially support SBO."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает очаговую переходную точку в дистальном илеуме.",
+            "Спавшаяся дистальная кишка и толстая кишка говорят за механическую непроходимость.",
+            "Изначально высокие кишечные шумы поддерживают ТКН."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Small Bowel Obstruction with Ischemia",
+          "diagnosis_ru": "Тонкокишечная непроходимость с ишемией",
+          "argsFor": [
+            "Small bowel loops are dilated 4-5cm.",
+            "Moderate free pelvic fluid is present.",
+            "Pain is now constant."
+          ],
+          "argsFor_ru": [
+            "Петли тонкой кишки расширены до 4-5 см.",
+            "Есть умеренная свободная жидкость в тазу.",
+            "Боль стала постоянной."
+          ],
+          "argsAgainst": [
+            "Lactate 1.8 is normal.",
+            "CT shows no ischemia or pneumatosis.",
+            "Normal SpO2 and stable vitals argue against advanced ischemia."
+          ],
+          "argsAgainst_ru": [
+            "Лактат 1.8 нормальный.",
+            "КТ не показывает ишемию или пневматоз.",
+            "Нормальная сатурация и стабильные показатели против выраженной ишемии."
+          ]
+        }
       ]
     },
     {
@@ -2311,6 +3213,81 @@
           "match": "10%",
           "differentiator": "Would be diffuse pain with diarrhea. RLQ localization with appendiceal findings on CT rules this out"
         }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Acute Appendicitis (Grade II - Mild)",
+          "diagnosis_ru": "Острый аппендицит (II степень - лёгкий)",
+          "argsFor": [
+            "Pain migrated from periumbilical area to RLQ.",
+            "McBurney tenderness, guarding, Rovsing, and psoas signs are present.",
+            "CT shows 7mm appendix with wall thickening and subtle stranding."
+          ],
+          "argsFor_ru": [
+            "Боль мигрировала из околопупочной области в правую подвздошную.",
+            "Есть болезненность в точке Мак-Бурнея, защита, симптомы Ровзинга и поясничной мышцы.",
+            "КТ показывает аппендикс 7 мм с утолщением стенки и небольшой инфильтрацией."
+          ],
+          "argsAgainst": [
+            "No abscess on CT.",
+            "No free fluid is present."
+          ],
+          "argsAgainst_ru": [
+            "На КТ нет абсцесса.",
+            "Свободная жидкость отсутствует."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Cecal Diverticulitis",
+          "diagnosis_ru": "Дивертикулит слепой кишки",
+          "argsFor": [
+            "RLQ pain with fever is present.",
+            "WBC 13.4 and CRP 1.1 are elevated.",
+            "Localized guarding and minimal rebound are present."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота с температурой.",
+            "WBC 13.4 и CRP 1.1 повышены.",
+            "Есть локальная защита и минимальный симптом раздражения брюшины."
+          ],
+          "argsAgainst": [
+            "CT specifically shows abnormal appendix.",
+            "Pain migration favors appendicitis.",
+            "Rovsing and psoas signs support appendiceal irritation."
+          ],
+          "argsAgainst_ru": [
+            "КТ конкретно показывает изменённый аппендикс.",
+            "Миграция боли говорит за аппендицит.",
+            "Симптомы Ровзинга и поясничной мышцы поддерживают аппендикулярное раздражение."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Terminal Ileitis",
+          "diagnosis_ru": "Терминальный илеит",
+          "argsFor": [
+            "RLQ pain, nausea, and low-volume vomiting are present.",
+            "Fever and elevated inflammatory markers are present.",
+            "Localized tenderness and guarding are present."
+          ],
+          "argsFor_ru": [
+            "Есть боль справа внизу живота, тошнота и однократная рвота.",
+            "Есть температура и повышенные воспалительные маркёры.",
+            "Есть локальная болезненность и защита."
+          ],
+          "argsAgainst": [
+            "CT shows appendiceal rather than ileal abnormality.",
+            "Pain migration is typical for appendicitis.",
+            "No terminal ileal thickening is described."
+          ],
+          "argsAgainst_ru": [
+            "КТ показывает патологию аппендикса, а не подвздошной кишки.",
+            "Миграция боли типична для аппендицита.",
+            "Утолщение терминального отдела подвздошной кишки не описано."
+          ]
+        }
       ]
     },
     {
@@ -2459,6 +3436,81 @@
           "diagnosis": "Ogilvie Syndrome (Colonic Pseudo-obstruction)",
           "match": "25%",
           "differentiator": "Similar to ileus but specifically affects colon. This case has small bowel dilation too = general ileus"
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Paralytic Ileus (Postoperative)",
+          "diagnosis_ru": "Послеоперационный паралитический илеус",
+          "argsFor": [
+            "Recent laparoscopic cholecystectomy was 3 days ago.",
+            "CT shows generalized dilation of small and large bowel.",
+            "No focal transition point is present."
+          ],
+          "argsFor_ru": [
+            "Недавно была лапароскопическая холецистэктомия 3 дня назад.",
+            "КТ показывает генерализованное расширение тонкой и толстой кишки.",
+            "Очаговой переходной точки нет."
+          ],
+          "argsAgainst": [
+            "No nausea or vomiting is present.",
+            "No severe pain is present."
+          ],
+          "argsAgainst_ru": [
+            "Нет тошноты или рвоты.",
+            "Нет выраженной боли."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Mechanical Small Bowel Obstruction",
+          "diagnosis_ru": "Механическая тонкокишечная непроходимость",
+          "argsFor": [
+            "Abdominal distention with no stool or gas is present.",
+            "Air-fluid levels are present throughout.",
+            "Postoperative state can raise obstruction concern."
+          ],
+          "argsFor_ru": [
+            "Есть вздутие живота и отсутствие стула и газов.",
+            "Повсюду определяются уровни жидкости и газа.",
+            "Послеоперационное состояние может вызывать подозрение на непроходимость."
+          ],
+          "argsAgainst": [
+            "No focal transition point is identified.",
+            "Both small and large bowel are dilated.",
+            "Normal bowel enhancement argues against obstructive ischemia."
+          ],
+          "argsAgainst_ru": [
+            "Очаговая переходная точка не выявлена.",
+            "Расширены и тонкая, и толстая кишка.",
+            "Нормальное контрастирование кишки против ишемии при механической непроходимости."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Mechanical Large Bowel Obstruction",
+          "diagnosis_ru": "Механическая толстокишечная непроходимость",
+          "argsFor": [
+            "Abdominal distention and obstipation are present.",
+            "Large bowel is dilated on imaging.",
+            "Air-fluid levels are present."
+          ],
+          "argsFor_ru": [
+            "Есть вздутие живота и отсутствие стула и газов.",
+            "Толстая кишка расширена по данным визуализации.",
+            "Есть уровни жидкости и газа."
+          ],
+          "argsAgainst": [
+            "Small bowel is also diffusely dilated.",
+            "No focal obstructing transition point is seen.",
+            "No bowel wall thickening or stranding is present."
+          ],
+          "argsAgainst_ru": [
+            "Тонкая кишка тоже диффузно расширена.",
+            "Очаговой обтурирующей переходной точки не видно.",
+            "Нет утолщения стенки кишки или мезентериальной инфильтрации."
+          ]
         }
       ]
     },
@@ -2624,6 +3676,81 @@
           "diagnosis": "Мезентериальная ишемия",
           "match": "10%",
           "differentiator": "Could cause peritonitis but pneumoperitoneum with free air pathognomonic for perforation. NSAID history points to ulcer."
+        }
+      ],
+      "suggestedHypotheses": [
+        {
+          "id": "A",
+          "diagnosis": "Perforated Peptic Ulcer (Duodenal)",
+          "diagnosis_ru": "Перфоративная пептическая язва (двенадцатиперстной кишки)",
+          "argsFor": [
+            "Upright CXR shows free air under right hemidiaphragm.",
+            "CT confirms pneumoperitoneum and peritoneal enhancement.",
+            "Sudden severe epigastric pain with rebound is present."
+          ],
+          "argsFor_ru": [
+            "Рентген стоя показывает свободный газ под правым куполом диафрагмы.",
+            "КТ подтверждает пневмоперитонеум и усиление брюшины.",
+            "Есть внезапная сильная эпигастральная боль с симптомом раздражения брюшины."
+          ],
+          "argsAgainst": [
+            "No direct duodenal wall defect is described.",
+            "Lactate is mildly elevated."
+          ],
+          "argsAgainst_ru": [
+            "Прямой дефект стенки двенадцатиперстной кишки не описан.",
+            "Лактат повышен лишь умеренно."
+          ]
+        },
+        {
+          "id": "B",
+          "diagnosis": "Acute Pancreatitis",
+          "diagnosis_ru": "Острый панкреатит",
+          "argsFor": [
+            "Severe upper abdominal pain with vomiting is present.",
+            "Pain is worst in the epigastrium.",
+            "Patient has tachycardia and fever."
+          ],
+          "argsFor_ru": [
+            "Есть сильная боль в верхней части живота с рвотой.",
+            "Боль максимальна в эпигастрии.",
+            "У пациента тахикардия и температура."
+          ],
+          "argsAgainst": [
+            "Amylase 105 and lipase 95 are normal.",
+            "Pneumoperitoneum is present on CXR and CT.",
+            "CT shows no pancreatic findings."
+          ],
+          "argsAgainst_ru": [
+            "Амилаза 105 и липаза 95 нормальные.",
+            "На рентгене и КТ есть пневмоперитонеум.",
+            "КТ не показывает признаков панкреатита."
+          ]
+        },
+        {
+          "id": "C",
+          "diagnosis": "Acute Mesenteric Ischemia",
+          "diagnosis_ru": "Острая мезентериальная ишемия",
+          "argsFor": [
+            "Severe abdominal pain with mild lactate elevation is present.",
+            "Patient is tachycardic and hypotensive.",
+            "Pain is severe and unrelenting."
+          ],
+          "argsFor_ru": [
+            "Есть сильная боль в животе с умеренным повышением лактата.",
+            "Пациент тахикардичен и гипотензивен.",
+            "Боль сильная и не прекращается."
+          ],
+          "argsAgainst": [
+            "Pneumoperitoneum strongly indicates perforated viscus.",
+            "CT shows peritoneal enhancement, not ischemic bowel findings.",
+            "Free air under diaphragm is incompatible with isolated mesenteric ischemia."
+          ],
+          "argsAgainst_ru": [
+            "Пневмоперитонеум убедительно указывает на перфорацию полого органа.",
+            "КТ показывает усиление брюшины, а не ишемические изменения кишки.",
+            "Свободный газ под диафрагмой несовместим с изолированной мезентериальной ишемией."
+          ]
         }
       ]
     },
