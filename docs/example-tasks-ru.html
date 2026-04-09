@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Примеры заданий — Oracle vs. Critic Study</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 11pt; color: #1a1a1a; background: #fff; }
+
+    @page { size: A4; margin: 18mm 20mm; }
+    @media print {
+      .sheet { page-break-after: always; }
+      .sheet:last-child { page-break-after: avoid; }
+      .no-print { display: none; }
+    }
+
+    .sheet { max-width: 170mm; margin: 0 auto 50px; }
+
+    /* Header */
+    .sheet-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 2.5px solid #333; padding-bottom: 8px; margin-bottom: 13px;
+    }
+    .sheet-header .title { font-size: 15pt; font-weight: bold; }
+    .sheet-header .meta { text-align: right; font-size: 9pt; color: #555; line-height: 1.6; }
+    .badge { display: inline-block; padding: 2px 9px; border-radius: 4px; font-size: 8.5pt; font-weight: bold; letter-spacing: 0.3px; }
+    .badge-noai   { background: #f0f0f0; color: #444; border: 1px solid #bbb; }
+    .badge-critic { background: #f3e8ff; color: #6d28d9; border: 1px solid #c4b5fd; }
+    .badge-oracle { background: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
+
+    /* Sections */
+    .section { margin-bottom: 11px; }
+    .section-title {
+      font-size: 8.5pt; font-weight: bold; text-transform: uppercase;
+      letter-spacing: 0.6px; color: #555; border-bottom: 1px solid #ddd;
+      padding-bottom: 3px; margin-bottom: 7px;
+    }
+    .clinical-row { margin-bottom: 5px; line-height: 1.45; }
+
+    /* Vitals */
+    .vitals-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 4px; }
+    .vital-cell { border: 1px solid #ccc; border-radius: 4px; padding: 5px 6px; text-align: center; }
+    .vital-cell .v-label { font-size: 7pt; color: #777; display: block; margin-bottom: 2px; }
+    .vital-cell .v-value { font-size: 9.5pt; font-weight: bold; }
+    .v-warn { color: #c0392b; }
+
+    /* Labs */
+    .labs-grid { display: grid; gap: 5px; margin-top: 4px; }
+    .labs-4 { grid-template-columns: repeat(4, 1fr); }
+    .labs-3 { grid-template-columns: repeat(3, 1fr); }
+    .lab-cell { border: 1px solid #ccc; border-radius: 4px; padding: 5px 7px; }
+    .lab-cell .l-label { font-size: 7.5pt; color: #777; display: block; }
+    .lab-cell .l-value { font-size: 9.5pt; font-weight: bold; }
+    .l-high   { color: #c0392b; }
+    .l-crit   { color: #7b0000; background: #fff0f0; padding: 1px 3px; border-radius: 2px; }
+    .l-normal { color: #27ae60; }
+    .l-low    { color: #e67e22; }
+
+    /* Imaging */
+    .imaging-box {
+      background: #f8f8f8; border: 1px solid #ddd; border-radius: 4px;
+      padding: 7px 10px; font-size: 10pt; line-height: 1.45; margin-top: 4px;
+    }
+
+    /* AI recommendation (Oracle) */
+    .ai-rec-box {
+      background: #eff6ff; border: 2px solid #3b82f6; border-radius: 6px;
+      padding: 9px 13px; margin-top: 4px;
+    }
+    .ai-rec-box .ai-label { font-size: 8pt; color: #1d4ed8; font-weight: bold; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+    .ai-rec-box .ai-diagnosis { font-size: 12pt; font-weight: bold; color: #1e3a8a; }
+
+    .evidence-list { list-style: none; padding: 0; margin-top: 6px; }
+    .evidence-list li {
+      padding: 3px 0 3px 16px; position: relative;
+      font-size: 10pt; line-height: 1.4; border-bottom: 1px dotted #e0e0e0;
+    }
+    .evidence-list li:last-child { border-bottom: none; }
+    .evidence-list li::before { content: "✓"; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
+
+    /* Hypothesis table (Critic) */
+    .hyp-table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 9.5pt; }
+    .hyp-table th {
+      padding: 6px 8px; text-align: left; font-size: 8pt; font-weight: bold;
+      text-transform: uppercase; letter-spacing: 0.4px; border: 1px solid #ccc;
+    }
+    .th-num  { width: 26px; background: #f3f4f6; color: #555; }
+    .th-diag { width: 22%; background: #f3f4f6; color: #555; }
+    .th-for  { width: 39%; background: #dcfce7; color: #166534; }
+    .th-against { width: 39%; background: #fee2e2; color: #991b1b; }
+    .hyp-table td { padding: 7px 8px; vertical-align: top; border: 1px solid #ddd; line-height: 1.4; }
+    .hyp-table tr:nth-child(odd)  td { background: #fff; }
+    .hyp-table tr:nth-child(even) td { background: #fafafa; }
+    .hyp-label {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: #7c3aed; color: #fff; font-weight: bold; font-size: 9pt;
+    }
+    .arg-list { list-style: none; padding: 0; margin: 0; }
+    .arg-list li { padding: 2px 0 2px 13px; position: relative; font-size: 9pt; line-height: 1.35; }
+    .arg-for     li::before { content: "•"; position: absolute; left: 2px; color: #16a34a; font-weight: bold; }
+    .arg-against li::before { content: "•"; position: absolute; left: 2px; color: #dc2626; font-weight: bold; }
+
+    /* User row in Critic table */
+    .user-row td { background: #faf5ff !important; border-top: 2px dashed #a78bfa !important; }
+    .plus-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: #7c3aed; color: #fff; font-weight: bold; font-size: 11pt;
+    }
+    .write-field { border: none; border-bottom: 1px solid #aaa; width: 100%; min-height: 18px; background: transparent; display: block; margin-top: 3px; }
+
+    /* Answer section */
+    .answer-section { border: 2px solid #333; border-radius: 6px; padding: 11px 14px; margin-top: 13px; background: #fafafa; }
+    .answer-section .a-title { font-size: 10pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 9px; }
+    .answer-row { margin-bottom: 11px; }
+    .answer-row label { font-size: 9.5pt; font-weight: bold; display: block; margin-bottom: 4px; }
+    .answer-line { border-bottom: 1.5px solid #555; height: 22px; width: 100%; display: block; }
+
+    .confidence-row { display: flex; align-items: center; gap: 10px; }
+    .confidence-row label { font-size: 9.5pt; font-weight: bold; white-space: nowrap; }
+    .conf-boxes { display: flex; gap: 6px; }
+    .conf-box {
+      width: 28px; height: 28px; border: 1.5px solid #555; border-radius: 4px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-size: 9pt; font-weight: bold; line-height: 1;
+    }
+    .conf-box .conf-sub { font-size: 6pt; font-weight: normal; color: #666; margin-top: 1px; }
+
+    /* Screen-only */
+    .no-print.preview-banner {
+      background: #1e3a8a; color: white; padding: 12px 20px;
+      text-align: center; font-size: 11pt; margin-bottom: 30px;
+    }
+    .divider { border: none; border-top: 1px dashed #ccc; margin: 30px 0; }
+  </style>
+</head>
+<body>
+
+<div class="no-print preview-banner">
+  Oracle vs. Critic Study — Примеры бланков заданий &nbsp;|&nbsp; Печать: Ctrl+P → A4, масштаб 100%
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ЛИСТ 1 — БЕЗ ИИ (Предварительный тест)
+     PRE_002 · Восходящий холангит
+════════════════════════════════════════════ -->
+<div class="sheet">
+
+  <div class="sheet-header">
+    <div>
+      <div class="title">Клиническое задание</div>
+      <div style="margin-top:5px;"><span class="badge badge-noai">БЕЗ ИИ — Предварительный тест</span></div>
+    </div>
+    <div class="meta">
+      Исследование Oracle vs. Critic<br>
+      Случай: PRE-02<br>
+      Участник №: __________
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Клинический случай</div>
+    <div class="clinical-row"><strong>Пациент:</strong> Женщина, 55 лет</div>
+    <div class="clinical-row"><strong>Жалобы:</strong> Боль в правом подреберье и лихорадка.</div>
+    <div class="clinical-row"><strong>Анамнез:</strong> Постепенное начало боли в правом подреберье после еды накануне вечером. Боль постоянная, сначала кратковременно уменьшилась, затем вновь усилилась. Озноб с дрожью, тошнота. Ранее было два похожих эпизода. Последний стул накануне, без особенностей.</div>
+    <div class="clinical-row"><strong>Физикальный осмотр:</strong> Пациентка лежит на правом боку с согнутыми коленями. Выраженная болезненность в правом подреберье, боль иррадиирует в правую лопатку. Симптом Мёрфи оценить затруднительно из-за резкой болезненности.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Витальные показатели</div>
+    <div class="vitals-grid">
+      <div class="vital-cell"><span class="v-label">Температура</span><span class="v-value v-warn">39,2°C</span></div>
+      <div class="vital-cell"><span class="v-label">АД</span><span class="v-value v-warn">90/65</span></div>
+      <div class="vital-cell"><span class="v-label">ЧСС</span><span class="v-value v-warn">118 уд/мин</span></div>
+      <div class="vital-cell"><span class="v-label">ЧД</span><span class="v-value">24 дых/мин</span></div>
+      <div class="vital-cell"><span class="v-label">SpO₂</span><span class="v-value">96%</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Лабораторные данные</div>
+    <div class="labs-grid labs-4" style="grid-template-columns: repeat(3,1fr);">
+      <div class="lab-cell"><span class="l-label">Лейкоциты (WBC)</span><span class="l-value l-high">16,5 × 10³/мкл ↑</span></div>
+      <div class="lab-cell"><span class="l-label">Билирубин общий</span><span class="l-value l-high">3,2 мг/дл ↑</span></div>
+      <div class="lab-cell"><span class="l-label">ЩФ</span><span class="l-value l-high">420 Ед/л ↑</span></div>
+      <div class="lab-cell"><span class="l-label">АЛТ</span><span class="l-value l-high">185 Ед/л ↑</span></div>
+      <div class="lab-cell"><span class="l-label">АСТ</span><span class="l-value l-high">220 Ед/л ↑</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Данные визуализации (УЗИ)</div>
+    <div class="imaging-box">УЗИ правого подреберья: общий желчный проток расширен до 12 мм, желчные камни в желчном пузыре, стенка желчного пузыря утолщена. Положительный сонографический симптом Мёрфи.</div>
+  </div>
+
+  <div class="answer-section">
+    <div class="a-title">Ваш ответ</div>
+    <div class="answer-row">
+      <label>Предполагаемый диагноз:</label>
+      <span class="answer-line"></span>
+    </div>
+    <div class="answer-row">
+      <label>Обоснование (кратко):</label>
+      <span class="answer-line"></span>
+      <span class="answer-line" style="margin-top:8px;"></span>
+    </div>
+    <div class="confidence-row">
+      <label>Уверенность в диагнозе:</label>
+      <div class="conf-boxes">
+        <div class="conf-box">1<span class="conf-sub">низкая</span></div>
+        <div class="conf-box">2</div>
+        <div class="conf-box">3<span class="conf-sub">средняя</span></div>
+        <div class="conf-box">4</div>
+        <div class="conf-box">5<span class="conf-sub">высокая</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /sheet 1 -->
+<hr class="divider no-print">
+
+
+<!-- ══════════════════════════════════════════
+     ЛИСТ 2 — КРИТИК (Интервенция)
+     INT_005 · Расслоение аорты типа A + мезентериальная ишемия
+════════════════════════════════════════════ -->
+<div class="sheet">
+
+  <div class="sheet-header">
+    <div>
+      <div class="title">Клиническое задание</div>
+      <div style="margin-top:5px;"><span class="badge badge-critic">ИИ-ПОМОЩНИК: КРИТИК — Интервенция</span></div>
+    </div>
+    <div class="meta">
+      Исследование Oracle vs. Critic<br>
+      Случай: INT-05<br>
+      Участник №: __________
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Клинический случай</div>
+    <div class="clinical-row"><strong>Пациент:</strong> Мужчина, 57 лет</div>
+    <div class="clinical-row"><strong>Жалобы:</strong> Сильная боль в животе, тошнота, спутанность сознания.</div>
+    <div class="clinical-row"><strong>Анамнез:</strong> Сильная боль в левой половине живота в течение 2 дней (8/10), постоянная, с тошнотой, рвотой и диареей. Сначала предполагал вирусный гастроэнтерит. Артериальная гипертензия в анамнезе, употребление кокаина. Анамнез сложно собрать из-за нарушения сознания.</div>
+    <div class="clinical-row"><strong>Физикальный осмотр:</strong> Состояние средней тяжести, спутанность сознания. Болезненность слева в животе с мышечной защитой. Пульс на верхних и нижних конечностях ослаблен. Тахипноэ.</div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-title">Витальные показатели</div>
+      <div class="vitals-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="vital-cell"><span class="v-label">Темп.</span><span class="v-value">36,6°C</span></div>
+        <div class="vital-cell"><span class="v-label">АД</span><span class="v-value v-warn">96/45</span></div>
+        <div class="vital-cell"><span class="v-label">ЧСС</span><span class="v-value">61 уд/мин</span></div>
+        <div class="vital-cell"><span class="v-label">ЧД</span><span class="v-value v-warn">32 дых/мин</span></div>
+        <div class="vital-cell"><span class="v-label">SpO₂</span><span class="v-value v-warn">94%</span></div>
+      </div>
+    </div>
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-title">Лабораторные данные (выборка)</div>
+      <div class="labs-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="lab-cell"><span class="l-label">WBC</span><span class="l-value l-high">15,7 × 10³/мкл ↑</span></div>
+        <div class="lab-cell"><span class="l-label">Лактат</span><span class="l-value l-crit">9,6 → 10,7 ммоль/л ‼</span></div>
+        <div class="lab-cell"><span class="l-label">Калий</span><span class="l-value l-crit">9,0 ммоль/л ‼</span></div>
+        <div class="lab-cell"><span class="l-label">Креатинин</span><span class="l-value l-high">6,67 мг/дл ↑</span></div>
+        <div class="lab-cell"><span class="l-label">АСТ</span><span class="l-value l-high">3 361 Ед/л ↑</span></div>
+        <div class="lab-cell"><span class="l-label">Глюкоза</span><span class="l-value l-low">46 мг/дл ↓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Данные визуализации (КТ-ангиография)</div>
+    <div class="imaging-box">Первичная КТ без контраста — без острых изменений. КТА брюшной полости: расслоение аорты, компрессия истинного просвета на уровне чревного ствола и верхней брыжеечной артерии. Отсутствие контрастирования слизистой кишечника — признак обширной ишемии.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🧠 Таблица гипотез — ИИ предлагает три варианта диагноза</div>
+    <table class="hyp-table">
+      <thead>
+        <tr>
+          <th class="th-num">#</th>
+          <th class="th-diag">Гипотеза</th>
+          <th class="th-for">✓ Аргументы ЗА</th>
+          <th class="th-against">✗ Аргументы ПРОТИВ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:center;"><span class="hyp-label">A</span></td>
+          <td><strong>Расслоение аорты типа A с мезентериальной ишемией</strong></td>
+          <td>
+            <ul class="arg-list arg-for">
+              <li>КТА показывает расслоение типа A с поражением чревного ствола и ВБА.</li>
+              <li>Отсутствие контрастирования слизистой — признак обширной ишемии кишечника.</li>
+              <li>Лактат 9,6 → 10,7 и полиорганная недостаточность.</li>
+            </ul>
+          </td>
+          <td>
+            <ul class="arg-list arg-against">
+              <li>ЧСС всего 61 несмотря на шок.</li>
+              <li>Боль локализована слева, а не диффузно.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align:center;"><span class="hyp-label">B</span></td>
+          <td><strong>Острая мезентериальная ишемия (без расслоения)</strong></td>
+          <td>
+            <ul class="arg-list arg-for">
+              <li>Кишечник не контрастируется на КТА.</li>
+              <li>Лактат критически повышен (10,7 ммоль/л).</li>
+              <li>Сильная боль в животе с мышечной защитой.</li>
+            </ul>
+          </td>
+          <td>
+            <ul class="arg-list arg-against">
+              <li>КТА напрямую показывает лоскут расслоения аорты.</li>
+              <li>Расслоение типа A объясняет ослабление пульса на конечностях.</li>
+              <li>Поражение чревного ствола и ВБА описано явно.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align:center;"><span class="hyp-label">C</span></td>
+          <td><strong>Тяжёлый сепсис с полиорганной недостаточностью</strong></td>
+          <td>
+            <ul class="arg-list arg-for">
+              <li>Гипотензия, нарушение сознания, тахипноэ.</li>
+              <li>WBC 15,7 × 10³/мкл повышен.</li>
+              <li>Критические изменения: Kr 6,67, АСТ 3 361, лактат 10,7.</li>
+            </ul>
+          </td>
+          <td>
+            <ul class="arg-list arg-against">
+              <li>Температура 36,6°C — лихорадки нет.</li>
+              <li>КТА демонстрирует структурную сосудистую катастрофу.</li>
+              <li>Ишемия кишечника визуализирована напрямую.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="user-row">
+          <td style="text-align:center;"><span class="plus-badge">+</span></td>
+          <td>
+            <div style="font-size:8pt;color:#6d28d9;margin-bottom:4px;">Ваша гипотеза (необязательно)</div>
+            <span class="write-field"></span>
+          </td>
+          <td><span class="write-field"></span></td>
+          <td><span class="write-field"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="answer-section" style="border-color:#7c3aed; background:#faf5ff;">
+    <div class="a-title" style="color:#6d28d9;">Ваш ответ</div>
+    <div class="answer-row">
+      <label>Итоговый диагноз (введите вручную):</label>
+      <span class="answer-line"></span>
+    </div>
+    <div class="confidence-row">
+      <label>Уверенность:</label>
+      <div class="conf-boxes">
+        <div class="conf-box">1<span class="conf-sub">низкая</span></div>
+        <div class="conf-box">2</div>
+        <div class="conf-box">3<span class="conf-sub">средняя</span></div>
+        <div class="conf-box">4</div>
+        <div class="conf-box">5<span class="conf-sub">высокая</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /sheet 2 -->
+<hr class="divider no-print">
+
+
+<!-- ══════════════════════════════════════════
+     ЛИСТ 3 — ОРАКУЛ (Интервенция)
+     INT_012 · Спаечная тонкокишечная непроходимость
+════════════════════════════════════════════ -->
+<div class="sheet">
+
+  <div class="sheet-header">
+    <div>
+      <div class="title">Клиническое задание</div>
+      <div style="margin-top:5px;"><span class="badge badge-oracle">ИИ-ПОМОЩНИК: ОРАКУЛ — Интервенция</span></div>
+    </div>
+    <div class="meta">
+      Исследование Oracle vs. Critic<br>
+      Случай: INT-12<br>
+      Участник №: __________
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Клинический случай</div>
+    <div class="clinical-row"><strong>Пациент:</strong> Женщина, 35 лет</div>
+    <div class="clinical-row"><strong>Жалобы:</strong> Боль в животе, тошнота, отсутствие стула в течение 3 дней.</div>
+    <div class="clinical-row"><strong>Анамнез:</strong> Схваткообразная боль в животе началась 3 дня назад — сначала периодическая, затем постоянная. Стул и газы не отходят 3 дня. Многократная рвота желчью, непереносимость приёма пищи, нарастающее вздутие живота. <strong>В анамнезе: аппендэктомия 5 лет назад.</strong></div>
+    <div class="clinical-row"><strong>Физикальный осмотр:</strong> Пациентка испытывает дискомфорт, выглядит обезвоженной. Вздутие живота, звонкие кишечные шумы (затем становятся редкими). Диффузная болезненность, минимальная мышечная защита, симптомов раздражения брюшины нет.</div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-title">Витальные показатели</div>
+      <div class="vitals-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="vital-cell"><span class="v-label">Темп.</span><span class="v-value">37,2°C</span></div>
+        <div class="vital-cell"><span class="v-label">АД</span><span class="v-value">112/68</span></div>
+        <div class="vital-cell"><span class="v-label">ЧСС</span><span class="v-value">88 уд/мин</span></div>
+        <div class="vital-cell"><span class="v-label">ЧД</span><span class="v-value">22 дых/мин</span></div>
+        <div class="vital-cell"><span class="v-label">SpO₂</span><span class="v-value">97%</span></div>
+      </div>
+    </div>
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-title">Лабораторные данные</div>
+      <div class="labs-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="lab-cell"><span class="l-label">WBC</span><span class="l-value l-high">10,8 × 10³/мкл ↑</span></div>
+        <div class="lab-cell"><span class="l-label">Гемоглобин</span><span class="l-value l-normal">12,1 г/дл</span></div>
+        <div class="lab-cell"><span class="l-label">Тромбоциты</span><span class="l-value l-normal">315 000/мкл</span></div>
+        <div class="lab-cell"><span class="l-label">Лактат</span><span class="l-value l-normal">1,8 ммоль/л</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Данные визуализации (КТ с контрастом)</div>
+    <div class="imaging-box">Расширенные петли тонкой кишки (4–5 см), чёткая зона перехода в дистальном отделе подвздошной кишки. Дистальные отделы тонкой и толстая кишка — спавшиеся. Умеренное количество свободной жидкости. Пневматоз и газ в воротной вене не выявлены.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🤖 Рекомендация ИИ</div>
+    <div class="ai-rec-box">
+      <div class="ai-label">Диагноз ИИ:</div>
+      <div class="ai-diagnosis">Спаечная тонкокишечная непроходимость</div>
+    </div>
+    <div style="margin-top:8px;">
+      <div style="font-size:8.5pt;font-weight:bold;color:#555;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px;">Подтверждающие факты:</div>
+      <ul class="evidence-list">
+        <li>Расширенные петли тонкой кишки 4–5 см соответствуют механической тонкокишечной непроходимости.</li>
+        <li>Чёткая зона перехода в дистальном отделе подвздошной кишки указывает на механическое препятствие.</li>
+        <li>Спавшийся кишечник дистальнее зоны перехода подтверждает непроходимость.</li>
+        <li>Отсутствие стула и газов 3 дня соответствует полной непроходимости.</li>
+        <li>Аппендэктомия 5 лет назад — наиболее вероятная причина спаечного процесса.</li>
+        <li>Нормальный лактат (1,8) и отсутствие пневматоза исключают ишемию кишечника.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="answer-section" style="border-color:#1d4ed8; background:#eff6ff;">
+    <div class="a-title" style="color:#1d4ed8;">Ваш ответ</div>
+    <div class="answer-row">
+      <label>Итоговый диагноз (введите вручную — не просто «согласен»):</label>
+      <span class="answer-line"></span>
+    </div>
+    <div class="answer-row">
+      <label>Согласны ли вы с рекомендацией ИИ? Почему?</label>
+      <span class="answer-line"></span>
+      <span class="answer-line" style="margin-top:8px;"></span>
+    </div>
+    <div class="confidence-row">
+      <label>Уверенность:</label>
+      <div class="conf-boxes">
+        <div class="conf-box">1<span class="conf-sub">низкая</span></div>
+        <div class="conf-box">2</div>
+        <div class="conf-box">3<span class="conf-sub">средняя</span></div>
+        <div class="conf-box">4</div>
+        <div class="conf-box">5<span class="conf-sub">высокая</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /sheet 3 -->
+
+</body>
+</html>
