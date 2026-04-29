@@ -125,6 +125,7 @@ export default function SessionOrchestrator() {
         setCurrentPhase(session.currentPhase);
         setCurrentCaseIndex(session.currentCaseIndex || 0);
         setFoilCaseIds(session.foilCaseIds || []);
+        if (session.language) setLanguage(session.language);
 
         // Restore logger context
         logger.init({
@@ -178,6 +179,7 @@ export default function SessionOrchestrator() {
       currentCaseIndex,
       sessionId,
       foilCaseIds,
+      language,
       lastUpdated: new Date().toISOString(),
       ...updates,
     };
