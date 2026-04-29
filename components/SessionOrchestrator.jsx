@@ -292,17 +292,13 @@ export default function SessionOrchestrator() {
 
     switch (phase) {
       case PHASES.PRE_TEST:
-        // 5 cases, no AI
         phaseCases = casesData.cases
-          .filter((c) => c.phase === 'pre-test')
-          .slice(0, 5);
+          .filter((c) => c.phase === 'pre-test');
         break;
 
       case PHASES.INTERVENTION:
-        // 15 cases with AI
         let interventionCases = casesData.cases
-          .filter((c) => c.phase === 'intervention')
-          .slice(0, 15);
+          .filter((c) => c.phase === 'intervention');
 
         // Shuffle based on user's seed
         if (sessionData.randomizationSeed) {
@@ -331,8 +327,7 @@ export default function SessionOrchestrator() {
       case PHASES.POST_TEST:
         // 5 cases, no AI
         phaseCases = casesData.cases
-          .filter((c) => c.phase === 'post-test')
-          .slice(0, 5);
+          .filter((c) => c.phase === 'post-test');
         break;
 
       default:
