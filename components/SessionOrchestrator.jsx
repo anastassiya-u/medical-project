@@ -770,6 +770,7 @@ function RegistrationForm({ onSubmit }) {
           />
         </div>
       </div>
+      <p className="text-xs text-gray-500 mt-1">{t.namePrivacyNote}</p>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
