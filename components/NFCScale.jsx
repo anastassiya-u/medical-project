@@ -10,96 +10,21 @@ import { useState } from 'react';
 import { useTranslation } from '../lib/translations';
 
 const NFC_ITEMS = [
-  {
-    id: 'q1_complex_problems',
-    textKey: 'nfcQ1',
-    reverse: false,
-  },
-  {
-    id: 'q2_responsibility_thinking',
-    textKey: 'nfcQ2',
-    reverse: false,
-  },
-  {
-    id: 'q3_thinking_not_fun',
-    textKey: 'nfcQ3',
-    reverse: true,
-  },
-  {
-    id: 'q4_prefer_simple',
-    textKey: 'nfcQ4',
-    reverse: true,
-  },
-  {
-    id: 'q5_intellectual_challenge',
-    textKey: 'nfcQ5',
-    reverse: false,
-  },
-  {
-    id: 'q6_deep_thinking',
-    textKey: 'nfcQ6',
-    reverse: true,
-  },
-  {
-    id: 'q7_prefer_easy',
-    textKey: 'nfcQ7',
-    reverse: false,
-  },
-  {
-    id: 'q8_abstract_problems',
-    textKey: 'nfcQ8',
-    reverse: false,
-  },
-  {
-    id: 'q9_enjoy_puzzles',
-    textKey: 'nfcQ9',
-    reverse: true,
-  },
-  {
-    id: 'q10_little_thinking',
-    textKey: 'nfcQ10',
-    reverse: true,
-  },
-  {
-    id: 'q11_cognitive_effort',
-    textKey: 'nfcQ11',
-    reverse: true,
-  },
-  {
-    id: 'q12_prefer_straightforward',
-    textKey: 'nfcQ12',
-    reverse: false,
-  },
-  {
-    id: 'q13_extensive_thinking',
-    textKey: 'nfcQ13',
-    reverse: false,
-  },
-  {
-    id: 'q14_avoid_situations',
-    textKey: 'nfcQ14',
-    reverse: true,
-  },
-  {
-    id: 'q15_deliberation',
-    textKey: 'nfcQ15',
-    reverse: false,
-  },
-  {
-    id: 'q16_minimal_effort',
-    textKey: 'nfcQ16',
-    reverse: false,
-  },
-  {
-    id: 'q17_task_requiring_thought',
-    textKey: 'nfcQ17',
-    reverse: false,
-  },
-  {
-    id: 'q18_prefer_little_thought',
-    textKey: 'nfcQ18',
-    reverse: true,
-  },
+  { id: 'q1_complex_problems',      textKey: 'nfcQ1',  reverse: false },
+  { id: 'q2_responsibility_thinking',textKey: 'nfcQ2',  reverse: false },
+  { id: 'q3_thinking_not_fun',       textKey: 'nfcQ3',  reverse: true  },
+  { id: 'q4_prefer_simple',          textKey: 'nfcQ4',  reverse: true  },
+  { id: 'q5_intellectual_challenge', textKey: 'nfcQ5',  reverse: false },
+  { id: 'q6_deep_thinking',          textKey: 'nfcQ6',  reverse: true  },
+  { id: 'q7_prefer_easy',            textKey: 'nfcQ7',  reverse: false },
+  { id: 'q8_abstract_problems',      textKey: 'nfcQ8',  reverse: false },
+  { id: 'q9_enjoy_puzzles',          textKey: 'nfcQ9',  reverse: true  },
+  { id: 'q11_cognitive_effort',      textKey: 'nfcQ11', reverse: true  },
+  { id: 'q12_prefer_straightforward',textKey: 'nfcQ12', reverse: false },
+  { id: 'q14_avoid_situations',      textKey: 'nfcQ14', reverse: true  },
+  { id: 'q15_deliberation',          textKey: 'nfcQ15', reverse: false },
+  { id: 'q16_minimal_effort',        textKey: 'nfcQ16', reverse: false },
+  { id: 'q18_prefer_little_thought', textKey: 'nfcQ18', reverse: true  },
 ];
 
 export default function NFCScale({ onComplete, language = 'ru' }) {
