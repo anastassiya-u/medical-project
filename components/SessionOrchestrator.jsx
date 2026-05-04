@@ -48,16 +48,21 @@ console.log('✅ Supabase client created');
 
 /**
  * Experimental Phases
+ * Study flow: REGISTRATION → PRE_TEST (4 cases) → INTERVENTION (10 cases) → NFC_ASSESSMENT (15 items) → COMPLETE
+ * Post-test is deployed as a separate application — not part of this flow.
  */
 const PHASES = {
   REGISTRATION: 'registration',
   PRE_TEST: 'pre_test',
-  NFC_ASSESSMENT: 'nfc_assessment',
   INTERVENTION: 'intervention',
-  POST_TEST_WAITING: 'post_test_waiting', // One week delay
-  POST_TEST: 'post_test',
-  LIKERT_ASSESSMENT: 'likert_assessment',
+  NFC_ASSESSMENT: 'nfc_assessment',
   COMPLETE: 'complete',
+};
+
+// Case counts enforced as explicit constants
+const CASE_COUNTS = {
+  PRE_TEST: 4,
+  INTERVENTION: 10,
 };
 
 export default function SessionOrchestrator() {
@@ -139,7 +144,7 @@ export default function SessionOrchestrator() {
         const casesLoaded = await loadCasesForPhase(session.currentPhase, session);
 
         // Validate restored session - if no cases loaded for a phase that requires cases, reset
-        const requiresCases = [PHASES.PRE_TEST, PHASES.INTERVENTION, PHASES.POST_TEST].includes(session.currentPhase);
+        const requiresCases = [PHASES.PRE_TEST, PHASES.INTERVENTION].includes(session.currentPhase);
         if (requiresCases && casesLoaded === 0) {
           console.warn('⚠️ Corrupted session detected (0 cases loaded). Resetting to registration...');
           localStorage.removeItem('experimentSession');
@@ -326,12 +331,6 @@ export default function SessionOrchestrator() {
         }));
         break;
 
-      case PHASES.POST_TEST:
-        // 5 cases, no AI
-        phaseCases = casesData.cases
-          .filter((c) => c.phase === 'post-test');
-        break;
-
       default:
         break;
     }
@@ -364,28 +363,21 @@ export default function SessionOrchestrator() {
 
   /**
    * Handle phase completion
+   * Flow: PRE_TEST → INTERVENTION → NFC_ASSESSMENT → COMPLETE
    */
   const handlePhaseComplete = async () => {
     await logger.completeSession();
 
     switch (currentPhase) {
       case PHASES.PRE_TEST:
-        transitionToPhase(PHASES.NFC_ASSESSMENT);
-        break;
-
-      case PHASES.NFC_ASSESSMENT:
         transitionToPhase(PHASES.INTERVENTION);
         break;
 
       case PHASES.INTERVENTION:
-        transitionToPhase(PHASES.POST_TEST_WAITING);
+        transitionToPhase(PHASES.NFC_ASSESSMENT);
         break;
 
-      case PHASES.POST_TEST:
-        transitionToPhase(PHASES.LIKERT_ASSESSMENT);
-        break;
-
-      case PHASES.LIKERT_ASSESSMENT:
+      case PHASES.NFC_ASSESSMENT:
         transitionToPhase(PHASES.COMPLETE);
         break;
 
@@ -406,14 +398,6 @@ export default function SessionOrchestrator() {
       setError('Failed to save your responses. Please try again or contact support.');
       // Don't proceed to next phase if submission failed
     }
-  };
-
-  /**
-   * Handle Likert assessment completion
-   */
-  const handleLikertComplete = async (responses) => {
-    await logger.submitLikertAssessment(responses);
-    handlePhaseComplete();
   };
 
   // ========================================
@@ -541,62 +525,6 @@ export default function SessionOrchestrator() {
               accuracyLevel={accuracyLevel}
               language={language}
             />
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  // ========================================
-  // PHASE: POST-TEST WAITING
-  // ========================================
-  if (currentPhase === PHASES.POST_TEST_WAITING) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-teal-100">
-        <div className="bg-white p-10 rounded-lg shadow-xl max-w-2xl text-center">
-          <div className="text-6xl mb-6">✅</div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Intervention Phase Complete!
-          </h2>
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            Thank you for completing the AI-assisted cases. To measure long-term
-            learning, we need you to return <strong>one week from now</strong> to
-            complete the final assessment.
-          </p>
-          <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 mb-6">
-            <p className="font-semibold text-blue-900 mb-2">
-              Return Date: {getReturnDate()}
-            </p>
-            <p className="text-sm text-blue-700">
-              You'll receive an email reminder before the post-test window opens.
-            </p>
-          </div>
-          <p className="text-gray-600 text-sm">
-            Your progress has been saved. You can close this page.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // ========================================
-  // PHASE: POST-TEST
-  // ========================================
-  if (currentPhase === PHASES.POST_TEST) {
-    const currentCase = cases[currentCaseIndex];
-
-    return (
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-5xl mx-auto">
-          <PhaseHeader
-            phase={t.postTest}
-            description={t.baselineAssessment}
-            caseNumber={currentCaseIndex + 1}
-            totalCases={cases.length}
-            language={language}
-          />
-          {currentCase && (
-            <NoAIInterface caseData={currentCase} onComplete={handleCaseComplete} language={language} />
           )}
         </div>
       </div>
@@ -877,13 +805,3 @@ function RegistrationForm({ onSubmit }) {
   );
 }
 
-function getReturnDate() {
-  const returnDate = new Date();
-  returnDate.setDate(returnDate.getDate() + 7);
-  return returnDate.toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}

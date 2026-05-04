@@ -27,7 +27,7 @@ CREATE TABLE users (
   randomization_seed INTEGER NOT NULL, -- For reproducibility
 
   -- Need for Cognition (NFC) Score
-  nfc_score INTEGER CHECK (nfc_score BETWEEN 18 AND 90),
+  nfc_score INTEGER CHECK (nfc_score BETWEEN 15 AND 75),
   nfc_level VARCHAR(10) CHECK (nfc_level IN ('high', 'low')),
 
   -- Consent & Privacy
@@ -50,8 +50,8 @@ CREATE TABLE sessions (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
 
-  -- Session Type
-  session_type VARCHAR(20) CHECK (session_type IN ('pre_test', 'intervention', 'post_test', 'post_test_waiting')) NOT NULL,
+  -- Session Type (post_test is deployed as a separate application)
+  session_type VARCHAR(20) CHECK (session_type IN ('pre_test', 'intervention', 'nfc_assessment')) NOT NULL,
 
   -- Timestamps
   started_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -191,28 +191,26 @@ CREATE TABLE nfc_responses (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
 
-  -- 18-item Short NFC Scale (Cacioppo et al., 1984)
+  -- 15-item NFC Scale (items 10, 13, 17 removed per researcher decision)
+  -- Reverse-scored items: q3, q4, q6, q9, q11, q14, q16, q18
   q1_complex_problems INTEGER CHECK (q1_complex_problems BETWEEN 1 AND 5),
   q2_responsibility_thinking INTEGER CHECK (q2_responsibility_thinking BETWEEN 1 AND 5),
   q3_thinking_not_fun INTEGER CHECK (q3_thinking_not_fun BETWEEN 1 AND 5), -- Reverse scored
   q4_prefer_simple INTEGER CHECK (q4_prefer_simple BETWEEN 1 AND 5), -- Reverse scored
   q5_intellectual_challenge INTEGER CHECK (q5_intellectual_challenge BETWEEN 1 AND 5),
-  q6_deep_thinking INTEGER CHECK (q6_deep_thinking BETWEEN 1 AND 5),
-  q7_prefer_easy INTEGER CHECK (q7_prefer_easy BETWEEN 1 AND 5), -- Reverse scored
+  q6_deep_thinking INTEGER CHECK (q6_deep_thinking BETWEEN 1 AND 5), -- Reverse scored
+  q7_prefer_easy INTEGER CHECK (q7_prefer_easy BETWEEN 1 AND 5),
   q8_abstract_problems INTEGER CHECK (q8_abstract_problems BETWEEN 1 AND 5),
-  q9_enjoy_puzzles INTEGER CHECK (q9_enjoy_puzzles BETWEEN 1 AND 5),
-  q10_little_thinking INTEGER CHECK (q10_little_thinking BETWEEN 1 AND 5), -- Reverse scored
-  q11_cognitive_effort INTEGER CHECK (q11_cognitive_effort BETWEEN 1 AND 5),
-  q12_prefer_straightforward INTEGER CHECK (q12_prefer_straightforward BETWEEN 1 AND 5), -- Reverse scored
-  q13_extensive_thinking INTEGER CHECK (q13_extensive_thinking BETWEEN 1 AND 5),
+  q9_enjoy_puzzles INTEGER CHECK (q9_enjoy_puzzles BETWEEN 1 AND 5), -- Reverse scored
+  q11_cognitive_effort INTEGER CHECK (q11_cognitive_effort BETWEEN 1 AND 5), -- Reverse scored
+  q12_prefer_straightforward INTEGER CHECK (q12_prefer_straightforward BETWEEN 1 AND 5),
   q14_avoid_situations INTEGER CHECK (q14_avoid_situations BETWEEN 1 AND 5), -- Reverse scored
   q15_deliberation INTEGER CHECK (q15_deliberation BETWEEN 1 AND 5),
   q16_minimal_effort INTEGER CHECK (q16_minimal_effort BETWEEN 1 AND 5), -- Reverse scored
-  q17_task_requiring_thought INTEGER CHECK (q17_task_requiring_thought BETWEEN 1 AND 5),
   q18_prefer_little_thought INTEGER CHECK (q18_prefer_little_thought BETWEEN 1 AND 5), -- Reverse scored
 
-  -- Calculated Score
-  total_score INTEGER CHECK (total_score BETWEEN 18 AND 90),
+  -- Calculated Score (15 items × 5-point scale; range 15–75)
+  total_score INTEGER CHECK (total_score BETWEEN 15 AND 75),
 
   -- Metadata
   completed_at TIMESTAMP DEFAULT NOW()
@@ -357,29 +355,27 @@ GROUP BY u.paradigm, u.accuracy_level;
 -- 10. FUNCTIONS FOR DATA INTEGRITY
 -- =====================================================
 
--- Function: Calculate NFC Total Score
+-- Function: Calculate NFC Total Score (15-item scale)
+-- Reverse-scored items: q3, q4, q6, q9, q11, q14, q16, q18
+-- Score range: 15–75; high NFC threshold: ≥45
 CREATE OR REPLACE FUNCTION calculate_nfc_score()
 RETURNS TRIGGER AS $$
 BEGIN
-  -- Reverse score items 3, 4, 7, 10, 12, 14, 16, 18
   NEW.total_score :=
     NEW.q1_complex_problems +
     NEW.q2_responsibility_thinking +
     (6 - NEW.q3_thinking_not_fun) +
     (6 - NEW.q4_prefer_simple) +
     NEW.q5_intellectual_challenge +
-    NEW.q6_deep_thinking +
-    (6 - NEW.q7_prefer_easy) +
+    (6 - NEW.q6_deep_thinking) +
+    NEW.q7_prefer_easy +
     NEW.q8_abstract_problems +
-    NEW.q9_enjoy_puzzles +
-    (6 - NEW.q10_little_thinking) +
-    NEW.q11_cognitive_effort +
-    (6 - NEW.q12_prefer_straightforward) +
-    NEW.q13_extensive_thinking +
+    (6 - NEW.q9_enjoy_puzzles) +
+    (6 - NEW.q11_cognitive_effort) +
+    NEW.q12_prefer_straightforward +
     (6 - NEW.q14_avoid_situations) +
     NEW.q15_deliberation +
     (6 - NEW.q16_minimal_effort) +
-    NEW.q17_task_requiring_thought +
     (6 - NEW.q18_prefer_little_thought);
 
   RETURN NEW;
@@ -399,7 +395,7 @@ BEGIN
   SET
     nfc_score = NEW.total_score,
     nfc_level = CASE
-      WHEN NEW.total_score >= 54 THEN 'high'
+      WHEN NEW.total_score >= 45 THEN 'high'  -- median of 15–75 range
       ELSE 'low'
     END,
     updated_at = NOW()
