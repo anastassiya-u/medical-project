@@ -1,6 +1,6 @@
 /**
  * NFCScale Component
- * 18-item Need for Cognition scale (Cacioppo et al., 1984)
+ * 15-item Need for Cognition scale (Cacioppo et al., 1984)
  * Measures tendency to engage in analytical thinking
  */
 
