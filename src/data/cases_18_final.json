@@ -9,9 +9,9 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right lower quadrant pain for 24 hours, nausea, a single episode of vomiting, low-grade fever, decreased appetite.",
+    "chiefComplaint": "Right iliac fossa pain for 24 hours, nausea, one episode of vomiting, low-grade fever, decreased appetite.",
     "chiefComplaint_ru": "Боль в правой подвздошной области в течение 24 часов, тошнота, однократная рвота, субфебрильная температура, снижение аппетита.",
-    "history": "The patient reports gradual onset of periumbilical pain with subsequent migration to the right lower quadrant. The pain is accompanied by nausea and one episode of vomiting. Low-grade fever was noted. Her last menstrual period was 2 weeks ago. She reports no urinary symptoms.",
+    "history": "The patient reports gradual onset of periumbilical pain with subsequent migration to the right iliac fossa. It is accompanied by nausea and a single episode of vomiting. Low-grade fever was noted. Last menstrual period was 2 weeks ago. No urinary symptoms.",
     "history_ru": "Пациентка сообщает о постепенном начале околопупочной боли с последующей миграцией в правую подвздошную область. Сопровождается тошнотой и однократной рвотой. Отмечалась субфебрильная температура. Последняя менструация была 2 недели назад. Мочевых симптомов нет.",
     "physicalExam": "The patient appears moderately ill and in pain. There is tenderness at McBurney's point. Rovsing's sign is positive. Blumberg's sign / rebound tenderness is initially negative, but guarding is present. Psoas sign is positive.",
     "physicalExam_ru": "Состояние средней тяжести, пациентка выглядит испытывающей боль. Имеется болезненность в точке Мак-Бурнея. Положительный симптом Ровзинга. Изначально симптом Щёткина—Блюмберга отрицательный, но присутствует мышечная защита. Положительный симптом псоас.",
@@ -28,12 +28,12 @@
       "platelets": "285,000/µL (normal)",
       "crp": "2.1 mg/dL (moderately elevated)"
     },
-    "imaging": "CT of the abdomen and pelvis: appendix measuring 9 mm in diameter with wall thickening greater than 2 mm. Moderate periappendiceal fat stranding. No abscess or perforation.",
+    "imaging": "CT of the abdomen and pelvis: appendiceal diameter 9 mm, wall thickening greater than 2 mm. Moderate periappendiceal fat stranding. No abscess or perforation.",
     "imaging_ru": "КТ брюшной полости и таза: диаметр аппендикса 9 мм, утолщение стенки более 2 мм. Умеренные воспалительные изменения периаппендикулярной клетчатки. Абсцесса и перфорации нет.",
     "correctDiagnosis": "Acute appendicitis",
     "correctDiagnosis_ru": "Острый аппендицит",
-    "keyDifferentiator": "Migratory periumbilical pain with localized McBurney point tenderness and CT-confirmed appendiceal enlargement.",
-    "diagnosticCriteria": "Compatible clinical presentation supported by CT evidence of an enlarged, thick-walled inflamed appendix."
+    "keyDifferentiator": "Migratory pain with McBurney tenderness and CT-proven inflamed appendix.",
+    "diagnosticCriteria": "Diagnosis is based on typical symptoms plus CT evidence of appendiceal inflammation."
   },
   {
     "id": "PRE_002",
@@ -45,9 +45,9 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Abdominal pain, abdominal distension, absence of stool and flatus for 3 days, nausea, and recurrent vomiting.",
+    "chiefComplaint": "Abdominal pain, distension, no stool or flatus for 3 days, nausea, recurrent vomiting.",
     "chiefComplaint_ru": "Боль в животе, вздутие, отсутствие стула и газов в течение 3 дней, тошнота, повторная рвота.",
-    "history": "The patient has had abdominal pain for 3 days. She reports absence of stool and flatus, nausea, and recurrent vomiting. Her condition has gradually worsened.",
+    "history": "The patient complains of abdominal pain for 3 days. She notes absence of stool and flatus, nausea, and recurrent vomiting. Her condition has been gradually worsening.",
     "history_ru": "Пациентка жалуется на боль в животе в течение 3 дней. Отмечает отсутствие отхождения стула и газов, тошноту и повторную рвоту. Состояние постепенно ухудшается.",
     "physicalExam": "The patient appears moderately ill. The abdomen is distended and diffusely tender on palpation. Bowel sounds are initially hyperactive and later become diminished.",
     "physicalExam_ru": "Состояние средней тяжести. Живот вздут, болезненный при пальпации диффузно. Сначала выслушиваются усиленные кишечные шумы, затем они ослабевают.",
@@ -64,12 +64,12 @@
       "platelets": "372,000/µL (elevated)",
       "aptt": "29.50 s (normal)"
     },
-    "imaging": "Contrast-enhanced CT of the abdomen: abnormal dilatation of the small-bowel loops (jejunum and ileum) up to 4–5 cm. A transition point is seen at the distal ileum, likely due to adhesions. Distal bowel loops are collapsed. Mesenteric crowding is present. A small amount of free fluid is seen in the abdomen and pelvis.",
+    "imaging": "Contrast-enhanced CT of the abdomen: pathological dilatation of small bowel loops (jejunum and ileum) up to 4–5 cm. Transition point at the distal ileum, likely due to adhesions. Distal bowel loops are collapsed. Mesenteric crowding is present. Small amount of free fluid in the abdomen and pelvis.",
     "imaging_ru": "КТ брюшной полости с контрастным усилением: патологическое расширение петель тонкой кишки (тощей и подвздошной) до 4–5 см. Точка перехода на уровне дистального отдела подвздошной кишки, вероятно из-за спаек. Дистальные отделы кишки спавшиеся. Скученность брыжейки. Небольшое количество свободной жидкости в брюшной полости и тазу.",
-    "correctDiagnosis": "Acute small-bowel obstruction",
+    "correctDiagnosis": "Acute small bowel obstruction",
     "correctDiagnosis_ru": "Острая тонкокишечная непроходимость",
-    "keyDifferentiator": "CT demonstrates a distal ileal transition point with proximal small-bowel dilatation and collapsed distal bowel.",
-    "diagnosticCriteria": "Clinical features of obstruction supported by CT evidence of mechanical small-bowel obstruction."
+    "keyDifferentiator": "CT shows a distal ileal transition point with proximal small-bowel dilatation.",
+    "diagnosticCriteria": "Diagnosis is based on obstructive symptoms and CT evidence of mechanical small-bowel obstruction."
   },
   {
     "id": "PRE_003",
@@ -81,11 +81,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right upper quadrant pain, fever up to 39.2°C, chills, nausea, and dark urine.",
+    "chiefComplaint": "Right upper quadrant pain, fever up to 39.2°C, chills, nausea, dark urine.",
     "chiefComplaint_ru": "Боль в правом подреберье, повышение температуры тела до 39.2°C, озноб, тошнота, тёмная моча.",
-    "history": "A 56-year-old woman presented with a 24-hour history of worsening right upper quadrant pain, nausea, severe chills, and dark urine. During the previous 6 months, she had two self-limited episodes of postprandial right upper quadrant pain. The current pain is constant, radiates to the right scapula, and is more severe than the prior episodes.",
+    "history": "A 56-year-old woman presented with a 24-hour history of worsening right upper quadrant pain, nausea, severe chills, and dark urine. Over the past 6 months, she had two self-limited episodes of right upper quadrant pain after meals. The current pain is constant, radiates to the right scapula, and is more severe than during previous episodes.",
     "history_ru": "Пациентка 56 лет поступила с 24-часовым анамнезом усиливающейся боли в правом подреберье, тошноты, сильного озноба и тёмной мочи. За последние 6 месяцев у неё было два самостоятельно прошедших эпизода боли в правом подреберье после еды. Текущая боль постоянная, иррадиирует в правую лопатку и выражена сильнее, чем при предыдущих эпизодах.",
-    "physicalExam": "The patient appears moderately ill and lies on her right side. Marked right upper quadrant tenderness is present. Mild scleral icterus is noted. The abdomen is soft, without signs of generalized peritonitis or marked distension. Gallbladder-specific signs are difficult to assess because of the severity of pain.",
+    "physicalExam": "The patient appears moderately ill and lies on her right side. Marked right upper quadrant tenderness is present. Mild scleral icterus is noted. The abdomen is soft, without signs of generalized peritonitis or marked distension. Specific gallbladder signs are difficult to assess because of the severity of pain.",
     "physicalExam_ru": "Состояние средней тяжести. Пациентка лежит на правом боку. Выраженная болезненность в правом подреберье. Отмечается лёгкая иктеричность склер. При пальпации живот мягкий, без признаков разлитого перитонита и выраженного вздутия. Специфические пузырные симптомы на фоне выраженного болевого синдрома оцениваются ограниченно.",
     "vitals": {
       "temperature": "39.2°C",
@@ -101,12 +101,12 @@
       "ast": "220 U/L (elevated)",
       "alp": "420 U/L (markedly elevated)"
     },
-    "imaging": "Abdominal ultrasound: common bile duct dilated to 12 mm; gallstones are present in the gallbladder; the gallbladder wall is thickened.",
+    "imaging": "Abdominal ultrasound: common bile duct dilated to 12 mm; gallstones are present; gallbladder wall is thickened.",
     "imaging_ru": "УЗИ органов брюшной полости: общий желчный проток расширен до 12 мм, в желчном пузыре определяются конкременты, стенка желчного пузыря утолщена.",
-    "correctDiagnosis": "Cholelithiasis. Choledocholithiasis. Acute cholangitis.",
+    "correctDiagnosis": "Cholelithiasis with choledocholithiasis and acute cholangitis.",
     "correctDiagnosis_ru": "Желчнокаменная болезнь. Холедохолитиаз. Острый холангит.",
-    "keyDifferentiator": "Dilated common bile duct with jaundice/cholestatic laboratory abnormalities and systemic infection signs.",
-    "diagnosticCriteria": "Clinical biliary infection with imaging evidence of common bile duct obstruction and inflammatory laboratory abnormalities."
+    "keyDifferentiator": "Fever, cholestatic labs, and a dilated common bile duct indicate biliary infection.",
+    "diagnosticCriteria": "Diagnosis follows systemic inflammation, cholestasis, and imaging evidence of biliary obstruction."
   },
   {
     "id": "PRE_004",
@@ -118,11 +118,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Lower abdominal pain for 1 week, fever, decreased appetite, and altered bowel habits.",
+    "chiefComplaint": "Lower abdominal pain for 1 week, fever, decreased appetite, altered bowel habits.",
     "chiefComplaint_ru": "Боль внизу живота в течение 1 недели, повышение температуры тела, снижение аппетита, нарушение стула.",
-    "history": "Lower abdominal pain began gradually 1 week ago. At first, the pain was intermittent and colicky, lasting about 30 minutes every 2–3 hours and sometimes waking him at night. It was relieved by walking. Each day it became more severe. Since yesterday morning, the pain has been constant and worsens with movement. The evening before, his temperature rose to 38.3°C. His appetite has been reduced all week, and since yesterday he has not eaten solid food. At the start of the illness he had loose stool, followed by constipation, with no bowel movement for 2 days. Over the past 2 years, he had 2–3 similar but much milder episodes that resolved after defecation.",
+    "history": "Gradual onset of lower abdominal pain 1 week ago. Initially, the pain was colicky, lasting 30 minutes every 2–3 hours, sometimes waking him at night. It was relieved by walking. Each day it became more severe. Since yesterday morning, the pain has become constant and worsens with movement. The evening before, body temperature rose to 38.3°C. Appetite has been reduced all week, and since yesterday he has not eaten solid food. At the beginning of the illness there was diarrhea, then constipation developed, with no bowel movement for 2 days. Over the past 2 years, there were 2–3 similar but much milder episodes that resolved after defecation.",
     "history_ru": "Постепенное начало боли внизу живота 1 неделю назад. Сначала боль возникала волнообразно по 30 минут каждые 2–3 часа, иногда будила ночью. Облегчалась при ходьбе. С каждым днём становилась сильнее. Со вчерашнего утра боль стала постоянной и усиливается при движении. Накануне вечером температура тела повысилась до 38.3°C. Аппетит снижен всю неделю, со вчерашнего дня твёрдую пищу не ест. В начале заболевания был жидкий стул, затем появилась задержка стула, дефекации не было 2 дня. За последние 2 года было 2–3 похожих, но значительно более лёгких эпизода, проходивших после дефекации.",
-    "physicalExam": "He lies supine on the examination couch with his legs extended. He appears uncomfortable and remains still. He is alert and cooperative but focused on the pain. There is tenderness in the left lower quadrant. Blumberg's sign / rebound tenderness is negative. Mild guarding is present in the left lower quadrant.",
+    "physicalExam": "He lies on the examination couch on his back with his legs extended. He appears uncomfortable and remains still. He is alert and cooperative but focused on the pain. There is tenderness in the left iliac fossa. Blumberg's sign / rebound tenderness is negative. Mild guarding is present in the left iliac fossa.",
     "physicalExam_ru": "Лежит на кушетке на спине с вытянутыми ногами. Отмечается дискомфорт, лежит неподвижно. Контактен, но сосредоточен на боли. Имеется болезненность в левой подвздошной области. Симптом Щёткина—Блюмберга отрицательный. Лёгкая мышечная защита в левой подвздошной области.",
     "vitals": {
       "temperature": "38.3°C",
@@ -137,12 +137,12 @@
       "platelets": "302,000/µL (normal)",
       "crp": "8.2 mg/dL (markedly elevated)"
     },
-    "imaging": "CT of the abdomen and pelvis: sigmoid colon wall thickening up to 6 mm. Moderate inflammatory changes in the pericolic fat. Multiple diverticula are present in the descending and sigmoid colon. A small amount of free fluid is present in the pelvis. No abscess or perforation is identified.",
+    "imaging": "CT of the abdomen and pelvis: sigmoid colon wall thickening up to 6 mm. Moderate inflammatory changes in the pericolic fat. Multiple diverticula in the descending and sigmoid colon. Small amount of free fluid in the pelvis. No abscess or perforation identified.",
     "imaging_ru": "КТ брюшной полости и таза: утолщение стенки сигмовидной кишки до 6 мм. Умеренные воспалительные изменения околокишечной клетчатки. Множественные дивертикулы в нисходящей и сигмовидной кишке. Небольшое количество свободной жидкости в малом тазу. Абсцесса и перфорации не выявлено.",
     "correctDiagnosis": "Acute diverticulitis",
     "correctDiagnosis_ru": "Острый дивертикулит",
-    "keyDifferentiator": "Left lower quadrant pain with CT-demonstrated sigmoid diverticula and pericolic inflammatory change.",
-    "diagnosticCriteria": "Typical left-sided clinical syndrome supported by CT evidence of inflamed sigmoid diverticula without abscess or perforation."
+    "keyDifferentiator": "CT shows sigmoid diverticula with focal wall thickening and pericolic inflammation.",
+    "diagnosticCriteria": "Diagnosis is based on left lower quadrant pain with CT evidence of inflamed diverticula."
   },
   {
     "id": "INT_001",
@@ -154,11 +154,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Severe epigastric pain radiating to the back, nausea, and vomiting.",
+    "chiefComplaint": "Severe epigastric pain radiating to the back, nausea, vomiting.",
     "chiefComplaint_ru": "Сильная боль в эпигастрии с иррадиацией в спину, тошнота, рвота.",
-    "history": "The patient reports sudden onset of severe epigastric pain 6 hours earlier. He describes the pain as very intense, constant, and radiating to the back. It is accompanied by nausea and vomiting. He has a history of long-term NSAID use for osteoarthritis. He denies hematemesis but reports black tarry stool the day before presentation. He is a long-term smoker.",
+    "history": "The patient reports sudden onset of severe epigastric pain 6 hours ago. He describes the pain as very intense, constant, and radiating to the back. It is accompanied by nausea and vomiting. He has a history of long-term NSAID use for osteoarthritis. He denies hematemesis but reports black tarry stool the day before. He is a long-term smoker.",
     "history_ru": "Пациент сообщает о внезапном начале сильной боли в эпигастрии 6 часов назад. Боль описывает как очень интенсивную, постоянную, с иррадиацией в спину. Сопровождается тошнотой и рвотой. В анамнезе длительный приём НПВС по поводу остеоартрита. Отрицает кровавую рвоту, но сообщает о чёрном дегтеобразном стуле накануне. Длительно курит.",
-    "physicalExam": "The patient appears critically ill, lies still, and avoids movement. The abdomen is tense, with board-like rigidity of the anterior abdominal wall. Marked tenderness is present throughout the abdomen, maximal in the epigastrium. Bowel sounds are absent. Blumberg's sign / rebound tenderness is positive.",
+    "physicalExam": "The patient appears severely ill and lies motionless, avoiding movement. The abdomen is board-like with marked generalized tenderness, maximal in the epigastrium. Bowel sounds are absent. Blumberg's sign / rebound tenderness is positive.",
     "physicalExam_ru": "Состояние тяжёлое. Пациент лежит неподвижно, избегает движений. Живот напряжён, отмечается доскообразное напряжение мышц передней брюшной стенки. Выраженная болезненность по всему животу, максимальная в эпигастральной области. Кишечные шумы не выслушиваются. Симптом Щёткина—Блюмберга положительный.",
     "vitals": {
       "temperature": "38.6°C",
@@ -173,12 +173,12 @@
       "amylase": "85 U/L (normal)",
       "lipase": "62 U/L (normal)"
     },
-    "imaging": "Upright chest radiograph: free subdiaphragmatic air (pneumoperitoneum). CT of the abdomen: pneumoperitoneum and free intraperitoneal fluid, including Morrison's pouch.",
+    "imaging": "Upright chest radiograph: free air under the diaphragm (pneumoperitoneum). CT of the abdomen: signs of pneumoperitoneum and free fluid in the abdominal cavity, including Morrison's pouch.",
     "imaging_ru": "Рентгенография грудной клетки стоя: свободный газ под диафрагмой (пневмоперитонеум). КТ брюшной полости: признаки пневмоперитонеума, свободная жидкость в брюшной полости, в том числе в кармане Моррисона.",
-    "correctDiagnosis": "Perforation of a hollow viscus with peritonitis",
+    "correctDiagnosis": "Perforated hollow viscus with peritonitis.",
     "correctDiagnosis_ru": "Перфорация полого органа. Перитонит.",
-    "keyDifferentiator": "Free subdiaphragmatic air with generalized peritoneal signs indicates perforation.",
-    "diagnosticCriteria": "Acute abdomen with imaging-confirmed pneumoperitoneum and clinical signs of generalized peritonitis.",
+    "keyDifferentiator": "Pneumoperitoneum with board-like abdomen indicates perforated hollow viscus.",
+    "diagnosticCriteria": "Diagnosis is based on peritonitis plus free intraperitoneal air on imaging.",
     "isFoil": false,
     "aiRecommendation": "Prioritize perforated hollow viscus with generalized peritonitis and urgent surgical evaluation. Keep perforated peptic ulcer at the top of the differential given NSAID use, melena, board-like abdomen, and free air.",
     "aiRecommendation_ru": "В первую очередь следует думать о перфорации полого органа с разлитым перитонитом и необходимости срочной хирургической оценки. Перфоративная гастродуоденальная язва должна быть вверху дифференциального ряда с учётом приёма НПВС, мелены, доскообразного живота и свободного газа.",
@@ -311,11 +311,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right upper quadrant pain for 1 day, fever up to 39.2°C, chills, and nausea.",
+    "chiefComplaint": "Right upper quadrant pain for 1 day, fever up to 39.2°C, chills, nausea.",
     "chiefComplaint_ru": "Боль в правом подреберье в течение 1 суток, повышение температуры тела до 39.2°C, озноб, тошнота.",
-    "history": "Right upper quadrant pain began gradually the previous evening after a meal. The pain was dull but constant and lasted for several hours. By morning it had initially improved, but after breakfast it returned and worsened throughout the day. In the emergency department, the patient developed severe chills. She has nausea but no vomiting. Her last stool was yesterday and was normal. She has not noticed visible jaundice. The pain radiates to the right scapula.",
+    "history": "Gradual onset of right upper quadrant pain the previous evening after eating. The pain was dull but constant and lasted for several hours. In the morning it initially improved, but after breakfast it returned and worsened during the day. In the emergency department, the patient developed marked chills. Nausea is present, but there is no vomiting. Last stool was yesterday and was normal. The patient denies visible jaundice. The pain radiates to the right scapula.",
     "history_ru": "Постепенное начало боли в правом подреберье накануне вечером после еды. Боль была тупой, но постоянной и продолжалась несколько часов. Утром сначала стало легче, после завтрака боль вернулась и усилилась в течение дня. В приёмном покое был выраженный озноб. Есть тошнота, рвоты нет. Последний стул вчера, без особенностей. Видимой желтухи пациентка не отмечает. Боль иррадиирует в правую лопатку.",
-    "physicalExam": "The patient appears moderately ill and lies on her right side with her knees flexed. She has a clear expression of pain and is focused on the pain syndrome. Marked tenderness is present in the right upper quadrant. No jaundice is visible. Murphy's sign is positive.",
+    "physicalExam": "The patient appears moderately ill and lies on her right side with her knees flexed. She is alert and cooperative but focused on the pain. Marked right upper quadrant tenderness is present. No jaundice is seen. Murphy's sign is positive.",
     "physicalExam_ru": "Состояние средней тяжести. Пациентка лежит на правом боку с согнутыми коленями, на лице выражение боли. Контактна, но сосредоточена на болевом синдроме. Выраженная болезненность в правом подреберье. Желтуха не определяется. Симптом Мёрфи положительный.",
     "vitals": {
       "temperature": "39.2°C",
@@ -333,12 +333,12 @@
       "ast": "72 U/L (moderately elevated)",
       "alp": "125 U/L (normal)"
     },
-    "imaging": "Abdominal ultrasound: gallbladder wall thickened to 5 mm; multiple gallstones are present in the lumen; pericholecystic fluid is present. Sonographic Murphy's sign is positive. The common bile duct measures 5 mm and is not dilated. Intrahepatic bile ducts are not dilated.",
+    "imaging": "Abdominal ultrasound: gallbladder wall thickened to 5 mm; multiple gallstones are present in the gallbladder lumen; pericholecystic fluid is present. Sonographic Murphy's sign is positive. The common bile duct measures 5 mm and is not dilated. Intrahepatic bile ducts are not dilated.",
     "imaging_ru": "УЗИ органов брюшной полости: стенка желчного пузыря утолщена до 5 мм, в просвете желчного пузыря определяются множественные конкременты, имеется перихолецистическая жидкость. Сонографический симптом Мёрфи положительный. Общий желчный проток 5 мм, не расширен. Внутрипеченочные желчные протоки не расширены.",
     "correctDiagnosis": "Acute obstructive calculous cholecystitis",
     "correctDiagnosis_ru": "Острый обтурационный калькулёзный холецистит",
-    "keyDifferentiator": "Positive Murphy's sign with gallstones, wall thickening, and pericholecystic fluid on ultrasound.",
-    "diagnosticCriteria": "Acute right upper quadrant inflammatory syndrome with ultrasound findings diagnostic of calculous cholecystitis.",
+    "keyDifferentiator": "Murphy positivity with stones, wall thickening, and pericholecystic fluid supports cholecystitis.",
+    "diagnosticCriteria": "Diagnosis is based on right upper quadrant pain with ultrasound evidence of gallbladder inflammation.",
     "isFoil": false,
     "aiRecommendation": "Prioritize acute calculous cholecystitis. The normal bilirubin and non-dilated common bile duct argue against acute cholangitis despite fever and severe pain.",
     "aiRecommendation_ru": "В первую очередь следует думать об остром калькулёзном холецистите. Нормальный билирубин и нерасширенный общий желчный проток говорят против острого холангита, несмотря на лихорадку и выраженную боль.",
@@ -471,11 +471,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Progressive postprandial abdominal pain, nausea, vomiting, decreased appetite, weight loss, and worsening general condition.",
+    "chiefComplaint": "Progressive abdominal pain after meals, nausea, vomiting, decreased appetite, weight loss, worsening general condition.",
     "chiefComplaint_ru": "Прогрессирующая боль в животе после еды, тошнота, рвота, снижение аппетита, потеря массы тела, ухудшение общего состояния.",
-    "history": "A 70-year-old man reports worsening abdominal pain after meals for several weeks. Over the last few days, nausea, vomiting, decreased appetite, and weight loss have developed. As his condition worsened, the pain became more intense.",
+    "history": "A 70-year-old man complains of worsening abdominal pain after meals for several weeks. Over the last few days, nausea, vomiting, decreased appetite, and weight loss have developed. As his condition worsened, the pain became more intense.",
     "history_ru": "Пациент 70 лет жалуется на нарастающую боль в животе после еды в течение нескольких недель. В последние дни присоединились тошнота, рвота, снижение аппетита и потеря массы тела. При ухудшении состояния боль стала более интенсивной.",
-    "physicalExam": "Initially, the abdomen was soft, without marked guarding. As the condition deteriorated, abdominal distension, diffuse tenderness, and guarding developed.",
+    "physicalExam": "Initially, the abdomen is soft without marked guarding. With deterioration, abdominal distension, diffuse tenderness, and guarding develop.",
     "physicalExam_ru": "Сначала живот мягкий, без выраженного напряжения. При ухудшении состояния появились вздутие живота, диффузная болезненность и мышечная защита.",
     "vitals": {
       "temperature": "normal",
@@ -493,12 +493,12 @@
       "troponin": "0.05 (elevated)",
       "co2": "20 mmol/L"
     },
-    "imaging": "Contrast-enhanced CT of the abdomen and pelvis: dilated small-bowel loops, impaired bowel wall perfusion, and later ischemic bowel changes.",
+    "imaging": "Contrast-enhanced CT of the abdomen and pelvis: dilated small bowel loops, signs of impaired bowel wall perfusion, and in the later phase, ischemic bowel changes.",
     "imaging_ru": "КТ брюшной полости и таза с контрастированием: расширенные петли тонкой кишки, признаки нарушения перфузии кишечной стенки, в поздней фазе — ишемические изменения кишечника.",
     "correctDiagnosis": "Acute mesenteric ischemia",
     "correctDiagnosis_ru": "Острая мезентериальная ишемия",
-    "keyDifferentiator": "Rapidly rising lactate with CT evidence of bowel hypoperfusion and ischemic change.",
-    "diagnosticCriteria": "Severe abdominal syndrome with metabolic evidence of ischemia and contrast CT findings of bowel hypoperfusion.",
+    "keyDifferentiator": "Rapid lactate rise with CT bowel hypoperfusion is decisive for ischemia.",
+    "diagnosticCriteria": "Diagnosis is based on severe abdominal pain with metabolic deterioration and ischemic CT findings.",
     "isFoil": false,
     "aiRecommendation": "Treat this as acute mesenteric ischemia until proven otherwise. Escalating lactate, renal dysfunction, and CT evidence of impaired perfusion outweigh the initially modest abdominal findings.",
     "aiRecommendation_ru": "Этот случай следует расценивать как острую мезентериальную ишемию, пока не доказано обратное. Быстрый рост лактата, ухудшение функции почек и КТ-признаки нарушения перфузии важнее, чем относительно скромные ранние данные осмотра.",
@@ -631,11 +631,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Abdominal distension, absence of stool and flatus for 3 days after surgery, and nausea.",
+    "chiefComplaint": "Abdominal distension, no stool or flatus for 3 days after surgery, nausea.",
     "chiefComplaint_ru": "Вздутие живота, отсутствие стула и газов в течение 3 дней после операции, тошнота.",
-    "history": "The patient underwent laparoscopic cholecystectomy 3 days earlier for symptomatic cholelithiasis. The postoperative course was initially uneventful. Progressive abdominal distension and absence of stool and flatus then developed. She reports nausea but no vomiting. She denies fever.",
-    "history_ru": "Пациентка перенесла лапароскопическую холецистэктомию 3 дня назад по поводу симптомной желчнокаменной болезни. Послеоперационный период сначала протекал без особенностей. Затем появились прогрессирующее вздутие живота, отсутствие стула и газов. Есть тошнота, рвоты нет. Повышения температуры тела не отмечает.",
-    "physicalExam": "The patient is in satisfactory condition and feels relatively comfortable at rest. The abdomen is moderately distended and soft. Diffuse mild tenderness is present without guarding or Blumberg's sign / rebound tenderness. Postoperative wounds are clean and dry. Peristalsis is reduced.",
+    "history": "The patient underwent laparoscopic cholecystectomy 3 days ago for symptomatic cholelithiasis. The postoperative period was initially uneventful. Then progressive abdominal distension and absence of stool and flatus developed. Nausea is present, but there is no vomiting. She denies fever.",
+    "history_ru": "Пациентка перенесла лапароскопическую холецистэктомию 3 дня назад по поводу симптомной желчнокаменной болезни. Послеоперационный период протекал без особенностей. Затем появились прогрессирующее вздутие живота, отсутствие стула и газов. Есть тошнота, рвоты нет. Повышения температуры тела не отмечает.",
+    "physicalExam": "The patient appears clinically stable and relatively comfortable at rest. The abdomen is moderately distended and soft. Diffuse mild tenderness is present without guarding or Blumberg's sign / rebound tenderness. Postoperative wounds are clean and dry. Bowel sounds are reduced.",
     "physicalExam_ru": "Состояние удовлетворительное. В покое чувствует себя относительно комфортно. Живот умеренно вздут, мягкий. Диффузная умеренная болезненность без мышечной защиты и симптома Щёткина—Блюмберга. Послеоперационные раны чистые, сухие. Перистальтика ослаблена.",
     "vitals": {
       "temperature": "36.8°C",
@@ -650,12 +650,12 @@
       "platelets": "295,000/µL (normal)",
       "lactate": "1.2 mmol/L (normal)"
     },
-    "imaging": "Plain abdominal radiograph: generalized dilatation of both the small and large bowel. No focal transition point is seen. Air-fluid levels are present throughout the abdomen. No free air is present. CT of the abdomen and pelvis confirms diffuse bowel dilatation without evidence of mechanical obstruction.",
+    "imaging": "Plain abdominal radiograph: generalized dilatation of both the small and large bowel. No focal transition point. Air-fluid levels are seen throughout the abdomen. No free air. CT of the abdomen and pelvis confirms diffuse bowel dilatation without signs of mechanical obstruction.",
     "imaging_ru": "Обзорная рентгенография брюшной полости: генерализованное расширение как тонкой, так и толстой кишки. Очаговой точки перехода нет. Уровни жидкости определяются по всему животу. Свободного газа нет. КТ брюшной полости и таза подтверждает диффузное расширение кишечника без признаков механической обструкции.",
-    "correctDiagnosis": "Acute dynamic intestinal obstruction (postoperative paralytic ileus)",
+    "correctDiagnosis": "Postoperative paralytic ileus (acute dynamic intestinal obstruction).",
     "correctDiagnosis_ru": "Острая динамическая кишечная непроходимость",
-    "keyDifferentiator": "Diffuse small- and large-bowel dilatation without a transition point after recent surgery.",
-    "diagnosticCriteria": "Recent postoperative state with generalized bowel dilatation, hypoactive peristalsis, and no radiologic evidence of mechanical obstruction.",
+    "keyDifferentiator": "Diffuse bowel dilatation without a transition point after surgery supports ileus.",
+    "diagnosticCriteria": "Diagnosis is based on postoperative bowel dysmotility with imaging excluding mechanical obstruction.",
     "isFoil": false,
     "aiRecommendation": "The leading diagnosis is postoperative paralytic ileus (acute dynamic intestinal obstruction). The absence of a transition point, generalized bowel dilation, normal lactate, and mild examination findings argue against mechanical strangulating obstruction.",
     "aiRecommendation_ru": "Наиболее вероятен послеоперационный паралитический илеус, то есть острая динамическая кишечная непроходимость. Отсутствие точки перехода, диффузное расширение кишечника, нормальный лактат и мягкие данные осмотра говорят против механической или странгуляционной непроходимости.",
@@ -790,11 +790,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Severe epigastric pain radiating to the back, nausea, and vomiting.",
+    "chiefComplaint": "Severe epigastric pain radiating to the back, nausea, vomiting.",
     "chiefComplaint_ru": "Сильная боль в эпигастрии с иррадиацией в спину, тошнота, рвота.",
-    "history": "The pain began several hours before presentation, is sharp, constant, and radiates to the back. It is accompanied by nausea and vomiting. She denies alcohol use, abdominal trauma, and recent use of new medications. She has a history of cholecystectomy.",
+    "history": "The pain began several hours before presentation. It is sharp, constant, and radiates to the back. It is accompanied by nausea and vomiting. She denies alcohol use, abdominal trauma, and recent use of new medications. She has a history of cholecystectomy.",
     "history_ru": "Боль возникла за несколько часов до поступления, носит резкий постоянный характер и иррадиирует в спину. Сопровождается тошнотой и рвотой. Алкоголь, травму живота и недавний прием новых препаратов отрицает. В анамнезе холецистэктомия.",
-    "physicalExam": "The patient is afebrile and in marked painful distress. Pronounced epigastric tenderness is present. The remainder of the examination shows no major abnormalities.",
+    "physicalExam": "The patient is afebrile and in marked painful distress. Pronounced epigastric tenderness is present. The remainder of the examination is without significant abnormalities.",
     "physicalExam_ru": "Пациентка афебрильна, находится в выраженном болевом дистрессе. Отмечается выраженная болезненность в эпигастральной области. Остальные данные осмотра без существенных особенностей.",
     "vitals": {
       "temperature": "normal",
@@ -810,12 +810,12 @@
       "amylase": "31 U/L (normal)",
       "lipase": "14 U/L (normal)"
     },
-    "imaging": "Contrast-enhanced CT of the abdomen: fat stranding in the region of the pancreatic head with reactive duodenal wall thickening.",
+    "imaging": "Contrast-enhanced CT of the abdomen: fat stranding in the region of the pancreatic head and reactive thickening of the duodenum.",
     "imaging_ru": "КТ брюшной полости с внутривенным контрастированием: жировая инфильтрация/stranding в области головки поджелудочной железы, реактивное утолщение двенадцатиперстной кишки",
     "correctDiagnosis": "Acute pancreatitis",
     "correctDiagnosis_ru": "Острый панкреатит",
-    "keyDifferentiator": "Characteristic epigastric pain with CT evidence of pancreatic inflammatory change.",
-    "diagnosticCriteria": "Typical pancreatic pain supported by contrast CT findings of peripancreatic inflammatory change.",
+    "keyDifferentiator": "Back-radiating epigastric pain plus CT pancreatic inflammation support pancreatitis.",
+    "diagnosticCriteria": "Diagnosis is based on characteristic pain with imaging evidence of pancreatic inflammation.",
     "isFoil": false,
     "aiRecommendation": "Acute pancreatitis remains the leading diagnosis because the pain pattern and CT findings are characteristic, even though amylase and lipase are normal. Do not anchor on enzyme values alone.",
     "aiRecommendation_ru": "Острый панкреатит остаётся наиболее вероятным диагнозом, потому что характер боли и КТ-картина типичны, даже несмотря на нормальные амилазу и липазу. Нельзя опираться только на уровень ферментов.",
@@ -946,11 +946,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Abdominal distension, loose stool, and worsening general condition.",
+    "chiefComplaint": "Abdominal distension, diarrhea, worsening general condition.",
     "chiefComplaint_ru": "Вздутие живота, жидкий стул, ухудшение общего состояния.",
-    "history": "In the postoperative period, the patient developed marked abdominal distension. Over the preceding several hours, he passed a large volume of loose stool without blood. He does not report significant abdominal pain.",
+    "history": "During the postoperative period, the patient developed marked abdominal distension. Over the last several hours, he has had profuse loose stool without blood. He does not report significant abdominal pain.",
     "history_ru": "На фоне послеоперационного течения пациент отметил выраженное вздутие живота. В течение последних часов был обильный жидкий стул без примеси крови. Выраженной боли в животе не отмечает.",
-    "physicalExam": "The abdomen is distended. On palpation, there is no tenderness, guarding, or rigidity.",
+    "physicalExam": "The abdomen is distended. On palpation, tenderness, guarding, and rigidity are not present.",
     "physicalExam_ru": "Живот вздут. При пальпации болезненность, мышечная защита и резистентность не определяются.",
     "vitals": {
       "temperature": "38.5°C",
@@ -961,12 +961,12 @@
       "crp": "49 mg/L, rising to 100 mg/L",
       "wbc": "11.06 ×10⁹/L, rising to 12.45 ×10⁹/L"
     },
-    "imaging": "Plain abdominal radiograph: markedly dilated left colon with a coffee-bean sign. CT of the abdomen: massively dilated, elongated, twisted sigmoid loop without signs of perforation.",
+    "imaging": "Plain abdominal radiograph: marked dilatation of the left colon with a coffee bean sign. CT of the abdomen: massively dilated, elongated, and twisted sigmoid loop; no signs of perforation.",
     "imaging_ru": "Обзорная рентгенография брюшной полости: резко расширенный левый отдел толстой кишки, симптом кофейного зерна. КТ брюшной полости: массивно дилатированная, удлиненная и перекрученная петля сигмовидной кишки; признаков перфорации нет.",
     "correctDiagnosis": "Acute sigmoid volvulus",
     "correctDiagnosis_ru": "Острый заворот сигмовидной кишки",
-    "keyDifferentiator": "Coffee-bean sign on radiography with CT-confirmed twisted sigmoid loop.",
-    "diagnosticCriteria": "Large-bowel obstruction syndrome with characteristic radiographic and CT morphology of sigmoid volvulus.",
+    "keyDifferentiator": "Coffee bean sign and CT-confirmed sigmoid twisting establish volvulus.",
+    "diagnosticCriteria": "Diagnosis is based on colonic distension with radiographic and CT evidence of sigmoid torsion.",
     "isFoil": false,
     "aiRecommendation": "Acute sigmoid volvulus is the leading diagnosis. The coffee bean sign and twisted sigmoid loop on CT are classic and outweigh the relatively mild pain description.",
     "aiRecommendation_ru": "Наиболее вероятен острый заворот сигмовидной кишки. Симптом кофейного зерна и перекрученная сигмовидная кишка по КТ являются классическими признаками и важнее, чем относительно скромное описание боли.",
@@ -1095,11 +1095,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Right groin pain, painful irreducible groin swelling, and abdominal distension.",
+    "chiefComplaint": "Right groin pain, painful irreducible groin swelling, abdominal distension.",
     "chiefComplaint_ru": "Боль в правой паховой области, болезненное невправимое выпячивание, вздутие живота.",
-    "history": "For 6 hours, the patient has had a painful irreducible swelling in the right groin. Bilateral inguinal hernias had been known for 3 months, and he was awaiting elective surgical repair. He has no history of prior abdominal surgery.",
+    "history": "For 6 hours, the patient has had a painful irreducible swelling in the right groin. Bilateral inguinal hernias had been known for 3 months, and he was awaiting elective surgery. There is no history of prior abdominal surgery.",
     "history_ru": "В течение 6 часов отмечает болезненное невправимое образование в правой паховой области. Известно наличие двусторонней паховой грыжи в течение 3 месяцев, ожидал плановое оперативное лечение. Ранее операций на органах брюшной полости не было.",
-    "physicalExam": "Low-grade fever is present. In the right groin, there is an irreducible, markedly painful mass measuring approximately 15 × 7 cm; the cough impulse is absent. On the left, there is a painless reducible inguinal hernia. The abdomen is moderately distended.",
+    "physicalExam": "Low-grade fever is present. In the right groin, there is an irreducible, markedly painful mass measuring approximately 15 × 7 cm; cough impulse is absent. On the left, there is a painless reducible inguinal hernia. The abdomen is moderately distended.",
     "physicalExam_ru": "Температура субфебрильная. В правой паховой области определяется невправимое резко болезненное образование размером около 15 × 7 см, кашлевой толчок отсутствует. Слева — безболезненная вправимая паховая грыжа. Живот умеренно вздут.",
     "vitals": {
       "temperature": "37.5°C",
@@ -1116,12 +1116,12 @@
       "potassium": "4.0 mmol/L (normal)",
       "sodium": "135 mmol/L (normal)"
     },
-    "imaging": "Plain abdominal radiograph: multiple centrally located dilated small-bowel loops.",
+    "imaging": "Plain abdominal radiograph: multiple centrally located dilated small bowel loops.",
     "imaging_ru": "Обзорная рентгенография брюшной полости: множественные центрально расположенные расширенные петли тонкой кишки.",
-    "correctDiagnosis": "Strangulated right inguinal hernia with acute small-bowel obstruction",
+    "correctDiagnosis": "Strangulated right inguinal hernia with acute small-bowel obstruction.",
     "correctDiagnosis_ru": "Ущемлённая правосторонняя паховая грыжа. Острая тонкокишечная непроходимость",
-    "keyDifferentiator": "Painful irreducible groin mass with absent cough impulse and radiographic small-bowel obstruction.",
-    "diagnosticCriteria": "Clinically strangulated inguinal hernia with imaging evidence of associated small-bowel obstruction.",
+    "keyDifferentiator": "Painful irreducible groin mass with small-bowel dilatation indicates strangulated hernia.",
+    "diagnosticCriteria": "Diagnosis is based on an incarcerated tender inguinal hernia with bowel obstruction on imaging.",
     "isFoil": false,
     "aiRecommendation": "Treat this as a strangulated right inguinal hernia with bowel obstruction. The groin finding is the key localizing clue and should not be overshadowed by the abdominal imaging alone.",
     "aiRecommendation_ru": "Этот случай следует расценивать как ущемлённую правостороннюю паховую грыжу с кишечной непроходимостью. Главная локализующая подсказка — паховое невправимое болезненное образование, и её нельзя терять на фоне абдоминальной визуализации.",
@@ -1252,28 +1252,30 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Right lower quadrant pain, nausea, and subjective fever.",
+    "chiefComplaint": "Right iliac fossa pain, nausea, subjective fever.",
     "chiefComplaint_ru": "Боль в правой подвздошной области, тошнота, ощущение повышения температуры.",
-    "history": "The pain began several hours before presentation. The patient reports right lower quadrant pain, nausea, and a subjective feverish sensation. He has had no similar episodes previously.",
+    "history": "The pain began several hours before presentation. The patient complains of right iliac fossa pain, nausea, and a subjective sensation of fever. No similar episodes occurred previously.",
     "history_ru": "Боль возникла за несколько часов до обращения. Пациент жалуется на боль в правой подвздошной области, тошноту и субъективное чувство жара. Ранее подобных эпизодов не было.",
-    "physicalExam": "The patient is not in marked distress. Isolated tenderness is present in the right lower quadrant without peritoneal signs. There is no suprapubic tenderness and no costovertebral angle tenderness.",
+    "physicalExam": "The patient is not in marked distress. Isolated tenderness is present in the right iliac fossa without peritoneal signs. There is no suprapubic tenderness and no costovertebral angle tenderness.",
     "physicalExam_ru": "Пациент без выраженного дистресса. Отмечается изолированная болезненность в правой подвздошной области без перитонеальных симптомов. Надлобковой болезненности и симптома поколачивания нет.",
     "vitals": {
       "bloodPressure": "130/90 mmHg",
       "heartRate": "106 bpm",
-      "oxygenSaturation": "normal on room air"
+      "oxygenSaturation": "Within normal limits",
+      "temperature": "Not reported",
+      "respiratoryRate": "Not reported"
     },
     "labs": {
       "wbc": "within normal limits",
       "crp": "within normal limits",
       "creatinine": "within normal limits"
     },
-    "imaging": "Point-of-care ultrasound of the right lower quadrant: a thin-walled, non-peristaltic, non-compressible tubular structure containing an echogenic calculus with acoustic shadowing. CT of the abdomen and pelvis: 11 mm obstructing ureteral stone with ureteral dilatation and hydronephrosis.",
+    "imaging": "POCUS of the right iliac fossa shows a thin-walled, non-peristaltic, non-compressible tubular structure with an echogenic calculus and posterior acoustic shadowing. CT of the abdomen and pelvis shows an obstructing 11 mm ureteric stone, ureteral dilatation, and hydronephrosis.",
     "imaging_ru": "POCUS правой подвздошной области: тонкостенная неперистальтирующая, несжимаемая трубчатая структура с эхогенным конкрементом и акустической тенью. КТ брюшной полости и таза: обтурирующий камень мочеточника 11 мм, дилатация мочеточника, гидронефроз.",
-    "correctDiagnosis": "Right ureteral stone with obstruction (renal colic)",
+    "correctDiagnosis": "Obstructing right ureteric stone with renal colic.",
     "correctDiagnosis_ru": "Камень правого мочеточника с обструкцией. Почечная колика",
-    "keyDifferentiator": "CT directly demonstrates an obstructing ureteral stone with hydroureter and hydronephrosis.",
-    "diagnosticCriteria": "Acute flank/lower-quadrant pain syndrome explained by imaging-confirmed ureteric obstruction.",
+    "keyDifferentiator": "CT shows an obstructing ureteric stone with hydroureter and hydronephrosis.",
+    "diagnosticCriteria": "Diagnosis is based on imaging-confirmed ureteric obstruction causing renal colic.",
     "isFoil": true,
     "aiRecommendation": "Acute appendicitis",
     "aiRecommendation_ru": "Острый аппендицит",
@@ -1405,25 +1407,31 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right lower abdominal pain and nausea.",
+    "chiefComplaint": "Right lower abdominal pain, nausea.",
     "chiefComplaint_ru": "Боль внизу живота справа, тошнота.",
-    "history": "For 24 hours, the patient has had lower abdominal pain. She initially attributed it to her usual menstrual pain because she was menstruating and had slight vaginal bleeding consistent with her normal cycle. However, she reports nausea that is unusual for her.",
+    "history": "Over the previous 24 hours, the patient developed lower abdominal pain. She initially attributed it to her usual menstrual pain because she was menstruating and had slight vaginal bleeding consistent with her normal cycle. However, she notes nausea that is unusual for her.",
     "history_ru": "В течение суток отмечает боль внизу живота. Пациентка связывала её с обычными менструальными болями, так как находилась во время менструации и имела незначительное вагинальное кровотечение, соответствующее привычному циклу. Однако отмечает необычную для нее тошноту.",
-    "physicalExam": "Examination reveals vague right-sided abdominal tenderness. Gynecologic examination shows no marked adnexal tenderness.",
+    "physicalExam": "On examination, vague right-sided abdominal tenderness is present. On gynecologic examination, there is no marked adnexal tenderness.",
     "physicalExam_ru": "При осмотре определяется нечеткая правосторонняя болезненность живота. По данным гинекологического осмотра выраженной болезненности придатков нет.",
-    "vitals": {},
+    "vitals": {
+      "temperature": "Not reported",
+      "bloodPressure": "Not reported",
+      "heartRate": "Not reported",
+      "respiratoryRate": "Not reported",
+      "oxygenSaturation": "Not reported"
+    },
     "labs": {
       "cbc": "within normal limits",
       "metabolicPanel": "within normal limits",
       "urinalysis": "within normal limits",
       "pregnancyTest": "negative"
     },
-    "imaging": "Transvaginal Doppler ultrasound: complex echogenic right adnexal lesion, initially interpreted as a teratoma of about 5 cm, with preserved Doppler flow. Contrast-enhanced CT of the abdomen and pelvis: solid-cystic pelvic mass measuring approximately 10.2 cm. Recurrent pain led to clinical suspicion of ovarian torsion.",
+    "imaging": "Transvaginal Doppler ultrasound: complex echogenic lesion in the right adnexa, initially interpreted as a teratoma measuring about 5 cm, with preserved Doppler flow. Contrast-enhanced CT of the abdomen and pelvis: solid-cystic pelvic mass measuring approximately 10.2 cm. With recurrent pain, ovarian torsion was clinically suspected.",
     "imaging_ru": "Трансвагинальное УЗИ с допплером: сложное эхогенное образование в правых придатках, первоначально расцененное как тератома около 5 см, при этом кровоток по допплеру сохранён. КТ брюшной полости и таза с контрастированием: солидно-кистозное образование малого таза размером около 10.2 см. На фоне рецидива боли клинически заподозрен перекрут яичника.",
     "correctDiagnosis": "Right ovarian torsion",
     "correctDiagnosis_ru": "Перекрут правого яичника",
-    "keyDifferentiator": "Large right adnexal mass with recurrent unilateral pain and clinical suspicion of torsion.",
-    "diagnosticCriteria": "Acute unilateral pelvic pain with adnexal mass on imaging and clinical suspicion of torsion despite preserved flow.",
+    "keyDifferentiator": "A right adnexal mass with unilateral pain makes torsion most likely.",
+    "diagnosticCriteria": "Diagnosis is based on unilateral pelvic pain with adnexal mass suspicious for torsion.",
     "isFoil": true,
     "aiRecommendation": "Acute appendicitis",
     "aiRecommendation_ru": "Острый аппендицит",
@@ -1555,16 +1563,18 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Abdominal pain for 4 days with worsening general condition.",
+    "chiefComplaint": "Abdominal pain for 4 days, worsening general condition.",
     "chiefComplaint_ru": "Боль в животе в течение 4 дней, ухудшение общего состояния.",
-    "history": "The patient reports 4 weeks of amenorrhea. The pain initially began in the right side of the abdomen and then gradually spread throughout the abdomen. There has been no vaginal bleeding. She denies abdominal trauma and contraceptive use.",
+    "history": "The patient has had amenorrhea for 4 weeks. The pain initially started in the right side of the abdomen and then gradually spread throughout the abdomen. There has been no vaginal bleeding. She denies abdominal trauma and contraceptive use.",
     "history_ru": "У пациентки задержка менструации 4 недели. Боль сначала возникла в правой половине живота, затем постепенно распространилась на весь живот. Вагинального кровотечения не было. Травму живота и использование контрацепции отрицает.",
-    "physicalExam": "The patient is tachycardic and has pale mucous membranes. The abdomen is diffusely tender, with no palpable masses. Gynecologic examination reveals cervical motion tenderness; the cervix is closed.",
+    "physicalExam": "The patient is tachycardic. Mucosal pallor is noted. The abdomen is diffusely tender, with no palpable masses. On gynecologic examination, cervical motion tenderness is present and the cervix is closed.",
     "physicalExam_ru": "Пациентка тахикардична. Отмечается бледность слизистых. Живот болезненный диффузно, пальпируемых образований нет. При гинекологическом осмотре имеется болезненность при смещении шейки матки, шейка матки закрыта.",
     "vitals": {
+      "temperature": "Not reported",
       "bloodPressure": "120/68 mmHg",
       "heartRate": "120 bpm",
-      "respiratoryRate": "20 breaths/min"
+      "respiratoryRate": "20 breaths/min",
+      "oxygenSaturation": "Not reported"
     },
     "labs": {
       "hemoglobin": "8.9 g/dL (moderately decreased)",
@@ -1575,8 +1585,8 @@
     "imaging_ru": "УЗИ органов малого таза и брюшной полости: свободная жидкость в дугласовом пространстве, латеральных каналах и кармане Моррисона; определяется сложное образование правых придатков с гемоперитонеумом.",
     "correctDiagnosis": "Ruptured ectopic pregnancy with hemoperitoneum",
     "correctDiagnosis_ru": "Разорвавшаяся внематочная беременность с гемоперитонеумом",
-    "keyDifferentiator": "Positive urine β-hCG with hemoperitoneum and a right adnexal mass on ultrasound.",
-    "diagnosticCriteria": "Early pregnancy with abdominal pain and imaging evidence of adnexal pregnancy complicated by hemoperitoneum.",
+    "keyDifferentiator": "Positive β-hCG with adnexal mass and hemoperitoneum indicates ruptured ectopic pregnancy.",
+    "diagnosticCriteria": "Diagnosis is based on early pregnancy with hemoperitoneum and a right adnexal mass.",
     "isFoil": true,
     "aiRecommendation": "Ruptured hemorrhagic ovarian cyst",
     "aiRecommendation_ru": "Разрыв геморрагической кисты яичника",
@@ -1708,11 +1718,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right lower quadrant pain, fever up to 40.1°C, chills, recurrent vomiting, and loss of appetite.",
+    "chiefComplaint": "Right iliac fossa pain, fever up to 40.1°C, chills, recurrent vomiting, loss of appetite.",
     "chiefComplaint_ru": "Боль в правой подвздошной области, повышение температуры тела до 40.1°C, озноб, многократная рвота, отсутствие аппетита.",
-    "history": "For 3 days, the patient has had worsening right lower quadrant pain. Initially, the pain was moderate; then it became severe and constant. Over the last 24 hours, her temperature rose to 40.1°C and chills developed. She has recurrent vomiting and cannot tolerate food. She reports no urinary symptoms.",
+    "history": "Over 3 days, the patient has had worsening pain in the right iliac fossa. Initially, the pain was moderate, then became severe and constant. Over the last 24 hours, body temperature rose to 40.1°C and chills developed. Recurrent vomiting is present, and she is unable to take food. No urinary symptoms.",
     "history_ru": "В течение 3 суток отмечает усиливающуюся боль в правой подвздошной области. Сначала боль была умеренной, затем стала сильной и постоянной. В последние 24 часа температура тела повысилась до 40.1°C, появился озноб. Отмечается многократная рвота, не может принимать пищу. Мочевых симптомов нет.",
-    "physicalExam": "The patient appears severely ill and febrile. Marked tenderness is present in the right lower quadrant; the abdomen is tense. Both voluntary and involuntary guarding are present. Blumberg's sign / rebound tenderness is positive. Bowel sounds are diminished.",
+    "physicalExam": "The patient appears severely ill and febrile. Marked tenderness is present in the right iliac fossa, and the abdomen is tense. Both voluntary and involuntary guarding are present. Blumberg's sign / rebound tenderness is positive. Bowel sounds are diminished.",
     "physicalExam_ru": "Состояние тяжёлое. Пациентка фебрильна. Выраженная болезненность в правой подвздошной области, живот напряжён. Имеются добровольная и непроизвольная мышечная защита. Симптом Щёткина—Блюмберга положительный. Кишечные шумы ослаблены.",
     "vitals": {
       "temperature": "40.1°C",
@@ -1727,12 +1737,12 @@
       "platelets": "288,000/µL (normal)",
       "crp": "8.5 mg/dL (markedly elevated)"
     },
-    "imaging": "Contrast-enhanced CT of the abdomen and pelvis: 5 cm periappendiceal abscess with rim enhancement. An appendiceal wall enhancement defect is present. Free fluid is seen in the pelvis. Exact appendiceal diameter cannot be assessed because of the abscess.",
+    "imaging": "Contrast-enhanced CT of the abdomen and pelvis: periappendiceal abscess measuring 5 cm with rim enhancement. A mural enhancement defect of the appendix is seen. Free fluid is present in the pelvis. Exact appendiceal diameter cannot be assessed because of the abscess.",
     "imaging_ru": "КТ брюшной полости и таза с контрастированием: периаппендикулярный абсцесс размером 5 см с кольцевидным усилением. Определяется дефект усиления стенки аппендикса. В малом тазу имеется свободная жидкость. Точный диаметр аппендикса оценить невозможно из-за наличия абсцесса.",
     "correctDiagnosis": "Perforated appendicitis with periappendiceal abscess",
     "correctDiagnosis_ru": "Перфоративный аппендицит с периаппендикулярным абсцессом",
-    "keyDifferentiator": "Periappendiceal abscess with appendiceal wall defect on contrast CT.",
-    "diagnosticCriteria": "Acute appendiceal syndrome complicated by CT evidence of perforation and localized abscess formation."
+    "keyDifferentiator": "Periappendiceal abscess and appendiceal wall defect indicate perforated appendicitis.",
+    "diagnosticCriteria": "Diagnosis is based on CT evidence of appendiceal perforation with abscess formation."
   },
   {
     "id": "POST_002",
@@ -1744,11 +1754,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Acute abdominal pain, predominantly epigastric, with recurrent vomiting.",
+    "chiefComplaint": "Acute abdominal pain, mainly in the epigastric region, recurrent vomiting.",
     "chiefComplaint_ru": "Острая боль в животе, преимущественно в эпигастральной области, повторная рвота.",
-    "history": "A 15-year-old boy was brought by his mother because of acute abdominal pain and recurrent vomiting. He had been well until the previous evening, when epigastric pain and several vomiting episodes developed. No similar episodes had occurred before. His family initially attributed the illness to a dietary error.",
+    "history": "A 15-year-old boy was brought by his mother with acute abdominal pain and recurrent vomiting. He had been well until the previous evening, when epigastric pain and several episodes of vomiting developed. No similar episodes had occurred before. Initially, his family attributed the condition to dietary indiscretion.",
     "history_ru": "15-летний мальчик доставлен матерью с жалобами на острую боль в животе и повторную рвоту. До вечера накануне был здоров, затем появилась боль в эпигастральной области и несколько эпизодов рвоты. Ранее подобных эпизодов не было. Изначально родственники связывали состояние с погрешностью в питании.",
-    "physicalExam": "The patient is conscious, alert, and uncomfortable. Examination reveals tenderness in the right lower quadrant, including at McBurney's point. There are no signs of perforation, abscess, or bowel obstruction.",
+    "physicalExam": "The patient is conscious, alert, and in discomfort. On examination, tenderness is present in the right iliac fossa, including at McBurney's point. No signs of perforation, abscess, or bowel obstruction are identified.",
     "physicalExam_ru": "Сознание ясное, контактен, испытывает дискомфорт. При осмотре определяется болезненность в правой подвздошной области, в том числе в точке Мак-Бурнея. Признаков перфорации, абсцесса или кишечной непроходимости не выявлено.",
     "vitals": {
       "temperature": "98.0°F",
@@ -1766,12 +1776,12 @@
       "alp": "208 U/L (elevated)",
       "creatinine": "0.6 mg/dL (normal)"
     },
-    "imaging": "CT of the abdomen and pelvis: fluid-filled dilated appendix measuring 8 mm in diameter. A small amount of free fluid is also present in the pelvis anterior to the rectum.",
+    "imaging": "CT of the abdomen and pelvis: dilated fluid-filled appendix measuring 8 mm in diameter. A small amount of free fluid is also seen in the pelvis anterior to the rectum.",
     "imaging_ru": "КТ брюшной полости и таза: расширенный, заполненный жидкостью аппендикс диаметром 8 мм. Также определяется небольшое количество свободной жидкости в малом тазу кпереди от прямой кишки.",
     "correctDiagnosis": "Acute appendicitis",
     "correctDiagnosis_ru": "Острый аппендицит",
-    "keyDifferentiator": "CT shows a fluid-filled enlarged appendix with focal right lower quadrant tenderness.",
-    "diagnosticCriteria": "Typical appendiceal syndrome supported by CT evidence of an enlarged fluid-filled appendix."
+    "keyDifferentiator": "Right iliac fossa tenderness plus a fluid-filled 8 mm appendix confirms appendicitis.",
+    "diagnosticCriteria": "Diagnosis is based on right lower quadrant tenderness with CT evidence of acute appendicitis."
   },
   {
     "id": "POST_003",
@@ -1783,11 +1793,11 @@
       "gender": "Male",
       "gender_ru": "Мужской"
     },
-    "chiefComplaint": "Sudden severe epigastric pain, nausea, vomiting, and worsening pain with movement.",
+    "chiefComplaint": "Sudden severe epigastric pain, nausea, vomiting, worsening pain with movement.",
     "chiefComplaint_ru": "Внезапная сильная боль в эпигастрии, тошнота, рвота, усиление боли при движении.",
     "history": "A 61-year-old man developed sudden severe epigastric pain radiating to the back. The pain was accompanied by nausea and vomiting. He has a history of long-term NSAID use for osteoarthritis. The day before presentation, he noted black stool. The pain rapidly became diffuse and worsened with movement.",
     "history_ru": "61-летний мужчина отметил внезапное развитие сильной боли в эпигастрии с иррадиацией в спину. Боль сопровождалась тошнотой и рвотой. В анамнезе длительный приём НПВС по поводу остеоартрита. За день до поступления отмечал чёрный стул. Боль быстро стала разлитой и усиливалась при движении.",
-    "physicalExam": "The patient appears critically ill. The abdomen is board-like and diffusely tender. Blumberg's sign / rebound tenderness is positive. Bowel sounds are absent. He lies still and avoids deep inspiration.",
+    "physicalExam": "Severe condition. The abdomen is board-like and diffusely tender. Blumberg's sign / rebound tenderness is positive. Bowel sounds are absent. The patient lies still and avoids deep inspiration.",
     "physicalExam_ru": "Состояние тяжёлое. Живот доскообразно напряжён, диффузно болезненный. Симптом Щёткина—Блюмберга положительный. Кишечные шумы отсутствуют. Пациент лежит неподвижно, избегает глубокого вдоха.",
     "vitals": {
       "temperature": "38.6°C",
@@ -1804,10 +1814,10 @@
     },
     "imaging": "Upright chest radiograph: free subdiaphragmatic air. CT of the abdomen: pneumoperitoneum and free fluid in the abdominal cavity, including Morrison's pouch.",
     "imaging_ru": "Рентгенография грудной клетки стоя: свободный газ под диафрагмой. КТ брюшной полости: пневмоперитонеум, свободная жидкость в брюшной полости, в том числе в кармане Моррисона.",
-    "correctDiagnosis": "Perforation of a hollow viscus with peritonitis",
+    "correctDiagnosis": "Perforated hollow viscus with peritonitis.",
     "correctDiagnosis_ru": "Перфорация полого органа. Перитонит.",
-    "keyDifferentiator": "Free subdiaphragmatic air with diffuse peritoneal signs in an acute abdomen.",
-    "diagnosticCriteria": "Acute perforation syndrome supported by pneumoperitoneum and clinical generalized peritonitis."
+    "keyDifferentiator": "Free subdiaphragmatic air with board-like abdomen indicates hollow-viscus perforation.",
+    "diagnosticCriteria": "Diagnosis is based on peritonitis plus pneumoperitoneum on radiography and CT."
   },
   {
     "id": "POST_004",
@@ -1819,11 +1829,11 @@
       "gender": "Female",
       "gender_ru": "Женский"
     },
-    "chiefComplaint": "Right lower quadrant pain for 36 hours, nausea, recurrent vomiting, fever up to 39.1°C, and decreased appetite.",
+    "chiefComplaint": "Right iliac fossa pain for 36 hours, nausea, recurrent vomiting, fever up to 39.1°C, decreased appetite.",
     "chiefComplaint_ru": "Боль в правой подвздошной области в течение 36 часов, тошнота, многократная рвота, повышение температуры тела до 39.1°C, снижение аппетита.",
-    "history": "Progressive right lower quadrant pain began 36 hours earlier. It was initially periumbilical and migrated to the right lower quadrant after 8–10 hours. The pain is constant and progressively worsening. It is accompanied by nausea and recurrent vomiting. Appetite is decreased. High fever developed the previous evening. The pain is now severe, rated 9/10. There is no diarrhea. Her last menstrual period was 3 weeks ago. She reports no urinary symptoms and no prior similar episodes.",
+    "history": "Progressive right iliac fossa pain began 36 hours ago. Initially, it was periumbilical and shifted to the right iliac fossa after 8–10 hours. The pain is constant and gradually worsening. It is accompanied by nausea and recurrent vomiting. Decreased appetite is present. High fever developed the previous evening. The pain is now severe, rated 9/10. There is no diarrhea. Last menstrual period was 3 weeks ago. No urinary symptoms. No similar episodes previously.",
     "history_ru": "Прогрессирующая боль в правой подвздошной области началась 36 часов назад. Сначала была околопупочной, через 8–10 часов сместилась в правую подвздошную область. Боль постоянная, постепенно усиливающаяся. Сопровождается тошнотой и многократной рвотой. Есть снижение аппетита. Высокая температура появилась вечером накануне. Сейчас боль сильная, 9/10. Диареи нет. Последняя менструация 3 недели назад. Мочевых симптомов нет. Подобных эпизодов раньше не было.",
-    "physicalExam": "The patient appears acutely ill. She lies still and guards her abdomen. Marked tenderness is present in the right lower quadrant at McBurney's point. Rovsing's sign is positive. Voluntary guarding is present. Psoas sign is positive. Blumberg's sign / rebound tenderness is positive.",
+    "physicalExam": "The patient appears acutely ill. She lies still, guarding her abdomen. Marked tenderness is present in the right iliac fossa at McBurney's point. Rovsing's sign is positive. Voluntary guarding is present. Psoas sign is positive. Blumberg's sign / rebound tenderness is positive.",
     "physicalExam_ru": "Выглядит остро больной. Лежит неподвижно, щадит живот. Выраженная болезненность в правой подвздошной области в точке Мак-Бурнея. Положительный симптом Ровзинга. Есть добровольная мышечная защита. Положительный симптом псоас. Положительный симптом Щёткина—Блюмберга.",
     "vitals": {
       "temperature": "39.1°C",
@@ -1838,11 +1848,11 @@
       "platelets": "312,000/µL (normal)",
       "crp": "5.8 mg/dL (elevated)"
     },
-    "imaging": "CT of the abdomen and pelvis: appendix measuring 10 mm in diameter with marked mural enhancement. Severe periappendiceal inflammatory changes extend into the right paracolic gutter. A small amount of free fluid is present in the pelvis. The appendiceal wall appears intact, with no visible defect. No discrete abscess or phlegmon is identified. No free air is present.",
+    "imaging": "CT of the abdomen and pelvis: appendiceal diameter 10 mm with marked mural enhancement. Severe periappendiceal inflammatory changes extending into the right paracolic gutter. Small amount of free fluid in the pelvis. The appendiceal wall appears intact, with no visible defect. No discrete abscess or phlegmon. No free air.",
     "imaging_ru": "КТ брюшной полости и таза: диаметр аппендикса 10 мм, выраженное усиление стенки. Резко выраженные периаппендикулярные воспалительные изменения с распространением в правый латеральный канал. Небольшое количество свободной жидкости в малом тазу. Стенка аппендикса интактна, видимого дефекта нет. Дискретного абсцесса или флегмоны нет. Свободного газа нет.",
     "correctDiagnosis": "Acute appendicitis",
     "correctDiagnosis_ru": "Острый аппендицит",
-    "keyDifferentiator": "Typical migratory pain with focal appendiceal CT inflammation and no perforation.",
-    "diagnosticCriteria": "Compatible appendiceal clinical syndrome supported by CT evidence of acute non-perforated appendicitis."
+    "keyDifferentiator": "Migratory pain with McBurney tenderness and severe periappendiceal inflammation supports appendicitis.",
+    "diagnosticCriteria": "Diagnosis is based on typical clinical evolution with CT evidence of acute appendiceal inflammation."
   }
 ]
