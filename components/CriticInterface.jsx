@@ -131,13 +131,22 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
     caseInitialized.current = true;
     currentCaseId.current = caseData.id;
 
-    logger.startCase(caseData.id, caseData.order);
-    // AI hypotheses shown immediately (no single recommendation — log foil/correct diagnosis)
-    logger.viewAIOutput(
-      caseData.isFoil ? caseData.foilDiagnosis : caseData.correctDiagnosis,
-      caseData.correctDiagnosis,
-      caseData.isFoil || false
-    );
+    const initCase = async () => {
+      // AI fields are written atomically in the INSERT to prevent TBD rows.
+      // Diagnosis label only — not the long explanatory sentence.
+      const aiLabel = caseData.isFoil
+        ? getCaseField(caseData, 'foilDiagnosis', language)
+        : getCaseField(caseData, 'correctDiagnosis', language);
+      await logger.startCase(caseData.id, caseData.order, {
+        aiRecommendation: aiLabel,
+        correctDiagnosis: getCaseField(caseData, 'correctDiagnosis', language),
+        isFoil: caseData.isFoil || false,
+      });
+      // viewAIOutput now only writes timestamp_ai_output_viewed
+      await logger.viewAIOutput(aiLabel, getCaseField(caseData, 'correctDiagnosis', language), caseData.isFoil || false);
+    };
+
+    initCase();
   }, [caseData]);
 
   // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)

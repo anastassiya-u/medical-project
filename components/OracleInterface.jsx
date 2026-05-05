@@ -64,13 +64,18 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
     currentCaseId.current = caseData.id;
 
     const initCase = async () => {
-      await logger.startCase(caseData.id, caseData.order);
-      // In Oracle mode, AI output is shown immediately
-      await logger.viewAIOutput(
-        caseData.aiRecommendation,
-        caseData.correctDiagnosis,
-        caseData.isFoil
-      );
+      // AI fields written atomically in the INSERT to prevent TBD rows.
+      // Diagnosis label only — not the long explanatory sentence.
+      const aiLabel = caseData.isFoil
+        ? getCaseField(caseData, 'foilDiagnosis', language)
+        : getCaseField(caseData, 'correctDiagnosis', language);
+      await logger.startCase(caseData.id, caseData.order, {
+        aiRecommendation: aiLabel,
+        correctDiagnosis: getCaseField(caseData, 'correctDiagnosis', language),
+        isFoil: caseData.isFoil || false,
+      });
+      // viewAIOutput now only writes timestamp_ai_output_viewed
+      await logger.viewAIOutput(aiLabel, getCaseField(caseData, 'correctDiagnosis', language), caseData.isFoil || false);
     };
 
     initCase();
@@ -132,7 +137,9 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
 
         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border-2 border-white/30">
           <p className="text-4xl font-bold mb-2">
-            {getCaseField(caseData, 'aiRecommendation', language)}
+            {caseData.isFoil
+              ? getCaseField(caseData, 'foilDiagnosis', language)
+              : getCaseField(caseData, 'correctDiagnosis', language)}
           </p>
           <p className="text-blue-100 text-sm">
             {t.basedOnClinical}

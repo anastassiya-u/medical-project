@@ -342,7 +342,11 @@ SELECT
 
   -- Autonomy Metrics
   ROUND(AVG(ci.time_to_hypothesis_seconds), 2) AS avg_time_to_hypothesis_sec,
-  ROUND(100.0 * COUNT(*) FILTER (WHERE ci.disagreed_with_ai = TRUE) / COUNT(*), 2) AS disagreement_rate_percent,
+  ROUND(AVG(ci.time_viewing_ai_output_seconds), 2) AS avg_time_viewing_ai_sec,
+  ROUND(
+    (100.0 * COUNT(*) FILTER (WHERE ci.disagreed_with_ai = true)::numeric) / NULLIF(COUNT(*)::numeric, 0),
+    2
+  ) AS disagreement_rate_percent,
 
   -- Competence Metrics
   ROUND(AVG(ci.num_evidence_panels_opened), 2) AS avg_evidence_panels_opened,
@@ -359,6 +363,18 @@ GROUP BY u.paradigm, u.accuracy_level;
 -- =====================================================
 -- 10. FUNCTIONS FOR DATA INTEGRITY
 -- =====================================================
+
+-- Function: Increment cases_completed on a session row.
+-- Called by the logger after every submitFinalDiagnosis so the sessions table
+-- reflects actual completed cases rather than always showing 0.
+CREATE OR REPLACE FUNCTION increment_cases_completed(session_id UUID)
+RETURNS void
+LANGUAGE sql
+AS $$
+  UPDATE sessions
+  SET cases_completed = cases_completed + 1
+  WHERE id = session_id;
+$$;
 
 -- Function: Calculate NFC Total Score (15-item scale)
 -- Reverse-scored items: q3, q4, q6, q9, q11, q14, q16, q18
