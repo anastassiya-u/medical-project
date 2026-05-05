@@ -1,16 +1,20 @@
 /**
  * Database Connection Test
- * Verifies that Supabase is configured correctly and data can be written/read
+ * Verifies that Supabase is configured correctly and data can be written/read.
+ *
+ * Usage:
+ *   node --env-file=.env.local scripts/test-database.js
+ * or set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your shell.
  */
 
 import { createClient } from '@supabase/supabase-js';
 
-// Load environment variables directly (Next.js makes them available)
-const supabaseUrl = 'https://rdcuqbsqnyzwxnyvndsq.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkY3VxYnNxbnl6d3hueXZuZHNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNTQ0MjAsImV4cCI6MjA4OTkzMDQyMH0.6tdZe0M7vobW8mpuzZ2V8mRVbq5f1e0Zr7oHqqxkL0Q';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('❌ Supabase credentials not found in .env.local');
+  console.error('❌ Supabase credentials not found.');
+  console.error('   Run with: node --env-file=.env.local scripts/test-database.js');
   process.exit(1);
 }
 
@@ -20,7 +24,7 @@ async function testDatabaseConnection() {
   console.log('\n🔍 Testing Supabase Database Connection...\n');
 
   try {
-    // Test 1: Check if users table exists and count records
+    // Test 1: Users table
     console.log('Test 1: Checking users table...');
     const { data: users, error: usersError, count: userCount } = await supabase
       .from('users')
@@ -32,26 +36,30 @@ async function testDatabaseConnection() {
       return false;
     }
 
-    console.log(`✅ Users table exists. Total users: ${userCount || users.length}`);
+    console.log(`✅ Users table exists. Total users: ${userCount ?? users.length}`);
     if (users.length > 0) {
-      console.log(`   Latest user: ${users[0].student_id} (${users[0].paradigm}/${users[0].accuracy_level})`);
+      console.log(`   Latest user: ${users[0].first_name} ${users[0].last_name} (${users[0].paradigm}/${users[0].accuracy_level})`);
     }
 
-    // Test 2: Check sessions table
+    // Test 2: Sessions table — expect session_type IN ('pre_test','intervention','nfc_assessment')
     console.log('\nTest 2: Checking sessions table...');
     const { data: sessions, error: sessionsError } = await supabase
       .from('sessions')
-      .select('*')
-      .limit(5);
+      .select('session_type, total_cases, completed_at')
+      .limit(10);
 
     if (sessionsError) {
       console.error('❌ Sessions table error:', sessionsError.message);
       return false;
     }
 
-    console.log(`✅ Sessions table exists. Total records: ${sessions.length}`);
+    console.log(`✅ Sessions table exists. Records shown: ${sessions.length}`);
+    sessions.forEach(s => {
+      const cases = s.total_cases != null ? `total_cases=${s.total_cases}` : 'total_cases=null (NFC)';
+      console.log(`   session_type=${s.session_type} | ${cases} | completed=${s.completed_at ? 'yes' : 'no'}`);
+    });
 
-    // Test 3: Check case_interactions table (most critical)
+    // Test 3: Case interactions (most critical)
     console.log('\nTest 3: Checking case_interactions table...');
     const { data: interactions, error: interactionsError, count: interactionCount } = await supabase
       .from('case_interactions')
@@ -63,21 +71,17 @@ async function testDatabaseConnection() {
       return false;
     }
 
-    console.log(`✅ Case interactions table exists. Total records: ${interactionCount || interactions.length}`);
+    console.log(`✅ Case interactions table exists. Total records: ${interactionCount ?? interactions.length}`);
     if (interactions.length > 0) {
       const latest = interactions[0];
-      console.log(`   Latest interaction: Case ${latest.case_id}`);
-      console.log(`   - User diagnosis: ${latest.user_final_diagnosis}`);
-      console.log(`   - AI recommendation: ${latest.ai_recommendation}`);
-      console.log(`   - Agreed with AI: ${latest.user_agreed_with_ai}`);
-      console.log(`   - Task time: ${latest.total_task_time_seconds}s`);
+      console.log(`   Latest: Case ${latest.case_id} | diagnosis=${latest.user_final_diagnosis} | agreed_with_ai=${latest.user_agreed_with_ai} | time=${latest.total_task_time_seconds}s`);
     }
 
-    // Test 4: Check NFC responses table
+    // Test 4: NFC responses — score range 15–75 (15-item scale)
     console.log('\nTest 4: Checking nfc_responses table...');
     const { data: nfcData, error: nfcError } = await supabase
       .from('nfc_responses')
-      .select('*')
+      .select('total_score, completed_at')
       .limit(5);
 
     if (nfcError) {
@@ -85,12 +89,12 @@ async function testDatabaseConnection() {
       return false;
     }
 
-    console.log(`✅ NFC responses table exists. Total records: ${nfcData.length}`);
+    console.log(`✅ NFC responses table exists. Records: ${nfcData.length}`);
     if (nfcData.length > 0) {
-      console.log(`   Latest NFC score: ${nfcData[0].total_score}/90`);
+      console.log(`   Latest NFC score: ${nfcData[0].total_score}/75 (15-item scale, range 15–75)`);
     }
 
-    // Test 5: Check evidence_exploration table (Critic-specific)
+    // Test 5: Evidence exploration (Critic-specific)
     console.log('\nTest 5: Checking evidence_exploration table...');
     const { data: evidenceData, error: evidenceError } = await supabase
       .from('evidence_exploration')
@@ -102,9 +106,9 @@ async function testDatabaseConnection() {
       return false;
     }
 
-    console.log(`✅ Evidence exploration table exists. Total records: ${evidenceData.length}`);
+    console.log(`✅ Evidence exploration table exists. Records: ${evidenceData.length}`);
 
-    // Test 6: Check ui_events table
+    // Test 6: UI events
     console.log('\nTest 6: Checking ui_events table...');
     const { data: eventsData, error: eventsError, count: eventsCount } = await supabase
       .from('ui_events')
@@ -116,31 +120,31 @@ async function testDatabaseConnection() {
       return false;
     }
 
-    console.log(`✅ UI events table exists. Total records: ${eventsCount || eventsData.length}`);
+    console.log(`✅ UI events table exists. Total records: ${eventsCount ?? eventsData.length}`);
 
-    // Test 7: Check analysis views
-    console.log('\nTest 7: Checking analysis views...');
+    // Test 7: Analysis view
+    console.log('\nTest 7: Checking overreliance_by_group view...');
     const { data: overrelianceView, error: viewError } = await supabase
       .from('overreliance_by_group')
       .select('*');
 
     if (viewError) {
-      console.error('❌ Analysis views error:', viewError.message);
+      console.error('❌ overreliance_by_group view error:', viewError.message);
       return false;
     }
 
-    console.log(`✅ Analysis views working. Groups analyzed: ${overrelianceView.length}`);
+    console.log(`✅ overreliance_by_group view working. Groups with data: ${overrelianceView.length}`);
 
     console.log('\n' + '='.repeat(60));
     console.log('✅ ALL DATABASE TESTS PASSED');
     console.log('='.repeat(60));
     console.log('\n📊 Summary:');
-    console.log(`   - Total users: ${userCount || users.length}`);
-    console.log(`   - Total interactions: ${interactionCount || interactions.length}`);
-    console.log(`   - Total UI events: ${eventsCount || eventsData.length}`);
-    console.log(`   - NFC responses: ${nfcData.length}`);
-    console.log(`   - Evidence exploration records: ${evidenceData.length}`);
-    console.log('\n💾 Database is working correctly and saving data.\n');
+    console.log(`   Users:              ${userCount ?? users.length}`);
+    console.log(`   Case interactions:  ${interactionCount ?? interactions.length}`);
+    console.log(`   UI events:          ${eventsCount ?? eventsData.length}`);
+    console.log(`   NFC responses:      ${nfcData.length}`);
+    console.log(`   Evidence records:   ${evidenceData.length}`);
+    console.log('\n💾 Database is responding correctly.\n');
 
     return true;
   } catch (error) {
@@ -149,7 +153,6 @@ async function testDatabaseConnection() {
   }
 }
 
-// Run tests
 testDatabaseConnection().then((success) => {
   process.exit(success ? 0 : 1);
 });

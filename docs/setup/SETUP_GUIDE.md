@@ -54,9 +54,6 @@ Edit `.env.local` with your credentials:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...your-anon-key...
-NEXT_PUBLIC_APP_NAME="Oracle vs. Critic Experiment"
-NEXT_PUBLIC_ENABLE_DEBUG_MODE=false
-NEXT_PUBLIC_SKIP_POST_TEST_DELAY=false
 ```
 
 ### 4. Initialize Database
@@ -89,7 +86,7 @@ Open http://localhost:3000
 
 ### Test Registration
 1. Fill in test data:
-   - Student ID: TEST001
+   - First Name: Test, Last Name: User
    - Age: 25
    - Gender: Male
    - Medical School: Astana Medical University
@@ -149,10 +146,10 @@ npm run dev
 
 ### Cases not loading
 ```bash
-node -e "console.log(require('./src/data/cases.json').cases.length)"
+node -e "console.log(require('./src/data/cases_18_final.json').length)"
 ```
 
-Should output: 25
+Should output: 18
 
 ---
 
@@ -160,8 +157,8 @@ Should output: 25
 
 Before pilot testing:
 - [ ] Both interfaces work (Oracle and Critic)
-- [ ] All 25 cases load
-- [ ] Pre-test, NFC, Intervention phases function
+- [ ] All 18 cases load (4 pre-test, 10 intervention, 4 reserved)
+- [ ] Pre-test → Intervention → NFC → Complete flow functions
 - [ ] Progressive reveal works (Critic)
 - [ ] Data logs to Supabase
 - [ ] Randomization active
@@ -172,10 +169,9 @@ Before pilot testing:
 ## Production Configuration
 
 Before data collection:
-- [ ] Set `NEXT_PUBLIC_ENABLE_DEBUG_MODE=false`
-- [ ] Set `NEXT_PUBLIC_SKIP_POST_TEST_DELAY=false`
 - [ ] Enable Supabase Row Level Security (RLS)
 - [ ] Review API usage limits
+- [ ] Confirm AWS_BEDROCK credentials are set in Vercel (for Critic hypothesis evaluation)
 
 ---
 
@@ -188,7 +184,7 @@ Supabase → Table Editor → case_interactions → ... → Download as CSV
 Delete rows from users, sessions, and case_interactions tables for that user_id
 
 **Change Case Count:**
-Edit cases.json and update SessionOrchestrator.jsx
+Edit cases_18_final.json and update CASE_COUNTS in SessionOrchestrator.jsx
 
 ---
 

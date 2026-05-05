@@ -164,7 +164,7 @@ This platform implements a **2×2 between-subjects factorial experiment** to tes
 
 2. **Session persistence:**
    - User's group assignment stored in database
-   - All subsequent interactions (pre-test, intervention, post-test) use same group logic
+   - All subsequent interactions (pre-test, intervention, NFC) use same group logic
    - No mid-session group changes
 
 3. **Balancing:**
@@ -174,39 +174,31 @@ This platform implements a **2×2 between-subjects factorial experiment** to tes
 
 ---
 
-## Experimental Flow
+## Experimental Flow (this app)
 
 ### Phase 1: Pre-Test (Baseline)
-- **5 clinical cases** solved independently
-- NO AI assistance
+- **4 clinical cases** solved independently (no AI)
 - **Metrics:** Initial accuracy, baseline confidence
 - **Purpose:** ANCOVA covariate to control for prior knowledge
 
-### Phase 2: NFC Assessment
-- **Short Need for Cognition scale** (Cacioppo et al., 1984)
+### Phase 2: Intervention (AI-Assisted Cases)
+- **10 clinical cases** with assigned AI paradigm
+- **30% cases include sensible foils** (calibrated accuracy group)
+- **Metrics:** Task completion time, overreliance rate, evidence exploration depth, confidence calibration
+
+### Phase 3: NFC Assessment
+- **15-item Need for Cognition scale** (Cacioppo et al., 1984; items 10, 13, 17 removed)
+- Score range: 15–75; high-NFC threshold ≥ 45
 - **Purpose:** Test moderation hypothesis (H2): Critic benefits high-NFC users more
 
-### Phase 3: Intervention (AI-Assisted Cases)
-- **14-15 clinical cases** with assigned AI paradigm
-- **30% cases include sensible foils** (errors)
-- **Metrics:**
-  - Task completion time
-  - Overreliance rate (% agreement with incorrect AI)
-  - Evidence exploration depth (Critic only)
-  - Confidence calibration
+### Phase 4: Complete
+- Participant shown their participant number
+- Directed to contact research team for interview
 
-### Phase 4: Post-Test (Learning Transfer)
-- **5 new clinical cases** (one week later)
-- NO AI assistance
+### Post-Test (separate app)
+- **5 new clinical cases** (one week later) — deployed as a separate application
 - **Metrics:** Learning gain (post-test accuracy - pre-test accuracy)
-- **Purpose:** Measure whether interaction paradigm improved independent diagnostic skill
-
-### Phase 5: Subjective Assessment
-- **Likert scales:**
-  - Perceived Autonomy (from IMI)
-  - Trust Calibration
-  - NASA-TLX (cognitive load)
-- **Semi-structured interview** (qualitative)
+- **Subjective assessments:** Perceived Autonomy (IMI), Trust Calibration, NASA-TLX
 
 ---
 
