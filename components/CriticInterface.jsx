@@ -15,7 +15,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import logger from '../lib/logger';
 import { useNotification } from './Notification';
 import { useTranslation } from '../lib/translations';
-import { getCaseField, getPatientGender, getPatientEthnicity } from '../lib/case-field-helper';
+import { getCaseField, getPatientGender, getPatientEthnicity, getRealVitals } from '../lib/case-field-helper';
+import VitalsBlock from './VitalsBlock';
 
 export default function CriticInterface({ caseData, onComplete, accuracyLevel, language = 'ru' }) {
   const t = useTranslation(language);
@@ -178,16 +179,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
             <p>
               <strong>{t.physicalExam}:</strong> {getCaseField(caseData, 'physicalExam', language)}
             </p>
-            <div className="bg-gray-50 p-4 rounded border border-gray-200">
-              <strong className="block mb-2">{t.vitalSigns}:</strong>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <span>{t.temp}: {caseData.vitals.temperature}</span>
-                <span>{t.bp}: {caseData.vitals.bloodPressure}</span>
-                <span>{t.hr}: {caseData.vitals.heartRate}</span>
-                <span>{t.rr}: {caseData.vitals.respiratoryRate}</span>
-                <span>{t.o2sat}: {caseData.vitals.oxygenSaturation}</span>
-              </div>
-            </div>
+            <VitalsBlock vitals={caseData.vitals} t={t} language={language} />
           </div>
         </div>
 
@@ -245,15 +237,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                   </div>
                 )}
                 {panelId === 'vitals' && (
-                  <div>
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white p-2 rounded border"><span className="text-gray-600">{t.temp}:</span> <span className="font-medium">{caseData.vitals.temperature}</span></div>
-                      <div className="bg-white p-2 rounded border"><span className="text-gray-600">{t.bp}:</span> <span className="font-medium">{caseData.vitals.bloodPressure}</span></div>
-                      <div className="bg-white p-2 rounded border"><span className="text-gray-600">{t.hr}:</span> <span className="font-medium">{caseData.vitals.heartRate}</span></div>
-                      <div className="bg-white p-2 rounded border"><span className="text-gray-600">{t.rr}:</span> <span className="font-medium">{caseData.vitals.respiratoryRate}</span></div>
-                      <div className="bg-white p-2 rounded border col-span-2"><span className="text-gray-600">{t.o2sat}:</span> <span className="font-medium">{caseData.vitals.oxygenSaturation}</span></div>
-                    </div>
-                  </div>
+                  <VitalsRevealPanel vitals={caseData.vitals} t={t} />
                 )}
                 {panelId === 'imaging' && (
                   <div>
@@ -522,5 +506,34 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
         .animate-fadeIn { animation: fadeIn 0.25s ease-out; }
       `}</style>
     </>
+  );
+}
+
+const VITAL_KEYS = [
+  { key: 'temperature',      tKey: 'temp'  },
+  { key: 'bloodPressure',    tKey: 'bp'    },
+  { key: 'heartRate',        tKey: 'hr'    },
+  { key: 'respiratoryRate',  tKey: 'rr'    },
+  { key: 'oxygenSaturation', tKey: 'o2sat' },
+];
+
+function VitalsRevealPanel({ vitals, t }) {
+  const real = getRealVitals(vitals);
+  if (!real) return (
+    <p className="text-gray-500 italic text-sm">
+      {t.vitalsNotProvided || 'Vital signs not provided in the case'}
+    </p>
+  );
+  return (
+    <div className="grid grid-cols-2 gap-2">
+      {VITAL_KEYS.map(({ key, tKey }) =>
+        real[key] ? (
+          <div key={key} className={`bg-white p-2 rounded border${key === 'oxygenSaturation' ? ' col-span-2' : ''}`}>
+            <span className="text-gray-600">{t[tKey]}:</span>{' '}
+            <span className="font-medium">{real[key]}</span>
+          </div>
+        ) : null
+      )}
+    </div>
   );
 }
