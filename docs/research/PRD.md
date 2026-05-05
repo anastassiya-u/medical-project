@@ -516,15 +516,15 @@ Question: Will students trust evidence-based terminology over familiar post-Sovi
 **Duration:** 5 minutes
 **Instrument:** Short Need for Cognition Scale (Cacioppo et al., 1984)
 
-**Sample Items (18-item version):**
+**Sample Items (15-item version; items 10, 13, 17 removed per researcher decision):**
 1. "I would prefer complex to simple problems."
 2. "I like to have the responsibility of handling situations that require a lot of thinking."
 3. "Thinking is not my idea of fun." (reverse-scored)
 
 **Scoring:**
 - Responses: 1 (strongly disagree) to 5 (strongly agree)
-- Total score: 18-90 (higher = greater need for cognition)
-- **Median split:** High-NFC (≥54) vs. Low-NFC (<54)
+- Total score: 15–75 (higher = greater need for cognition)
+- **High-NFC threshold:** ≥45
 
 **Purpose:** Test moderation hypothesis — Critic paradigm may benefit high-NFC users more
 

@@ -23,13 +23,14 @@ This platform implements a **2×2 between-subjects factorial experiment** compar
 
 **Target:** N=120 participants (30 per group)
 
-### Experimental Flow
+### Experimental Flow (this app)
 
-1. **Pre-Test** → 5 cases (no AI) - baseline assessment
-2. **NFC Assessment** → 6-item Need for Cognition scale
-3. **Intervention** → 15 cases with assigned AI paradigm (30% intentional errors in 70% group)
-4. **Post-Test** → 5 cases (no AI) - one week later - learning gain measurement
-5. **Assessments** → Likert scales + semi-structured interview
+1. **Pre-Test** → 4 cases (no AI) — baseline assessment
+2. **Intervention** → 10 cases with assigned AI paradigm (30% intentional errors in 70% group)
+3. **NFC Assessment** → 15-item Need for Cognition scale
+4. **Complete** → Participant number shown; interview scheduled separately
+
+Post-test is deployed as a separate application.
 
 ---
 
@@ -56,8 +57,8 @@ This platform implements a **2×2 between-subjects factorial experiment** compar
 │   ├── SessionOrchestrator.jsx  # Main experimental flow controller
 │   ├── OracleInterface.jsx      # Directive XAI interface
 │   ├── CriticInterface.jsx      # Evaluative AI interface
-│   ├── NoAIInterface.jsx        # Pre/post-test interface
-│   └── NFCScale.jsx             # Need for Cognition assessment
+│   ├── NoAIInterface.jsx        # Pre-test interface (no AI)
+│   └── NFCScale.jsx             # Need for Cognition assessment (15-item)
 ├── lib/
 │   ├── logger.js              # Real-time event logging to Supabase
 │   ├── randomization.js       # 2×2 group assignment logic
@@ -65,7 +66,7 @@ This platform implements a **2×2 between-subjects factorial experiment** compar
 │   └── contexts/
 │       └── LoggerContext.tsx  # Global logger context
 ├── src/data/
-│   └── cases.json         # 25 clinical vignettes with foils
+│   └── cases_18_final.json    # 18 clinical vignettes with foils
 ├── supabase/
 │   └── schema.sql         # Database schema (SDT logging)
 ├── middleware.ts          # Group locking & routing
@@ -185,10 +186,10 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## 📊 Cases Dataset
 
-**Total: 25 cases**
-- 5 pre-test (baseline)
-- 15 intervention (AI-assisted, 30% foils in 70% group)
-- 5 post-test (learning transfer)
+**Total: 18 cases**
+- 4 pre-test (baseline)
+- 10 intervention (AI-assisted; 30% foils in 70% accuracy group)
+- 4 remaining cases available for future use / post-test app
 
 **Categories:**
 - Respiratory: Pneumonia, COPD, Pulmonary TB, Pneumothorax, etc.
@@ -232,7 +233,7 @@ Pre-configured SQL views for analysis:
 - ✅ IRB approval required
 - ✅ Informed consent at registration
 - ✅ Data anonymization (no PII in logs)
-- ✅ Debriefing after post-test (explains AI errors)
+- ✅ Debriefing at completion screen (participant instructed to contact research team)
 - ✅ Right to withdraw at any time
 
 ---
@@ -274,7 +275,7 @@ CREATE POLICY "Users can insert own data"
 **Middleware (`middleware.ts`):**
 - Validates session integrity on every request
 - Prevents group switching mid-session
-- Enforces post-test delay (7 days after intervention)
+- Validates session integrity (group immutability)
 
 **Session Persistence:**
 - `localStorage` - client-side state
@@ -361,8 +362,8 @@ echo $NEXT_PUBLIC_SUPABASE_URL
 
 **3. Cases not loading:**
 ```bash
-# Verify cases.json is valid JSON
-node -e "console.log(JSON.parse(require('fs').readFileSync('src/data/cases.json')))"
+# Verify cases_18_final.json is valid JSON
+node -e "console.log(JSON.parse(require('fs').readFileSync('src/data/cases_18_final.json')))"
 ```
 
 ---

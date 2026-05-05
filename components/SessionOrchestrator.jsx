@@ -6,12 +6,12 @@
  *
  * Phases:
  * 1. Registration & Consent
- * 2. Pre-test (5 cases, no AI)
- * 3. NFC Assessment (6-item Need for Cognition scale)
- * 4. Intervention (15 cases with AI - paradigm assigned)
- * 5. Post-test (5 cases, no AI - one week later)
- * 6. Likert Assessments & Interview
+ * 2. Pre-test (4 cases, no AI)
+ * 3. Intervention (10 cases with AI — paradigm assigned)
+ * 4. NFC Assessment (15-item Need for Cognition scale)
+ * 5. Complete
  *
+ * Post-test is deployed as a separate application.
  * Persistence: Uses localStorage + Supabase to maintain state across refreshes
  */
 
@@ -260,13 +260,20 @@ export default function SessionOrchestrator() {
 
   /**
    * Transition to a new phase
+   * Only pre_test, intervention, and nfc_assessment create DB session records.
+   * The COMPLETE phase is a UI-only state — no session row is created.
    */
   const transitionToPhase = async (newPhase, sessionData = {}) => {
     console.log(`🔄 Transitioning to phase: ${newPhase}`);
 
-    // Start new session in database
-    const session = await logger.startSession(newPhase);
-    setSessionId(session);
+    // Only phases that map to DB session_type values create a session row
+    const DB_SESSION_PHASES = [PHASES.PRE_TEST, PHASES.INTERVENTION, PHASES.NFC_ASSESSMENT];
+    let session = sessionId;
+
+    if (DB_SESSION_PHASES.includes(newPhase)) {
+      session = await logger.startSession(newPhase);
+      setSessionId(session);
+    }
 
     // Load cases for new phase
     await loadCasesForPhase(newPhase, {

@@ -21,13 +21,14 @@
 
 ### Step 2: Register Test User
 Fill in the form:
-- [ ] **Student ID:** TEST001
+- [ ] **First Name:** Test
+- [ ] **Last Name:** User
 - [ ] **Age:** 25
 - [ ] **Gender:** Male
 - [ ] **Medical School:** Astana Medical University
 - [ ] **Year of Study:** 3
-- [ ] **Preferred Language:** Russian
-- [ ] ✓ Check "I have read and agree to the informed consent"
+- [ ] **Language:** Russian
+- [ ] ✓ Check the informed consent checkbox
 - [ ] Click **"Begin Experiment"**
 
 **Expected:** Redirected to Pre-Test phase with first clinical case
@@ -172,27 +173,27 @@ Fill in the form:
 
 ## 🎯 Test 7: Multi-Phase Flow (15 minutes)
 
-### Phase 1: Pre-Test (5 cases, no AI)
+### Phase 1: Pre-Test (4 cases, no AI)
 - [ ] Complete first case independently
 - [ ] See **"Next Case"** button after submission
-- [ ] Progress through 5 pre-test cases
+- [ ] Progress through 4 pre-test cases
 - [ ] No AI assistance shown
 
 **Expected:** Baseline diagnostic accuracy measured
 
-### Phase 2: NFC Assessment (18 questions)
+### Phase 2: Intervention (10 cases with AI)
+- [ ] Now AI assistance appears (Oracle or Critic style)
+- [ ] Interface matches your assignment
+- [ ] Complete 10 cases with AI help
+
+**Expected:** This is the main experimental manipulation
+
+### Phase 3: NFC Assessment (15 questions)
 - [ ] See Need for Cognition scale
-- [ ] Answer 18 questions (Likert 1-5)
+- [ ] Answer 15 questions (Likert 1-5)
 - [ ] Questions about thinking preferences
 
 **Expected:** Measures analytical thinking tendency
-
-### Phase 3: Intervention (15 cases with AI)
-- [ ] Now AI assistance appears (Oracle or Critic style)
-- [ ] Interface matches your assignment
-- [ ] Complete 15 cases with AI help
-
-**Expected:** This is the main experimental manipulation
 
 ---
 

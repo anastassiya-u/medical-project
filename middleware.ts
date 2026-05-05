@@ -5,7 +5,6 @@
  * Key Functions:
  * 1. Ensures participants can't change their assigned group (2x2 lock)
  * 2. Validates session integrity across page refreshes
- * 3. Prevents unauthorized access to post-test before delay period
  */
 
 import { NextResponse } from 'next/server';
@@ -45,23 +44,6 @@ export function middleware(request: NextRequest) {
         const response = NextResponse.redirect(request.nextUrl.clone());
         response.cookies.delete('experimentSession');
         return response;
-      }
-
-      // Post-test delay enforcement (one week)
-      if (
-        session.currentPhase === 'post_test_waiting' &&
-        pathname.includes('/post-test')
-      ) {
-        const interventionCompleted = new Date(session.interventionCompletedAt);
-        const now = new Date();
-        const daysSince = (now.getTime() - interventionCompleted.getTime()) / (1000 * 60 * 60 * 24);
-
-        if (daysSince < 7 && process.env.NEXT_PUBLIC_SKIP_POST_TEST_DELAY !== 'true') {
-          console.log(`⏳ Post-test blocked: only ${Math.round(daysSince)} days since intervention`);
-          const url = request.nextUrl.clone();
-          url.pathname = '/waiting';
-          return NextResponse.redirect(url);
-        }
       }
 
       // Add session info to response headers for client-side access

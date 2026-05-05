@@ -182,22 +182,16 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
                 {t.laboratoryFindings}
               </h4>
               <div className="grid grid-cols-2 gap-3 text-sm">
-                <div>
-                  <span className="font-medium text-gray-700">{t.wbc}:</span>{' '}
-                  <span className="text-gray-900">{caseData.labs.wbc}</span>
-                </div>
-                <div>
-                  <span className="font-medium text-gray-700">{t.hemoglobin}:</span>{' '}
-                  <span className="text-gray-900">{caseData.labs.hemoglobin}</span>
-                </div>
-                <div>
-                  <span className="font-medium text-gray-700">{t.platelets}:</span>{' '}
-                  <span className="text-gray-900">{caseData.labs.platelets}</span>
-                </div>
-                <div>
-                  <span className="font-medium text-gray-700">{t.crp}:</span>{' '}
-                  <span className="text-gray-900">{caseData.labs.crp}</span>
-                </div>
+                {Object.entries(caseData.labs)
+                  .filter(([key]) => key !== 'source')
+                  .map(([key, value]) => (
+                    <div key={key}>
+                      <span className="font-medium text-gray-700">
+                        {t[key] || key.replace(/([A-Z_])/g, ' $1').trim()}:
+                      </span>{' '}
+                      <span className="text-gray-900">{value}</span>
+                    </div>
+                  ))}
               </div>
             </div>
           )}

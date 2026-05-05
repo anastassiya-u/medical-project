@@ -77,7 +77,7 @@ CREATE TABLE case_interactions (
 
   -- Case Identification
   case_id VARCHAR(50) NOT NULL,
-  case_order INTEGER NOT NULL, -- Position in session (1-15)
+  case_order INTEGER NOT NULL, -- Position in session (1-4 for pre_test, 1-10 for intervention)
 
   -- Experimental Conditions (denormalized for analysis)
   paradigm VARCHAR(10) CHECK (paradigm IN ('oracle', 'critic')) NOT NULL,
@@ -295,6 +295,10 @@ FROM case_interactions
 GROUP BY paradigm, accuracy_level;
 
 -- View: Learning Gain by Group
+-- NOTE: This view is intentionally inactive in this application.
+-- Post-test data is collected by a separate application.
+-- The view is retained here for future cross-app analysis once post-test data
+-- is ingested into this database. It will return 0 rows until then.
 CREATE VIEW learning_gain_by_group AS
 WITH pre_test AS (
   SELECT
@@ -309,6 +313,7 @@ WITH pre_test AS (
   GROUP BY ci.user_id, u.paradigm, u.accuracy_level
 ),
 post_test AS (
+  -- post_test session_type is written by the separate post-test application
   SELECT
     ci.user_id,
     COUNT(*) FILTER (WHERE ci.user_finally_correct = TRUE) * 100.0 / COUNT(*) AS post_test_accuracy

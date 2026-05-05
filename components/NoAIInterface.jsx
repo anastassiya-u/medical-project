@@ -1,7 +1,7 @@
 /**
  * NoAIInterface Component
- * Used for Pre-Test and Post-Test phases (no AI assistance)
- * Measures baseline and learning gain
+ * Used for Pre-Test phase (no AI assistance)
+ * Measures baseline diagnostic accuracy
  */
 
 'use client';

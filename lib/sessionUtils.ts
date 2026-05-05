@@ -2,6 +2,8 @@
  * Session Utilities
  * Helper functions for managing experimental session state
  * Works in tandem with middleware.ts for group locking
+ *
+ * Note: post-test is deployed as a separate application — no post-test helpers here.
  */
 
 /**
@@ -55,33 +57,6 @@ export function validateSession(session: Record<string, any>): boolean {
   }
 
   return true;
-}
-
-/**
- * Check if post-test is available (7 days after intervention)
- */
-export function isPostTestAvailable(session: Record<string, any>): boolean {
-  if (!session.interventionCompletedAt) return false;
-
-  const completedDate = new Date(session.interventionCompletedAt);
-  const now = new Date();
-  const daysSince = (now.getTime() - completedDate.getTime()) / (1000 * 60 * 60 * 24);
-
-  // Allow post-test if 7 days have passed OR debug mode is enabled
-  return daysSince >= 7 || process.env.NEXT_PUBLIC_SKIP_POST_TEST_DELAY === 'true';
-}
-
-/**
- * Get days remaining until post-test
- */
-export function getDaysUntilPostTest(session: Record<string, any>): number {
-  if (!session.interventionCompletedAt) return 7;
-
-  const completedDate = new Date(session.interventionCompletedAt);
-  const now = new Date();
-  const daysSince = (now.getTime() - completedDate.getTime()) / (1000 * 60 * 60 * 24);
-
-  return Math.max(0, Math.ceil(7 - daysSince));
 }
 
 /**
