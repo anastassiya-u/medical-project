@@ -29,13 +29,26 @@ export async function POST(request) {
     });
 
     // Call AI evaluator (server-side only - AWS credentials not exposed)
-    const evaluation = await evaluateHypothesis({
-      caseData,
-      userHypothesis,
-      accuracyLevel,
-      isFoilCase,
-      uiLanguage: language, // Pass UI language as hint
-    });
+    // One automatic retry on transient failure before surfacing an error to the client.
+    let evaluation;
+    try {
+      evaluation = await evaluateHypothesis({
+        caseData,
+        userHypothesis,
+        accuracyLevel,
+        isFoilCase,
+        uiLanguage: language,
+      });
+    } catch (firstError) {
+      console.warn('⚠️ First attempt failed, retrying once:', firstError.message);
+      evaluation = await evaluateHypothesis({
+        caseData,
+        userHypothesis,
+        accuracyLevel,
+        isFoilCase,
+        uiLanguage: language,
+      });
+    }
 
     return NextResponse.json(evaluation);
   } catch (error) {

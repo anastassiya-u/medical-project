@@ -67,6 +67,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
   const handleGenerateUserRow = useCallback(async () => {
     if (userRowHypothesis.trim().length < 3) return;
     setGeneratingUserRow(true);
+    setUserRowEvidence(null); // clear any previous result / error state
     try {
       const res = await fetch('/api/evaluate-hypothesis', {
         method: 'POST',
@@ -79,21 +80,51 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
           language,
         }),
       });
+
       const data = await res.json();
-      // API returns { supporting: [...], challenging: [...] } directly
-      const rawFor = data.supporting || data.evidenceFor || [];
-      const rawAgainst = data.challenging || data.evidenceAgainst || [];
-      if (rawFor.length > 0 || rawAgainst.length > 0) {
-        // Equalise lengths: keep min(for, against) items from each
-        const count = Math.min(rawFor.length, rawAgainst.length) || Math.max(rawFor.length, rawAgainst.length);
-        setUserRowEvidence({
-          argsFor: rawFor.slice(0, count),
-          argsAgainst: rawAgainst.slice(0, count),
-        });
-        await logger.submitHypothesis(userRowHypothesis.trim());
+
+      // Surface any server-side failure as an error — do NOT render fallback strings.
+      if (!res.ok || data.fallback || data.error) {
+        setUserRowEvidence({ error: true });
+        showNotification(
+          language === 'ru'
+            ? 'Не удалось получить аргументы от ИИ. Попробуйте ещё раз.'
+            : 'Could not retrieve AI arguments. Please try again.',
+          'error'
+        );
+        return;
       }
+
+      const rawFor = Array.isArray(data.supporting) ? data.supporting : [];
+      const rawAgainst = Array.isArray(data.challenging) ? data.challenging : [];
+
+      // Validate that we received real argument strings, not empty arrays.
+      if (rawFor.length === 0 && rawAgainst.length === 0) {
+        setUserRowEvidence({ error: true });
+        showNotification(
+          language === 'ru'
+            ? 'ИИ не вернул аргументы. Попробуйте ещё раз.'
+            : 'AI returned no arguments. Please try again.',
+          'error'
+        );
+        return;
+      }
+
+      // Equalise lengths: keep min(for, against) items from each
+      const count = Math.min(rawFor.length, rawAgainst.length) || Math.max(rawFor.length, rawAgainst.length);
+      setUserRowEvidence({
+        argsFor: rawFor.slice(0, count),
+        argsAgainst: rawAgainst.slice(0, count),
+      });
+      await logger.submitHypothesis(userRowHypothesis.trim());
     } catch (err) {
-      showNotification(language === 'ru' ? 'Ошибка генерации аргументов' : 'Error generating arguments', 'error');
+      setUserRowEvidence({ error: true });
+      showNotification(
+        language === 'ru'
+          ? 'Ошибка сети. Проверьте соединение и попробуйте ещё раз.'
+          : 'Network error. Check your connection and try again.',
+        'error'
+      );
     } finally {
       setGeneratingUserRow(false);
     }
@@ -386,7 +417,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                       +
                     </span>
                   </td>
-                  <td className="px-4 py-4 align-top" colSpan={userRowEvidence ? 1 : 3}>
+                  <td className="px-4 py-4 align-top" colSpan={userRowEvidence && !userRowEvidence.error ? 1 : 3}>
                     <div className="space-y-2">
                       <p className="text-xs text-purple-700 font-medium">{t.optionalHypothesisHint}</p>
                       <textarea
@@ -396,7 +427,8 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                         className="w-full p-2 border border-purple-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-400 resize-none bg-white"
                         rows={2}
                       />
-                      {userRowHypothesis.trim().length >= 3 && !userRowEvidence && (
+                      {/* Show button when hypothesis is long enough AND we don't have a successful result yet */}
+                      {userRowHypothesis.trim().length >= 3 && (!userRowEvidence || userRowEvidence.error) && (
                         <button
                           onClick={handleGenerateUserRow}
                           disabled={generatingUserRow}
@@ -418,11 +450,11 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                       )}
                     </div>
                   </td>
-                  {userRowEvidence && (
+                  {userRowEvidence && !userRowEvidence.error && (
                     <>
                       <td className="px-4 py-4 align-top">
                         <ul className="space-y-1">
-                          {userRowEvidence.argsFor.map((arg, idx) => (
+                          {(userRowEvidence.argsFor || []).map((arg, idx) => (
                             <li key={idx} className="flex items-start gap-1.5 text-gray-700 text-sm">
                               <span className="text-green-600 mt-0.5 flex-shrink-0">•</span>
                               <span>{arg}</span>
@@ -432,7 +464,7 @@ export default function CriticInterface({ caseData, onComplete, accuracyLevel, l
                       </td>
                       <td className="px-4 py-4 align-top">
                         <ul className="space-y-1">
-                          {userRowEvidence.argsAgainst.map((arg, idx) => (
+                          {(userRowEvidence.argsAgainst || []).map((arg, idx) => (
                             <li key={idx} className="flex items-start gap-1.5 text-gray-700 text-sm">
                               <span className="text-red-500 mt-0.5 flex-shrink-0">•</span>
                               <span>{arg}</span>
