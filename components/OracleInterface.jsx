@@ -24,6 +24,7 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
   // UI State
   const [confidence, setConfidence] = useState(null);
   const [finalDiagnosis, setFinalDiagnosis] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Notifications
   const { showNotification, NotificationComponent } = useNotification();
@@ -32,29 +33,50 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
   const caseInitialized = useRef(false);
   const currentCaseId = useRef(null);
 
+  // Always-current refs so submit handler never reads stale closure values.
+  // Critical for mobile: confidence button tap and submit button tap can land
+  // in the same React render cycle, leaving useCallback closures stale.
+  const confidenceRef = useRef(confidence);
+  const finalDiagnosisRef = useRef(finalDiagnosis);
+  useEffect(() => { confidenceRef.current = confidence; }, [confidence]);
+  useEffect(() => { finalDiagnosisRef.current = finalDiagnosis; }, [finalDiagnosis]);
+
   // Reset state when case changes (critical for multi-case flow)
   useEffect(() => {
     setConfidence(null);
     setFinalDiagnosis('');
+    setIsSubmitting(false);
     caseInitialized.current = false;
     currentCaseId.current = null;
   }, [caseData.id]);
 
   // Handle final diagnosis submission - MUST be defined before useEffect that uses it
   const handleSubmitFinal = useCallback(async () => {
-    if (!confidence) {
+    // Read from refs — always current regardless of render cycle
+    const currentConfidence = confidenceRef.current;
+    const currentDiagnosis = finalDiagnosisRef.current;
+
+    if (!currentConfidence) {
       showNotification(t.rateConfidenceWarning, 'warning');
       return;
     }
 
-    if (!finalDiagnosis) {
+    if (!currentDiagnosis.trim()) {
       showNotification(t.enterDiagnosisWarning, 'warning');
       return;
     }
 
-    await logger.submitFinalDiagnosis(finalDiagnosis);
-    onComplete();
-  }, [confidence, finalDiagnosis, showNotification, onComplete]);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    try {
+      await logger.submitFinalDiagnosis(currentDiagnosis.trim());
+      onComplete();
+    } catch (err) {
+      console.error('❌ Submit failed:', err);
+      setIsSubmitting(false);
+    }
+  }, [isSubmitting, showNotification, onComplete, t]);
 
   // Initialize case (runs only when case changes)
   useEffect(() => {
@@ -84,13 +106,13 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
   // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.key === 'Enter' && e.ctrlKey && confidence && finalDiagnosis) {
+      if (e.key === 'Enter' && e.ctrlKey && confidenceRef.current && finalDiagnosisRef.current.trim()) {
         handleSubmitFinal();
       }
     };
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [confidence, finalDiagnosis, handleSubmitFinal]);
+  }, [handleSubmitFinal]);
 
   // Handle confidence rating
   const handleConfidenceRating = async (rating) => {
@@ -266,14 +288,16 @@ export default function OracleInterface({ caseData, onComplete, language = 'ru' 
 
         <button
           onClick={handleSubmitFinal}
-          disabled={!confidence || finalDiagnosis.trim().length < 3}
+          disabled={!confidence || finalDiagnosis.trim().length < 3 || isSubmitting}
           className={`mt-6 w-full py-4 rounded-lg font-bold text-lg transition ${
-            confidence && finalDiagnosis.trim().length >= 3
+            confidence && finalDiagnosis.trim().length >= 3 && !isSubmitting
               ? 'bg-green-600 text-white hover:bg-green-700'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >
-          {t.submitFinalDiagnosisButton} → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span>
+          {isSubmitting
+            ? (language === 'ru' ? 'Отправка...' : 'Submitting...')
+            : <>{t.submitFinalDiagnosisButton} → <span className="text-sm font-normal opacity-75">(Ctrl+Enter)</span></>}
         </button>
       </div>
 

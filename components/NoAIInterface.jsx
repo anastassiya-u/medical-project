@@ -19,6 +19,7 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
   const [diagnosis, setDiagnosis] = useState('');
   const [confidence, setConfidence] = useState(null);
   const [startTime, setStartTime] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Notifications
   const { showNotification, NotificationComponent } = useNotification();
@@ -27,32 +28,50 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
   const caseInitialized = useRef(false);
   const currentCaseId = useRef(null);
 
+  // Always-current refs so submit handler never reads stale closure values.
+  // Critical for mobile: confidence button tap and submit button tap can land
+  // in the same React render cycle, leaving useCallback closures stale.
+  const diagnosisRef = useRef(diagnosis);
+  const confidenceRef = useRef(confidence);
+  const startTimeRef = useRef(startTime);
+  useEffect(() => { diagnosisRef.current = diagnosis; }, [diagnosis]);
+  useEffect(() => { confidenceRef.current = confidence; }, [confidence]);
+  useEffect(() => { startTimeRef.current = startTime; }, [startTime]);
+
   // Reset state when case changes (critical for multi-case flow)
   useEffect(() => {
     setDiagnosis('');
     setConfidence(null);
     setStartTime(null);
+    setIsSubmitting(false);
     caseInitialized.current = false;
     currentCaseId.current = null;
   }, [caseData.id]);
 
   // Define handleSubmit BEFORE useEffect that references it
   const handleSubmit = useCallback(async () => {
-    if (!diagnosis || !confidence) {
+    // Read from refs — always current regardless of render cycle
+    const currentDiagnosis = diagnosisRef.current;
+    const currentConfidence = confidenceRef.current;
+    const currentStartTime = startTimeRef.current;
+
+    if (!currentDiagnosis.trim() || !currentConfidence) {
       showNotification(t.rateConfidenceWarning, 'warning');
       return;
     }
 
-    const taskTime = Math.round((Date.now() - startTime) / 1000);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
-    // FIX: Log confidence rating before submitting diagnosis
-    await logger.rateConfidence(confidence, 'pre');
-
-    // Log as a no-AI case
-    await logger.submitFinalDiagnosis(diagnosis);
-
-    onComplete();
-  }, [diagnosis, confidence, startTime, showNotification, onComplete]);
+    try {
+      await logger.rateConfidence(currentConfidence, 'pre');
+      await logger.submitFinalDiagnosis(currentDiagnosis.trim());
+      onComplete();
+    } catch (err) {
+      console.error('❌ Submit failed:', err);
+      setIsSubmitting(false);
+    }
+  }, [isSubmitting, showNotification, onComplete, t]);
 
   // Initialize case (runs only when case changes)
   useEffect(() => {
@@ -66,13 +85,13 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
   // Keyboard shortcut: Ctrl+Enter to submit (separate effect so it stays current)
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.key === 'Enter' && e.ctrlKey && diagnosis && confidence) {
+      if (e.key === 'Enter' && e.ctrlKey && diagnosisRef.current.trim() && confidenceRef.current) {
         handleSubmit();
       }
     };
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [diagnosis, confidence, handleSubmit]);
+  }, [handleSubmit]);
 
   return (
     <>
@@ -176,14 +195,16 @@ export default function NoAIInterface({ caseData, onComplete, language = 'ru' })
 
         <button
           onClick={handleSubmit}
-          disabled={!diagnosis || !confidence}
+          disabled={!diagnosis.trim() || !confidence || isSubmitting}
           className={`mt-6 w-full py-4 rounded-lg font-bold text-lg transition ${
-            diagnosis && confidence
+            diagnosis.trim() && confidence && !isSubmitting
               ? 'bg-gray-700 text-white hover:bg-gray-800'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >
-          {t.submitDiagnosis} →
+          {isSubmitting
+            ? (language === 'ru' ? 'Отправка...' : 'Submitting...')
+            : `${t.submitDiagnosis} →`}
         </button>
       </div>
 
